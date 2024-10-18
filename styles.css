@@ -1,0 +1,68 @@
+/* Profile Image Styling */
+.profileImg {
+    max-width: 300px;
+    border: 5px solid #FBBF24; /* Amber border */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Profile Image Hover Effect */
+.profileImg:hover, .card:hover {
+    transform: scale(1.02); /* Slightly enlarge the image on hover */
+}
+
+/* Card Hover Effect */
+.card {
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Change link color within card bodies */
+.card-body a {
+    color: #F9FAFB; /* Off White */
+    text-decoration: underline; /* Add underline to links */
+}
+
+/* Change link color on hover */
+.card-body a:hover {
+    color: #FBBF24; /* Amber */
+}
+
+/* Change link color within footers */
+footer a {
+    color: #F9FAFB; /* Off White */
+    text-decoration: underline; /* Add underline to links */
+}
+
+/* Footer link hover color */
+footer a:hover {
+    color: #FBBF24; /* Amber */
+}
+
+/* Remove underline from links that are titles in projects.html */
+.project-title a {
+    text-decoration: none;
+    color: #F9FAFB; /* Off White */
+}
+
+/* Change text color of all heading elements */
+h1, h2, h3, h4, h5, h6 {
+    color: #F9FAFB; /* Off White */
+}
+
+/* Change background color of card body elements */
+.card-body {
+    background-color: #144ca5; /* Blue */
+}
+
+/* Change background color of footer and nav elements */
+footer, nav {
+    background-color: #172f6f; /* Dark Blue */
+}
+
+/* CSS for Background Image */
+body {
+    background-image: url('media/bg-img.jpeg');
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-repeat: repeat; /* Repeat the image */
+    background-attachment: scroll; /* Make the background image scroll with the page */
+    background-position: center; /* Center the background image */
+}
