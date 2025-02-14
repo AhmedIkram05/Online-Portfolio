@@ -1,68 +1,146 @@
+/* Body Background */
+body {
+    background: linear-gradient(45deg, #1abc9c, #16a085, #2C3E50, #34495E);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* fallback font added */
+}
+
+/* Button Styling */
+.btn-warning, button.btn-warning {
+    background-color: #1abc9c;
+    border-color: #16a085;
+    color: #ffffff;
+    font-weight: bold;
+}
+.btn-warning:hover, button.btn-warning:hover {
+    background-color: #16a085;
+    border-color: #1abc9c;
+    color: #ffffff;
+}
+
+/* Card Styling */
+.card {
+    background-color: #34495E;
+    border: none;
+    color: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+/* Card Body Styling */
+.card-body {
+    background-color: #34495E;
+    color: #ffffff;
+}
+
+/* Update Card Body Links for better contrast */
+.card-body a {
+    color: #ffffff;
+    text-decoration: none; /* underline removed */
+}
+.card-body a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Override card-body links only on the skills page to use colored links */
+.skills-page .card-body a {
+    color: #1abc9c;
+    text-decoration: none;
+}
+.skills-page .card-body a:hover {
+    color: #16a085;
+    text-decoration: none;
+}
+
+/* Override card-body links on the contact page to use colored links */
+.contact-page .card-body a {
+    color: #1abc9c;
+    text-decoration: none;
+}
+.contact-page .card-body a:hover {
+    color: #16a085;
+    text-decoration: none;
+}
+
+/* Footer & Navigation */
+footer, nav {
+    background-color: #2C3E50;
+    color: #ffffff;
+}
+
+/* Update Footer Links globally to use colored links instead of white with underlines */
+footer a {
+    color: #1abc9c;
+    text-decoration: none;
+}
+footer a:hover {
+    color: #16a085;
+    text-decoration: none;
+}
+
+/* Override footer links on the contact page to use colored links */
+.contact-page footer a {
+    color: #1abc9c;
+    text-decoration: none;
+}
+.contact-page footer a:hover {
+    color: #16a085;
+    text-decoration: none;
+}
+
+/* Add Navbar Styling */
+nav {
+    background-color: #2C3E50; /* matches footer and card colors */
+    color: #ffffff;
+}
+nav .navbar-brand,
+nav .nav-link {
+    color: #ffffff;
+}
+/* Update Navbar Hover Color with !important */
+nav .navbar-brand:hover,
+nav .nav-link:hover {
+    color: #16a085 !important;
+}
+
+/* Highlight active navbar link */
+nav .nav-link.active {
+    border-bottom: 2px solid #16a085;
+    color: #16a085 !important;
+    padding-bottom: 0.25rem;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #ecf0f1;
+}
+
 /* Profile Image Styling */
 .profileImg {
+    border: 2px solid #ffffff;
     max-width: 300px;
-    border: 5px solid #FBBF24; /* Amber border */
-    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+    border-radius: 50%;
 }
-
-/* Profile Image Hover Effect */
 .profileImg:hover, .card:hover {
-    transform: scale(1.02); /* Slightly enlarge the image on hover */
+    transform: scale(1.02);
 }
 
-/* Card Hover Effect */
-.card {
-    transition: transform 0.3s ease; /* Smooth transition for hover effect */
-}
-
-/* Change link color within card bodies */
-.card-body a {
-    color: #F9FAFB; /* Off White */
-    text-decoration: underline; /* Add underline to links */
-}
-
-/* Change link color on hover */
-.card-body a:hover {
-    color: #FBBF24; /* Amber */
-}
-
-/* Change link color within footers */
-footer a {
-    color: #F9FAFB; /* Off White */
-    text-decoration: underline; /* Add underline to links */
-}
-
-/* Footer link hover color */
-footer a:hover {
-    color: #FBBF24; /* Amber */
-}
-
-/* Remove underline from links that are titles in projects.html */
+/* Project Title Links */
 .project-title a {
+    color: #1abc9c;
     text-decoration: none;
-    color: #F9FAFB; /* Off White */
+}
+.project-title a:hover {
+    color: #16a085;
+    text-decoration: underline;
 }
 
-/* Change text color of all heading elements */
-h1, h2, h3, h4, h5, h6 {
-    color: #F9FAFB; /* Off White */
-}
-
-/* Change background color of card body elements */
-.card-body {
-    background-color: #144ca5; /* Blue */
-}
-
-/* Change background color of footer and nav elements */
-footer, nav {
-    background-color: #172f6f; /* Dark Blue */
-}
-
-/* CSS for Background Image */
-body {
-    background-image: url('media/bg-img.jpeg');
-    background-size: cover; /* Ensure the image covers the entire background */
-    background-repeat: repeat; /* Repeat the image */
-    background-attachment: scroll; /* Make the background image scroll with the page */
-    background-position: center; /* Center the background image */
+/* Append this new keyframes rule for gradient animation */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
