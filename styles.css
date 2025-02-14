@@ -5,6 +5,12 @@ body {
     animation: gradientAnimation 15s ease infinite;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* fallback font added */
     transition: background-color var(--transition-duration), color var(--transition-duration);
+    cursor: none; /* Hide the default cursor */
+}
+
+/* Enforce no default cursor in both themes */
+body, body.dark-theme {
+    cursor: none !important;
 }
 
 /* Button Styling */
@@ -369,9 +375,13 @@ body.dark-theme .card .project-details {
 /* Hero Section Styling */
 .hero {
     height: 100vh;
-    background: url('media/hero-bg.jpg') center/cover no-repeat; /* Ensure 'media/hero-bg.jpg' exists */
+    background: linear-gradient(to bottom, #b2dfdb, #4db6ac); /* Light gradient for hero background */
     position: relative;
     transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+body.dark-theme .hero {
+    background: linear-gradient(to bottom, #263238, #102027); /* Dark gradient for hero background */
 }
 
 .hero::after {
@@ -419,4 +429,55 @@ a.card-link {
     display: block;
     color: inherit;
     text-decoration: none;
+}
+
+/* Updated Custom Cursor */
+#custom-cursor {
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 30%, transparent 70%);
+    border: 2px solid #1abc9c;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* allows clicks to pass through */
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, background 0.2s ease;
+    box-shadow: 0 0 8px rgba(26, 188, 156, 0.8);
+}
+
+/* Light theme cursor (already defined) */
+body:not(.dark-theme) #custom-cursor {
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 30%, transparent 70%);
+    border: 2px solid #1abc9c;
+    /* ...existing code... */
+}
+
+/* Dark theme cursor */
+body.dark-theme #custom-cursor {
+    background: radial-gradient(circle, rgba(128,128,128,0.8) 30%, transparent 70%);
+    border: 2px solid #80cbc4;
+    /* match dark theme color scheme */
+    box-shadow: 0 0 8px rgba(128, 203, 196, 0.8);
+}
+
+/* New class: change the cursor appearance when clicking */
+.cursor-click {
+    transform: translate(-50%, -50%) scale(1.5);
+    background: radial-gradient(circle, rgba(26, 188, 156, 0.8) 30%, transparent 70%);
+}
+
+/* When clicking on a link */
+.cursor-click-link {
+    transform: translate(-50%, -50%) scale(2);
+    background: radial-gradient(circle, rgba(255, 128, 0, 0.8) 30%, transparent 70%);
+    border-color: #ff8000;
+    box-shadow: 0 0 12px rgba(255, 128, 0, 0.8);
+}
+
+/* Ensure default cursor remains hidden on all elements */
+a, button, input, textarea {
+    cursor: none !important;
 }
