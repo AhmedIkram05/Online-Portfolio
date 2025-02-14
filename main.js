@@ -35,8 +35,8 @@ function initTheme() {
   
   const navbar = document.querySelector('.navbar');
   if (navbar) {
-      navbar.classList.toggle('dark-theme', isDarkTheme);
-      // Removed inline backgroundColor update to allow CSS to control styling
+      navbar.classList.toggle('navbar-dark', isDarkTheme);
+      navbar.classList.toggle('bg-dark', isDarkTheme);
   }
 
   updateThemeTogglerIcon(themeToggler, isDarkTheme);
@@ -46,8 +46,8 @@ function initTheme() {
       const newTheme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
       document.body.classList.toggle('dark-theme');
       if (navbar) {
-          navbar.classList.toggle('dark-theme');
-          // Removed inline backgroundColor update to allow CSS to control styling
+          navbar.classList.toggle('navbar-dark', newTheme === 'dark');
+          navbar.classList.toggle('bg-dark', newTheme === 'dark');
       }
       localStorage.setItem('theme', newTheme);
       updateThemeTogglerIcon(themeToggler, newTheme === 'dark');

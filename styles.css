@@ -190,7 +190,7 @@ body.dark-theme nav.navbar {
 /* Dark theme adjustments for Navbar and Footer */
 body.dark-theme nav.navbar,
 body.dark-theme footer {
-    background: linear-gradient(90deg, #222, #444);
+    background: linear-gradient(90deg, #37474F, #455A64); /* Updated dark gradient */
 }
 
 /* Headings */
@@ -310,6 +310,16 @@ body.dark-theme .card-title {
 
 #theme-toggler:hover {
     color: #16a085;
+}
+
+/* Remove highlight from burger menu button */
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar-toggler {
+    border: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
