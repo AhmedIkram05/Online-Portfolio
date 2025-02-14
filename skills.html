@@ -18,7 +18,7 @@
 
 <body class="d-flex flex-column min-vh-100 skills-page">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand">
+    <nav class="navbar navbar-expand" role="navigation" aria-label="Main Navigation">
         <a class="navbar-brand" href="index.html">Ahmed Ikram</a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
@@ -38,6 +38,9 @@
                     <a class="nav-link" href="contact.html">Contact</a>
                 </li>
             </ul>
+            <button id="theme-toggler" class="btn btn-outline-light ml-auto">
+                <i class="fas fa-moon"></i>  <!-- Default to moon icon -->
+            </button>
         </div>
     </nav>
 
@@ -179,12 +182,6 @@
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Parallax effect for background image
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            document.body.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
