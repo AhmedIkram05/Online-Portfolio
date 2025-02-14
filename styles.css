@@ -190,7 +190,7 @@ body.dark-theme nav.navbar {
 /* Dark theme adjustments for Navbar and Footer */
 body.dark-theme nav.navbar,
 body.dark-theme footer {
-    background: linear-gradient(90deg, #37474F, #455A64); /* Updated dark gradient */
+    background: linear-gradient(90deg, #212121, #424242); /* Updated dark gradient */
 }
 
 /* Headings */
