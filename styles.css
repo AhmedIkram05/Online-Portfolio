@@ -20,6 +20,23 @@ body {
     color: #ffffff;
 }
 
+/* Light mode override for button links (CV/Contact styling) */
+body:not(.dark-theme) .btn-warning,
+body:not(.dark-theme) button.btn-warning,
+body:not(.dark-theme) a.btn-warning {
+    background-color: #009688;
+    border-color: #4db6ac;
+    color: #ffffff;
+}
+
+/* Light mode button hover */
+body:not(.dark-theme) .btn-warning:hover,
+body:not(.dark-theme) button.btn-warning:hover,
+body:not(.dark-theme) a.btn-warning:hover {
+    background-color: #4db6ac;
+    border-color: #009688;
+}
+
 /* Card Styling */
 body .card {
     background-color: #e0f2f1;
@@ -37,6 +54,18 @@ body .card-body {
 /* Card Titles */
 .card-title {
     color: #004d40; /* A darker shade of green */
+}
+
+/* Ensure project titles match the standard card title style */
+.card-title,
+.project-title {
+    color: #004d40; /* light mode title color */
+    font-weight: bold;
+}
+
+body.dark-theme .card-title,
+body.dark-theme .project-title {
+    color: #80cbc4; /* dark mode title color */
 }
 
 /* Update Card Body Links for better contrast */
@@ -95,6 +124,14 @@ footer a:hover {
     text-decoration: none;
 }
 
+/* Updated Footer Links for Enhanced Visibility in Light Mode */
+body:not(.dark-theme) footer a {
+    color: #ffffff;  /* white for better contrast */
+}
+body:not(.dark-theme) footer a:hover {
+    color: #e0e0e0;
+}
+
 /* Add Navbar Styling */
 nav {
     background-color: #2C3E50; /* matches footer and card colors */
@@ -115,6 +152,45 @@ nav .nav-link.active {
     border-bottom: 2px solid #16a085;
     color: #16a085 !important;
     padding-bottom: 0.25rem;
+}
+
+/* Enhanced Navbar Styling */
+nav.navbar {
+    background: linear-gradient(90deg, #2C3E50, #1abc9c);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.5s ease;
+}
+nav.navbar a.navbar-brand {
+    font-family: 'Roboto', sans-serif; /* ensure Roboto is loaded or substitute */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+nav.navbar .nav-link {
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+nav.navbar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+/* Updated Footer Styling to match Navbar */
+footer {
+    background: linear-gradient(90deg, #2C3E50, #1abc9c);
+    color: #ffffff;
+}
+
+/* Apply dark-theme to navbar */
+body.dark-theme nav.navbar {
+    background: linear-gradient(90deg, #222, #444);
+}
+
+/* Dark theme adjustments for Navbar and Footer */
+body.dark-theme nav.navbar,
+body.dark-theme footer {
+    background: linear-gradient(90deg, #222, #444);
 }
 
 /* Headings */
@@ -177,7 +253,7 @@ body.dark-theme .card {
 }
 
 body.dark-theme .card-body {
-    background-color: #37474f !important;
+    background-color: #17232a !important;
     color: #f5f5f5 !important; /* White text for dark background */
 }
 
@@ -186,10 +262,19 @@ body.dark-theme .card-body a {
 }
 
 body.dark-theme .btn-warning,
-body.dark-theme button.btn-warning {
-    background-color: #444 !important;
-    color: #f5f5f5;
-    border: 1px solid #666;
+body.dark-theme button.btn-warning,
+body.dark-theme a.btn-warning {
+    background-color: #009688 !important;
+    border-color: #4db6ac !important;
+    color: #ffffff !important;
+}
+
+/* Dark mode button hover */
+body.dark-theme .btn-warning:hover,
+body.dark-theme button.btn-warning:hover,
+body.dark-theme a.btn-warning:hover {
+    background-color: #4db6ac !important;  /* lighter hover colour */
+    border-color: #009688 !important;
 }
 
 body.dark-theme footer {
@@ -238,4 +323,90 @@ h1, h2, h3, h4, h5, h6 {
 
 body.dark-theme .lead {
     color: #e0e0e0;
+}
+
+/* Project details overlay styling (light mode) */
+.card .project-details {
+    display: none;
+    background-color: #e0f2f1;
+    color: #333;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    pointer-events: none;  /* added: disable pointer events on overlay */
+}
+
+/* Show overlay on hover */
+.card:hover .project-details {
+    display: block;
+}
+
+/* Enable pointer events for interactive elements within the overlay */
+.card .project-details a {
+    pointer-events: auto;
+}
+
+/* Override for dark theme */
+body.dark-theme .card .project-details {
+    background-color: #17232a;
+    color: #f5f5f5;
+}
+
+/* Hero Section Styling */
+.hero {
+    height: 100vh;
+    background: url('media/hero-bg.jpg') center/cover no-repeat; /* Ensure 'media/hero-bg.jpg' exists */
+    position: relative;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero.hero-hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+}
+
+/* Fade-in Animation for Hero Text */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero .display-2,
+.hero .lead,
+.hero .btn {
+    animation: fadeIn 2s ease-out;
+}
+
+/* Workaround for clickable GitHub links in project cards */
+.card a.github-link {
+    pointer-events: auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* New rule: Make card-link display as block, inherit text styles, and remove underline */
+a.card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
 }

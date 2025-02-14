@@ -6,16 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Ahmed Ikram</title>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3RNW79D9BV"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-3RNW79D9BV');
-    </script>
-
     <!-- Bootstrap CSS loaded first -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
     <!-- CSS Stylesheet -->
@@ -25,7 +15,7 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <!-- Navbar: removed "navbar-dark" -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand" role="navigation" aria-label="Main Navigation">
         <a class="navbar-brand" href="index.html">Ahmed Ikram</a>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -57,60 +47,78 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h1 class="display-4">Projects</h1>
-                <p class="lead text-white">Here are some of the projects I have worked on:</p>
+                <p class="lead">Here are some of the projects I have worked on:</p>
             </div>
         </div>
 
         <div class="row mt-4">
             <!-- Project 1 -->
             <div class="col-12 col-md-6 col-lg-4 mb-4">
-                <div class="card h-100 border-0 text-center">
-                    <img src="media/unix.jpeg" class="card-img-top img-fluid" alt="Version Control System">
-                    <div class="card-body text-white">
-                        <h3 class="project-title">
-                            <a href="https://github.com/AhmedIkram05/Unix-Version-Control-System.git" target="_blank" rel="noopener">Version Control System (Academic Team Project)</a>
-                        </h3>
-                        <p class="card-text"><strong>Description:</strong> Developed a custom version control system using Unix, designed to streamline the process of managing code for team-based software projects. This system allowed for efficient tracking of code changes and collaboration between multiple developers.</p>
-                        <p class="card-text"><strong>Technologies Used:</strong> Unix, Shell Scripting, Git</p>
-                        <p class="card-text"><strong>Role:</strong> Team Member, responsible for contributing to the design and implementation of the system.</p>
-                        <p class="card-text"><strong>Challenges Overcome:</strong> Gained a deep understanding of Unix commands and shell scripting, overcoming the complexity of integrating these into a functional version control process. Collaborated with team members to ensure smooth integration with Git.</p>
-                        <p class="card-text"><strong>Skills Developed:</strong> Developed proficiency in Unix commands and shell scripting, hands-on experience with Git, and a solid understanding of the software development lifecycle, including version control best practices for team environments.</p>
+                <a href="https://github.com/AhmedIkram05/Unix-Version-Control-System.git" target="_blank" class="card-link">
+                    <div class="card h-100 border-0 text-center position-relative">
+                        <img src="media/unix.jpeg" class="card-img-top img-fluid" alt="Version Control System">
+                        <div class="card-body text-white">
+                            <h3 class="project-title">
+                                Version Control System (Academic Team Project)
+                            </h3>
+                            <p><em>Custom version control system using Unix for efficient team code management.</em></p>
+                            <!-- Remove inline style; use only the class -->
+                            <div class="project-details">
+                                <p><strong>Description:</strong> Developed a custom version control system using Unix to streamline code management within a team. Enabled efficient tracking of changes and improved collaboration.</p>
+                                <p><strong>Technologies Used:</strong> Unix, Shell Scripting, Git</p>
+                                <p><strong>Role:</strong> Team Member – contributed to design and implementation.</p>
+                                <p><strong>Challenges:</strong> Tackled the complexities of Unix integration and synchronized team workflows.</p>
+                                <p><strong>Skills Developed:</strong> Unix proficiency, shell scripting, version control best practices.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
 
             <!-- Project 2 -->
             <div class="col-12 col-md-6 col-lg-4 mb-4">
-                <div class="card h-100 border-0 text-center">
-                    <img src="media/java.jpeg" class="card-img-top img-fluid" alt="Messaging Application">
-                    <div class="card-body text-white">
-                        <h3 class="project-title">
-                            <a href="https://github.com/AhmedIkram05/java-messaging-application.git" target="_blank" rel="noopener">Messaging Application (Academic Team Project)</a>
-                        </h3>
-                        <p class="card-text"><strong>Description:</strong> Worked with a team to design and implement a Java-based messaging application, featuring user profiles, chat management, contact organization, and a search function for message retrieval. The application allowed for seamless communication and effective data management.</p>
-                        <p class="card-text"><strong>Technologies Used:</strong> Java, Data Structures (Linked Lists, Arrays)</p>
-                        <p class="card-text"><strong>Role:</strong> Team Member, actively involved in developing core features and ensuring efficient functionality.</p>
-                        <p class="card-text"><strong>Challenges Overcome:</strong> Managed efficient data handling and retrieval processes, addressing performance challenges related to handling multiple queries and ensuring smooth interaction between various features.</p>
-                        <p class="card-text"><strong>Skills Developed:</strong> Enhanced Java programming skills, strengthened knowledge in data structure design (Linked Lists, Arrays), and refined teamwork abilities through collaboration in an Agile development framework.</p>
+                <a href="https://github.com/AhmedIkram05/java-messaging-application.git" target="_blank" class="card-link">
+                    <div class="card h-100 border-0 text-center position-relative">
+                        <img src="media/java.jpeg" class="card-img-top img-fluid" alt="Messaging Application">
+                        <div class="card-body text-white">
+                            <h3 class="project-title">
+                                Messaging Application (Academic Team Project)
+                            </h3>
+                            <p><em>Java-based chat system with user profiles and contact organization.</em></p>
+                            <!-- Remove inline style; use only the class -->
+                            <div class="project-details">
+                                <p><strong>Description:</strong> Collaborated to design and implement a messaging application featuring profiles, chat management, and contact organization.</p>
+                                <p><strong>Technologies Used:</strong> Java, Data Structures</p>
+                                <p><strong>Role:</strong> Team Member – involved in developing core features.</p>
+                                <p><strong>Challenges:</strong> Managed efficient data handling and user interaction across features.</p>
+                                <p><strong>Skills Developed:</strong> Java programming, data structure design, Agile teamwork.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
 
             <!-- Project 3 -->
             <div class="col-12 col-md-12 col-lg-4 mb-4">
-                <div class="card h-100 border-0 text-center">
-                    <img src="media/python.png" class="card-img-top img-fluid" alt="Ping Pong Game">
-                    <div class="card-body text-white">
-                        <h3 class="project-title">
-                            <a href="https://github.com/AhmedIkram05/pygame-ping-pong-game.git" target="_blank" rel="noopener">Ping Pong Game (Academic Project)</a>
-                        </h3>
-                        <p class="card-text"><strong>Description:</strong> Developed a Python-based Ping Pong game using the Pygame module, with an emphasis on real-time input handling, collision detection, and event-driven programming. The game provided smooth gameplay, responding accurately to user input in real-time and provided a brilliant AI opponent.</p>
-                        <p class="card-text"><strong>Technologies Used:</strong> Python, Pygame</p>
-                        <p class="card-text"><strong>Role:</strong> Developer, responsible for designing and implementing core game mechanics.</p>
-                        <p class="card-text"><strong>Challenges Overcome:</strong> Overcame challenges related to real-time input handling and collision detection, ensuring smooth and responsive gameplay.</p>
-                        <p class="card-text"><strong>Skills Developed:</strong> Improved Python programming proficiency, sharpened logical thinking, and gained experience in real-time application development through event-driven programming.</p>
+                <a href="https://github.com/AhmedIkram05/pygame-ping-pong-game.git" target="_blank" class="card-link">
+                    <div class="card h-100 border-0 text-center position-relative">
+                        <img src="media/python.png" class="card-img-top img-fluid" alt="Ping Pong Game">
+                        <div class="card-body text-white">
+                            <h3 class="project-title">
+                                Ping Pong Game (Academic Project)
+                            </h3>
+                            <p><em>Python game built using Pygame with real-time input handling and collision detection.</em></p>
+                            <!-- Remove inline style; use only the class -->
+                            <div class="project-details">
+                                <p><strong>Description:</strong> Developed a Ping Pong game emphasizing real-time input handling and collision detection with responsive gameplay.</p>
+                                <p><strong>Technologies Used:</strong> Python, Pygame</p>
+                                <p><strong>Role:</strong> Developer – crafted the core game mechanics.</p>
+                                <p><strong>Challenges:</strong> Solved issues related to real-time input and collision handling.</p>
+                                <p><strong>Skills Developed:</strong> Python proficiency, event-driven programming, game development.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </main>
