@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initHeroDisappearance();
   initCustomCursor();
-  initHeroTypingEffect(); // new: hero typing effect
-  initBackToTop();       // new: back-to-top functionality
+  initHeroTypingEffect();
+  initBackToTop();
 });
 
 function initParallax() {
