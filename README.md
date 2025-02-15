@@ -29,11 +29,11 @@ Get in touch via the contact form or reach out through my provided contact detai
 - Custom Animations and Interactions
 
 ## Quick Links
-- [Home](./html/index.html)
-- [Projects](./html/projects.html)
-- [Experience](./html/experience.html)
-- [CV](./html/cv.html)
-- [Contact](./html/contact.html)
+- [Home](/index.html)
+- [Projects](/projects.html)
+- [Experience](/experience.html)
+- [CV](/cv.html)
+- [Contact](/contact.html)
 
 ## Downloads
 - [Download CV](/docs/CV.pdf)
