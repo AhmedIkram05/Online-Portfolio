@@ -486,6 +486,8 @@ a, button, input, textarea {
 }
 
 /* Style and position the “Back to Top” button */
+/* Removed styles for #backToTop */
+/*
 #backToTop {
   position: fixed;
   bottom: 20px;
@@ -495,3 +497,4 @@ a, button, input, textarea {
   font-size: 1.25rem;
   padding: 0.5rem 0.75rem;
 }
+*/

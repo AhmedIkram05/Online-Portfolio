@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initHeroDisappearance();
   initCustomCursor();
-  initBackToTop();
 });
 
 function initParallax() {
@@ -96,19 +95,4 @@ function initCustomCursor() {
       }, 100);
     });
   }
-}
-
-function initBackToTop() {
-  const backToTop = document.getElementById('backToTop');
-  if (!backToTop) return;
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      backToTop.style.display = 'block';
-    } else {
-      backToTop.style.display = 'none';
-    }
-  });
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
 }
