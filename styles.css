@@ -84,12 +84,12 @@ body.dark-theme .project-title {
     text-decoration: none;
 }
 
-/* Override card-body links only on the experience page to use colored links */
-.experience-page .card-body a {
+/* Override card-body links only on the skills page to use colored links */
+.skills-page .card-body a {
     color: #1abc9c;
     text-decoration: none;
 }
-.experience-page .card-body a:hover {
+.skills-page .card-body a:hover {
     color: #16a085;
     text-decoration: none;
 }
@@ -142,6 +142,9 @@ body:not(.dark-theme) footer a:hover {
 nav {
     background-color: #2C3E50; /* matches footer and card colors */
     color: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 nav .navbar-brand,
 nav .nav-link {
@@ -491,8 +494,4 @@ a, button, input, textarea {
   z-index: 9999;
   font-size: 1.25rem;
   padding: 0.5rem 0.75rem;
-}
-
-.experience-page {
-  /* Page-specific styles for Experience page */
 }
