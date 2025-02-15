@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const heroText = document.getElementById('heroTyping');
   const messages = [
-    "Ahmed Ikram",
-    "Welcome to the Future",
-    "Let's Code Together"
+    "Discover my Projects, Skills and the journey behind them",
+    "Learn more about me and my passion for coding",
   ];
   let messageIndex = 0;
   let charIndex = 0;
