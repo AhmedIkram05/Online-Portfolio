@@ -6,7 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
   initCustomCursor();
   initHeroTypingEffect();
   initBackToTop();
+  highlightActiveNavLink(); // Add this line
 });
+
+function highlightActiveNavLink() {
+  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+  navLinks.forEach(link => {
+    if (link.href === window.location.href) {
+      link.classList.add('active');
+    }
+  });
+}
 
 function initParallax() {
   window.addEventListener('scroll', () => {

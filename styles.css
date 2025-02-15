@@ -513,3 +513,22 @@ body:not(.dark-theme) .hero .display-2,
 body:not(.dark-theme) .hero .lead {
     color: #00251a;
 }
+
+/* Force navbar stickiness and proper stacking */
+nav.navbar {
+    position: sticky !important;
+    top: 0;
+    z-index: 1050; /* Ensure it stays on top */
+    background-color: rgba(0, 0, 0, 0.85) !important; /* Adjust as needed */
+}
+
+/* Underline and color the active nav link */
+.navbar-nav .nav-item.active .nav-link {
+    border-bottom: 2px solid #16a085;
+    color: #16a085 !important;
+}
+
+/* Optional: Smooth transition effect for hover and active state */
+.navbar-nav .nav-link {
+    transition: color 0.3s, border-bottom-color 0.3s;
+}
