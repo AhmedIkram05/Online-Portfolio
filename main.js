@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
 });
 
+// ...existing functions... 
+// (Ensure that any page-specific code referencing a "skills" page is updated to "experience" if needed)
+
 function initParallax() {
   window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
