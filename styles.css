@@ -51,6 +51,12 @@ body .card {
     transition: transform 0.3s ease;
 }
 
+/* Ensure consistent image dimensions in project cards */
+.card-img-top {
+  height: 200px; /* Adjust the height as needed */
+  object-fit: cover; /* Ensure images fill the space without distortion */
+}
+
 /* Card Body Styling */
 body .card-body {
     background-color: #e0f2f1;
