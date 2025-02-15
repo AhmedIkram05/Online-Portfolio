@@ -517,3 +517,31 @@ body:not(.dark-theme) .hero .lead {
 body:not(.dark-theme) .work-experience-light {
     color: #004d40 !important; /* updated to override light theme parent styles */
 }
+
+/* Back to top button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 0.5rem 0.75rem;
+    background-color: #009688; /* Light mode background */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+    z-index: 10000;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .back-to-top {
+    background-color: #80cbc4; /* updated dark mode background */
+    color: #ffffff !important; /* force white arrow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* optional shadow */
+}
+
+.back-to-top:hover,
+body.dark-theme .back-to-top:hover {
+    background-color: #4db6ac;
+}
