@@ -513,3 +513,7 @@ body:not(.dark-theme) .hero .display-2,
 body:not(.dark-theme) .hero .lead {
     color: #00251a;
 }
+
+body:not(.dark-theme) .work-experience-light {
+    color: #004d40 !important; /* updated to override light theme parent styles */
+}
