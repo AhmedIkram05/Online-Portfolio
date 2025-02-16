@@ -14,33 +14,16 @@ body, body.dark-theme {
 }
 
 /* Button Styling */
-.btn-warning, button.btn-warning {
+.btn-warning, button.btn-warning, body:not(.dark-theme) .btn-warning, body:not(.dark-theme) button.btn-warning, body:not(.dark-theme) a.btn-warning {
     background-color: #009688;
     border-color: #4db6ac;
     color: #ffffff;
     font-weight: bold;
 }
-.btn-warning:hover, button.btn-warning:hover {
+.btn-warning:hover, button.btn-warning:hover, body:not(.dark-theme) .btn-warning:hover, body:not(.dark-theme) button.btn-warning:hover, body:not(.dark-theme) a.btn-warning:hover {
     background-color: #4db6ac;
     border-color: #009688;
     color: #ffffff;
-}
-
-/* Light mode override for button links (CV/Contact styling) */
-body:not(.dark-theme) .btn-warning,
-body:not(.dark-theme) button.btn-warning,
-body:not(.dark-theme) a.btn-warning {
-    background-color: #009688;
-    border-color: #4db6ac;
-    color: #ffffff;
-}
-
-/* Light mode button hover */
-body:not(.dark-theme) .btn-warning:hover,
-body:not(.dark-theme) button.btn-warning:hover,
-body:not(.dark-theme) a.btn-warning:hover {
-    background-color: #4db6ac;
-    border-color: #009688;
 }
 
 /* Card Styling */
@@ -58,25 +41,21 @@ body .card {
 }
 
 /* Card Body Styling */
-body .card-body {
+body .card-body, body.dark-theme .card-body {
     background-color: #e0f2f1;
     color: #333 !important; /* Darker text for light background */
 }
-
-/* Card Titles */
-.card-title {
-    color: #004d40; /* A darker shade of green */
+body.dark-theme .card-body {
+    background-color: #17232a !important;
+    color: #f5f5f5 !important; /* White text for dark background */
 }
 
-/* Ensure project titles match the standard card title style */
-.card-title,
-.project-title {
+/* Card Titles */
+.card-title, .project-title, body.dark-theme .card-title, body.dark-theme .project-title {
     color: #004d40; /* light mode title color */
     font-weight: bold;
 }
-
-body.dark-theme .card-title,
-body.dark-theme .project-title {
+body.dark-theme .card-title, body.dark-theme .project-title {
     color: #80cbc4; /* dark mode title color */
 }
 
@@ -107,28 +86,17 @@ footer, nav {
 }
 
 /* Update Footer Links globally to use colored links instead of white with underlines */
-footer a {
+footer a, .contact-page footer a {
     color: #1abc9c;
     text-decoration: none;
 }
-footer a:hover {
+footer a:hover, .contact-page footer a:hover {
     color: #16a085;
-    text-decoration: none;
-}
-
-/* Override footer links on the contact page to use colored links */
-.contact-page footer a {
-    color: #1abc9c;
-    text-decoration: none;
-}
-.contact-page footer a:hover {
-    color: #16a085;
-    text-decoration: none;
 }
 
 /* Updated Footer Links for Enhanced Visibility in Light Mode */
 body:not(.dark-theme) footer a {
-    color: #ffffff;  /* white for better contcrcasst */
+    color: #ffffff;  /* white for better contrast */
 }
 body:not(.dark-theme) footer a:hover {
     color: #e0e0e0;
@@ -159,10 +127,13 @@ nav .nav-link.active {
 }
 
 /* Enhanced Navbar Styling */
-nav.navbar {
+nav.navbar, body.dark-theme nav.navbar {
     background: linear-gradient(90deg, #2C3E50, #1abc9c);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     transition: background 0.5s ease;
+}
+body.dark-theme nav.navbar {
+    background: linear-gradient(90deg, #212121, #424242);
 }
 nav.navbar a.navbar-brand {
     font-family: 'Roboto', sans-serif; /* ensure Roboto is loaded or substitute */
@@ -189,12 +160,6 @@ footer {
 /* Apply dark-theme to navbar */
 body.dark-theme nav.navbar {
     background: linear-gradient(90deg, #222, #444);
-}
-
-/* Dark theme adjustments for Navbar and Footer */
-body.dark-theme nav.navbar,
-body.dark-theme footer {
-    background: linear-gradient(90deg, #212121, #424242); /* Updated dark gradient */
 }
 
 /* Headings */
@@ -430,11 +395,9 @@ a.card-link {
 }
 
 /* Updated Custom Cursor */
-#custom-cursor {
+#custom-cursor, body:not(.dark-theme) #custom-cursor, body.dark-theme #custom-cursor {
     width: 20px;
     height: 20px;
-    background: radial-gradient(circle, rgba(255,255,255,0.8) 30%, transparent 70%);
-    border: 2px solid #1abc9c;
     border-radius: 50%;
     position: fixed;
     top: 0;
@@ -443,21 +406,14 @@ a.card-link {
     z-index: 10000;
     transform: translate(-50%, -50%);
     transition: transform 0.1s ease, background 0.2s ease;
-    box-shadow: 0 0 8px rgba(26, 188, 156, 0.8);
 }
-
-/* Light theme cursor (already defined) */
 body:not(.dark-theme) #custom-cursor {
     background: radial-gradient(circle, rgba(255,255,255,0.8) 30%, transparent 70%);
     border: 2px solid #1abc9c;
-    /* ...existing code... */
 }
-
-/* Dark theme cursor */
 body.dark-theme #custom-cursor {
     background: radial-gradient(circle, rgba(128,128,128,0.8) 30%, transparent 70%);
     border: 2px solid #80cbc4;
-    /* match dark theme color scheme */
     box-shadow: 0 0 8px rgba(128, 203, 196, 0.8);
 }
 
@@ -579,23 +535,11 @@ body.dark-theme .work-experience h4 {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' d='M4 4L26 26 M26 4L4 26'/%3E%3C/svg%3E");
 }
 
-[data-animate] {
+[data-animate], [data-animate].animate {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
-
-[data-animate].animate {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-[data-animate] {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
 [data-animate].animate {
     opacity: 1;
     transform: translateY(0);
