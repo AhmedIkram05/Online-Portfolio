@@ -5,18 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroDisappearance();
   initCustomCursor();
   initHeroTypingEffect();
-  initBackToTop();
-  highlightActiveNavLink();
 });
-
-function highlightActiveNavLink() {
-  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-  navLinks.forEach(link => {
-    if (link.href === window.location.href) {
-      link.classList.add('active');
-    }
-  });
-}
 
 function initParallax() {
   window.addEventListener('scroll', () => {
@@ -136,16 +125,4 @@ function initHeroTypingEffect() {
     }
   }
   type();
-}
-
-function initBackToTop() {
-  const btn = document.getElementById('back-to-top');
-  if (!btn) return;
-  window.addEventListener('scroll', () => {
-    btn.style.display = window.pageYOffset > 300 ? 'block' : 'none';
-  });
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
 }

@@ -533,24 +533,6 @@ nav.navbar {
     transition: color 0.3s, border-bottom-color 0.3s;
 }
 
-/* --- New: Back-to-Top Button Style --- */
-#back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 4px;
-    text-decoration: none;
-    opacity: 0;  /* Initially hidden; reveal via JS on scroll */
-    transition: opacity 0.3s ease;
-    z-index: 1050;
-}
-#back-to-top:hover {
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
 /* --- New: Transparent Navbar with Line --- */
 nav {
     background: transparent !important;
