@@ -90,16 +90,6 @@ body.dark-theme .project-title {
     text-decoration: none;
 }
 
-/* Override card-body links only on the skills page to use colored links */
-.skills-page .card-body a {
-    color: #1abc9c;
-    text-decoration: none;
-}
-.skills-page .card-body a:hover {
-    color: #16a085;
-    text-decoration: none;
-}
-
 /* Override card-body links on the contact page to use colored links */
 .contact-page .card-body a {
     color: #1abc9c;
