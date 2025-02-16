@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCustomCursor();
   initHeroTypingEffect();
   initBackToTop();
+  initBurgerMenu(); // <-- new function to toggle burger menu icon
 });
 
 function initParallax() {
@@ -137,5 +138,24 @@ function initBackToTop() {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+function initBurgerMenu() {
+  const toggler = document.querySelector('.navbar-toggler');
+  const menu = document.querySelector(toggler.getAttribute('data-target'));
+  if (!toggler || !menu) return;
+  
+  // Toggle .open on button click
+  toggler.addEventListener('click', () => {
+    toggler.classList.toggle('open');
+  });
+
+  // Also update on collapse events (Bootstrap events)
+  menu.addEventListener('show.bs.collapse', () => {
+    toggler.classList.add('open');
+  });
+  menu.addEventListener('hide.bs.collapse', () => {
+    toggler.classList.remove('open');
   });
 }
