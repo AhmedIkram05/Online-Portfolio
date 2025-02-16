@@ -419,28 +419,6 @@ nav.navbar {
     transition: color 0.3s, border-bottom-color 0.3s;
 }
 
-/* --- New: Transparent Footer with Line --- */
-footer {
-    background: transparent !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.5);  /* Line to show footer boundary */
-}
-
-/* --- New: Work Experience h4 Light Mode Styling --- */
-body:not(.dark-theme) .work-experience h4 {
-    color: #004d40;
-    font-weight: bold;
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-}
-
-/* --- New: Work Experience h4 Dark Mode Styling --- */
-body.dark-theme .work-experience h4 {
-    color: #80cbc4; /* dark mode title color */
-    font-weight: bold;
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-}
-
 /* --- Custom Burger Menu Icon Styling --- */
 .navbar-toggler {
     border: none;
