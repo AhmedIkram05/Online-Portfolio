@@ -129,7 +129,6 @@ nav .nav-link.active {
 /* Enhanced Navbar Styling */
 nav.navbar, body.dark-theme nav.navbar {
     background: linear-gradient(90deg, #2C3E50, #1abc9c);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     transition: background 0.5s ease;
 }
 body.dark-theme nav.navbar {
@@ -149,17 +148,6 @@ nav.navbar .nav-link {
 nav.navbar .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 4px;
-}
-
-/* Updated Footer Styling to match Navbar */
-footer {
-    background: linear-gradient(90deg, #2C3E50, #1abc9c);
-    color: #ffffff;
-}
-
-/* Apply dark-theme to navbar */
-body.dark-theme nav.navbar {
-    background: linear-gradient(90deg, #222, #444);
 }
 
 /* Headings */
@@ -208,9 +196,7 @@ body.dark-theme a {
     color: #80cbc4 !important; /* A lighter shade of teal */
     transition: color var(--transition-duration);
 }
-body.dark-theme .navbar {
-    border-bottom: 1px solid #444;
-}
+
 
 /* Updated dark theme card styling for consistent animations */
 body.dark-theme .card {
@@ -480,8 +466,6 @@ nav.navbar {
 /* --- New: Transparent Navbar with Line --- */
 nav {
     background: transparent !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);  /* Line to show navbar boundary */
-    /* ...existing navbar styles... */
 }
 
 /* --- New: Transparent Footer with Line --- */
