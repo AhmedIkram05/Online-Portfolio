@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCustomCursor();
   initHeroTypingEffect();
   initBackToTop();
-  highlightActiveNavLink(); // Add this line
+  highlightActiveNavLink();
 });
 
 function highlightActiveNavLink() {
