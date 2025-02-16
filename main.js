@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCustomCursor();
   initHeroTypingEffect();
   initBackToTop();
-  initBurgerMenu(); // <-- new function to toggle burger menu icon
-  initSmoothScrollAnimations(); // <-- initialize scroll animations
+  initBurgerMenu();
+  initSmoothScrollAnimations();
 });
 
 function initParallax() {
@@ -88,9 +88,9 @@ function initCustomCursor() {
     });
     document.addEventListener('mousedown', (e) => {
       if (e.target.closest('a')) {
-        cursor.classList.add('cursor-click-link'); // For link clicks
+        cursor.classList.add('cursor-click-link');
       } else {
-        cursor.classList.add('cursor-click'); // For any other clicks
+        cursor.classList.add('cursor-click');
       }
     });
     document.addEventListener('mouseup', () => {
@@ -147,12 +147,10 @@ function initBurgerMenu() {
   const menu = document.querySelector(toggler.getAttribute('data-target'));
   if (!toggler || !menu) return;
   
-  // Toggle .open on button click
   toggler.addEventListener('click', () => {
     toggler.classList.toggle('open');
   });
 
-  // Also update on collapse events (Bootstrap events)
   menu.addEventListener('show.bs.collapse', () => {
     toggler.classList.add('open');
   });
@@ -164,7 +162,6 @@ function initBurgerMenu() {
 function initSmoothScrollAnimations() {
   const animatedItems = document.querySelectorAll('[data-animate]');
   if (!("IntersectionObserver" in window)) {
-    // Fallback: simply add animation to all items
     animatedItems.forEach(item => item.classList.add('animate'));
     return;
   }
