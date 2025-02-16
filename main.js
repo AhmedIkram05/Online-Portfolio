@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroTypingEffect();
   initBackToTop();
   initBurgerMenu(); // <-- new function to toggle burger menu icon
+  initSmoothScrollAnimations(); // <-- initialize scroll animations
 });
 
 function initParallax() {
@@ -158,4 +159,23 @@ function initBurgerMenu() {
   menu.addEventListener('hide.bs.collapse', () => {
     toggler.classList.remove('open');
   });
+}
+
+function initSmoothScrollAnimations() {
+  const animatedItems = document.querySelectorAll('[data-animate]');
+  if (!("IntersectionObserver" in window)) {
+    // Fallback: simply add animation to all items
+    animatedItems.forEach(item => item.classList.add('animate'));
+    return;
+  }
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('animate');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  animatedItems.forEach(item => observer.observe(item));
 }
