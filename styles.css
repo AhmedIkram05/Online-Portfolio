@@ -8,6 +8,19 @@ body {
     cursor: none; /* Hide the default cursor */
 }
 
+/* Dark theme styles */
+body.dark-theme {
+    background: radial-gradient(circle, #263238, #102027, #000000, #000000) !important;
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    color: #e0e0e0 !important;
+    transition: background var(--transition-duration), color var(--transition-duration);
+}
+body.dark-theme a {
+    color: #80cbc4 !important; /* A lighter shade of teal */
+    transition: color var(--transition-duration);
+}
+
 /* Enforce no default cursor in both themes */
 body, body.dark-theme {
     cursor: none !important;
@@ -25,38 +38,46 @@ body, body.dark-theme {
     border-color: #009688;
     color: #ffffff;
 }
+body.dark-theme .btn-warning,
+body.dark-theme button.btn-warning,
+body.dark-theme a.btn-warning {
+    background-color: #009688 !important;
+    border-color: #4db6ac !important;
+    color: #ffffff !important;
+}
+body.dark-theme .btn-warning:hover,
+body.dark-theme button.btn-warning:hover,
+body.dark-theme a.btn-warning:hover {
+    background-color: #4db6ac !important;  /* lighter hover colour */
+    border-color: #009688 !important;
+}
 
 /* Card Styling */
-body .card {
+body .card, body .card-body {
     background-color: #e0f2f1;
-    border: none;
     color: #333 !important; /* Darker text for light background */
     transition: transform 0.3s ease;
 }
-
-/* Ensure consistent image dimensions in project cards */
-.card-img-top {
-  height: 200px; /* Adjust the height as needed */
-  object-fit: cover; /* Ensure images fill the space without distortion */
-}
-
-/* Card Body Styling */
-body .card-body, body.dark-theme .card-body {
-    background-color: #e0f2f1;
-    color: #333 !important; /* Darker text for light background */
-}
-body.dark-theme .card-body {
+body.dark-theme .card, body.dark-theme .card-body {
     background-color: #17232a !important;
     color: #f5f5f5 !important; /* White text for dark background */
 }
-
-/* Card Titles */
+body.dark-theme .card {
+    border-color: #555 !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
 .card-title, .project-title, body.dark-theme .card-title, body.dark-theme .project-title {
     color: #004d40; /* light mode title color */
     font-weight: bold;
 }
 body.dark-theme .card-title, body.dark-theme .project-title {
     color: #80cbc4; /* dark mode title color */
+}
+
+/* Ensure consistent image dimensions in project cards */
+.card-img-top {
+  height: 200px; /* Adjust the height as needed */
+  object-fit: cover; /* Ensure images fill the space without distortion */
 }
 
 /* Update Card Body Links for better contrast */
@@ -79,10 +100,11 @@ body.dark-theme .card-title, body.dark-theme .project-title {
     text-decoration: none;
 }
 
-/* Footer & Navigation */
-footer, nav {
-    background-color: #2C3E50;
+/* Footer Styling */
+footer {
+    background: transparent !important;
     color: #ffffff;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);  /* Line to show footer boundary */
 }
 
 /* Update Footer Links globally to use colored links instead of white with underlines */
@@ -102,12 +124,15 @@ body:not(.dark-theme) footer a:hover {
     color: #e0e0e0;
 }
 
-/* Add Navbar Styling */
+/* Navbar Styling */
 nav {
     background-color: #2C3E50; /* matches footer and card colors */
     color: #ffffff;
     top: 0;
     z-index: 1000;
+}
+body.dark-theme nav {
+    background-color: #212121; /* dark mode navbar background */
 }
 nav .navbar-brand,
 nav .nav-link {
@@ -128,11 +153,7 @@ nav .nav-link.active {
 
 /* Enhanced Navbar Styling */
 nav.navbar, body.dark-theme nav.navbar {
-    background: linear-gradient(90deg, #2C3E50, #1abc9c);
     transition: background 0.5s ease;
-}
-body.dark-theme nav.navbar {
-    background: linear-gradient(90deg, #212121, #424242);
 }
 nav.navbar a.navbar-brand {
     font-family: 'Roboto', sans-serif; /* ensure Roboto is loaded or substitute */
@@ -153,6 +174,9 @@ nav.navbar .nav-link:hover {
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
     color: #263238; /* Dark grey for better readability on light backgrounds */
+}
+body.dark-theme h1, body.dark-theme h2, body.dark-theme h3, body.dark-theme h4, body.dark-theme h5, body.dark-theme h6 {
+    color: #ffffff; /* White text for dark backgrounds */
 }
 
 /* Profile Image Styling */
@@ -182,64 +206,6 @@ h1, h2, h3, h4, h5, h6 {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-}
-
-/* Dark theme styles with single definition */
-body.dark-theme {
-    background: radial-gradient(circle, #263238, #102027, #000000, #000000) !important;
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
-    color: #e0e0e0 !important;
-    transition: background var(--transition-duration), color var(--transition-duration);
-}
-body.dark-theme a {
-    color: #80cbc4 !important; /* A lighter shade of teal */
-    transition: color var(--transition-duration);
-}
-
-
-/* Updated dark theme card styling for consistent animations */
-body.dark-theme .card {
-    background-color: #37474f !important;
-    border-color: #555 !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease; /* same as light mode */
-    color: #f5f5f5 !important; /* White text for dark background */
-}
-
-body.dark-theme .card-body {
-    background-color: #17232a !important;
-    color: #f5f5f5 !important; /* White text for dark background */
-}
-
-body.dark-theme .card-body a {
-    color: #80cbc4; /* A lighter shade of teal */
-}
-
-body.dark-theme .btn-warning,
-body.dark-theme button.btn-warning,
-body.dark-theme a.btn-warning {
-    background-color: #009688 !important;
-    border-color: #4db6ac !important;
-    color: #ffffff !important;
-}
-
-/* Dark mode button hover */
-body.dark-theme .btn-warning:hover,
-body.dark-theme button.btn-warning:hover,
-body.dark-theme a.btn-warning:hover {
-    background-color: #4db6ac !important;  /* lighter hover colour */
-    border-color: #009688 !important;
-}
-
-body.dark-theme footer {
-    background-color: #222;
-    border-top: 1px solid #444;
-}
-
-/* Dark theme card title color */
-body.dark-theme .card-title {
-    color: #80cbc4; /* A lighter shade of teal for better readability */
 }
 
 /* Remove highlight on the theme toggler button */
@@ -277,15 +243,10 @@ body.dark-theme .card-title {
     border: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: #ffffff; /* White text for dark backgrounds */
-}
-
 /* Lead text */
 .lead {
     color: #263238;
 }
-
 body.dark-theme .lead {
     color: #e0e0e0;
 }
@@ -328,11 +289,9 @@ body.dark-theme .card .project-details {
     position: relative;
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
-
 body.dark-theme .hero {
     background: linear-gradient(to bottom, #263238, #102027); /* Dark gradient for hero background */
 }
-
 .hero::after {
     content: '';
     position: absolute;
@@ -342,12 +301,10 @@ body.dark-theme .hero {
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
 }
-
 .hero .container {
     position: relative;
     z-index: 1;
 }
-
 .hero.hero-hidden {
     opacity: 0;
     transform: translateY(-100%);
@@ -359,7 +316,6 @@ body.dark-theme .hero {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 .hero .display-2,
 .hero .lead,
 .hero .btn {
@@ -461,11 +417,6 @@ nav.navbar {
 /* Optional: Smooth transition effect for hover and active state */
 .navbar-nav .nav-link {
     transition: color 0.3s, border-bottom-color 0.3s;
-}
-
-/* --- New: Transparent Navbar with Line --- */
-nav {
-    background: transparent !important;
 }
 
 /* --- New: Transparent Footer with Line --- */
