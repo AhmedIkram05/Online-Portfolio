@@ -17,7 +17,7 @@ body.dark-theme {
     transition: background var(--transition-duration), color var(--transition-duration);
 }
 body.dark-theme a {
-    color: #80cbc4 !important; /* A lighter shade of teal */
+    color: #ffffff !important;
     transition: color var(--transition-duration);
 }
 
@@ -88,16 +88,6 @@ body.dark-theme .card-title, body.dark-theme .project-title {
     text-decoration: none;
 }
 
-/* Override card-body links on the contact page to use colored links */
-.contact-page .card-body a {
-    color: #1abc9c;
-    text-decoration: none;
-}
-.contact-page .card-body a:hover {
-    color: #16a085;
-    text-decoration: none;
-}
-
 /* Footer Styling */
 footer {
     background: transparent !important;
@@ -106,11 +96,11 @@ footer {
 }
 
 /* Update Footer Links globally to use colored links instead of white with underlines */
-footer a, .contact-page footer a {
+footer a {
     color: #ffffff;
     text-decoration: none;
 }
-footer a:hover, .contact-page footer a:hover {
+footer a:hover {
     color: #16a085;
     text-decoration: none;
 }
@@ -135,7 +125,7 @@ body.dark-theme nav {
 }
 nav .navbar-brand,
 nav .nav-link {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 /* Update Navbar Hover Color with !important */
 nav .navbar-brand:hover,
@@ -164,9 +154,29 @@ nav.navbar a.navbar-brand {
 nav.navbar .nav-link {
     padding: 0.5rem 1rem;
     transition: color 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.25rem;
+    color: #ffffff !important;
 }
+
+nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    left: 0;
+    bottom: 0;
+    background: #16a085;
+    transition: width 0.3s;
+}
+
+nav .nav-link:hover::after {
+    width: 100%;
+}
+
 nav.navbar .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 4px;
 }
 
@@ -180,6 +190,7 @@ nav.navbar .nav-link:hover {
 }
 .profileImg:hover, .card:hover {
     transform: scale(1.02);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
 }
 
 /* Project Title Links */
@@ -465,11 +476,4 @@ nav.navbar {
 }
 .navbar-nav .nav-item {
     margin: 0 10px;
-}
-/* Center the brand */
-.navbar-brand {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.2rem;
 }
