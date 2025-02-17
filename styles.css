@@ -3,7 +3,7 @@ body {
     background: radial-gradient(circle, #e0f2f1, #b2dfdb, #4db6ac, #009688) !important;
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* fallback font added */
+    font-family: Geneva; /* fallback font added */
     transition: background-color var(--transition-duration), color var(--transition-duration);
     cursor: none; /* Hide the default cursor */
 }
@@ -38,9 +38,7 @@ body, body.dark-theme {
     border-color: #009688;
     color: #ffffff;
 }
-body.dark-theme .btn-warning,
-body.dark-theme button.btn-warning,
-body.dark-theme a.btn-warning {
+body.dark-theme .btn-warning, body.dark-theme button.btn-warning,body.dark-theme a.btn-warning {
     background-color: #009688 !important;
     border-color: #4db6ac !important;
     color: #ffffff !important;
@@ -55,7 +53,7 @@ body.dark-theme a.btn-warning:hover {
 /* Card Styling */
 body .card, body .card-body {
     background-color: #e0f2f1;
-    color: #333 !important; /* Darker text for light background */
+    color: #333333 !important; /* Darker text for light background */
     transition: transform 0.3s ease;
 }
 body.dark-theme .card, body.dark-theme .card-body {
@@ -109,19 +107,20 @@ footer {
 
 /* Update Footer Links globally to use colored links instead of white with underlines */
 footer a, .contact-page footer a {
-    color: #1abc9c;
+    color: #ffffff;
     text-decoration: none;
 }
 footer a:hover, .contact-page footer a:hover {
     color: #16a085;
+    text-decoration: none;
 }
 
 /* Updated Footer Links for Enhanced Visibility in Light Mode */
-body:not(.dark-theme) footer a {
+body.dark-theme footer a {
     color: #ffffff;  /* white for better contrast */
 }
-body:not(.dark-theme) footer a:hover {
-    color: #e0e0e0;
+body.dark-theme footer a:hover {
+    color: #0e7560;
 }
 
 /* Navbar Styling */
@@ -169,14 +168,6 @@ nav.navbar .nav-link {
 nav.navbar .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 4px;
-}
-
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-    color: #263238; /* Dark grey for better readability on light backgrounds */
-}
-body.dark-theme h1, body.dark-theme h2, body.dark-theme h3, body.dark-theme h4, body.dark-theme h5, body.dark-theme h6 {
-    color: #ffffff; /* White text for dark backgrounds */
 }
 
 /* Profile Image Styling */
@@ -456,4 +447,8 @@ nav.navbar {
 [data-animate].animate {
     opacity: 1;
     transform: translateY(0);
+}
+
+.card .card-body h4 {
+    color: #108f7a;
 }
