@@ -18,14 +18,14 @@
     <header class="sticky-top">
         <!-- Navbar: removed "navbar-dark" -->
             <nav class="navbar navbar-expand-md text-center" role="navigation" aria-label="Main Navigation">
-            <a class="navbar-brand" href="index.html">Ahmed Ikram</a>
-            <!-- Updated Navbar Toggler -->
+            <!-- Removed: <a class="navbar-brand" href="index.html">Ahmed Ikram</a> -->
+            <!-- Updated Navbar Toggler without ml-auto -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav w-100 justify-content-center">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
@@ -42,7 +42,7 @@
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                 </ul>
-                <button id="theme-toggler" class="btn btn-outline-light ml-auto">
+                <button id="theme-toggler" class="btn btn-outline-light">
                     <i class="fas fa-moon"></i>  <!-- Default to moon icon -->
                 </button>
             </div>
