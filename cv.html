@@ -16,63 +16,72 @@
 
 <body class="d-flex flex-column min-vh-100">
     <header class="sticky-top">
-        <!-- Navbar: removed "navbar-dark" -->
-            <nav class="navbar navbar-expand-md text-center" role="navigation" aria-label="Main Navigation">
-            <!-- Removed: <a class="navbar-brand" href="index.html">Ahmed Ikram</a> -->
-            <!-- Updated Navbar Toggler without ml-auto -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav w-100 justify-content-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="projects.html">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="experience.html">Experience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="cv.html">CV</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-                <button id="theme-toggler" class="btn btn-outline-light">
-                    <i class="fas fa-moon"></i>  <!-- Default to moon icon -->
+        <nav class="navbar navbar-expand-lg navbar-light" role="navigation" aria-label="Main Navigation">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="projects.html">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="experience.html">Experience</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="cv.html">CV</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
 
     <!-- Main Content -->
-    <main class="container-fluid pt-5 flex-grow-1">
-        <div class="row" data-animate>
-            <div class="col-12 text-center">
-                <h1 class="display-4">CV</h1>
-                <p class="lead">Here is my CV for you to download or simply view in browser</p>
-                <a href="docs/CV.pdf" class="btn btn-warning mt-4" download>Download CV</a>
+    <main class="container-fluid py-5">
+        <!-- Header Section -->
+        <section class="py-5" data-animate>
+            <div class="container">
+                <div class="row justify-content-center text-center mb-5">
+                    <div class="col-lg-8">
+                        <h1 class="display-4 mb-4">My CV</h1>
+                        <p class="lead">Download my comprehensive CV to get detailed insights into my qualifications, experience, and technical skills.</p>
+                        <a href="docs/CV.pdf" class="btn btn-warning btn-lg" download>
+                            <i class="fas fa-download mr-2"></i>Download CV
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row m-5" data-animate>
-            <div class="col-12">
-                <div class="card h-100 border-0 text-center">
-                    <div class="card-body">
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <embed src="docs/CV.pdf" type="application/pdf" loading="lazy">
+        </section>
+
+        <!-- CV Viewer -->
+        <section class="py-5" data-animate>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body p-0">
+                                <div class="embed-responsive embed-responsive-16by9" style="min-height: 800px;">
+                                    <embed src="docs/CV.pdf" type="application/pdf" loading="lazy" class="embed-responsive-item">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="text-white text-center py-3 mt-auto">
+    <!-- Modern Footer -->
+    <footer class="mt-auto">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3">

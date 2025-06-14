@@ -1,13 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+  if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development') {
+    console.log('DOM loaded, initializing functions...');
+  }
   initParallax();
   initFormValidation();
-  initTheme();
   initHeroDisappearance();
   initHeroTypingEffect();
   initBackToTop();
   initBurgerMenu();
-  initSmoothScrollAnimations();
-  // All custom cursor code and event listeners have been removed.
+  initHeroSmoothScroll();
+  init3DHeroEffects();
 });
 
 function initParallax() {
@@ -33,42 +35,19 @@ function initFormValidation() {
   });
 }
 
-function initTheme() {
-  const themeToggler = document.getElementById('theme-toggler');
-  const isDarkTheme = localStorage.getItem('theme') === 'dark';
-  document.body.classList.toggle('dark-theme', isDarkTheme);
-  
-  const navbar = document.querySelector('.navbar');
-  if (navbar) {
-      navbar.classList.toggle('navbar-dark', isDarkTheme);
-      navbar.classList.toggle('bg-dark', isDarkTheme);
-  }
-
-  updateThemeTogglerIcon(themeToggler, isDarkTheme);
-
-  if (themeToggler) {
-    themeToggler.addEventListener('click', () => {
-      const newTheme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
-      document.body.classList.toggle('dark-theme');
-      if (navbar) {
-          navbar.classList.toggle('navbar-dark', newTheme === 'dark');
-          navbar.classList.toggle('bg-dark', newTheme === 'dark');
-      }
-      localStorage.setItem('theme', newTheme);
-      updateThemeTogglerIcon(themeToggler, newTheme === 'dark');
-    });
-  }
-}
-
-function updateThemeTogglerIcon(themeToggler, isDarkTheme) {
-  if (themeToggler) {
-    themeToggler.innerHTML = isDarkTheme ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-  }
-}
-
 function initHeroDisappearance() {
   const hero = document.querySelector('.hero');
-  if (!hero) return;
+  if (!hero) {
+    if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development') {
+      console.log('Hero element not found');
+    }
+    return;
+  }
+  
+  if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development') {
+    console.log('Hero disappearance initialized');
+  }
+  
   window.addEventListener('scroll', () => {
     const threshold = hero.offsetHeight / 3;
     if (window.pageYOffset > threshold) {
@@ -80,32 +59,48 @@ function initHeroDisappearance() {
 }
 
 function initHeroTypingEffect() {
-  const heroText = document.getElementById('heroTyping');
-  if (!heroText) return;
+  const heroText = document.querySelector('.hero-typing');
+  if (!heroText) {
+    if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development') {
+      console.log('Hero typing element not found');
+    }
+    return;
+  }
+  
+  if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development') {
+    console.log('Hero typing effect initialized');
+  }
+  
   const messages = [
-    "Discover my Projects, Skills and the journey behind them",
-    "Learn more about me and my passion for coding"
+    "Building innovative solutions with modern technology",
+    "Passionate about clean code and user experience", 
+    "Ready to collaborate on your next big idea",
+    "Transforming ideas into reality through code"
   ];
   let messageIndex = 0;
   let charIndex = 0;
+  
   function type() {
     if (charIndex < messages[messageIndex].length) {
       heroText.textContent += messages[messageIndex].charAt(charIndex++);
-      setTimeout(type, 100);
+      setTimeout(type, 80);
     } else {
-      setTimeout(erase, 1500);
+      setTimeout(erase, 2500);
     }
   }
+  
   function erase() {
     if (charIndex > 0) {
       heroText.textContent = messages[messageIndex].substring(0, --charIndex);
-      setTimeout(erase, 50);
+      setTimeout(erase, 40);
     } else {
       messageIndex = (messageIndex + 1) % messages.length;
-      setTimeout(type, 800);
+      setTimeout(type, 1000);
     }
   }
-  type();
+  
+  // Start the typing effect
+  setTimeout(type, 2000);
 }
 
 function initBackToTop() {
@@ -153,4 +148,63 @@ function initSmoothScrollAnimations() {
   }, { threshold: 0.1 });
   
   animatedItems.forEach(item => observer.observe(item));
+}
+
+function initHeroSmoothScroll() {
+  // Smooth scroll for hero CTA button
+  const exploreBtns = document.querySelectorAll('a[href="#main-content"]');
+  exploreBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector('#main-content');
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+}
+
+function init3DHeroEffects() {
+  // Add mouse interaction to 3D elements
+  const floatingElements = document.querySelectorAll('.floating-element');
+  const hero = document.querySelector('.hero');
+  
+  if (!hero || floatingElements.length === 0) return;
+  
+  // Mouse movement parallax effect
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    
+    floatingElements.forEach((element, index) => {
+      const intensity = (index + 1) * 10;
+      const rotateX = y * intensity;
+      const rotateY = x * intensity;
+      // Optionally, preserve other transforms like translateZ if needed
+      element.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+  });
+  
+  // Reset on mouse leave
+  hero.addEventListener('mouseleave', () => {
+    floatingElements.forEach(element => {
+      element.style.transform = element.style.transform.replace(/rotateX\([^)]*\)/g, '').replace(/rotateY\([^)]*\)/g, '');
+    });
+  });
+  
+  // Add click interactions to code blocks
+  const codeBlocks = document.querySelectorAll('[class*="code-block"]');
+  codeBlocks.forEach(block => {
+    block.addEventListener('click', () => {
+      // Create a ripple effect
+      block.style.animation = 'none';
+      setTimeout(() => {
+        block.style.animation = 'float 6s ease-in-out infinite';
+      }, 100);
+    });
+  });
 }
