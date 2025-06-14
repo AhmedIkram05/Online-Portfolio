@@ -1,14 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM loaded, initializing functions...');
+  if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development') {
+    console.log('DOM loaded, initializing functions...');
+  }
   initParallax();
   initFormValidation();
   initHeroDisappearance();
   initHeroTypingEffect();
   initBackToTop();
   initBurgerMenu();
-  initSmoothScrollAnimations();
+  initHeroSmoothScroll();
   init3DHeroEffects();
-  initSmoothScrolling();
 });
 
 function initParallax() {
@@ -37,11 +38,15 @@ function initFormValidation() {
 function initHeroDisappearance() {
   const hero = document.querySelector('.hero');
   if (!hero) {
-    console.log('Hero element not found');
+    if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development') {
+      console.log('Hero element not found');
+    }
     return;
   }
   
-  console.log('Hero disappearance initialized');
+  if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development') {
+    console.log('Hero disappearance initialized');
+  }
   
   window.addEventListener('scroll', () => {
     const threshold = hero.offsetHeight / 3;
@@ -56,11 +61,15 @@ function initHeroDisappearance() {
 function initHeroTypingEffect() {
   const heroText = document.querySelector('.hero-typing');
   if (!heroText) {
-    console.log('Hero typing element not found');
+    if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development') {
+      console.log('Hero typing element not found');
+    }
     return;
   }
   
-  console.log('Hero typing effect initialized');
+  if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development') {
+    console.log('Hero typing effect initialized');
+  }
   
   const messages = [
     "Building innovative solutions with modern technology",
@@ -141,6 +150,23 @@ function initSmoothScrollAnimations() {
   animatedItems.forEach(item => observer.observe(item));
 }
 
+function initHeroSmoothScroll() {
+  // Smooth scroll for hero CTA button
+  const exploreBtns = document.querySelectorAll('a[href="#main-content"]');
+  exploreBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector('#main-content');
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+}
+
 function init3DHeroEffects() {
   // Add mouse interaction to 3D elements
   const floatingElements = document.querySelectorAll('.floating-element');
@@ -158,8 +184,8 @@ function init3DHeroEffects() {
       const intensity = (index + 1) * 10;
       const rotateX = y * intensity;
       const rotateY = x * intensity;
-      
-      element.style.transform = `${element.style.transform} rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      // Optionally, preserve other transforms like translateZ if needed
+      element.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
   });
   
@@ -179,23 +205,6 @@ function init3DHeroEffects() {
       setTimeout(() => {
         block.style.animation = 'float 6s ease-in-out infinite';
       }, 100);
-    });
-  });
-}
-
-function initSmoothScrolling() {
-  // Smooth scroll for hero CTA button
-  const exploreBtns = document.querySelectorAll('a[href="#main-content"]');
-  exploreBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = document.querySelector('#main-content');
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
     });
   });
 }
