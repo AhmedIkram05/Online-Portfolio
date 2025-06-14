@@ -19,144 +19,236 @@
 
 <body class="d-flex flex-column min-vh-100">
     <header class="sticky-top">
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-md text-center" role="navigation" aria-label="Main Navigation">
-            <!-- Updated Navbar Toggler without ml-auto -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav w-100 justify-content-center">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="projects.html">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="experience.html">Experience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cv.html">CV</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-                <button id="theme-toggler" class="btn btn-outline-light">
-                    <i class="fas fa-moon"></i>
+        <!-- Modern Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light" role="navigation" aria-label="Main Navigation">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="projects.html">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="experience.html">Experience</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cv.html">CV</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
 
-    <section class="hero d-flex align-items-center" data-animate>
-        <div class="container text-center text-white">
-            <h1 class="display-2">Welcome to My Portfolio</h1>
-            <p id="heroTyping" class="lead"></p>
-            <p class="lead">Scroll to view</p>
+    <!-- Hero Section -->
+    <section class="hero" data-animate>
+        <div class="hero-3d-scene">
+            <!-- 3D Floating Elements -->
+            <div class="floating-element code-block-1" data-code="function createPortfolio() {">
+                <span class="code-text">function createPortfolio() {</span>
+            </div>
+            <div class="floating-element code-block-2" data-code="const skills = ['JavaScript', 'Python', 'Java'];">
+                <span class="code-text">const skills = ['JS', 'Python', 'Java'];</span>
+            </div>
+            <div class="floating-element code-block-3" data-code="return 'Amazing Developer';">
+                <span class="code-text">return 'Amazing Developer';</span>
+            </div>
+            <div class="floating-element geometric-1"></div>
+            <div class="floating-element geometric-2"></div>
+            <div class="floating-element geometric-3"></div>
+            <div class="floating-element terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="btn-close"></span>
+                        <span class="btn-min"></span>
+                        <span class="btn-max"></span>
+                    </div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">$ whoami</div>
+                    <div class="terminal-line">ahmed_ikram</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <div class="container">
+                <div class="row align-items-center justify-content-center text-center">
+                    <div class="col-lg-10">
+                        <div class="hero-card">
+                            <h1 class="hero-name">Ahmed Ikram</h1>
+                            <p class="hero-title">Computer Science Student & Aspiring Software Developer</p>
+                            <div class="hero-typing-container">
+                                <p id="heroTyping" class="hero-typing"></p>
+                            </div>
+                            <div class="hero-cta">
+                                <a href="#main-content" class="btn btn-hero-primary">
+                                    <i class="fas fa-rocket mr-2"></i>Explore My Work
+                                </a>
+                                <a href="contact.html" class="btn btn-hero-secondary">
+                                    <i class="fas fa-envelope mr-2"></i>Get In Touch
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Main Content -->
-    <main id="about" class="container-fluid pt-5 flex-grow-1">
-        <div class="row" data-animate>
-            <div class="col-12 text-center">
-                <h1 class="display-4">Welcome to My Online Portfolio</h1>
-                <p class="lead">Showcasing my projects, skills, and professional journey.</p>
-            </div>
-        </div>
-
-        <div class="row mt-4" data-animate>
-            <div class="col-12 col-lg-4 mb-4 text-center card-img">
-                <img src="images/ahmed-ikram.jpeg" loading="lazy" class="profileImg rounded-circle mb-4" alt="Ahmed Ikram">
-            </div>
-            <div class="col-12 col-lg-8 mb-4">
-                <div class="card h-100 border-0 text-center">
-                    <div class="card-body text-white">
-                        <h2 class="card-title">About Me</h2>
-                        <p class="card-text">I'm a Computer Science student at the University of Dundee. I’m passionate about creating software that solves real-world problems, and I enjoy working with a range of programming languages like Python, Java, and Unix systems. Over the years, I’ve worked on various projects, from developing games like Snakes and Ladders to building practical tools like a Version Control System. I have a solid foundation in programming languages such as Python, C, C++, and Java, along with experience in web development using HTML, CSS, and SQL.</p>
-                        <p class="card-text">I love tackling complex problems and finding ways to make things work more efficiently. I’ve worked with microcontrollers like Raspberry Pi, developed games using Pygame and Java, and am skilled in version control systems like Git. I also have experience working in Agile environments, using sprints and daily stand-ups for effective project management.</p>
-                        <p class="card-text">My career aspiration is to become a professional programmer, applying my skills to innovative projects that push the boundaries of software development and AI. I’m eager to bring my problem-solving abilities into a professional setting, where I can continue to challenge myself, learn new technologies, and grow as a software developer.</p>
+    <main id="main-content" class="container-fluid py-5">
+        <!-- Welcome Section -->
+        <section class="py-5" data-animate>
+            <div class="container">
+                <div class="row justify-content-center text-center mb-5">
+                    <div class="col-lg-8">
+                        <h2 class="display-4 mb-4">Welcome to My Digital Portfolio</h2>
+                        <p class="lead">Showcasing my journey in computer science, innovative projects, and professional growth.</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="row mt-4" data-animate>
-            <div class="col-12 col-lg-4 mb-4">
-                <div class="card h-100 border-0 text-center">
-                    <div class="card-body text-white">
-                        <h2 class="card-title">Projects</h2>
-                        <p class="card-text">Have a look at the projects I’ve worked on—they’re a good mix of different skills I’ve developed over time. From creating a Version Control System in Unix to programming games, each project reflects what I’ve learned and how I’ve applied those skills in real-world scenarios. I’m always looking for new challenges to take on and learn from.</p>
-                        <a href="projects.html" class="btn btn-warning">View Projects</a>
+        <!-- About Section -->
+        <section class="py-5" data-animate>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-center mb-5 mb-lg-0">
+                        <img src="images/ahmed-ikram.jpeg" loading="lazy" class="profileImg" alt="Ahmed Ikram">
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h2 class="card-title">About Me</h2>
+                                <p class="card-text">I'm a passionate Computer Science student at the University of Dundee, driven by the endless possibilities of technology. My journey in software development spans from creating intuitive games to building robust system applications, each project teaching me something new about the art of coding.</p>
+                                
+                                <p class="card-text">What excites me most is solving complex problems with elegant solutions. Whether I'm working with Python's versatility, Java's robustness, or diving deep into Unix systems, I approach each challenge with curiosity and determination. My experience extends beyond academics into real-world applications, including microcontroller programming with Raspberry Pi and collaborative development using Git.</p>
+                                
+                                <p class="card-text">My vision is to become a catalyst in the tech industry, contributing to projects that push the boundaries of what's possible. I thrive in Agile environments and believe that the best software comes from teams that communicate, innovate, and iterate together.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="col-12 col-lg-4 mb-4">
-                <div class="card h-100 border-0 text-center">
-                    <div class="card-body text-white">
-                        <h2 class="card-title">Experience</h2>
-                        <p class="card-text">Throughout my studies and personal projects, I’ve gained a solid foundation in several programming languages like Python and Java, and I’m comfortable working in Unix-based environments. Alongside the technical skills, I’ve also picked up problem-solving, teamwork, and project management skills that help me navigate both independent and collaborative projects. I’m always eager to expand this skill set and apply it in new ways.</p>
-                        <a href="experience.html" class="btn btn-warning">View Experience</a>
+        <!-- Services Grid -->
+        <section class="py-5" data-animate>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="mb-4">
+                                    <i class="fas fa-code fa-3x text-primary"></i>
+                                </div>
+                                <h3 class="card-title">My Projects</h3>
+                                <p class="card-text">Explore a diverse collection of my work, from Unix-based version control systems to interactive Python games. Each project represents a milestone in my learning journey and demonstrates my growing expertise across different technologies.</p>
+                                <a href="projects.html" class="btn btn-warning">View Projects</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="mb-4">
+                                    <i class="fas fa-graduation-cap fa-3x text-success"></i>
+                                </div>
+                                <h3 class="card-title">My Experience</h3>
+                                <p class="card-text">Discover my professional journey, academic achievements, and certifications. From hands-on work experience to AWS cloud computing credentials, I've built a foundation that combines theoretical knowledge with practical application.</p>
+                                <a href="experience.html" class="btn btn-warning">View Experience</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="mb-4">
+                                    <i class="fas fa-file-alt fa-3x text-warning"></i>
+                                </div>
+                                <h3 class="card-title">My CV</h3>
+                                <p class="card-text">Get a comprehensive overview of my qualifications, skills, and achievements. My CV provides detailed insights into my educational background, technical competencies, and the projects that have shaped my career path.</p>
+                                <a href="cv.html" class="btn btn-warning">View CV</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="col-12 col-lg-4 mb-4">
-                <div class="card h-100 border-0 text-center">
-                    <div class="card-body text-white">
-                        <h2 class="card-title">CV</h2>
-                        <p class="card-text">If you’d like to get a detailed overview of my experience, skills, and academic achievements, feel free to download my CV. It includes all the key information about my background and the projects I’ve worked on, giving you a clearer picture of what I can bring to the table.</p>
-                        <a href="cv.html" class="btn btn-warning">View CV</a>
+        <!-- CTA Section -->
+        <section class="py-5" data-animate>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h2 class="card-title">Let's Connect</h2>
+                                <p class="card-text">I'm always excited to discuss new opportunities, collaborate on innovative projects, or simply connect with fellow tech enthusiasts. Whether you're looking for a dedicated team member or want to explore potential partnerships, I'd love to hear from you.</p>
+                                <a href="contact.html" class="btn btn-warning btn-lg">Get In Touch</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row mb-4" data-animate>
-            <div class="col-12">
-                <div class="card h-100 border-0 text-center">
-                    <div class="card-body text-white">
-                        <h2 class="card-title">Get in Touch</h2>
-                        <p class="card-text">if you’re interested in discussing potential job opportunities, collaborations, or have any questions about my work, feel free to reach out via the contact page. I’d be happy to connect and explore how I can contribute to your team.</p>
-                        <a href="contact.html" class="btn btn-warning">Contact Me</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section>
     </main>
 
-    <footer class="text-white text-center py-3 mt-auto" role="contentinfo">
+    <!-- Modern Footer -->
+    <footer class="mt-auto">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-3">
-                    <h5>Contact</h5>
-                    <p>Email: <a href="mailto:ahmedikram30@gmail.com" class="">ahmedikram30@gmail.com</a></p>
-                    <p>Phone: <a href="tel:+447421996048" class="">+44 7421 996048</a></p>
+                <div class="col-md-4 mb-4">
+                    <h5><i class="fas fa-envelope mr-2"></i>Contact Info</h5>
+                    <p class="mb-2">
+                        <a href="mailto:ahmedikram30@gmail.com">ahmedikram30@gmail.com</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="tel:+447421996048">+44 7421 996048</a>
+                    </p>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <h5>Follow Me</h5>
-                    <a href="https://www.linkedin.com/in/ahmed-ikram-student" target="_blank" rel="noopener" class="text-white mr-3" title="LinkedIn Profile"><i class="fab fa-linkedin fa-2x"></i></a>
-                    <a href="https://github.com/ahmedikram05" target="_blank" rel="noopener" class="text-white mr-3" title="GitHub Profile"><i class="fab fa-github fa-2x"></i></a>
-                    <a href="https://www.instagram.com/ahmed_ikram826" target="_blank" rel="noopener" class="text-white mr-3" title="Instagram Profile"><i class="fab fa-instagram fa-2x"></i></a>
+                <div class="col-md-4 mb-4 text-center">
+                    <h5><i class="fas fa-share-alt mr-2"></i>Follow Me</h5>
+                    <div class="d-flex justify-content-center">
+                        <a href="https://www.linkedin.com/in/ahmed-ikram-student" target="_blank" rel="noopener" class="mx-3" title="LinkedIn">
+                            <i class="fab fa-linkedin fa-2x"></i>
+                        </a>
+                        <a href="https://github.com/ahmedikram05" target="_blank" rel="noopener" class="mx-3" title="GitHub">
+                            <i class="fab fa-github fa-2x"></i>
+                        </a>
+                        <a href="https://www.instagram.com/ahmed_ikram826" target="_blank" rel="noopener" class="mx-3" title="Instagram">
+                            <i class="fab fa-instagram fa-2x"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <h5>Quick Links</h5>
+                <div class="col-md-4 mb-4">
+                    <h5><i class="fas fa-sitemap mr-2"></i>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="index.html" class="">Home</a></li>
-                        <li><a href="projects.html" class="">Projects</a></li>
-                        <li><a href="experience.html" class="">Experience</a></li>
-                        <li><a href="cv.html" class="">CV</a></li>
-                        <li><a href="contact.html" class="">Contact</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="experience.html">Experience</a></li>
+                        <li><a href="cv.html">CV</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="col-12">
-                    <p>&copy; 2024 Ahmed Ikram. All Rights Reserved.</p>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.2);">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2024 Ahmed Ikram. Crafted with passion and code.</p>
                 </div>
             </div>
         </div>
@@ -166,6 +258,5 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="main.js" defer></script>
-    <script src="heroTypingEffect.js" defer></script>
 </body>
 </html>
