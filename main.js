@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initFormValidation();
   initTheme();
   initHeroDisappearance();
-  initCustomCursor();
   initHeroTypingEffect();
   initBackToTop();
   initBurgerMenu();
   initSmoothScrollAnimations();
+  // All custom cursor code and event listeners have been removed.
 });
 
 function initParallax() {
@@ -77,28 +77,6 @@ function initHeroDisappearance() {
       hero.classList.remove('hero-hidden');
     }
   });
-}
-
-function initCustomCursor() {
-  const cursor = document.getElementById('custom-cursor');
-  if (cursor) {
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-    });
-    document.addEventListener('mousedown', (e) => {
-      if (e.target.closest('a')) {
-        cursor.classList.add('cursor-click-link');
-      } else {
-        cursor.classList.add('cursor-click');
-      }
-    });
-    document.addEventListener('mouseup', () => {
-      setTimeout(() => {
-        cursor.classList.remove('cursor-click', 'cursor-click-link');
-      }, 100);
-    });
-  }
 }
 
 function initHeroTypingEffect() {
