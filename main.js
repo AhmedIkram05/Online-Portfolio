@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   initBurgerMenu();
   initSmoothScrollAnimations();
+  // All custom cursor code and event listeners have been removed.
 });
 
 function initParallax() {

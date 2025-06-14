@@ -259,7 +259,7 @@ body.dark-theme .lead {
     bottom: 0;
     left: 0;
     overflow: auto;
-    pointer-events: none;  /* added: disable pointer events on overlay */
+    /* pointer-events removed to allow pointer visibility and interaction */
 }
 
 /* Show overlay on hover */
