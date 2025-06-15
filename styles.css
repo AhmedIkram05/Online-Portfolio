@@ -117,12 +117,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Modern Navigation - Darker, More Professional */
 .navbar {
-    background: var(--primary-color) !important; /* use primary-color variable */
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(52, 152, 219, 0.3);
-    padding: 1rem 0;
-    transition: all var(--transition-medium);
+    /* Liquid glass-like navbar */
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: var(--shadow-medium);
+    padding: 1rem 0;
+    transition: background var(--transition-medium), box-shadow var(--transition-medium), border-color var(--transition-medium);
 }
 
 .navbar-nav {
@@ -571,14 +573,23 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Card System Overhaul - More Sophisticated */
 .card {
-    background: var(--card-gradient);
-    border: none;
+    /* Glass-like card style */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--radius-large);
-    box-shadow: var(--shadow-light);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    color: var(--text-light); /* ensure card text is light */
     transition: all var(--transition-medium);
-    overflow: hidden;
+    overflow: hidden; /* keep content clipped inside */
     position: relative;
-    border: 1px solid rgba(52, 62, 80, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--shadow-heavy);
+    border: 2px solid var(--accent-color); /* thicker accent border on hover */
 }
 
 .card::before {
@@ -593,12 +604,6 @@ h1, h2, h3, h4, h5, h6 {
     transition: opacity var(--transition-medium);
 }
 
-.card:hover {
-    transform: translateY(-12px);
-    box-shadow: var(--shadow-heavy);
-    border-color: var(--accent-color);
-}
-
 .card:hover::before {
     opacity: 1;
 }
@@ -611,13 +616,14 @@ h1, h2, h3, h4, h5, h6 {
 .card-title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: var(--text-light); /* lighten title for readability */
     margin-bottom: 1.5rem;
     position: relative;
 }
 
+/* Consolidated high-contrast card text style */
 .card-text {
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.85); /* high-contrast text */
     line-height: 1.8;
     margin-bottom: 2rem;
     font-weight: 400;
@@ -820,19 +826,22 @@ footer .fas:hover {
     padding: 1.5rem;
     border-left: 4px solid var(--accent-color);
     border-radius: var(--radius-small);
-    background: rgba(230, 126, 34, 0.05);
+    background: rgba(255, 255, 255, 0.1); /* lighter glass-style background */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     margin-bottom: 1rem;
+    color: var(--text-light); /* ensure text is light */
 }
 
 .experience-item h5 {
-    color: var(--text-primary);
+    color: var(--text-light); /* light title for readability */
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
 
 .experience-item ul li {
     margin-bottom: 0.5rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.85); /* high contrast list items */
 }
 
 /* Badge Enhancements */
