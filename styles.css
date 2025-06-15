@@ -124,6 +124,7 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: var(--shadow-medium);
     padding: 1rem 0;
+    transition: background var(--transition-medium), box-shadow var(--transition-medium), border-color var(--transition-medium);
 }
 
 .navbar-nav {
@@ -620,6 +621,7 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
 }
 
+/* Consolidated high-contrast card text style */
 .card-text {
     color: rgba(255, 255, 255, 0.85); /* high-contrast text */
     line-height: 1.8;
