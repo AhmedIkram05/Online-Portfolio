@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   initBurgerMenu();
   initHeroSmoothScroll();
+  initSmoothScrollAnimations();
   init3DHeroEffects();
 });
 
@@ -83,24 +84,26 @@ function initHeroTypingEffect() {
   function type() {
     if (charIndex < messages[messageIndex].length) {
       heroText.textContent += messages[messageIndex].charAt(charIndex++);
-      setTimeout(type, 80);
+      // Slightly faster typing for smoother effect
+      setTimeout(type, 60);
     } else {
-      setTimeout(erase, 2500);
+      setTimeout(erase, 2000);
     }
   }
   
   function erase() {
     if (charIndex > 0) {
       heroText.textContent = messages[messageIndex].substring(0, --charIndex);
-      setTimeout(erase, 40);
+      // Faster erasing for smoother transition
+      setTimeout(erase, 30);
     } else {
       messageIndex = (messageIndex + 1) % messages.length;
-      setTimeout(type, 1000);
+      setTimeout(type, 800);
     }
   }
   
-  // Start the typing effect
-  setTimeout(type, 2000);
+  // Start the typing effect after a brief delay
+  setTimeout(type, 1500);
 }
 
 function initBackToTop() {
@@ -168,43 +171,120 @@ function initHeroSmoothScroll() {
 }
 
 function init3DHeroEffects() {
-  // Add mouse interaction to 3D elements
+  // Add subtle mouse interaction to 3D elements
   const floatingElements = document.querySelectorAll('.floating-element');
   const hero = document.querySelector('.hero');
   
   if (!hero || floatingElements.length === 0) return;
   
-  // Mouse movement parallax effect
+  // Store original transforms to preserve CSS animations
+  const originalTransforms = new Map();
+  floatingElements.forEach(element => {
+    const computedStyle = window.getComputedStyle(element);
+    originalTransforms.set(element, computedStyle.transform);
+  });
+  
+  // Very subtle mouse movement parallax effect
+  let isMouseInHero = false;
+  
+  hero.addEventListener('mouseenter', () => {
+    isMouseInHero = true;
+  });
+  
+  hero.addEventListener('mouseleave', () => {
+    isMouseInHero = false;
+    // Reset to original transforms
+    floatingElements.forEach(element => {
+      element.style.transform = '';
+    });
+  });
+  
   hero.addEventListener('mousemove', (e) => {
+    if (!isMouseInHero) return;
+    
     const rect = hero.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
     
     floatingElements.forEach((element, index) => {
-      const intensity = (index + 1) * 10;
+      // Much more subtle movement - only 2-3 degrees max
+      const intensity = (index + 1) * 2;
       const rotateX = y * intensity;
       const rotateY = x * intensity;
-      // Optionally, preserve other transforms like translateZ if needed
-      element.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      
+      // Apply subtle parallax while preserving existing transforms
+      element.style.transform = `translate3d(${x * intensity}px, ${y * intensity}px, 0) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
   });
   
-  // Reset on mouse leave
-  hero.addEventListener('mouseleave', () => {
-    floatingElements.forEach(element => {
-      element.style.transform = element.style.transform.replace(/rotateX\([^)]*\)/g, '').replace(/rotateY\([^)]*\)/g, '');
-    });
+  // Enable roaming movement for floating elements
+  const roamElements = document.querySelectorAll('.hero-3d-scene .floating-element');
+  roamElements.forEach((el, idx) => {
+    // Apply smooth top/left transitions
+    el.style.transition = 'top 20s ease-in-out, left 20s ease-in-out';
+    // Ensure absolute positioning
+    el.style.position = 'absolute';
+    // Initial roam invocation
+    (function roam() {
+      const newLeft = 10 + Math.random() * 80;   // percent values between 10% and 90%
+      const newTop = 15 + Math.random() * 70;    // percent values between 15% and 85%
+      el.style.left = newLeft + '%';
+      el.style.top = newTop + '%';
+      // Continue roaming periodically
+      setTimeout(roam, 20000 + idx * 2000);
+    })();
   });
   
-  // Add click interactions to code blocks
+  // Add relevant click interactions to code blocks
   const codeBlocks = document.querySelectorAll('[class*="code-block"]');
-  codeBlocks.forEach(block => {
+  codeBlocks.forEach((block, index) => {
     block.addEventListener('click', () => {
-      // Create a ripple effect
-      block.style.animation = 'none';
+      // Simulate code execution with visual feedback
+      const originalBg = block.style.background;
+      const originalBorder = block.style.borderColor;
+      
+      // Flash effect to simulate code execution
+      block.style.background = 'rgba(46, 204, 113, 0.2)';
+      block.style.borderColor = '#2ecc71';
+      
       setTimeout(() => {
-        block.style.animation = 'float 6s ease-in-out infinite';
-      }, 100);
+        block.style.background = originalBg;
+        block.style.borderColor = originalBorder;
+      }, 500);
+      
+      // Optional: Show a console message
+      console.log(`Code block ${index + 1} executed!`);
+    });
+  });
+  
+  // Add click interactions to geometric elements
+  const geometricElements = document.querySelectorAll('[class*="geometric"]');
+  geometricElements.forEach((element, index) => {
+    element.addEventListener('click', () => {
+      // Create a brief scaling effect
+      element.style.transform += ' scale(1.2)';
+      setTimeout(() => {
+        element.style.transform = element.style.transform.replace(' scale(1.2)', '');
+      }, 300);
+    });
+  });
+  
+  // Add click interactions to dynamic orbs
+  const orbs = document.querySelectorAll('.orb');
+  orbs.forEach((orb, index) => {
+    orb.addEventListener('mouseover', () => {
+      orb.style.animation = 'none';
+      orb.style.transform += ' scale(1.3)';
+      orb.style.opacity = '1';
+    });
+    orb.addEventListener('mouseout', () => {
+      orb.style.animation = '';
+    });
+    orb.addEventListener('click', () => {
+      // Temporary flash effect
+      orb.style.boxShadow = '0 0 25px rgba(46, 204, 113, 0.7)';
+      setTimeout(() => orb.style.boxShadow = '', 500);
+      console.log(`Orb ${index + 1} clicked!`);
     });
   });
 }
