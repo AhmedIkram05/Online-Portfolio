@@ -9,22 +9,32 @@
     <!-- Bootstrap CSS loaded first -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 
-    <!-- CSS Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- Critical CSS inline to prevent FOUC -->
+    <style>
+      /* Critical CSS for FOUC prevention */
+      html {scroll-behavior: smooth;}
+      body {background-color: #2c3e50; color: #ecf0f1;}
+    </style>
+
+    <!-- Preload and defer full stylesheet -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
     <header class="sticky-top">
+        <!-- Modern Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light" role="navigation" aria-label="Main Navigation">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+            <div class="container justify-content-center d-flex align-items-center">
+                <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
                 </button>
-                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <div class="collapse navbar-collapse justify-content-center" id="navMenu">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="index.html">Home</a>
@@ -46,9 +56,13 @@
             </div>
         </nav>
     </header>
+    <!-- Wave Divider -->
+    <svg class="section-divider wave" viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z" fill="var(--charcoal)"></path>
+    </svg>
 
     <!-- Main Content -->
-    <main class="container-fluid py-5">
+    <main class="container-fluid py-5" id="main-content">
         <!-- Header Section -->
         <section class="py-5" data-animate>
             <div class="container">
@@ -62,10 +76,10 @@
         </section>
 
         <!-- Projects Grid -->
-        <section class="py-5" data-animate>
+        <section class="py-5">
             <div class="container">
                 <!-- First Row -->
-                <div class="row mb-5">
+                <div class="row mb-5" data-animate>
                     <!-- Project 1 -->
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100 project-card">
@@ -135,7 +149,7 @@
                 </div>
 
                 <!-- Second Row -->
-                <div class="row mb-5">
+                <div class="row mb-5" data-animate>
                     <!-- Process Scheduler Terminal App -->
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100 project-card">
@@ -196,6 +210,7 @@
                                     <span class="badge badge-secondary mr-1">HTML</span>
                                     <span class="badge badge-secondary mr-1">CSS</span>
                                     <span class="badge badge-secondary">Bootstrap</span>
+                                    <span class="badge badge-secondary">JavaScript</span>
                                 </div>
                             </div>
                         </div>
@@ -203,7 +218,7 @@
                 </div>
 
                 <!-- Third Row -->
-                <div class="row mb-5">
+                <div class="row mb-5 data-animate">
                     <!-- Self Directory App -->
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100 project-card">
@@ -264,6 +279,8 @@
                                 <p class="card-text">Real-time leaderboard with dynamic ranking updates.</p>
                                 <div class="tech-stack mb-3">
                                     <span class="badge badge-secondary mr-1">JavaScript</span>
+                                    <span class="badge badge-secondary">HTML</span>
+                                    <span class="badge badge-secondary">CSS</span>
                                     <span class="badge badge-secondary">Firebase</span>
                                 </div>
                             </div>
@@ -274,6 +291,10 @@
             </div>
         </section>
     </main>
+    <!-- Wave Divider before Footer -->
+    <svg class="section-divider wave flip" viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z" fill="var(--charcoal)"></path>
+    </svg>
 
     <!-- Modern Footer -->
     <footer class="text-white text-center py-3 mt-auto">
@@ -315,5 +336,10 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="main.js" defer></script>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top" class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
 </body>
 </html>

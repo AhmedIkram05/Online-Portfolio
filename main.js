@@ -11,7 +11,51 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroSmoothScroll();
   initSmoothScrollAnimations();
   init3DHeroEffects();
+  initLazyLoad();
 });
+
+// Burger menu toggler icon logic
+function initBurgerMenu() {
+  const toggler = document.querySelector('.navbar-toggler');
+  if (!toggler) return;
+  const barsIcon = toggler.querySelector('.fa-bars');
+  const timesIcon = toggler.querySelector('.fa-times');
+  if (!barsIcon || !timesIcon) return;
+
+  // Ensure only bars is visible initially
+  barsIcon.style.display = '';
+  timesIcon.style.display = 'none';
+
+  toggler.addEventListener('click', () => {
+    const navMenu = document.getElementById('navMenu');
+    const expanded = toggler.getAttribute('aria-expanded') === 'true';
+    if (expanded) {
+      barsIcon.style.display = '';
+      timesIcon.style.display = 'none';
+    } else {
+      barsIcon.style.display = 'none';
+      timesIcon.style.display = '';
+    }
+  });
+
+  // Also handle collapse on nav link click (optional, if nav links exist)
+  const navLinks = document.querySelectorAll('#navMenu .nav-link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      barsIcon.style.display = '';
+      timesIcon.style.display = 'none';
+    });
+  });
+}
+
+// Lazy-load all images by setting loading attribute
+function initLazyLoad() {
+  document.querySelectorAll('img').forEach(img => {
+    if (!img.hasAttribute('loading')) {
+      img.setAttribute('loading', 'lazy');
+    }
+  });
+}
 
 function initParallax() {
   window.addEventListener('scroll', () => {
@@ -115,23 +159,6 @@ function initBackToTop() {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-function initBurgerMenu() {
-  const toggler = document.querySelector('.navbar-toggler');
-  const menu = document.querySelector(toggler.getAttribute('data-target'));
-  if (!toggler || !menu) return;
-  
-  toggler.addEventListener('click', () => {
-    toggler.classList.toggle('open');
-  });
-
-  menu.addEventListener('show.bs.collapse', () => {
-    toggler.classList.add('open');
-  });
-  menu.addEventListener('hide.bs.collapse', () => {
-    toggler.classList.remove('open');
   });
 }
 
