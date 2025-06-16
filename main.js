@@ -7,11 +7,21 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroDisappearance();
   initHeroTypingEffect();
   initBackToTop();
-  initBurgerMenu();
+  // initBurgerMenu(); // burger menu removed
   initHeroSmoothScroll();
   initSmoothScrollAnimations();
   init3DHeroEffects();
+  initLazyLoad();
 });
+
+// Lazy-load all images by setting loading attribute
+function initLazyLoad() {
+  document.querySelectorAll('img').forEach(img => {
+    if (!img.hasAttribute('loading')) {
+      img.setAttribute('loading', 'lazy');
+    }
+  });
+}
 
 function initParallax() {
   window.addEventListener('scroll', () => {
@@ -115,23 +125,6 @@ function initBackToTop() {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-function initBurgerMenu() {
-  const toggler = document.querySelector('.navbar-toggler');
-  const menu = document.querySelector(toggler.getAttribute('data-target'));
-  if (!toggler || !menu) return;
-  
-  toggler.addEventListener('click', () => {
-    toggler.classList.toggle('open');
-  });
-
-  menu.addEventListener('show.bs.collapse', () => {
-    toggler.classList.add('open');
-  });
-  menu.addEventListener('hide.bs.collapse', () => {
-    toggler.classList.remove('open');
   });
 }
 
