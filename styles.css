@@ -246,16 +246,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Removed .toggler-icon as it is not used in the HTML */
 
 /* Improved X-shape transforms when expanded */
-.navbar-toggler:not(.collapsed) .bar1 {
-    transform: translateY(8px) rotate(45deg);
-}
-.navbar-toggler:not(.collapsed) .bar2 {
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-.navbar-toggler:not(.collapsed) .bar3 {
-    transform: translateY(-8px) rotate(-45deg);
-}
+/* (Removed .bar1, .bar2, .bar3 rules as they are no longer used) */
 
 
 
