@@ -243,15 +243,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Toggler bars */
-.toggler-icon {
-    width: 32px;
-    height: 4px;
-    background-color: var(--text-light);
-    border-radius: 2px;
-    margin: 4px 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    transform-origin: center center;
-}
+/* Removed .toggler-icon as it is not used in the HTML */
 
 /* Improved X-shape transforms when expanded */
 .navbar-toggler:not(.collapsed) .bar1 {
