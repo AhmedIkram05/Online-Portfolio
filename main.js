@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScrollAnimations();
   init3DHeroEffects();
   initLazyLoad();
+  initNavbarScroll();
+  initProgressBars();
 });
 
 // Burger menu toggler icon logic
@@ -48,12 +50,65 @@ function initBurgerMenu() {
   });
 }
 
-// Lazy-load all images by setting loading attribute
+// Enhanced navbar scroll effect
+function initNavbarScroll() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+  
+  let lastScrollTop = 0;
+  
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Add scrolled class for styling
+    if (scrollTop > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+    
+    // Hide navbar on scroll down, show on scroll up
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+      navbar.style.transform = 'translateY(-100%)';
+    } else {
+      navbar.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  });
+}
+
+// Enhanced lazy loading with performance optimization
 function initLazyLoad() {
   document.querySelectorAll('img').forEach(img => {
     if (!img.hasAttribute('loading')) {
       img.setAttribute('loading', 'lazy');
     }
+  });
+  
+  // Add fade-in effect for images
+  const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.3s ease';
+        
+        img.onload = () => {
+          img.style.opacity = '1';
+        };
+        
+        if (img.complete) {
+          img.style.opacity = '1';
+        }
+        
+        imageObserver.unobserve(img);
+      }
+    });
+  });
+  
+  document.querySelectorAll('img').forEach(img => {
+    imageObserver.observe(img);
   });
 }
 
