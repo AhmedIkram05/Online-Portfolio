@@ -6,221 +6,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Ahmed Ikram</title>
     <meta name="description" content="Contact Ahmed Ikram using the online form or through provided contact details">
-
-    <!-- Bootstrap CSS loaded first -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-
-    <!-- Critical CSS inline to prevent FOUC -->
-    <style>
-      /* Critical CSS for FOUC prevention */
-      html {scroll-behavior: smooth;}
-      body {background-color: #2c3e50; color: #ecf0f1;}
-    </style>
-
     <!-- Preload and defer full stylesheet -->
     <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles.css"></noscript>
-
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
-
-<body class="d-flex flex-column min-vh-100">
+<body>
     <a href="#main-content" class="skip-to-content">Skip to content</a>
-    <header class="sticky-top">
+    <header>
         <!-- Modern Navbar -->
-        <nav class="navbar navbar-expand-md navbar-light" role="navigation" aria-label="Main Navigation">
-            <div class="container justify-content-center d-flex align-items-center">
-                <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                    <i class="fas fa-times"></i>
-                </button>
-                
-                <div class="collapse navbar-collapse justify-content-center" id="navMenu">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="projects.html">Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="experience.html">Experience</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="cv.html">CV</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="contact.html">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <nav class="navbar" role="navigation" aria-label="Main Navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </button>
+            <ul class="navbar-nav" id="navMenu">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="projects.html">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="experience.html">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cv.html">CV</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="contact.html">Contact</a>
+                </li>
+            </ul>
         </nav>
     </header>
-
     <!-- Main Content -->
-    <main class="container-fluid py-5" id="main-content">
+    <main id="main-content" class="content-wrapper">
         <!-- Header Section -->
-        <section class="py-5" data-animate>
-            <div class="container">
-                <div class="row justify-content-center text-center mb-5">
-                    <div class="col-lg-8">
-                        <h1 class="display-4 mb-4">Get In Touch</h1>
-                        <p class="lead">I'd love to hear from you! Whether you have a project in mind, want to collaborate, or just want to say hello, feel free to reach out through any of the channels below.</p>
-                    </div>
-                </div>
+        <section data-animate>
+            <div class="content-wrapper center">
+                <h1 class="display-4">Get In Touch</h1>
+                <p class="lead">I'd love to hear from you! Whether you have a project in mind, want to collaborate, or just want to say hello, feel free to reach out through any of the channels below.</p>
             </div>
         </section>
-
         <!-- Contact Content -->
-        <section class="py-5" data-animate>
-            <div class="container">
-                <div class="row">
-                    <!-- Contact Information -->
-                    <div class="col-lg-5 mb-5 mb-lg-0">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <div class="mb-4 text-center">
-                                    <i class="fas fa-address-book fa-3x text-primary"></i>
-                                </div>
-                                <h3 class="card-title text-center">Contact Information</h3>
-                                
-                                <div class="contact-item mb-4">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-envelope fa-lg text-primary mr-3"></i>
-                                        <div>
-                                            <h6 class="mb-1">Email</h6>
-                                            <a href="mailto:ahmedikram30@gmail.com" class="text-decoration-none">ahmedikram30@gmail.com</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="contact-item mb-4">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-phone fa-lg text-primary mr-3"></i>
-                                        <div>
-                                            <h6 class="mb-1">Phone</h6>
-                                            <a href="tel:+447421996048" class="text-decoration-none">+44 7421 996048</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="contact-item mb-4">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fab fa-linkedin fa-lg text-primary mr-3"></i>
-                                        <div>
-                                            <h6 class="mb-1">LinkedIn</h6>
-                                            <a href="https://www.linkedin.com/in/ahmed-ikram-student" target="_blank" rel="noopener" class="text-decoration-none">ahmed-ikram-student</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="contact-item mb-4">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fab fa-github fa-lg text-primary mr-3"></i>
-                                        <div>
-                                            <h6 class="mb-1">GitHub</h6>
-                                            <a href="https://github.com/ahmedikram05" target="_blank" rel="noopener" class="text-decoration-none">ahmedikram05</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="contact-item">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-map-marker-alt fa-lg text-primary mr-3"></i>
-                                        <div>
-                                            <h6 class="mb-1">Location</h6>
-                                            <span>Dundee, Scotland, UK</span>
-                                        </div>
-                                    </div>
-                                </div>
+        <section data-animate>
+            <div class="grid">
+                <!-- Contact Information -->
+                <div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="center">
+                                <i class="fas fa-address-book fa-3x text-primary"></i>
+                            </div>
+                            <h3 class="card-title center">Contact Information</h3>
+                            <div class="contact-item center">
+                                <i class="fas fa-envelope fa-lg text-primary"></i>
+                                <h6>Email</h6>
+                                <a href="mailto:ahmedikram30@gmail.com">ahmedikram30@gmail.com</a>
+                            </div>
+                            <div class="contact-item center">
+                                <i class="fas fa-phone fa-lg text-primary"></i>
+                                <h6>Phone</h6>
+                                <a href="tel:+447421996048">+44 7421 996048</a>
+                            </div>
+                            <div class="contact-item center">
+                                <i class="fab fa-linkedin fa-lg text-primary"></i>
+                                <h6>LinkedIn</h6>
+                                <a href="https://www.linkedin.com/in/ahmed-ikram-student" target="_blank" rel="noopener">ahmed-ikram-student</a>
+                            </div>
+                            <div class="contact-item center">
+                                <i class="fab fa-github fa-lg text-primary"></i>
+                                <h6>GitHub</h6>
+                                <a href="https://github.com/ahmedikram05" target="_blank" rel="noopener">ahmedikram05</a>
+                            </div>
+                            <div class="contact-item center">
+                                <i class="fas fa-map-marker-alt fa-lg text-primary"></i>
+                                <h6>Location</h6>
+                                <span>Dundee, Scotland, UK</span>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Contact Form -->
-                    <div class="col-lg-7">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <div class="mb-4 text-center">
-                                    <i class="fas fa-paper-plane fa-3x text-primary"></i>
-                                </div>
-                                <h3 class="card-title text-center">Send Me a Message</h3>
-                                <form class="needs-validation" novalidate aria-label="Contact Form" action="https://formspree.io/f/xbljrnpa" method="POST">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="name"><i class="fas fa-user mr-2"></i>Name</label>
-                                                <input type="text" class="form-control" id="name" name="name" placeholder="Your full name" required aria-required="true">
-                                                <div class="invalid-feedback">Please enter your name.</div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="email"><i class="fas fa-envelope mr-2"></i>Email</label>
-                                                <input type="email" class="form-control" id="email" name="email" placeholder="your.email@example.com" required aria-required="true">
-                                                <div class="invalid-feedback">Please enter a valid email address.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="subject"><i class="fas fa-tag mr-2"></i>Subject</label>
-                                        <input type="text" class="form-control" id="subject" name="subject" placeholder="What's this about?">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="message"><i class="fas fa-comment mr-2"></i>Message</label>
-                                        <textarea class="form-control" id="message" name="message" rows="6" placeholder="Tell me about your project, idea, or just say hello!" required aria-required="true"></textarea>
-                                        <div class="invalid-feedback">Please enter your message.</div>
-                                    </div>
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-hero-primary btn-lg">
-                                            <i class="fas fa-paper-plane mr-2"></i>Send Message
-                                        </button>
-                                    </div>
-                                </form>
+                </div>
+                <!-- Send Me a Message Card -->
+                <div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="center" style="margin-bottom: var(--spacing-lg);">
+                                <i class="fas fa-paper-plane fa-3x text-primary"></i>
                             </div>
+                            <h3 class="card-title center">Send Me a Message</h3>
+                            <form class="contact-form needs-validation" novalidate aria-label="Contact Form" action="https://formspree.io/f/xbljrnpa" method="POST">
+                                <div class="form-row-grid">
+                                    <div class="form-group">
+                                        <label for="name"><i class="fas fa-user"></i>Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Your full name" required aria-required="true">
+                                        <div class="invalid-feedback">Please enter your name.</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email"><i class="fas fa-envelope"></i>Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="your.email@example.com" required aria-required="true">
+                                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject"><i class="fas fa-tag"></i>Subject</label>
+                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="What's this about?">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message"><i class="fas fa-comment"></i>Message</label>
+                                    <textarea class="form-control" id="message" name="message" rows="6" placeholder="Tell me about your project, idea, or just say hello!" required aria-required="true"></textarea>
+                                    <div class="invalid-feedback">Please enter your message.</div>
+                                </div>
+                                <div class="center">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-paper-plane mr-2"></i>Send Message
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-
     <!-- Modern Footer -->
-    <footer class="mt-auto">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5><i class="fas fa-envelope mr-2"></i>Contact Info</h5>
-                    <p class="mb-2">
-                        <a href="mailto:ahmedikram30@gmail.com">ahmedikram30@gmail.com</a>
-                    </p>
-                    <p class="mb-0">
-                        <a href="tel:+447421996048">+44 7421 996048</a>
-                    </p>
+    <footer>
+        <div class="content-wrapper">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h5>Contact</h5>
+                    <p>Email: <a href="mailto:ahmedikram30@gmail.com">ahmedikram30@gmail.com</a></p>
+                    <p>Phone: <a href="tel:+447421996048">+44 7421 996048</a></p>
                 </div>
-                <div class="col-md-4 mb-4 text-center">
-                    <h5><i class="fas fa-share-alt mr-2"></i>Follow Me</h5>
-                    <div class="d-flex justify-content-center">
-                        <a href="https://www.linkedin.com/in/ahmed-ikram-student" target="_blank" rel="noopener" class="mx-3" title="LinkedIn">
-                            <i class="fab fa-linkedin fa-2x"></i>
-                        </a>
-                        <a href="https://github.com/ahmedikram05" target="_blank" rel="noopener" class="mx-3" title="GitHub">
-                            <i class="fab fa-github fa-2x"></i>
-                        </a>
-                        <a href="https://www.instagram.com/ahmed_ikram826" target="_blank" rel="noopener" class="mx-3" title="Instagram">
-                            <i class="fab fa-instagram fa-2x"></i>
-                        </a>
-                        <!-- WhatsApp Link -->
-                        <a href="https://wa.me/447421996048" target="_blank" rel="noopener" class="mx-3" title="WhatsApp">
-                            <i class="fab fa-whatsapp fa-2x"></i>
-                        </a>
+                <div class="footer-column">
+                    <h5>Follow Me</h5>
+                    <div class="footer-socials">
+                        <a href="https://www.linkedin.com/in/ahmed-ikram-student" target="_blank" rel="noopener" title="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/ahmedikram05" target="_blank" rel="noopener" title="GitHub Profile"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/ahmed_ikram826" target="_blank" rel="noopener" title="Instagram Profile"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/447421996048" target="_blank" rel="noopener" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h5><i class="fas fa-sitemap mr-2"></i>Quick Links</h5>
-                    <ul class="list-unstyled">
+                <div class="footer-column">
+                    <h5>Quick Links</h5>
+                    <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="projects.html">Projects</a></li>
                         <li><a href="experience.html">Experience</a></li>
@@ -229,20 +159,14 @@
                     </ul>
                 </div>
             </div>
-            <hr class="my-4" style="border-color: rgba(255,255,255,0.2);">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <p class="mb-0">&copy; 2024 Ahmed Ikram. Crafted with passion and code.</p>
-                </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ahmed Ikram. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
-
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="main.js" defer></script>
-
     <!-- Back to Top Button -->
     <a href="#" id="back-to-top" class="back-to-top" aria-label="Back to Top">
         <i class="fas fa-chevron-up"></i>

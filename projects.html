@@ -6,16 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Ahmed Ikram</title>
 
-    <!-- Bootstrap CSS loaded first -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-
-    <!-- Critical CSS inline to prevent FOUC -->
-    <style>
-      /* Critical CSS for FOUC prevention */
-      html {scroll-behavior: smooth;}
-      body {background-color: #2c3e50; color: #ecf0f1;}
-    </style>
-
     <!-- Preload and defer full stylesheet -->
     <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles.css"></noscript>
@@ -24,36 +14,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body>
     <a href="#main-content" class="skip-to-content">Skip to content</a>
-    <header class="sticky-top">
+    <header>
         <!-- Modern Navbar -->
-        <nav class="navbar navbar-expand-md navbar-light" role="navigation" aria-label="Main Navigation">
-            <div class="container justify-content-center d-flex align-items-center">
-                <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                    <i class="fas fa-times"></i>
-                </button>
-                <div class="collapse navbar-collapse justify-content-center" id="navMenu">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="projects.html">Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="experience.html">Experience</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="cv.html">CV</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <nav class="navbar" role="navigation" aria-label="Main Navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </button>
+            <ul class="navbar-nav" id="navMenu">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="projects.html">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="experience.html">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cv.html">CV</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+            </ul>
         </nav>
     </header>
     <!-- Wave Divider -->
@@ -62,228 +48,197 @@
     </svg>
 
     <!-- Main Content -->
-    <main class="container-fluid py-5" id="main-content">
+    <main id="main-content" class="content-wrapper">
         <!-- Header Section -->
-        <section class="py-5" data-animate>
-            <div class="container">
-                <div class="row justify-content-center text-center mb-5">
-                    <div class="col-lg-8">
-                        <h1 class="display-4 mb-4">My Projects</h1>
-                        <p class="lead">A showcase of my development journey through various programming languages and technologies. Each project represents a learning milestone and demonstrates my growing expertise in software development.</p>
-                    </div>
-                </div>
+        <section data-animate>
+            <div class="content-wrapper center">
+                <h1 class="display-4">My Projects</h1>
+                <p class="lead">A showcase of my development journey through various programming languages and technologies. Each project represents a learning milestone and demonstrates my growing expertise in software development.</p>
             </div>
         </section>
 
         <!-- Projects Grid -->
-        <section class="py-5">
-            <div class="container">
-                <!-- First Row -->
-                <div class="row mb-5" data-animate>
-                    <!-- Project 1 -->
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 project-card">
-                            <div class="card-img-wrapper">
-                                <img src="images/unix.jpeg" class="card-img-top" alt="Version Control System" loading="lazy">
-                                <div class="card-overlay">
-                                    <a href="https://github.com/AhmedIkram05/Unix-Version-Control-System.git" target="_blank" class="btn btn-hero-secondary">
-                                        <i class="fab fa-github mr-2"></i>View Code
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Version Control System</h4>
-                                <p class="card-text">Custom version control system using Unix for efficient team code management.</p>
-                                <div class="tech-stack mb-3">
-                                    <span class="badge badge-secondary mr-1">Unix</span>
-                                    <span class="badge badge-secondary mr-1">Shell Scripting</span>
-                                    <span class="badge badge-secondary">Git</span>
-                                </div>
-                            </div>
+        <section data-animate class="content-wrapper">
+            <div class="services">
+                <!-- Project 1 -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="images/unix.jpeg" alt="Version Control System" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/Unix-Version-Control-System.git" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
                         </div>
                     </div>
-
-                    <!-- Project 2 -->
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 project-card">
-                            <div class="card-img-wrapper">
-                                <img src="images/java.jpeg" class="card-img-top" alt="Messaging Application" loading="lazy">
-                                <div class="card-overlay">
-                                    <a href="https://github.com/AhmedIkram05/java-messaging-application.git" target="_blank" class="btn btn-hero-secondary">
-                                        <i class="fab fa-github mr-2"></i>View Code
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Messaging Application</h4>
-                                <p class="card-text">Java-based chat system with user profiles and contact organization.</p>
-                                <div class="tech-stack mb-3">
-                                    <span class="badge badge-secondary mr-1">Java</span>
-                                    <span class="badge badge-secondary">Data Structures</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 -->
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 project-card">
-                            <div class="card-img-wrapper">
-                                <img src="images/python.png" class="card-img-top" alt="Ping Pong Game" loading="lazy">
-                                <div class="card-overlay">
-                                    <a href="https://github.com/AhmedIkram05/pygame-ping-pong-game.git" target="_blank" class="btn btn-hero-secondary">
-                                        <i class="fab fa-github mr-2"></i>View Code
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Ping Pong Game</h4>
-                                <p class="card-text">Python game built using Pygame with real-time input handling and collision detection.</p>
-                                <div class="tech-stack mb-3">
-                                    <span class="badge badge-secondary mr-1">Python</span>
-                                    <span class="badge badge-secondary">Pygame</span>
-                                </div>
-                            </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Version Control System</h4>
+                        <p class="card-text">Custom version control system using Unix for efficient team code management.</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">Unix</span>
+                            <span class="badge badge-secondary">Shell Scripting</span>
+                            <span class="badge badge-secondary">Git</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Second Row -->
-                <div class="row mb-5" data-animate>
-                    <!-- Process Scheduler Terminal App -->
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 project-card">
-                            <div class="card-img-wrapper">
-                                <img src="images/os.jpeg" class="card-img-top" alt="Process Scheduler" loading="lazy">
-                                <div class="card-overlay">
-                                    <a href="https://github.com/AhmedIkram05/Process-Scheduler-Terminal-App" target="_blank" class="btn btn-hero-secondary">
-                                        <i class="fab fa-github mr-2"></i>View Code
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Process Scheduler (Terminal App)</h4>
-                                <p class="card-text">CPU scheduling simulator for process management.</p>
-                                <div class="tech-stack mb-3">
-                                    <span class="badge badge-secondary mr-1">C++</span>
-                                </div>
-                            </div>
+                <!-- Project 2 -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="images/java.jpeg" alt="Messaging Application" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/java-messaging-application.git" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
                         </div>
                     </div>
-
-                    <!-- Rental Car Company -->
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 project-card">
-                            <div class="card-img-wrapper">
-                                <img src="images/rentalcar.jpeg" class="card-img-top" alt="Car Rental System" loading="lazy">
-                                <div class="card-overlay">
-                                    <a href="https://github.com/AhmedIkram05/Rental-Car-Company" target="_blank" class="btn btn-hero-secondary">
-                                        <i class="fab fa-github mr-2"></i>View Code
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Rental Car Company</h4>
-                                <p class="card-text">CLI-based car rental management system.</p>
-                                <div class="tech-stack mb-3">
-                                    <span class="badge badge-secondary mr-1">C++</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Online Portfolio -->
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 project-card">
-                            <div class="card-img-wrapper">
-                                <img src="images/portfolio.jpeg" class="card-img-top" alt="Online Portfolio" loading="lazy">
-                                <div class="card-overlay">
-                                    <a href="https://github.com/AhmedIkram05/Online-Portfolio" target="_blank" class="btn btn-hero-secondary">
-                                        <i class="fab fa-github mr-2"></i>View Code
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Online Portfolio</h4>
-                                <p class="card-text">Personal website showcasing projects and experience.</p>
-                                <div class="tech-stack mb-3">
-                                    <span class="badge badge-secondary mr-1">HTML</span>
-                                    <span class="badge badge-secondary mr-1">CSS</span>
-                                    <span class="badge badge-secondary">Bootstrap</span>
-                                    <span class="badge badge-secondary">JavaScript</span>
-                                </div>
-                            </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Messaging Application</h4>
+                        <p class="card-text">Java-based chat system with user profiles and contact organization.</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">Java</span>
+                            <span class="badge badge-secondary">Data Structures</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Third Row -->
-                <div class="row mb-5 data-animate">
-                    <!-- Self Directory App -->
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 project-card">
-                            <div class="card-img-wrapper">
-                                <img src="images/apis.png" class="card-img-top" alt="Self Directory App" loading="lazy">
-                                <div class="card-overlay">
-                                    <a href="https://github.com/AhmedIkram05/Self-Directory-App" target="_blank" class="btn btn-hero-secondary">
-                                        <i class="fab fa-github mr-2"></i>View Code
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Self Directory App</h4>
-                                <p class="card-text">Personal contact management system.</p>
-                                <div class="tech-stack mb-3">
-                                    <span class="badge badge-secondary mr-1">Python</span>
-                                    <span class="badge badge-secondary">SQLite</span>
-                                </div>
-                            </div>
+                <!-- Project 3 -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="images/python.png" alt="Ping Pong Game" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/pygame-ping-pong-game.git" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
                         </div>
                     </div>
-
-                    <!-- Staff Directory App -->
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 project-card">
-                            <div class="card-img-wrapper">
-                                <img src="images/staffdir.jpeg" class="card-img-top" alt="Staff Directory App" loading="lazy">
-                                <div class="card-overlay">
-                                    <a href="https://github.com/AhmedIkram05/Staff-Directory-App" target="_blank" class="btn btn-hero-secondary">
-                                        <i class="fab fa-github mr-2"></i>View Code
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Staff Directory App</h4>
-                                <p class="card-text">Employee directory for efficient HR management.</p>
-                                <div class="tech-stack mb-3">
-                                    <span class="badge badge-secondary mr-1">Java</span>
-                                    <span class="badge badge-secondary">MySQL</span>
-                                </div>
-                            </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Ping Pong Game</h4>
+                        <p class="card-text">Python game built using Pygame with real-time input handling and collision detection.</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">Python</span>
+                            <span class="badge badge-secondary">Pygame</span>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Dynamic Leaderboard -->
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 project-card">
-                            <div class="card-img-wrapper">
-                                <img src="images/leaderboard.jpeg" class="card-img-top" alt="Dynamic Leaderboard" loading="lazy">
-                                <div class="card-overlay">
-                                    <a href="https://github.com/AhmedIkram05/Dynamic-Leaderboard" target="_blank" class="btn btn-hero-secondary">
-                                        <i class="fab fa-github mr-2"></i>View Code
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Dynamic Leaderboard</h4>
-                                <p class="card-text">Real-time leaderboard with dynamic ranking updates.</p>
-                                <div class="tech-stack mb-3">
-                                    <span class="badge badge-secondary mr-1">JavaScript</span>
-                                    <span class="badge badge-secondary">HTML</span>
-                                    <span class="badge badge-secondary">CSS</span>
-                                    <span class="badge badge-secondary">Firebase</span>
-                                </div>
-                            </div>
+                <!-- Project 4 -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="images/os.jpeg" alt="Process Scheduler" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/Process-Scheduler-Terminal-App.git" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Process Scheduler (Terminal App)</h4>
+                        <p class="card-text">CPU scheduling simulator for process management.</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">C++</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="images/rentalcar.jpeg" alt="Rental Car Company" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/Car-Rental-Company.git" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Rental Car Company</h4>
+                        <p class="card-text">CLI-based car rental management system.</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">C++</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="images/portfolio.jpeg" alt="Online Portfolio" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/Online-Portfolio.git" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Online Portfolio</h4>
+                        <p class="card-text">Personal website showcasing projects and experience.</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">HTML</span>
+                            <span class="badge badge-secondary">CSS</span>
+                            <span class="badge badge-secondary">Bootstrap</span>
+                            <span class="badge badge-secondary">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="images/apis.png" alt="Self Directory App" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/Self-Directory-App.git" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Self Directory App</h4>
+                        <p class="card-text">Personal contact management system.</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">Python</span>
+                            <span class="badge badge-secondary">SQLite</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="images/staffdir.jpeg" alt="Staff Directory App" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/Staff-Directory-App.git" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Staff Directory App</h4>
+                        <p class="card-text">Employee directory for efficient HR management.</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">Java</span>
+                            <span class="badge badge-secondary">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="images/leaderboard.jpeg" alt="Dynamic Leaderboard" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/Dynamic-Leaderboard.git" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Dynamic Leaderboard</h4>
+                        <p class="card-text">Real-time leaderboard with dynamic ranking updates.</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">JavaScript</span>
+                            <span class="badge badge-secondary">HTML</span>
+                            <span class="badge badge-secondary">CSS</span>
+                            <span class="badge badge-secondary">Firebase</span>
                         </div>
                     </div>
                 </div>
@@ -291,50 +246,44 @@
             </div>
         </section>
     </main>
-    <!-- Wave Divider before Footer -->
-    <svg class="section-divider wave flip" viewBox="0 0 1440 100" preserveAspectRatio="none">
-        <path d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z" fill="var(--charcoal)"></path>
-    </svg>
 
     <!-- Modern Footer -->
-    <footer class="text-white text-center py-3 mt-auto">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-3">
+    <footer>
+        <div class="content-wrapper">
+            <div class="footer-grid">
+                <div class="footer-column">
                     <h5>Contact</h5>
-                    <p>Email: <a href="mailto:ahmedikram30@gmail.com" class="">ahmedikram30@gmail.com</a></p>
-                    <p>Phone: <a href="tel:+447421996048" class="">+44 7421 996048</a></p>
+                    <p>Email: <a href="mailto:ahmedikram30@gmail.com">ahmedikram30@gmail.com</a></p>
+                    <p>Phone: <a href="tel:+447421996048">+44 7421 996048</a></p>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="footer-column">
                     <h5>Follow Me</h5>
-                    <a href="https://www.linkedin.com/in/ahmed-ikram-student" target="_blank" rel="noopener" class="text-white mr-3" title="LinkedIn Profile"><i class="fab fa-linkedin fa-2x"></i></a>
-                    <a href="https://github.com/ahmedikram05" target="_blank" rel="noopener" class="text-white mr-3" title="GitHub Profile"><i class="fab fa-github fa-2x"></i></a>
-                    <a href="https://www.instagram.com/ahmed_ikram826" target="_blank" rel="noopener" class="text-white mr-3" title="Instagram Profile"><i class="fab fa-instagram fa-2x"></i></a>
-                    <!-- WhatsApp Link -->
-                    <a href="https://wa.me/447421996048" target="_blank" rel="noopener" class="text-white mr-3" title="WhatsApp"><i class="fab fa-whatsapp fa-2x"></i></a>
+                    <div class="footer-socials">
+                        <a href="https://www.linkedin.com/in/ahmed-ikram-student" target="_blank" rel="noopener" title="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/ahmedikram05" target="_blank" rel="noopener" title="GitHub Profile"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/ahmed_ikram826" target="_blank" rel="noopener" title="Instagram Profile"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/447421996048" target="_blank" rel="noopener" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="footer-column">
                     <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="">Home</a></li>
-                        <li><a href="projects.html" class="">Projects</a></li>
-                        <li><a href="experience.html" class="">Experience</a></li>
-                        <li><a href="cv.html" class="">CV</a></li>
-                        <li><a href="contact.html" class="">Contact</a></li>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="experience.html">Experience</a></li>
+                        <li><a href="cv.html">CV</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="col-12">
-                    <p>&copy; 2024 Ahmed Ikram. All Rights Reserved.</p>
-                </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ahmed Ikram. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="main.js" defer></script>
 
     <!-- Back to Top Button -->
