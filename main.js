@@ -52,8 +52,8 @@ function initBurgerMenu() {
 
 // Enhanced navbar scroll effect
 function initNavbarScroll() {
-  const navbar = document.querySelector('.navbar');
-  if (!navbar) return;
+  const header = document.querySelector('header');
+  if (!header) return;
   
   let lastScrollTop = 0;
   
@@ -62,16 +62,22 @@ function initNavbarScroll() {
     
     // Add scrolled class for styling
     if (scrollTop > 50) {
-      navbar.classList.add('scrolled');
+      header.classList.add('scrolled');
     } else {
-      navbar.classList.remove('scrolled');
+      header.classList.remove('scrolled');
     }
     
-    // Hide navbar on scroll down, show on scroll up
+    // Smooth hide/show entire header on scroll
     if (scrollTop > lastScrollTop && scrollTop > 100) {
-      navbar.style.transform = 'translateY(-100%)';
+      // Scrolling down - hide entire header with smooth animation
+      header.style.opacity = '0';
+      header.style.transform = 'translateY(-100%)';
+      header.style.pointerEvents = 'none';
     } else {
-      navbar.style.transform = 'translateY(0)';
+      // Scrolling up - show entire header with smooth animation
+      header.style.opacity = '1';
+      header.style.transform = 'translateY(0)';
+      header.style.pointerEvents = 'auto';
     }
     
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
@@ -243,130 +249,47 @@ function initHeroSmoothScroll() {
       e.preventDefault();
       const target = document.querySelector('#main-content');
       if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+        target.scrollIntoView({ behavior: 'smooth' });
       }
     });
   });
 }
 
+// 3D hero section effects
 function init3DHeroEffects() {
-  // Add subtle mouse interaction to 3D elements
-  const floatingElements = document.querySelectorAll('.floating-element');
   const hero = document.querySelector('.hero');
+  if (!hero) return;
   
-  if (!hero || floatingElements.length === 0) return;
-  
-  // Store original transforms to preserve CSS animations
-  const originalTransforms = new Map();
-  floatingElements.forEach(element => {
-    const computedStyle = window.getComputedStyle(element);
-    originalTransforms.set(element, computedStyle.transform);
-  });
-  
-  // Very subtle mouse movement parallax effect
-  let isMouseInHero = false;
-  
-  hero.addEventListener('mouseenter', () => {
-    isMouseInHero = true;
-  });
-  
-  hero.addEventListener('mouseleave', () => {
-    isMouseInHero = false;
-    // Reset to original transforms
-    floatingElements.forEach(element => {
-      element.style.transform = '';
-    });
-  });
-  
-  hero.addEventListener('mousemove', (e) => {
-    if (!isMouseInHero) return;
+  const updateTransform = () => {
+    const scrollY = window.pageYOffset;
+    const heroHeight = hero.offsetHeight;
+    const windowHeight = window.innerHeight;
+    const maxDepth = 50;
     
-    const rect = hero.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    // Calculate depth based on scroll position
+    const depth = Math.min(maxDepth, (scrollY / windowHeight) * maxDepth);
     
-    floatingElements.forEach((element, index) => {
-      // Much more subtle movement - only 2-3 degrees max
-      const intensity = (index + 1) * 2;
-      const rotateX = y * intensity;
-      const rotateY = x * intensity;
-      
-      // Apply subtle parallax while preserving existing transforms
-      element.style.transform = `translate3d(${x * intensity}px, ${y * intensity}px, 0) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-  });
+    hero.style.transform = `translateZ(${-depth}px)`;
+  };
   
-  // Enable roaming movement for floating elements
-  const roamElements = document.querySelectorAll('.hero-3d-scene .floating-element');
-  roamElements.forEach((el, idx) => {
-    // Apply smooth top/left transitions
-    el.style.transition = 'top 20s ease-in-out, left 20s ease-in-out';
-    // Ensure absolute positioning
-    el.style.position = 'absolute';
-    // Initial roam invocation
-    (function roam() {
-      const newLeft = 10 + Math.random() * 80;   // percent values between 10% and 90%
-      const newTop = 15 + Math.random() * 70;    // percent values between 15% and 85%
-      el.style.left = newLeft + '%';
-      el.style.top = newTop + '%';
-      // Continue roaming periodically
-      setTimeout(roam, 20000 + idx * 2000);
-    })();
-  });
+  window.addEventListener('scroll', updateTransform);
+  updateTransform();
+}
+
+// Progress bar animations
+function initProgressBars() {
+  const progressBars = document.querySelectorAll('.progress');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const progressBar = entry.target;
+        const value = progressBar.getAttribute('data-value');
+        progressBar.style.width = value;
+        progressBar.classList.add('animate');
+        observer.unobserve(progressBar);
+      }
+    });
+  }, { threshold: 0.1 });
   
-  // Add relevant click interactions to code blocks
-  const codeBlocks = document.querySelectorAll('[class*="code-block"]');
-  codeBlocks.forEach((block, index) => {
-    block.addEventListener('click', () => {
-      // Simulate code execution with visual feedback
-      const originalBg = block.style.background;
-      const originalBorder = block.style.borderColor;
-      
-      // Flash effect to simulate code execution
-      block.style.background = 'rgba(46, 204, 113, 0.2)';
-      block.style.borderColor = '#2ecc71';
-      
-      setTimeout(() => {
-        block.style.background = originalBg;
-        block.style.borderColor = originalBorder;
-      }, 500);
-      
-      // Optional: Show a console message
-      console.log(`Code block ${index + 1} executed!`);
-    });
-  });
-  
-  // Add click interactions to geometric elements
-  const geometricElements = document.querySelectorAll('[class*="geometric"]');
-  geometricElements.forEach((element, index) => {
-    element.addEventListener('click', () => {
-      // Create a brief scaling effect
-      element.style.transform += ' scale(1.2)';
-      setTimeout(() => {
-        element.style.transform = element.style.transform.replace(' scale(1.2)', '');
-      }, 300);
-    });
-  });
-  
-  // Add click interactions to dynamic orbs
-  const orbs = document.querySelectorAll('.orb');
-  orbs.forEach((orb, index) => {
-    orb.addEventListener('mouseover', () => {
-      orb.style.animation = 'none';
-      orb.style.transform += ' scale(1.3)';
-      orb.style.opacity = '1';
-    });
-    orb.addEventListener('mouseout', () => {
-      orb.style.animation = '';
-    });
-    orb.addEventListener('click', () => {
-      // Temporary flash effect
-      orb.style.boxShadow = '0 0 25px rgba(46, 204, 113, 0.7)';
-      setTimeout(() => orb.style.boxShadow = '', 500);
-      console.log(`Orb ${index + 1} clicked!`);
-    });
-  });
+  progressBars.forEach(bar => observer.observe(bar));
 }
