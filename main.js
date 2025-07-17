@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development') {
     console.log('DOM loaded, initializing functions...');
   }
+  initHeroOverlay();
   initParallax();
   initFormValidation();
   initHeroDisappearance();
@@ -16,7 +17,57 @@ document.addEventListener('DOMContentLoaded', () => {
   initProgressBars();
 });
 
-// Burger menu toggler icon logic
+// Hero Overlay Pop-up functionality
+function initHeroOverlay() {
+  const heroOverlay = document.getElementById('heroOverlay');
+  if (!heroOverlay) return;
+  
+  let dismissed = false;
+  
+  // Function to dismiss the hero overlay
+  function dismissHero() {
+    if (dismissed) return;
+    dismissed = true;
+    
+    heroOverlay.classList.add('hidden');
+    
+    // Remove from DOM after quick animation completes
+    setTimeout(() => {
+      heroOverlay.style.display = 'none';
+    }, 400);
+  }
+  
+  // Dismiss on click anywhere
+  heroOverlay.addEventListener('click', dismissHero);
+  
+  // Dismiss on scroll
+  let scrollThreshold = 50;
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > scrollThreshold) {
+      dismissHero();
+    }
+  });
+  
+  // Dismiss on any key press
+  document.addEventListener('keydown', dismissHero);
+  
+  // Handle explore button click
+  const exploreBtn = document.getElementById('exploreBtn');
+  if (exploreBtn) {
+    exploreBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      dismissHero();
+      
+      // Scroll to main content after hero is dismissed
+      setTimeout(() => {
+        const mainContent = document.getElementById('main-content');
+        if (mainContent) {
+          mainContent.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 500); // Reduced delay for quicker response
+    });
+  }
+}
 function initBurgerMenu() {
   const toggler = document.querySelector('.navbar-toggler');
   if (!toggler) return;
@@ -130,13 +181,35 @@ function initFormValidation() {
   const forms = document.getElementsByClassName('needs-validation');
   Array.from(forms).forEach(form => {
     form.addEventListener('submit', event => {
-      if (!form.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
+      event.preventDefault();
+      event.stopPropagation();
+      
+      if (form.checkValidity()) {
+        // Form is valid - you can add success handling here
+        alert('Message sent successfully! Thank you for contacting me.');
+        form.reset();
+        form.classList.remove('was-validated');
       } else {
-        alert('Form submitted successfully!');
+        // Form is invalid - show validation messages
+        form.classList.add('was-validated');
       }
-      form.classList.add('was-validated');
+    });
+    
+    // Remove validation class when user starts typing in invalid fields
+    const inputs = form.querySelectorAll('.form-control');
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        if (form.classList.contains('was-validated')) {
+          // Re-validate in real-time once validation has been triggered
+          if (input.checkValidity()) {
+            input.classList.remove('is-invalid');
+            input.classList.add('is-valid');
+          } else {
+            input.classList.remove('is-valid');
+            input.classList.add('is-invalid');
+          }
+        }
+      });
     });
   });
 }
@@ -278,14 +351,19 @@ function init3DHeroEffects() {
 
 // Progress bar animations
 function initProgressBars() {
-  const progressBars = document.querySelectorAll('.progress');
+  const progressBars = document.querySelectorAll('.progress-bar');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const progressBar = entry.target;
-        const value = progressBar.getAttribute('data-value');
-        progressBar.style.width = value;
-        progressBar.classList.add('animate');
+        const targetWidth = progressBar.style.width || '0%';
+        
+        // Start from 0 and animate to target
+        progressBar.style.width = '0%';
+        setTimeout(() => {
+          progressBar.style.width = targetWidth;
+        }, 200);
+        
         observer.unobserve(progressBar);
       }
     });
