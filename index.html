@@ -17,6 +17,40 @@
 </head>
 
 <body>
+    <!-- Hero Pop-up Overlay -->
+    <div class="hero-overlay" id="heroOverlay">
+        <!-- Animated Blob Background -->
+        <div class="blob-container">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+            <div class="blob blob-4"></div>
+            <div class="blob blob-5"></div>
+        </div>
+
+        <!-- Hero Content Overlay -->
+        <div class="hero-content content-wrapper center">
+            <div class="hero-card">
+                <h1 class="hero-name display-1">Ahmed Ikram</h1>
+                <p class="hero-title">Computer Science Student & Aspiring Software Developer</p>
+                <div class="hero-typing-container">
+                    <p id="heroTyping" class="hero-typing"></p>
+                </div>
+                <div class="hero-cta">
+                    <a href="https://github.com/ahmedikram05" target="_blank" rel="noopener" class="btn btn-hero-primary">
+                        <i class="fab fa-github mr-2"></i>View GitHub
+                    </a>
+                    <a href="contact.html" class="btn btn-hero-secondary">
+                        <i class="fas fa-envelope mr-2"></i>Get In Touch
+                    </a>
+                </div>
+                <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.9rem;">
+                    <i class="fas fa-mouse"></i> Click anywhere or scroll to continue
+                </p>
+            </div>
+        </div>
+    </div>
+
     <header>
         <!-- Modern Navbar -->
         <nav class="navbar" role="navigation" aria-label="Main Navigation">
@@ -44,44 +78,8 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" data-animate>
-        <!-- Animated Blob Background -->
-        <div class="blob-container">
-            <div class="blob blob-1"></div>
-            <div class="blob blob-2"></div>
-            <div class="blob blob-3"></div>
-            <div class="blob blob-4"></div>
-            <div class="blob blob-5"></div>
-        </div>
-
-        <!-- Hero Content Overlay -->
-        <div class="hero-content content-wrapper center">
-            <div class="hero-card">
-                <h1 class="hero-name display-1">Ahmed Ikram</h1>
-                <p class="hero-title">Computer Science Student & Aspiring Software Developer</p>
-                <div class="hero-typing-container">
-                    <p id="heroTyping" class="hero-typing"></p>
-                </div>
-                <div class="hero-cta">
-                    <a href="#main-content" class="btn btn-hero-primary">
-                        <i class="fas fa-rocket mr-2"></i>Explore My Work
-                    </a>
-                    <a href="contact.html" class="btn btn-hero-secondary">
-                        <i class="fas fa-envelope mr-2"></i>Get In Touch
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>            
-
     <!-- Main Content -->
     <main id="main-content" class="content-wrapper">
-        <!-- Welcome Section -->
-        <section class="content-wrapper center" data-animate>
-            <h2 class="section-title">Welcome to My Digital Portfolio</h2>
-            <p class="lead">Showcasing my journey in computer science, innovative projects, and professional growth.</p>
-        </section>
 
         <!-- About Section -->
         <section data-animate class="content-wrapper">
@@ -140,7 +138,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Let's Connect</h2>
                         <p class="card-text">I'm always excited to discuss new opportunities, collaborate on innovative projects, or simply connect with fellow tech enthusiasts. Whether you're looking for a dedicated team member or want to explore potential partnerships, I'd love to hear from you.</p>
-                        <a href="contact.html" class="btn btn-hero-secondary">Get In Touch</a>
+                        <a href="contact.html" class="btn btn-success">Get In Touch</a>
                     </div>
                 </div>
             </div>
