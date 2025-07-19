@@ -1,0 +1,158 @@
+/* Contact Page Specific Styles (contact.html) */
+
+/* ===== CONTACT FORM ===== */
+.contact-form {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.form-row-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.form-group label i {
+    margin-right: 8px;
+    color: var(--secondary-color);
+}
+
+/* ===== FORM CONTROLS ===== */
+.form-control {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-small);
+    background-color: rgba(60, 70, 85, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    font-size: 1rem;
+    transition: all var(--transition-medium);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.form-control:focus {
+    background-color: rgba(70, 80, 95, 0.9) !important;
+    border-color: var(--secondary-color) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+    opacity: 1;
+}
+
+/* Force dark styling on all form inputs */
+input.form-control,
+textarea.form-control,
+select.form-control {
+    background-color: rgba(60, 70, 85, 0.8) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+input.form-control:focus,
+textarea.form-control:focus,
+select.form-control:focus {
+    background-color: rgba(70, 80, 95, 0.9) !important;
+    color: #ffffff !important;
+    border-color: var(--secondary-color) !important;
+}
+
+/* ===== FORM VALIDATION ===== */
+.invalid-feedback {
+    color: var(--accent-color);
+    display: none;
+    font-size: 0.875rem;
+    margin-top: var(--spacing-xs);
+}
+
+.valid-feedback {
+    color: var(--success-color);
+    display: none;
+    font-size: 0.875rem;
+    margin-top: var(--spacing-xs);
+}
+
+.was-validated .form-control:invalid ~ .invalid-feedback {
+    display: block;
+}
+
+.was-validated .form-control:valid ~ .valid-feedback {
+    display: block;
+}
+
+.was-validated .form-control:invalid {
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0.2rem rgba(231, 76, 60, 0.25);
+}
+
+.was-validated .form-control:valid {
+    border-color: var(--success-color) !important;
+    box-shadow: 0 0 0 0.2rem rgba(46, 204, 113, 0.25);
+}
+
+/* ===== CONTACT INFORMATION ===== */
+.contact-item {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-medium);
+    transition: all var(--transition-medium);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.contact-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.contact-item i {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--secondary-color);
+}
+
+.contact-item h6 {
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.contact-item a, 
+.contact-item span {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.contact-item a:hover {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+/* ===== CONTACT FORM SUBMIT BUTTON ===== */
+.contact-form .btn {
+    width: 100%;
+    max-width: 220px;
+    margin-top: var(--spacing-md);
+}

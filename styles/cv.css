@@ -1,0 +1,33 @@
+/* CV Page Specific Styles (cv.html) */
+
+/* ===== CV VIEWER ===== */
+.embed-responsive-item {
+    border: none;
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-lg);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ===== CV CARD CONTAINER ===== */
+.cv-viewer-card {
+    padding: 0 !important;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-large);
+    overflow: hidden;
+}
+
+.cv-viewer-card .card-body {
+    padding: 0;
+}
+
+/* ===== CV DOWNLOAD SECTION ===== */
+.cv-download-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.cv-download-section .btn {
+    margin-top: var(--spacing-lg);
+}
