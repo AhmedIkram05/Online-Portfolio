@@ -1,0 +1,496 @@
+/* Footer Styles - Used across all pages */
+
+/* ===== CYBERPUNK FUTURISTIC FOOTER ===== */
+footer {
+    background: 
+        linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 25%, #0a1a1a 50%, #1a1a0a 75%, #0a0a0a 100%);
+    border-top: none;
+    color: var(--text-light);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 -10px 50px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(0, 255, 255, 0.2);
+}
+
+/* ===== ANIMATED CIRCUIT LINES ===== */
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: 
+        linear-gradient(90deg, 
+            transparent 0%, 
+            #00ffff 25%, 
+            #ff00ff 50%, 
+            #00ff00 75%, 
+            transparent 100%);
+    animation: circuitFlow 3s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+/* ===== FLOATING DIGITAL PARTICLES ===== */
+footer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #00ffff, transparent),
+        radial-gradient(2px 2px at 40px 70px, #ff00ff, transparent),
+        radial-gradient(1px 1px at 160px 30px, #ff0080, transparent),
+        radial-gradient(1px 1px at 90px 40px, #00ff00, transparent),
+        radial-gradient(2px 2px at 130px 80px, #0080ff, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: digitalRain 8s linear infinite;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* ===== CYBERPUNK ANIMATION KEYFRAMES ===== */
+@keyframes circuitFlow {
+    0% {
+        background-position: -100% 0;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        background-position: 100% 0;
+        opacity: 0;
+    }
+}
+
+@keyframes digitalRain {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+}
+
+@keyframes neonPulse {
+    0%, 100% {
+        text-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+        box-shadow: 0 0 5px currentColor;
+    }
+    50% {
+        text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+        box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+    }
+}
+
+@keyframes glitch {
+    0%, 90%, 100% {
+        transform: translate(0);
+    }
+    10% {
+        transform: translate(-2px, 2px);
+    }
+    20% {
+        transform: translate(-2px, -2px);
+    }
+    30% {
+        transform: translate(2px, 2px);
+    }
+}
+
+@keyframes hologramFlicker {
+    0%, 100% { opacity: 1; }
+    25% { opacity: 0.8; }
+    50% { opacity: 0.9; }
+    75% { opacity: 0.7; }
+}
+
+/* ===== FUTURISTIC FOOTER GRID ===== */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-3xl);
+    padding: var(--spacing-3xl) var(--spacing-lg);
+    position: relative;
+    z-index: 10;
+}
+
+/* ===== CYBERPUNK FOOTER SECTIONS ===== */
+.footer-column {
+    background: 
+        linear-gradient(145deg, 
+            rgba(0, 255, 255, 0.05) 0%, 
+            rgba(255, 0, 255, 0.03) 50%, 
+            rgba(0, 255, 0, 0.05) 100%);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: var(--radius-medium);
+    padding: var(--spacing-xl);
+    position: relative;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    animation: hologramFlicker 4s ease-in-out infinite;
+}
+
+.footer-column:hover {
+    border-color: rgba(0, 255, 255, 0.8);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 10px 30px rgba(0, 255, 255, 0.2),
+        inset 0 1px 0 rgba(0, 255, 255, 0.5);
+    animation: neonPulse 2s ease-in-out infinite;
+}
+
+.footer-column:nth-child(2) {
+    border-color: rgba(255, 0, 255, 0.3);
+    background: 
+        linear-gradient(145deg, 
+            rgba(255, 0, 255, 0.05) 0%, 
+            rgba(0, 255, 0, 0.03) 50%, 
+            rgba(0, 255, 255, 0.05) 100%);
+    animation-delay: 1s;
+}
+
+.footer-column:nth-child(2):hover {
+    border-color: rgba(255, 0, 255, 0.8);
+    box-shadow: 
+        0 10px 30px rgba(255, 0, 255, 0.2),
+        inset 0 1px 0 rgba(255, 0, 255, 0.5);
+}
+
+.footer-column:nth-child(3) {
+    border-color: rgba(0, 255, 0, 0.3);
+    background: 
+        linear-gradient(145deg, 
+            rgba(0, 255, 0, 0.05) 0%, 
+            rgba(0, 255, 255, 0.03) 50%, 
+            rgba(255, 0, 255, 0.05) 100%);
+    animation-delay: 2s;
+}
+
+.footer-column:nth-child(3):hover {
+    border-color: rgba(0, 255, 0, 0.8);
+    box-shadow: 
+        0 10px 30px rgba(0, 255, 0, 0.2),
+        inset 0 1px 0 rgba(0, 255, 0, 0.5);
+}
+
+/* ===== NEON HEADERS ===== */
+.footer-column h5 {
+    color: #00ffff;
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: var(--spacing-lg);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.footer-column:nth-child(2) h5 {
+    color: #ff00ff;
+}
+
+.footer-column:nth-child(3) h5 {
+    color: #00ff00;
+}
+
+/* ===== CYBERPUNK LINKS ===== */
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    padding-left: var(--spacing-lg);
+}
+
+.footer-column ul li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: #00ffff;
+    font-size: 0.8rem;
+}
+
+.footer-column:nth-child(2) ul li::before {
+    color: #ff00ff;
+    content: '◆';
+}
+
+.footer-column:nth-child(3) ul li::before {
+    color: #00ff00;
+    content: '●';
+}
+
+.footer-column a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: 'Courier New', monospace;
+    position: relative;
+}
+
+.footer-column a:hover {
+    color: #00ffff;
+    text-shadow: 0 0 10px currentColor;
+    transform: translateX(5px);
+    text-decoration: none;
+}
+
+.footer-column:nth-child(2) a:hover {
+    color: #ff00ff;
+}
+
+.footer-column:nth-child(3) a:hover {
+    color: #00ff00;
+}
+
+/* ===== FUN FACTS SECTION ===== */
+.fun-facts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.fact {
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: var(--radius-small);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.fact:hover {
+    background: rgba(0, 255, 0, 0.1);
+    border-color: rgba(0, 255, 0, 0.4);
+    transform: translateX(5px);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.fact:nth-child(even) {
+    background: rgba(0, 255, 0, 0.03);
+    border-color: rgba(0, 255, 0, 0.15);
+}
+
+.fact:nth-child(even):hover {
+    background: rgba(0, 255, 0, 0.08);
+    border-color: rgba(0, 255, 0, 0.3);
+}
+
+/* ===== FUTURISTIC SOCIAL ICONS ===== */
+.footer-socials {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    margin-top: var(--spacing-lg);
+}
+
+.footer-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    border-radius: 50%;
+    color: #00ffff;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-socials a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, transparent 70%);
+    transition: all 0.3s ease;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.footer-socials a:hover {
+    border-color: rgba(0, 255, 255, 1);
+    color: #ffffff;
+    transform: scale(1.1) rotate(360deg);
+    box-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.5),
+        inset 0 0 20px rgba(0, 255, 255, 0.2);
+    animation: neonPulse 1s ease-in-out infinite;
+}
+
+.footer-socials a:hover::before {
+    width: 100px;
+    height: 100px;
+}
+
+.footer-socials a:nth-child(2) {
+    border-color: rgba(255, 0, 255, 0.3);
+    color: #ff00ff;
+}
+
+.footer-socials a:nth-child(2):hover {
+    border-color: rgba(255, 0, 255, 1);
+    box-shadow: 
+        0 0 20px rgba(255, 0, 255, 0.5),
+        inset 0 0 20px rgba(255, 0, 255, 0.2);
+}
+
+.footer-socials a:nth-child(3) {
+    border-color: rgba(0, 255, 0, 0.3);
+    color: #00ff00;
+}
+
+.footer-socials a:nth-child(3):hover {
+    border-color: rgba(0, 255, 0, 1);
+    box-shadow: 
+        0 0 20px rgba(0, 255, 0, 0.5),
+        inset 0 0 20px rgba(0, 255, 0, 0.2);
+}
+
+.footer-socials a:nth-child(4) {
+    border-color: rgba(255, 255, 0, 0.3);
+    color: #ffff00;
+}
+
+.footer-socials a:nth-child(4):hover {
+    border-color: rgba(255, 255, 0, 1);
+    box-shadow: 
+        0 0 20px rgba(255, 255, 0, 0.5),
+        inset 0 0 20px rgba(255, 255, 0, 0.2);
+}
+
+/* ===== CYBERPUNK FOOTER BOTTOM ===== */
+.footer-bottom {
+    background: linear-gradient(90deg, 
+        rgba(0, 255, 255, 0.1) 0%, 
+        rgba(255, 0, 255, 0.15) 25%, 
+        rgba(0, 255, 0, 0.1) 50%, 
+        rgba(255, 255, 0, 0.15) 75%, 
+        rgba(0, 255, 255, 0.1) 100%);
+    border-top: 2px solid rgba(0, 255, 255, 0.5);
+    padding: var(--spacing-2xl) 0 var(--spacing-3xl);
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
+    box-shadow: 
+        0 -5px 20px rgba(0, 0, 0, 0.3),
+        inset 0 2px 0 rgba(255, 0, 255, 0.3);
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(90deg, 
+        transparent 0%, 
+        #00ffff 25%, 
+        #ff00ff 50%, 
+        #00ff00 75%, 
+        transparent 100%) 1;
+}
+
+.footer-bottom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #00ffff 25%, 
+        #ff00ff 50%, 
+        #00ff00 75%, 
+        transparent 100%);
+    animation: circuitFlow 4s ease-in-out infinite reverse;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: hologramFlicker 5s ease-in-out infinite;
+}
+
+/* ===== RESPONSIVE DESIGN - FOOTER ===== */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+        padding: var(--spacing-2xl) var(--spacing-lg);
+    }
+    
+    .footer-socials {
+        gap: var(--spacing-md);
+    }
+    
+    .footer-column h5 {
+        font-size: 1.2rem;
+    }
+
+    .footer-bottom {
+        padding: var(--spacing-xl) 0 var(--spacing-2xl);
+    }
+
+    .footer-bottom p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-column {
+        padding: var(--spacing-lg);
+    }
+
+    .footer-socials a {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .footer-column h5 {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+
+    .footer-bottom p {
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+    }
+
+    .fun-facts {
+        gap: var(--spacing-xs);
+    }
+
+    .fact {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 0.8rem;
+    }
+}
