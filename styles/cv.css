@@ -30,4 +30,29 @@
 
 .cv-download-section .btn {
     margin-top: var(--spacing-lg);
+<<<<<<< HEAD
+=======
+}
+
+/* ===== RESPONSIVE - CV PAGE ===== */
+@media (max-width: 768px) {
+    .embed-responsive-item {
+        height: 600px !important;
+    }
+
+    .cv-download-section {
+        margin-bottom: var(--spacing-xl);
+    }
+}
+
+@media (max-width: 480px) {
+    .embed-responsive-item {
+        height: 500px !important;
+    }
+
+    .cv-download-section .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+>>>>>>> c71e898140f606dcfcd97431c0183e3e1f55d39e
 }

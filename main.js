@@ -37,8 +37,13 @@ function initHeroOverlay() {
     }, 400);
   }
   
-  // Dismiss on click anywhere
-  heroOverlay.addEventListener('click', dismissHero);
+  // Dismiss on click outside hero card
+  heroOverlay.addEventListener('click', (e) => {
+    const heroCard = heroOverlay.querySelector('.hero-card');
+    if (heroCard && !heroCard.contains(e.target)) {
+      dismissHero();
+    }
+  });
   
   // Dismiss on scroll
   let scrollThreshold = 50;
@@ -48,8 +53,12 @@ function initHeroOverlay() {
     }
   });
   
-  // Dismiss on any key press
-  document.addEventListener('keydown', dismissHero);
+  // Dismiss on any key press (except when typing in forms)
+  document.addEventListener('keydown', (e) => {
+    if (!e.target.matches('input, textarea')) {
+      dismissHero();
+    }
+  });
   
   // Handle explore button click
   const exploreBtn = document.getElementById('exploreBtn');
@@ -71,6 +80,7 @@ function initHeroOverlay() {
 function initBurgerMenu() {
   const toggler = document.querySelector('.navbar-toggler');
   if (!toggler) return;
+  
   const barsIcon = toggler.querySelector('.fa-bars');
   const timesIcon = toggler.querySelector('.fa-times');
   if (!barsIcon || !timesIcon) return;
@@ -81,23 +91,42 @@ function initBurgerMenu() {
 
   toggler.addEventListener('click', () => {
     const navMenu = document.getElementById('navMenu');
-    const expanded = toggler.getAttribute('aria-expanded') === 'true';
-    if (expanded) {
+    const isOpen = navMenu.classList.contains('show');
+    
+    if (isOpen) {
+      navMenu.classList.remove('show');
       barsIcon.style.display = '';
       timesIcon.style.display = 'none';
+      toggler.setAttribute('aria-expanded', 'false');
     } else {
+      navMenu.classList.add('show');
       barsIcon.style.display = 'none';
       timesIcon.style.display = '';
+      toggler.setAttribute('aria-expanded', 'true');
     }
   });
 
-  // Also handle collapse on nav link click (optional, if nav links exist)
+  // Close menu when clicking nav links
   const navLinks = document.querySelectorAll('#navMenu .nav-link');
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
+      const navMenu = document.getElementById('navMenu');
+      navMenu.classList.remove('show');
       barsIcon.style.display = '';
       timesIcon.style.display = 'none';
+      toggler.setAttribute('aria-expanded', 'false');
     });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const navMenu = document.getElementById('navMenu');
+    if (!toggler.contains(e.target) && !navMenu.contains(e.target)) {
+      navMenu.classList.remove('show');
+      barsIcon.style.display = '';
+      timesIcon.style.display = 'none';
+      toggler.setAttribute('aria-expanded', 'false');
+    }
   });
 }
 
