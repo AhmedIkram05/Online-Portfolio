@@ -108,38 +108,4 @@
     background: rgba(52, 152, 219, 0.3);
     transform: translateY(-1px);
     box-shadow: var(--shadow-sm);
-<<<<<<< HEAD
-=======
-}
-
-/* ===== RESPONSIVE - PROJECTS PAGE ===== */
-@media (max-width: 768px) {
-    .project-card .card-img-wrapper {
-        height: 180px;
-    }
-
-    .project-card .card-body {
-        height: calc(100% - 180px);
-    }
-}
-
-@media (max-width: 480px) {
-    .project-card .card-img-wrapper {
-        height: 160px;
-    }
-
-    .project-card .card-body {
-        height: calc(100% - 160px);
-        padding: var(--spacing-lg);
-    }
-
-    .tech-stack {
-        gap: var(--spacing-xs);
-    }
-
-    .tech-stack .badge {
-        font-size: 0.75rem;
-        padding: 2px var(--spacing-xs);
-    }
->>>>>>> c71e898140f606dcfcd97431c0183e3e1f55d39e
 }

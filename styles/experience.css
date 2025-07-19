@@ -120,44 +120,4 @@
     left: 0;
     color: var(--success-color);
     font-weight: bold;
-<<<<<<< HEAD
-=======
-}
-
-/* ===== RESPONSIVE - EXPERIENCE PAGE ===== */
-@media (max-width: 768px) {
-    .experience-item {
-        padding: var(--spacing-xl);
-    }
-
-    .skill h6 {
-        font-size: 0.9rem;
-    }
-
-    .skill h6 span {
-        font-size: 0.85rem;
-    }
-
-    .services .card img {
-        max-height: 120px;
-    }
-}
-
-@media (max-width: 480px) {
-    .experience-item {
-        padding: var(--spacing-lg);
-    }
-
-    .experience-item ul li {
-        padding-left: var(--spacing-md);
-    }
-
-    .services .card ul li {
-        padding-left: var(--spacing-md);
-    }
-
-    .progress {
-        height: 8px;
-    }
->>>>>>> c71e898140f606dcfcd97431c0183e3e1f55d39e
 }

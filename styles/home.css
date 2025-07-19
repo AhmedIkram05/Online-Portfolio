@@ -243,48 +243,4 @@
 .cta-container {
     max-width: 800px;
     margin: 0 auto;
-<<<<<<< HEAD
-=======
-}
-
-/* ===== RESPONSIVE - HOME PAGE ===== */
-@media (max-width: 768px) {
-    .hero-name {
-        font-size: 2.8rem;
-    }
-
-    .hero-cta {
-        gap: var(--spacing-md);
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .grid {
-        grid-template-columns: 1fr;
-    }
-
-    .profileImg {
-        width: 250px;
-        height: 250px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-name {
-        font-size: 2.2rem;
-    }
-
-    .hero-title {
-        font-size: 1.2rem;
-    }
-
-    .hero-typing {
-        font-size: 1.2rem;
-    }
-
-    .profileImg {
-        width: 200px;
-        height: 200px;
-    }
->>>>>>> c71e898140f606dcfcd97431c0183e3e1f55d39e
 }
