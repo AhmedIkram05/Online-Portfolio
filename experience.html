@@ -12,6 +12,8 @@
     <!-- Modularized Stylesheets -->
     <link rel="preload" href="styles/global.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles/global.css"></noscript>
+    <link rel="preload" href="styles/navbar.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles/navbar.css"></noscript>
     <link rel="preload" href="styles/experience.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles/experience.css"></noscript>
     <link rel="preload" href="styles/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -28,8 +30,8 @@
         <!-- Modern Navbar -->
         <nav class="navbar" role="navigation" aria-label="Main Navigation">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-times"></i>
+                <span class="burger-open">&lt;/&gt;</span>
+                <span class="burger-close">✕</span>
             </button>
             <ul class="navbar-nav" id="navMenu">
                 <li class="nav-item">

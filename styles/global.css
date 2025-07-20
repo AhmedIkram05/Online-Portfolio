@@ -360,127 +360,6 @@ p {
     margin-bottom: var(--spacing-lg);
 }
 
-/* ===== HEADER & NAVIGATION ===== */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    transition: opacity 0.4s ease, transform 0.4s ease, background 0.4s ease;
-    box-shadow: var(--shadow-md);
-}
-
-header.scrolled {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    box-shadow: var(--shadow-lg);
-}
-
-.navbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: var(--spacing-md) var(--spacing-lg);
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.navbar-toggler {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text-light);
-    font-size: 1.4rem;
-    cursor: pointer;
-    position: relative;
-    width: 48px;
-    height: 48px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 1100;
-    transition: transform var(--transition-medium);
-    padding: 0;
-}
-
-.navbar-toggler:hover {
-    transform: scale(1.1);
-}
-
-.navbar-toggler .fa-bars,
-.navbar-toggler .fa-times {
-    transition: all var(--transition-fast);
-}
-
-.navbar-nav {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: var(--spacing-xl);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.nav-item {
-    position: relative;
-}
-
-.nav-link {
-    color: var(--text-light);
-    text-decoration: none;
-    font-weight: 600;
-    padding: var(--spacing-sm) var(--spacing-lg);
-    border-radius: var(--radius-small);
-    transition: all var(--transition-medium);
-    position: relative;
-    overflow: hidden;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-size: 0.9rem;
-}
-
-.nav-link:hover {
-    color: var(--text-light);
-    transform: translateY(-1px);
-    text-decoration: none;
-}
-
-.nav-link.active {
-    color: var(--text-light);
-    transform: translateY(-1px);
-}
-
-.nav-link::before {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    width: 0;
-    height: 3px;
-    transition: all var(--transition-medium);
-    transform: translateX(-50%);
-    border-radius: 2px;
-    background: transparent;
-}
-
-.nav-link:hover::before {
-    width: 85%;
-    background: #ff4444;
-}
-
-.nav-link.active::before {
-    width: 85%;
-    background: #3498db;
-}
-
 /* ===== LAYOUT UTILITIES ===== */
 .content-wrapper {
     max-width: 1200px;
@@ -513,7 +392,13 @@ section[data-animate] {
 
 main {
     background: transparent;
-    padding-top: var(--spacing-3xl);
+    padding-top: 160px !important; /* Force increased spacing for better separation from navbar */
+    min-height: 100vh;
+}
+
+/* Ensure first section has extra top spacing */
+main > section:first-child {
+    padding-top: calc(var(--spacing-3xl) + var(--spacing-xl)) !important;
 }
 
 /* ===== TEXT COLORS ===== */
@@ -549,4 +434,31 @@ a:hover {
     opacity: 1;
     transform: translateY(0);
     transition: all 0.6s ease-out;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--button-gradient);
+    color: var(--text-light);
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-medium);
+    z-index: 999;
+}
+
+.back-to-top:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: var(--shadow-xl);
+    color: var(--text-light);
+    text-decoration: none;
 }
