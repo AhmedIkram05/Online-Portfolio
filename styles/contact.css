@@ -154,5 +154,13 @@ select.form-control:focus {
 .contact-form .btn {
     width: 100%;
     max-width: 220px;
-    margin-top: var(--spacing-md);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm); /* space between icon and text */
+}
+
+/* Ensure icon inherits spacing even if 'mr-2' utility not present */
+.contact-form .btn i {
+    margin-right: 0; /* reset any existing margin */
 }

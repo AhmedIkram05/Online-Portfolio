@@ -1,5 +1,8 @@
 /* filepath: /Users/ahmedikram/Github Repositories/Online-Portfolio/styles/responsive.css */
 /* Responsive Design - Comprehensive breakpoints for all components */
+/* Small screens (mobile) - up to 767px */
+/* Medium screens (tablet & small laptop) - 768px to 1199px */
+/* Large screens (desktop) - 1200px and up */
 
 /* ===== SMALL SCREENS (MOBILE) - up to 767px ===== */
 @media (max-width: 767px) {
@@ -277,3 +280,88 @@
         letter-spacing: 0.5px;
     }
 }
+
+
+
+/* ===== MEDIUM SCREENS (TABLET & SMALL LAPTOP) - 768px to 1199px ===== */
+@media (min-width: 768px) and (max-width: 1199px) {
+    /* Layout refinements */
+    .content-wrapper { max-width: 1000px; padding: 0 var(--spacing-xl); }
+    main { padding-top: 140px !important; }
+    main > section:first-child { padding-top: calc(var(--spacing-3xl) + var(--spacing-lg)) !important; }
+    section[data-animate] { padding: var(--spacing-3xl) 0; }
+
+    /* Typography scaling */
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.4rem; }
+    h3 { font-size: 2rem; }
+    h4 { font-size: 1.6rem; }
+    .display-4 { font-size: 2.2rem; }
+    .lead { font-size: 1.15rem; line-height: 1.6; max-width: 90%; margin-left: auto; margin-right: auto; }
+
+    /* Grids */
+    .grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-2xl); }
+    .services { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-2xl); }
+    /* Home services: if only two cards fit in first row and third wraps, make third span full row */
+    .services-home { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .services-home > .card:last-child { grid-column: 1 / -1; }
+
+    /* Cards */
+    .card { border-radius: var(--radius-medium); }
+    .card-body { padding: var(--spacing-xl); }
+    .card-title { font-size: 1.4rem; }
+    .card-text { font-size: 1rem; }
+
+    /* Project cards */
+    .project-card .card-img-wrapper { height: 190px; }
+    .project-card .card-title { font-size: 1.35rem; }
+    .project-card .card-body { padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-2xl); }
+    .tech-stack { gap: var(--spacing-sm); }
+    .tech-stack .badge { font-size: 0.75rem; }
+
+    /* Experience items */
+    .experience-item { padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-2xl); }
+    .experience-item h5 { font-size: 1.3rem; }
+    .experience-item ul li { font-size: 0.95rem; }
+
+    /* Contact page */
+    .form-row-grid { grid-template-columns: 1fr 1fr; gap: var(--spacing-xl); }
+    .contact-item { padding: var(--spacing-xl); }
+
+    /* CV viewer */
+    .embed-responsive-item { height: 760px !important; }
+
+    /* Footer */
+    .footer-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--spacing-2xl); padding: var(--spacing-2xl) var(--spacing-xl); }
+    /* If the last footer column wraps to its own row (common at mid widths with only 2 columns), let it span full width to avoid empty space on the right */
+    .footer-grid .footer-column:last-child { grid-column: 1 / -1; }
+
+    /* Narrower segment of medium (tablet portrait & small landscape) force exactly 2 columns then span last */
+    @media (min-width: 768px) and (max-width: 899px) {
+        .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        .footer-grid .footer-column:last-child { grid-column: 1 / -1; }
+    }
+    .footer-column { padding: var(--spacing-xl); text-align: left; }
+    .footer-column h5 { font-size: 1.2rem; letter-spacing: 1px; margin-bottom: var(--spacing-md); }
+    .footer-socials { gap: var(--spacing-md); justify-content: flex-start; flex-wrap: wrap; }
+    .footer-socials a { width: 50px; height: 50px; font-size: 1.15rem; }
+    .fun-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--spacing-sm); }
+    .fact { font-size: 0.85rem; padding: var(--spacing-sm); }
+    .footer-bottom { padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-2xl); }
+    .footer-bottom p { font-size: 0.85rem; letter-spacing: 0.5px; }
+
+    /* Navbar adjustments (slightly tighter gap than desktop XL) */
+    header .navbar { padding: var(--spacing-md) var(--spacing-xl); }
+    .navbar-nav { gap: var(--spacing-lg); }
+    .nav-link { padding: var(--spacing-sm) var(--spacing-md); font-size: 0.85rem; }
+
+    /* Hero section (home) */
+    .hero-name { font-size: 3rem; }
+    .hero-title { font-size: 1.25rem; }
+    .hero-typing { font-size: 1.3rem; }
+    .hero-typing-container { height: 70px; }
+    .hero-card { padding: var(--spacing-3xl) var(--spacing-2xl); }
+}
+
+
+

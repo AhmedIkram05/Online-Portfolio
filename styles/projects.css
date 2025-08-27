@@ -60,6 +60,24 @@
     transform: scale(1.1);
 }
 
+/* ===== PROJECT CARD ACTION BUTTONS (Icon/Text Spacing) ===== */
+/* Ensure consistent gap between leading icon and label for View Code / Live Demo buttons */
+.project-card .btn {
+    gap: var(--spacing-sm); /* modern browsers */
+}
+
+/* Fallback for browsers without flex gap on inline-flex (older Safari) */
+.project-card .btn i:first-child,
+.project-card .btn svg:first-child {
+    margin-right: var(--spacing-sm);
+}
+
+/* If button is icon-only, remove added margin */
+.project-card .btn i:only-child,
+.project-card .btn svg:only-child {
+    margin-right: 0;
+}
+
 /* ===== PROJECT CARD OVERLAY ===== */
 .project-card .card-overlay {
     position: absolute;
