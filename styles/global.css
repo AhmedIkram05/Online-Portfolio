@@ -375,6 +375,23 @@ section[data-animate] {
     margin-bottom: var(--spacing-lg);
 }
 
+/* ===== GLOBAL CARD MEDIA SPACING ===== */
+/* Unified card media spacing (matches Experience page baseline) */
+.card-body > img,
+.card-body > a > img,
+.card-body > i {
+    margin-bottom: var(--spacing-2xl);
+}
+
+/* Slightly reduce on very small screens for balance */
+@media (max-width: 480px) {
+    .card-body > img,
+    .card-body > a > img,
+    .card-body > i {
+        margin-bottom: var(--spacing-xl);
+    }
+}
+
 /* ===== LAYOUT UTILITIES ===== */
 .content-wrapper {
     max-width: 1200px;
