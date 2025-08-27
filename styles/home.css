@@ -123,6 +123,25 @@
     flex-wrap: wrap;
 }
 
+/* Icon/Text spacing for Hero CTA buttons */
+.hero-cta .btn {
+    display: inline-flex; /* ensure flex context if overridden elsewhere */
+    align-items: center;
+    gap: var(--spacing-sm); /* primary spacing between icon and label */
+}
+
+/* Fallback for browsers without flex gap support on inline-flex */
+.hero-cta .btn i:first-child,
+.hero-cta .btn svg:first-child {
+    margin-right: var(--spacing-sm);
+}
+
+/* If button has only an icon, remove extra margin */
+.hero-cta .btn i:only-child,
+.hero-cta .btn svg:only-child {
+    margin-right: 0;
+}
+
 /* ===== ANIMATED BLOB BACKGROUND ===== */
 .blob-container {
     position: absolute;

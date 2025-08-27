@@ -417,6 +417,12 @@ section[data-animate] {
     margin-top: var(--spacing-2xl);
 }
 
+/* Force stacked cards on contact page regardless of viewport */
+.contact-stack {
+    grid-template-columns: 1fr !important; /* override auto-fit behavior */
+    align-items: stretch;
+}
+
 /* ===== SECTIONS ===== */
 section[data-animate] {
     padding: var(--spacing-3xl) 0;

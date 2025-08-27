@@ -30,4 +30,11 @@
 
 .cv-download-section .btn {
     margin-top: var(--spacing-lg);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--spacing-sm); /* increased spacing between icon and text */
 }
+
+/* Fallback for browsers without flex gap support */
+.cv-download-section .btn i { margin-right: var(--spacing-sm); }
