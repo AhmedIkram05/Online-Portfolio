@@ -2,7 +2,7 @@
 /* Responsive Design - Comprehensive breakpoints for all components */
 /* Small screens (mobile) - up to 767px */
 /* Medium screens (tablet & small laptop) - 768px to 1199px */
-/* Large screens (desktop) - 1200px and up */
+/* (Base) Large screens (desktop) - 1200px and up */
 
 /* ===== SMALL SCREENS (MOBILE) - up to 767px ===== */
 @media (max-width: 767px) {
@@ -362,6 +362,3 @@
     .hero-typing-container { height: 70px; }
     .hero-card { padding: var(--spacing-3xl) var(--spacing-2xl); }
 }
-
-
-

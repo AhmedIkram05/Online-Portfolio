@@ -462,17 +462,28 @@ a:hover {
     text-decoration: none;
 }
 
-/* ===== SCROLL ANIMATIONS ===== */
+/* ===== SCROLL ANIMATIONS (Directional) ===== */
+/* Base state */
 [data-animate]:not(.hero) {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px); /* default enter from bottom */
+    transition: opacity 0.65s ease, transform 0.65s cubic-bezier(.22,.61,.36,1);
+    will-change: opacity, transform;
 }
+/* Prepare states applied before becoming visible (JS swaps these depending on scroll direction) */
+[data-animate].from-top { transform: translateY(-40px); }
+[data-animate].from-bottom { transform: translateY(40px); }
 
+/* Visible state */
+[data-animate].in-view,
+/* Backward compatibility for old class name */
 [data-animate].animate {
     opacity: 1;
     transform: translateY(0);
-    transition: all 0.6s ease-out;
 }
+
+/* Optional: quicker re-hide transition when leaving viewport */
+[data-animate].leaving { transition: opacity .4s ease, transform .45s ease; }
 
 /* Back to Top Button */
 .back-to-top {
