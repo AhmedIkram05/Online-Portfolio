@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbarScroll();
   initProgressBars();
   initHeroTyping();
-  initScrollAnimations();
   initHeaderScroll();
 });
 
@@ -325,21 +324,67 @@ function initBackToTop() {
 }
 
 function initSmoothScrollAnimations() {
-  const animatedItems = document.querySelectorAll('[data-animate]');
-  if (!("IntersectionObserver" in window)) {
-    animatedItems.forEach(item => item.classList.add('animate'));
+  // Auto-tag common content elements so effect applies site-wide without manually adding data-animate
+  const autoSelectors = [
+    'main section',
+    '.experience-item',
+    '.project-card',
+    '.contact-item',
+    '.skill',
+    '.services .card',
+    '.footer-grid > *',
+    '.footer-bottom'
+  ];
+  autoSelectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach(node => {
+      // Skip hero overlay / hero container if present
+      if (node.classList && node.classList.contains('hero')) return;
+      if (!node.hasAttribute('data-animate')) node.setAttribute('data-animate', '');
+    });
+  });
+
+  const items = Array.from(document.querySelectorAll('[data-animate]'));
+  if (!items.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('in-view'));
     return;
   }
-  const observer = new IntersectionObserver((entries, observer) => {
+
+  let lastScrollY = window.pageYOffset;
+
+  const observer = new IntersectionObserver((entries) => {
+    const currentScrollY = window.pageYOffset;
+    const scrollingDown = currentScrollY > lastScrollY;
+
     entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('animate');
-        observer.unobserve(entry.target);
+      const el = entry.target;
+      const direction = scrollingDown ? 'down' : 'up';
+      if (entry.isIntersecting) {
+        el.classList.remove('from-top', 'from-bottom');
+        el.classList.add(direction === 'down' ? 'from-bottom' : 'from-top');
+        void el.offsetWidth; // force reflow for transition
+        if (!el.__revealedOnce) {
+          const index = items.indexOf(el);
+            el.style.transitionDelay = Math.min(index * 60, 500) + 'ms';
+        } else {
+          el.style.transitionDelay = '';
+        }
+        el.classList.add('in-view');
+        el.__revealedOnce = true;
+      } else {
+        el.classList.remove('in-view');
+        el.classList.add(direction === 'down' ? 'from-top' : 'from-bottom');
       }
     });
-  }, { threshold: 0.1 });
-  
-  animatedItems.forEach(item => observer.observe(item));
+
+    lastScrollY = currentScrollY;
+  }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
+
+  items.forEach(el => {
+    el.classList.add('from-bottom');
+    observer.observe(el);
+  });
 }
 
 function initHeroSmoothScroll() {
