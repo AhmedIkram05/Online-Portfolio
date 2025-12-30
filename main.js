@@ -333,12 +333,16 @@ function initSmoothScrollAnimations() {
     '.skill',
     '.services .card',
     '.footer-grid > *',
-    '.footer-bottom'
+    '.footer-bottom',
+    '.section-title'
   ];
   autoSelectors.forEach(sel => {
     document.querySelectorAll(sel).forEach(node => {
       // Skip hero overlay / hero container if present
       if (node.classList && node.classList.contains('hero')) return;
+      // Skip elements explicitly marked to not animate
+      if (node.classList && node.classList.contains('no-animate')) return;
+      
       if (!node.hasAttribute('data-animate')) node.setAttribute('data-animate', '');
     });
   });
@@ -357,6 +361,9 @@ function initSmoothScrollAnimations() {
     const currentScrollY = window.pageYOffset;
     const scrollingDown = currentScrollY > lastScrollY;
 
+    // Get all currently intersecting elements in this batch to calculate stagger
+    const intersectingEntries = entries.filter(entry => entry.isIntersecting);
+
     entries.forEach(entry => {
       const el = entry.target;
       const direction = scrollingDown ? 'down' : 'up';
@@ -364,9 +371,13 @@ function initSmoothScrollAnimations() {
         el.classList.remove('from-top', 'from-bottom');
         el.classList.add(direction === 'down' ? 'from-bottom' : 'from-top');
         void el.offsetWidth; // force reflow for transition
+        
         if (!el.__revealedOnce) {
-          const index = items.indexOf(el);
-            el.style.transitionDelay = Math.min(index * 60, 500) + 'ms';
+          // Use index within the current batch for stagger effect
+          // This ensures elements appearing together stagger nicely, 
+          // but elements further down don't have huge delays based on global index
+          const batchIndex = intersectingEntries.indexOf(entry);
+          el.style.transitionDelay = (batchIndex * 100) + 'ms';
         } else {
           el.style.transitionDelay = '';
         }
