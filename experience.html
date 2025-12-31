@@ -14,8 +14,8 @@
     <noscript><link rel="stylesheet" href="styles/global.css"></noscript>
     <link rel="preload" href="styles/navbar.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles/navbar.css"></noscript>
-    <link rel="preload" href="styles/experience.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles/experience.css"></noscript>
+    <link rel="preload" href="styles/experience.css?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles/experience.css?v=2"></noscript>
     <link rel="preload" href="styles/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles/footer.css"></noscript>
     <link rel="preload" href="styles/responsive.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -177,115 +177,111 @@
         <section data-animate class="content-wrapper">
             <h2 class="section-title">Technical Skills</h2>
             <div class="services">
-                <!-- Programming Languages Card -->
+                <!-- Programming Languages -->
                 <div class="card">
                     <div class="card-body">
                         <i class="fas fa-code fa-3x text-primary"></i>
                         <h3 class="card-title">Programming Languages</h3>
-                        <div class="skill">
-                            <h6>Python <span style="color: var(--success-color);">90%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 90%; background: var(--success-color);"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h6>Java <span style="color: var(--success-color);">90%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 90%; background: var(--success-color);"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h6>C++ <span style="color: var(--warning-color);">75%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 75%; background: var(--warning-color);"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h6>C <span style="color: var(--info-color);">60%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 60%; background: var(--info-color);"></div>
-                            </div>
+                        <div class="tech-badges">
+                            <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
+                            <span class="tech-badge"><i class="fab fa-java"></i> Java</span>
+                            <span class="tech-badge"><i class="fas fa-code"></i> C</span>
+                            <span class="tech-badge"><i class="fas fa-code"></i> C++</span>
+                            <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="tech-badge"><i class="fab fa-js-square"></i> TypeScript</span>
+                            <span class="tech-badge"><i class="fas fa-terminal"></i> Bash</span>
                         </div>
                     </div>
                 </div>
-                <!-- Web Development Card -->
+
+                <!-- Web & Mobile Development -->
                 <div class="card">
                     <div class="card-body">
-                        <i class="fas fa-globe fa-3x text-success"></i>
-                        <h3 class="card-title">Web Development</h3>
-                        <div class="skill">
-                            <h6>HTML <span style="color: var(--success-color);">95%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 95%; background: var(--success-color);"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h6>CSS <span style="color: var(--info-color);">90%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 90%; background: var(--info-color);"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h6>SQL <span style="color: var(--warning-color);">95%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 95%; background: var(--warning-color);"></div>
-                            </div>
+                        <i class="fas fa-laptop-code fa-3x text-success"></i>
+                        <h3 class="card-title">Web & Mobile Development</h3>
+                        <div class="tech-badges">
+                            <span class="tech-badge"><i class="fab fa-react"></i> React</span>
+                            <span class="tech-badge"><i class="fab fa-react"></i> React Native</span>
+                            <span class="tech-badge"><i class="fas fa-flask"></i> Flask</span>
+                            <span class="tech-badge"><i class="fab fa-html5"></i> HTML</span>
+                            <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS</span>
+                            <span class="tech-badge"><i class="fab fa-css3"></i> Tailwind CSS</span>
+                            <span class="tech-badge"><i class="fab fa-bootstrap"></i> Bootstrap</span>
                         </div>
                     </div>
                 </div>
-                <!-- Development Tools Card -->
+
+                <!-- Databases & APIs -->
                 <div class="card">
                     <div class="card-body">
-                        <i class="fas fa-code-branch fa-3x text-warning"></i>
-                        <h3 class="card-title">Development Tools</h3>
-                        <div class="skill">
-                            <h6>GitHub <span style="color: var(--info-color);">95%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 95%; background: var(--info-color);"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h6>Git <span style="color: var(--success-color);">80%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 80%; background: var(--success-color);"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h6>CI/CD <span style="color: var(--warning-color);">70%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 70%; background: var(--warning-color);"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h6>Raspberry Pi <span style="color: var(--success-color);">75%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 75%; background: var(--success-color);"></div>
-                            </div>
+                        <i class="fas fa-database fa-3x text-warning"></i>
+                        <h3 class="card-title">Databases & APIs</h3>
+                        <div class="tech-badges">
+                            <span class="tech-badge"><i class="fas fa-database"></i> SQL</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> MySQL</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</span>
+                            <span class="tech-badge"><i class="fas fa-leaf"></i> MongoDB</span>
+                            <span class="tech-badge"><i class="fas fa-network-wired"></i> REST APIs</span>
                         </div>
                     </div>
                 </div>
-                <!-- Operating Systems Card -->
+
+                <!-- Data Science & Machine Learning -->
                 <div class="card">
                     <div class="card-body">
-                        <i class="fas fa-desktop fa-3x text-info"></i>
+                        <i class="fas fa-brain fa-3x text-info"></i>
+                        <h3 class="card-title">Data Science & ML</h3>
+                        <div class="tech-badges">
+                            <span class="tech-badge"><i class="fas fa-book"></i> Jupyter Notebook</span>
+                            <span class="tech-badge"><i class="fas fa-chart-bar"></i> Power BI</span>
+                            <span class="tech-badge"><i class="fas fa-table"></i> Pandas</span>
+                            <span class="tech-badge"><i class="fas fa-calculator"></i> NumPy</span>
+                            <span class="tech-badge"><i class="fas fa-cogs"></i> scikit-learn</span>
+                            <span class="tech-badge"><i class="fas fa-fire"></i> PyTorch</span>
+                            <span class="tech-badge"><i class="fas fa-chart-line"></i> Matplotlib</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud & DevOps -->
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-cloud fa-3x text-primary"></i>
+                        <h3 class="card-title">Cloud & DevOps</h3>
+                        <div class="tech-badges">
+                            <span class="tech-badge"><i class="fab fa-aws"></i> AWS</span>
+                            <span class="tech-badge"><i class="fab fa-docker"></i> Docker</span>
+                            <span class="tech-badge"><i class="fas fa-dharmachakra"></i> Kubernetes</span>
+                            <span class="tech-badge"><i class="fab fa-git-alt"></i> Git</span>
+                            <span class="tech-badge"><i class="fab fa-github"></i> GitHub</span>
+                            <span class="tech-badge"><i class="fas fa-sync"></i> CI/CD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testing & Development Tools -->
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-tools fa-3x text-danger"></i>
+                        <h3 class="card-title">Testing & Tools</h3>
+                        <div class="tech-badges">
+                            <span class="tech-badge"><i class="fas fa-code"></i> VS Code</span>
+                            <span class="tech-badge"><i class="fas fa-vial"></i> pytest</span>
+                            <span class="tech-badge"><i class="fas fa-check-circle"></i> JUnit</span>
+                            <span class="tech-badge"><i class="fas fa-paper-plane"></i> Postman</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Operating Systems -->
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-desktop fa-3x text-secondary"></i>
                         <h3 class="card-title">Operating Systems</h3>
-                        <div class="skill">
-                            <h6>MacOS <span style="color: var(--warning-color);">100%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 100%; background: var(--warning-color);"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h6>Linux <span style="color: var(--info-color);">90%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 90%; background: var(--info-color);"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h6>Windows <span style="color: var(--success-color);">85%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 85%; background: var(--success-color);"></div>
-                            </div>
+                        <div class="tech-badges">
+                            <span class="tech-badge"><i class="fab fa-linux"></i> Linux (Ubuntu)</span>
+                            <span class="tech-badge"><i class="fab fa-apple"></i> macOS</span>
+                            <span class="tech-badge"><i class="fab fa-windows"></i> Windows</span>
                         </div>
                     </div>
                 </div>
@@ -299,37 +295,50 @@
                 <div class="card">
                     <div class="card-body">
                         <i class="fas fa-users fa-3x text-danger"></i>
-                        <h3 class="card-title">Transferable Skills</h3>
-                        <div class="skill">
-                            <h6>Agile Development <span style="color: var(--info-color);">95%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 95%; background: var(--info-color);"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h6>Attention to Detail <span style="color: var(--accent-color);">95%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 95%; background: var(--accent-color);"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h6>Problem-Solving <span style="color: var(--success-color);">90%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 90%; background: var(--success-color);"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h6>Team Collaboration <span style="color: var(--warning-color);">90%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 90%; background: var(--warning-color);"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h6>Communication <span style="color: var(--success-color);">90%</span></h6>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 90%; background: var(--success-color);"></div>
-                            </div>
-                        </div>
+                        <h3 class="card-title">Collaboration & Leadership</h3>
+                        <p class="card-text">Team-oriented, experienced in mentoring and cross-functional collaboration.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-chess-knight fa-3x text-warning"></i>
+                        <h3 class="card-title">Strategic Execution</h3>
+                        <p class="card-text">Strong planning and time management for end-to-end project delivery.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-comments fa-3x text-info"></i>
+                        <h3 class="card-title">Technical Communication</h3>
+                        <p class="card-text">Translate complex concepts into clear, actionable insights.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-puzzle-piece fa-3x text-success"></i>
+                        <h3 class="card-title">Problem-Solving & Analysis</h3>
+                        <p class="card-text">Skilled in root cause analysis and scalable system optimization.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-search fa-3x text-primary"></i>
+                        <h3 class="card-title">Attention to Detail</h3>
+                        <p class="card-text">Committed to accuracy through rigorous testing and best practices.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-sync-alt fa-3x text-secondary"></i>
+                        <h3 class="card-title">Continuous Learning</h3>
+                        <p class="card-text">Rapidly master new technologies and pivot strategies as needed.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-chart-line fa-3x text-warning"></i>
+                        <h3 class="card-title">Data-Driven Decision Making</h3>
+                        <p class="card-text">Use metrics and performance analysis to guide decisions effectively.</p>
                     </div>
                 </div>
             </div>

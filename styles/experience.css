@@ -121,3 +121,43 @@
     color: var(--success-color);
     font-weight: bold;
 }
+
+/* ===== TECH BADGES ===== */
+.tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: var(--spacing-lg);
+}
+
+.tech-badge {
+    background: rgba(255, 255, 255, 0.1); /* Increased opacity for better visibility */
+    color: var(--text-light);
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Stronger border */
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Stronger shadow */
+    cursor: default;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+.tech-badge i {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+.tech-badge:hover {
+    background: rgba(52, 152, 219, 0.2);
+    border-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+    color: #fff;
+    text-shadow: 0 0 8px rgba(52, 152, 219, 0.6);
+}
