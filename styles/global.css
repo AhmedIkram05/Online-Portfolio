@@ -417,9 +417,8 @@ section[data-animate] {
     margin-top: var(--spacing-2xl);
 }
 
-/* Force stacked cards on contact page regardless of viewport */
+/* Contact stack layout - allows side-by-side on larger screens */
 .contact-stack {
-    grid-template-columns: 1fr !important; /* override auto-fit behavior */
     align-items: stretch;
 }
 
