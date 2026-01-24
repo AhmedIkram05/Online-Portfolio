@@ -1646,7 +1646,7 @@ footer::after {
 /* ===== PROJECT CARD IMAGE WRAPPER ===== */
 .project-card .card-img-wrapper {
     position: relative;
-    height: 200px;
+    height: 250px;
     overflow: hidden;
     border-radius: var(--radius-medium) var(--radius-medium) 0 0;
 
@@ -1876,7 +1876,7 @@ footer::after {
 
 /* ===== CERTIFICATION CARDS ===== */
 .services .card img {
-    max-height: 150px;
+    max-height: 250px;
     object-fit: contain;
     width: 100%;
     margin-bottom: var(--spacing-2xl); /* unified spacing */
@@ -2290,7 +2290,7 @@ select.form-control:focus {
 
     /* Projects page */
     .project-card .card-img-wrapper {
-        height: 160px;
+        height: 220px;
     }
     .project-card .card-body {
         padding-top: var(--spacing-xl);
@@ -2335,7 +2335,7 @@ select.form-control:focus {
     }
     /* Generic card images inside services (exclude project cards to avoid height gap) */
     .services .card:not(.project-card) img {
-        max-height: 100px;
+        max-height: 180px;
         margin-bottom: var(--spacing-2xl); /* was var(--spacing-sm); unified spacing */
     }
 
@@ -2472,7 +2472,7 @@ select.form-control:focus {
     .card-text { font-size: 1rem; }
 
     /* Project cards */
-    .project-card .card-img-wrapper { height: 190px; }
+    .project-card .card-img-wrapper { height: 250px; }
     .project-card .card-title { font-size: 1.35rem; }
     .project-card .card-body { padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-2xl); }
     .tech-stack { gap: var(--spacing-sm); }
