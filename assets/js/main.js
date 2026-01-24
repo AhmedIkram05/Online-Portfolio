@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   init3DHeroEffects();
   initLazyLoad();
   initNavbarScroll();
-  initProgressBars();
   initHeroTyping();
   initScrollSpy();
   initSPAInteraction();
@@ -424,74 +423,68 @@ function init3DHeroEffects() {
   updateTransform();
 }
 
-// Progress bar animations
-function initProgressBars() {
-  const progressBars = document.querySelectorAll('.progress-bar');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const progressBar = entry.target;
-        const targetWidth = progressBar.style.width || '0%';
-        
-        // Start from 0 and animate to target
-        progressBar.style.width = '0%';
-        setTimeout(() => {
-          progressBar.style.width = targetWidth;
-        }, 200);
-        
-        observer.unobserve(progressBar);
-      }
-    });
-  }, { threshold: 0.1 });
-  
-  progressBars.forEach(bar => observer.observe(bar));
-}
-
 // ===== SPA Migration Utilities =====
 
 function initScrollSpy() {
   const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-  const sections = Array.from(navLinks).map(link => {
-      const id = link.getAttribute('href').substring(1);
-      return document.getElementById(id);
-  }).filter(section => section !== null);
   
-  if (sections.length === 0) return;
+  if (navLinks.length === 0) return;
 
   function updateActiveLink() {
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.body.offsetHeight;
     const scrollY = window.pageYOffset;
-    // Offset for the fixed navbar height so active state changes just before section hits top
-    const offset = 120; 
     
-    let current = '';
-    
-    // Default to first section
-    if (sections.length > 0) current = sections[0].id;
+    // Define a trigger zone: roughly 30% down the viewport.
+    const triggerPoint = windowHeight * 0.3;
 
-    // Check if at bottom of page -> activate last section
-    if ((window.innerHeight + scrollY) >= document.body.offsetHeight - 50) {
-        current = sections[sections.length - 1].id;
+    let currentId = '';
+
+    // Priority Check: Bottom of page -> Always activate 'Contact' (or last item)
+    if ((scrollY + windowHeight) >= (documentHeight - 50)) {
+       const lastLink = navLinks[navLinks.length - 1];
+       if (lastLink) currentId = lastLink.getAttribute('href').substring(1);
     } else {
-        // Standard check: is scrollY passed the section top?
-        sections.forEach(section => {
-            // section.offsetTop is distance from top of document
-            if (scrollY + offset >= section.offsetTop) {
-                current = section.id;
+        // Standard Check: Find the last section whose top has crossed the trigger point
+        // We iterate in order, so the last one that matches overwrites previous matches.
+        navLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const section = document.getElementById(id);
+            if (section) {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= triggerPoint) {
+                    currentId = id;
+                }
             }
         });
     }
 
+    // Fallback: If no section is triggered (e.g. at very top), default to first one if visible
+    if (!currentId && navLinks.length > 0) {
+        // Only if we are near the top
+        if (scrollY < 100) {
+             currentId = navLinks[0].getAttribute('href').substring(1);
+        }
+    }
+
     navLinks.forEach(link => {
+      // Remove active class from all
       link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
+      
+      // Add active class to match
+      const linkId = link.getAttribute('href').substring(1);
+      if (linkId === currentId) {
         link.classList.add('active');
       }
     });
   }
 
+  // Use passive listener for performance
   window.addEventListener('scroll', updateActiveLink, { passive: true });
-  // Call once on load
-  updateActiveLink();
+  // Initial check
+  updateActiveLink(); 
+  // Delayed check to handle any layout shifts
+  setTimeout(updateActiveLink, 100);
 }
 
 function initSPAInteraction() {
