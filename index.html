@@ -5,23 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Online portfolio of Ahmed Ikram showcasing skills, projects, CV and contact information">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Ahmed Ikram - Online Portfolio</title>
 
-    <!-- Preload and defer full stylesheet -->
-    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles.css"></noscript>
-
-    <!-- Modularized Stylesheets -->
-    <link rel="preload" href="styles/global.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles/global.css"></noscript>
-    <link rel="preload" href="styles/navbar.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles/navbar.css"></noscript>
-    <link rel="preload" href="styles/home.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles/home.css"></noscript>
-    <link rel="preload" href="styles/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles/footer.css"></noscript>
-    <link rel="preload" href="styles/responsive.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles/responsive.css"></noscript>
+    <!-- Bundled Stylesheet -->
+    <link rel="preload" href="styles/bundle.css?v=2.0" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles/bundle.css?v=2.0"></noscript>
 
 
     <!-- Font Awesome Icons -->
@@ -72,19 +63,19 @@
             </button>
             <ul class="navbar-nav" id="navMenu">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.html">Home</a>
+                    <a class="nav-link active" href="#home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="projects.html">Projects</a>
+                    <a class="nav-link" href="#projects">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="experience.html">Experience</a>
+                    <a class="nav-link" href="#experience">Experience</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cv.html">CV</a>
+                    <a class="nav-link" href="#cv">CV</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="#contact">Contact</a>
                 </li>
             </ul>
         </nav>
@@ -94,7 +85,7 @@
     <main id="main-content" class="content-wrapper">
 
         <!-- About Section -->
-        <section data-animate class="content-wrapper">
+        <section id="home" data-animate class="content-wrapper">
             <div class="center" style="margin-bottom: var(--spacing-xl);">
                 <h1 class="display-4">About Me</h1>
                 <p class="lead">A little about me and my background, and my journey in software development.</p>
@@ -116,48 +107,794 @@
             </div>
         </section>
 
-        <!-- Services Grid -->
+        <!-- Projects Section -->
+        <section id="projects">
+
+        <!-- Header Section -->
+        <section data-animate>
+            <div class="content-wrapper center">
+                <h2 class="display-4">My Projects</h2>
+                <p class="lead">A showcase of my development journey through various programming languages and technologies. Each project represents a learning milestone and demonstrates my growing expertise in software development.</p>
+            </div>
+        </section>
+
+        <!-- Projects Grid -->
+        <section class="content-wrapper no-animate">
+            
+            <!-- Python Projects -->
+            <h3 class="section-title" style="text-align: left; margin-top: 2rem;">Python Projects</h3>
+            <div class="services">
+                <!-- Project: Texas Holdem Poker -->
+                <div class="card project-card no-animate">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/texas-holdem-poker" alt="Texas Holdem Poker" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/texas-holdem-poker" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Texas Holdem Poker</h4>
+                        <p class="card-text">Texas Holdem Poker game made using Python</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Process Scheduler -->
+                <div class="card project-card no-animate">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/process-scheduler" alt="Process Scheduler" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/process-scheduler" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Process Scheduler</h4>
+                        <p class="card-text">Process Scheduler terminal app made using Python</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Movie Recommendation System -->
+                <div class="card project-card no-animate">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/movie-recommendation-system" alt="Movie Recommendation System" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/movie-recommendation-system" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Movie Recommendation System</h4>
+                        <p class="card-text">AI powered movie recommendation system made using Python and Flask</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">Python</span>
+                            <span class="badge badge-secondary">Flask</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Haggis Predictive Modeling -->
+                <div class="card project-card no-animate">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/haggis-predictive-modeling" alt="Haggis Predictive Modeling" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/haggis-predictive-modeling" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Haggis Predictive Modeling</h4>
+                        <p class="card-text">Haggis Dataset, data mining and prediction modelling notebook</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">Python</span>
+                            <span class="badge badge-secondary">Jupyter Notebook</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Development Projects -->
+            <h3 class="section-title" style="text-align: left; margin-top: 4rem;">Web Development (HTML, CSS, JS)</h3>
+            <div class="services">
+                <!-- Project: Klondike Solitaire -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/klondike-solitaire" alt="Klondike Solitaire" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/klondike-solitaire" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Klondike Solitaire</h4>
+                        <p class="card-text">Solitaire game made using HTML, CSS and JavaScript</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">HTML</span>
+                            <span class="badge badge-secondary">CSS</span>
+                            <span class="badge badge-secondary">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Scientific Calculator -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/scientific-calculator" alt="Scientific Calculator" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/scientific-calculator" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Scientific Calculator</h4>
+                        <p class="card-text">Scientific Calculator made using HTML, CSS and Javascript</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">HTML</span>
+                            <span class="badge badge-secondary">CSS</span>
+                            <span class="badge badge-secondary">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Weather App -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/weather-app" alt="Weather App" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/weather-app" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Weather App</h4>
+                        <p class="card-text">Weather PWA made using HTML, CSS and JavaScript</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">HTML</span>
+                            <span class="badge badge-secondary">CSS</span>
+                            <span class="badge badge-secondary">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Snapledger -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/snapledger" alt="Snapledger" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/snapledger" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Snapledger</h4>
+                        <p class="card-text">Personal finance manager PWA made using HTML, CSS, JavaScript and TensorFlow</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">HTML</span>
+                            <span class="badge badge-secondary">CSS</span>
+                            <span class="badge badge-secondary">JavaScript</span>
+                            <span class="badge badge-secondary">TensorFlow</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Online Portfolio -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/Online-Portfolio" alt="Online Portfolio" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/Online-Portfolio" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Online Portfolio</h4>
+                        <p class="card-text">An online portfolio for potential employers to view!</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">HTML</span>
+                            <span class="badge badge-secondary">CSS</span>
+                            <span class="badge badge-secondary">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Development -->
+            <h3 class="section-title" style="text-align: left; margin-top: 4rem;">Mobile Development</h3>
+            <div class="services">
+                <!-- Project: Stocklens -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/stocklens" alt="Stocklens" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/stocklens" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Stocklens</h4>
+                        <p class="card-text">Scan Your Spending, See Your Missed Investing</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">React Native</span>
+                            <span class="badge badge-secondary">TypeScript</span>
+                            <span class="badge badge-secondary">JavaScript</span>
+                            <span class="badge badge-secondary">Firebase</span>
+                            <span class="badge badge-secondary">Expo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Systems & Application Development -->
+            <h3 class="section-title" style="text-align: left; margin-top: 4rem;">Systems & Application Development</h3>
+            <div class="services">
+                <!-- Project: Bank System -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/bank-system" alt="Bank System" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/bank-system" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Bank System</h4>
+                        <p class="card-text">Bank account management system made using Java</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">Java</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Java Messaging Application -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/java-messaging-application" alt="Java Messaging Application" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/java-messaging-application" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Java Messaging Application</h4>
+                        <p class="card-text">Messaging application made using Java Swing</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">Java</span>
+                            <span class="badge badge-secondary">Swing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Rental Car Company -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/rental-car-company" alt="Rental Car Company" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/rental-car-company" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Rental Car Company</h4>
+                        <p class="card-text">Rental Company app made using C++</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">C++</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Unix Version Control System -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/unix-version-control-system" alt="Unix Version Control System" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/unix-version-control-system" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Unix Version Control System</h4>
+                        <p class="card-text">Version Control System made using Bash script</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">Bash Script</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Analytics & Dashboards -->
+            <h3 class="section-title" style="text-align: left; margin-top: 4rem;">Data Analytics & Dashboards</h3>
+            <div class="services">
+                <!-- Project: Sales Analytics Dashboard -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="images/supermarket-dashboard.png" alt="Sales Analytics Dashboard" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://docs.google.com/spreadsheets/d/1U3ses0Be0aEx2zEmHLyPUzurkSA20xeZ/edit?usp=share_link" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-google"></i>View Dashboard
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Supermarket Performance Dashboard</h4>
+                        <p class="card-text">Interactive performance analytics dashboard with data visualisations, trends, insights and KPIs</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">Excel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Disasters Dashboard -->
+                <div class="card project-card">
+                    <div class="card-img-wrapper">
+                        <img src="images/disasters-dashboard.png" alt="Disasters Dashboard" loading="lazy">
+                        <div class="card-overlay">
+                            <a href="https://docs.google.com/spreadsheets/d/1bgTrwmtzv5igNKizKuZ1k7ItXwvQ0sgR/edit?usp=share_link" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-google"></i>View Dashboard
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Natural Disasters Dashboard</h4>
+                        <p class="card-text">Comprehensive dashboard tracking fake natural disaster data with visualisations and key metrics</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">Excel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+
+        <!-- Header Section -->
+        <section data-animate>
+            <div class="content-wrapper center">
+                <h2 class="display-4">My Experience</h2>
+                <p class="lead">A comprehensive overview of my professional journey, academic achievements, certifications, and technical skills that shape my expertise in software development.</p>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
         <section data-animate class="content-wrapper">
-            <h2 class="section-title">Services</h2>
-            <div class="services services-home">
+            <h3 class="section-title">Work Experience</h3>
+            
+            <div class="experience-item">
+                <h5>Beauly Mini Market</h5>
+                <p class="text-muted">Retail Assistant • September 2023 – Present</p>
+                <ul>
+                    <li>Resolved till and stock issues, applying logical troubleshooting similar to debugging.</li>
+                    <li>Streamlined inventory and deliveries through team collaboration, reinforcing project execution skills.</li>
+                    <li>Communicated effectively with diverse customers, mirroring requirement gathering and solution explanation in tech contexts.</li>
+                </ul>
+                <p style="font-style: normal; margin-top: 1rem; color: var(--text-light);"><strong>Tech Relevance:</strong> Gained experience in troubleshooting, requirement gathering, and clear communication, aligning with problem-solving in technical environments.</p>
+            </div>
+
+            <div class="experience-item">
+                <h5>Zulus Peri Peri Grill Dundee</h5>
+                <p class="text-muted">Front of House Worker • June 2021 – September 2023</p>
+                <ul>
+                    <li>Managed orders and workflows, developing systems thinking and process optimisation.</li>
+                    <li>Trained 5+ new staff, building team leadership and knowledge transfer skills relevant to tech teams.</li>
+                    <li>Balanced multiple high-pressure tasks, strengthening problem-solving, prioritisation, and communication.</li>
+                </ul>
+                <p style="font-style: normal; margin-top: 1rem; color: var(--text-light);"><strong>Tech Relevance:</strong> Built strong foundations in process optimisation, teamwork, and knowledge transfer, directly transferable to managing cloud and AI projects.</p>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section data-animate class="content-wrapper">
+            <h3 class="section-title">Education</h3>
+            
+            <div class="experience-item">
+                <h5>University of Dundee</h5>
+                <p class="text-muted">BSc (Hons) Computer Science (Data Science and AI) • September 2023 – June 2028 (Expected)</p>
+                <p style="margin-bottom: 0.5rem; color: var(--text-light);"><strong>Most relevant modules:</strong></p>
+                <ul>
+                    <li>Data Structures & Algorithms (Java)</li>
+                    <li>Multi-Paradigm Programming (C/C++)</li>
+                    <li>Data Visualisation and Analytics (Excel and Power BI)</li>
+                    <li>Data Engineering</li>
+                    <li>Artificial Intelligence & Machine Learning (Python)</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h5>High School of Dundee</h5>
+                <p class="text-muted">Secondary Education • August 2017 – June 2023</p>
+                <ul>
+                    <li>Achieved A in National 5 Computer Science, Maths, English, Economics and Physics.</li>
+                    <li>Achieved A in Higher Computer Science, Maths and English.</li>
+                    <li>Achieved C in Advanced Higher Computer Science</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section data-animate class="content-wrapper">
+            <h3 class="section-title">Certifications</h3>
+            
+            <div class="services">
                 <div class="card">
                     <div class="card-body">
-                        <i class="fas fa-code fa-3x text-primary"></i>
-                        <h3 class="card-title">My Projects</h3>
-                        <p class="card-text">Explore a diverse collection of my work, from Unix-based version control systems to interactive Python games. Each project represents a milestone in my learning journey and demonstrates my growing expertise across different technologies.</p>
-                        <a href="projects.html" class="btn btn-hero-primary">View Projects</a>
+                        <a href="https://www.credly.com/badges/c4f6bb59-3638-48fe-8c0b-af5c3976731d/print" target="_blank" rel="noopener">
+                            <img src="images/aws-academy-graduate-aws-academy-cloud-foundations.png" alt="AWS Academy Cloud Foundations" style="max-height:150px; object-fit:contain; width:100%;" loading="lazy">
+                        </a>
+                        <h3 class="card-title">AWS Academy Graduate - Cloud Foundations</h3>
+                        <p class="card-text"><small class="text-muted">2023 - 2024</small></p>
+                        <ul>
+                            <li>Hands-on experience with AWS services: EC2, S3, RDS, IAM, Elastic Beanstalk</li>
+                            <li>Deployed and managed scalable cloud infrastructure with auto-scaling and load balancing</li>
+                            <li>Gained knowledge in cloud security, cost optimization, and best practices</li>
+                        </ul>
                     </div>
                 </div>
+                
                 <div class="card">
                     <div class="card-body">
-                        <i class="fas fa-graduation-cap fa-3x text-success"></i>
-                        <h3 class="card-title">My Experience</h3>
-                        <p class="card-text">Discover my professional journey, academic achievements, and certifications. From hands-on work experience to AWS cloud computing credentials, I've built a foundation that combines theoretical knowledge with practical application.</p>
-                        <a href="experience.html" class="btn btn-hero-primary">View Experience</a>
+                        <a href="https://www.credly.com/badges/0c546295-6fe4-4055-b9eb-bed62233dce7/linked_in_profile" target="_blank" rel="noopener">
+                            <img src="images/aws-academy-graduate-aws-academy-machine-learning-foundations.png" alt="AWS Academy Machine Learning" style="max-height:150px; object-fit:contain; width:100%;" loading="lazy">
+                        </a>
+                        <h3 class="card-title">AWS Academy Graduate - Machine Learning</h3>
+                        <p class="card-text"><small class="text-muted">Jan 2025</small></p>
+                        <ul>
+                            <li>Learned machine learning fundamentals using AWS AI/ML tools (Amazon SageMaker)</li>
+                            <li>Hands-on experience with data preprocessing, model training, and evaluation</li>
+                            <li>Applied ML models to real-world scenarios in a cloud environment</li>
+                        </ul>
                     </div>
                 </div>
+                
                 <div class="card">
                     <div class="card-body">
-                        <i class="fas fa-file-alt fa-3x text-warning"></i>
-                        <h3 class="card-title">My CV</h3>
-                        <p class="card-text">Get a comprehensive overview of my qualifications, skills, and achievements. My CV provides detailed insights into my educational background, technical competencies, and the projects that have shaped my career path.</p>
-                        <a href="cv.html" class="btn btn-hero-primary">View CV</a>
+                        <a href="https://www.linkedin.com/learning/certificates/e3dc3610a320ee93d032317f3906e12d09f41da322c5fc1c94d272cef7f224c9?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BT9fo%2BcR8Q0eO%2BgT7rijPLQ%3D%3D" target="_blank" rel="noopener">
+                            <img src="docs/CertificateOfCompletion_Foundations of Azure Artificial Intelligence Concepts Capabilities and Implementation.pdf" alt="Foundations of Azure AI" style="max-height:150px; object-fit:contain; width:100%;" loading="lazy">
+                        </a>
+                        <h3 class="card-title">Foundations of Azure Artificial Intelligence</h3>
+                        <p class="card-text"><small class="text-muted">Oct 2024</small></p>
+                        <ul>
+                            <li>Explored Azure AI services: Computer Vision, NLP, and Cognitive Services</li>
+                            <li>Implemented AI models in cloud-based applications</li>
+                            <li>Understood AI ethics and responsible deployment</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-body">
+                        <a href="https://www.linkedin.com/learning/certificates/ac25c12cd98c650dd6defa81b8ba13ba0a032539bda4cc6c76e15c353ae81855?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BT9fo%2BcR8Q0eO%2BgT7rijPLQ%3D%3D" target="_blank" rel="noopener">
+                            <img src="docs/CertificateOfCompletion_Cloud Computing Understanding Core Concepts_NASBA.pdf" alt="Cloud Computing: Understanding Core Concepts" style="max-height:150px; object-fit:contain; width:100%;" loading="lazy">
+                        </a>
+                        <h3 class="card-title">Cloud Computing: Understanding Core Concepts</h3>
+                        <p class="card-text"><small class="text-muted">Oct 2024</small></p>
+                        <ul>
+                            <li>Covers key concepts: virtualization, networking, security, and cloud models (IaaS, PaaS, SaaS)</li>
+                            <li>Compared major cloud providers and their service offerings</li>
+                            <li>Strengthened theoretical foundation for cloud-based implementations</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Let's Connect Section -->
+        <!-- Skills Section -->
         <section data-animate class="content-wrapper">
-            <div class="cta-container">
+            <h3 class="section-title">Technical Skills</h3>
+            <div class="services">
+                <!-- Programming Languages -->
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="card-title">Let's Connect</h2>
-                        <p class="card-text">I'm always excited to discuss new opportunities, collaborate on innovative projects, or simply connect with fellow tech enthusiasts. Whether you're looking for a dedicated team member or want to explore potential partnerships, I'd love to hear from you.</p>
-                        <a href="contact.html" class="btn btn-success">Get In Touch</a>
+                        <i class="fas fa-code fa-3x text-primary"></i>
+                        <h3 class="card-title">Programming Languages</h3>
+                        <div class="tech-badges">
+                            <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
+                            <span class="tech-badge"><i class="fab fa-java"></i> Java</span>
+                            <span class="tech-badge"><i class="fas fa-code"></i> C</span>
+                            <span class="tech-badge"><i class="fas fa-code"></i> C++</span>
+                            <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="tech-badge"><i class="fab fa-js-square"></i> TypeScript</span>
+                            <span class="tech-badge"><i class="fas fa-terminal"></i> Bash</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web & Mobile Development -->
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-laptop-code fa-3x text-success"></i>
+                        <h3 class="card-title">Web & Mobile Development</h3>
+                        <div class="tech-badges">
+                            <span class="tech-badge"><i class="fab fa-react"></i> React</span>
+                            <span class="tech-badge"><i class="fab fa-react"></i> React Native</span>
+                            <span class="tech-badge"><i class="fas fa-flask"></i> Flask</span>
+                            <span class="tech-badge"><i class="fab fa-html5"></i> HTML</span>
+                            <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS</span>
+                            <span class="tech-badge"><i class="fab fa-css3"></i> Tailwind CSS</span>
+                            <span class="tech-badge"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Databases & APIs -->
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-database fa-3x text-warning"></i>
+                        <h3 class="card-title">Databases & APIs</h3>
+                        <div class="tech-badges">
+                            <span class="tech-badge"><i class="fas fa-database"></i> SQL</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> MySQL</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</span>
+                            <span class="tech-badge"><i class="fas fa-leaf"></i> MongoDB</span>
+                            <span class="tech-badge"><i class="fas fa-network-wired"></i> REST APIs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Science & Machine Learning -->
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-brain fa-3x text-info"></i>
+                        <h3 class="card-title">Data Science & ML</h3>
+                        <div class="tech-badges">
+                            <span class="tech-badge"><i class="fas fa-book"></i> Jupyter Notebook</span>
+                            <span class="tech-badge"><i class="fas fa-chart-bar"></i> Power BI</span>
+                            <span class="tech-badge"><i class="fas fa-table"></i> Pandas</span>
+                            <span class="tech-badge"><i class="fas fa-calculator"></i> NumPy</span>
+                            <span class="tech-badge"><i class="fas fa-cogs"></i> scikit-learn</span>
+                            <span class="tech-badge"><i class="fas fa-fire"></i> PyTorch</span>
+                            <span class="tech-badge"><i class="fas fa-chart-line"></i> Matplotlib</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud & DevOps -->
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-cloud fa-3x text-primary"></i>
+                        <h3 class="card-title">Cloud & DevOps</h3>
+                        <div class="tech-badges">
+                            <span class="tech-badge"><i class="fab fa-aws"></i> AWS</span>
+                            <span class="tech-badge"><i class="fab fa-docker"></i> Docker</span>
+                            <span class="tech-badge"><i class="fas fa-dharmachakra"></i> Kubernetes</span>
+                            <span class="tech-badge"><i class="fab fa-git-alt"></i> Git</span>
+                            <span class="tech-badge"><i class="fab fa-github"></i> GitHub</span>
+                            <span class="tech-badge"><i class="fas fa-sync"></i> CI/CD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testing & Development Tools -->
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-tools fa-3x text-danger"></i>
+                        <h3 class="card-title">Testing & Tools</h3>
+                        <div class="tech-badges">
+                            <span class="tech-badge"><i class="fas fa-code"></i> VS Code</span>
+                            <span class="tech-badge"><i class="fas fa-vial"></i> pytest</span>
+                            <span class="tech-badge"><i class="fas fa-check-circle"></i> JUnit</span>
+                            <span class="tech-badge"><i class="fas fa-paper-plane"></i> Postman</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Operating Systems -->
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-desktop fa-3x text-secondary"></i>
+                        <h3 class="card-title">Operating Systems</h3>
+                        <div class="tech-badges">
+                            <span class="tech-badge"><i class="fab fa-linux"></i> Linux (Ubuntu)</span>
+                            <span class="tech-badge"><i class="fab fa-apple"></i> macOS</span>
+                            <span class="tech-badge"><i class="fab fa-windows"></i> Windows</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Transferable Skills Section -->
+        <section data-animate class="content-wrapper" style="margin-top: 2rem;">
+            <h3 class="section-title">Transferable Skills</h3>
+            <div class="services">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-users fa-3x text-danger"></i>
+                        <h3 class="card-title">Collaboration & Leadership</h3>
+                        <p class="card-text">Team-oriented, experienced in mentoring and cross-functional collaboration.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-chess-knight fa-3x text-warning"></i>
+                        <h3 class="card-title">Strategic Execution</h3>
+                        <p class="card-text">Strong planning and time management for end-to-end project delivery.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-comments fa-3x text-info"></i>
+                        <h3 class="card-title">Technical Communication</h3>
+                        <p class="card-text">Translate complex concepts into clear, actionable insights.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-puzzle-piece fa-3x text-success"></i>
+                        <h3 class="card-title">Problem-Solving & Analysis</h3>
+                        <p class="card-text">Skilled in root cause analysis and scalable system optimization.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-search fa-3x text-primary"></i>
+                        <h3 class="card-title">Attention to Detail</h3>
+                        <p class="card-text">Committed to accuracy through rigorous testing and best practices.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-sync-alt fa-3x text-secondary"></i>
+                        <h3 class="card-title">Continuous Learning</h3>
+                        <p class="card-text">Rapidly master new technologies and pivot strategies as needed.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-chart-line fa-3x text-warning"></i>
+                        <h3 class="card-title">Data-Driven Decision Making</h3>
+                        <p class="card-text">Use metrics and performance analysis to guide decisions effectively.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        </section>
+
+        <!-- CV Section -->
+        <section id="cv">
+
+        <!-- Header Section -->
+        <section data-animate>
+            <div class="content-wrapper center">
+                <h2 class="display-4">My CV</h2>
+                <p class="lead">Download my comprehensive CV to get detailed insights into my qualifications, experience, and technical skills.</p>
+                <div class="cv-download-section">
+                    <a href="docs/AhmedIkram_CV_2025_26.pdf" class="btn btn-success" download>
+                        <i class="fas fa-download"></i>
+                        <span>Download CV</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CV Viewer -->
+        <section data-animate>
+            <div class="content-wrapper center">
+                <div class="card">
+                    <div class="card-body" style="padding:0;">
+                        <div style="min-height:800px;">
+                            <embed src="docs/AhmedIkram_CV_2025_26.pdf" type="application/pdf" loading="lazy" style="width:100%; height:800px;" class="embed-responsive-item">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+
+        <!-- Header Section -->
+        <section data-animate>
+            <div class="content-wrapper center">
+                <h2 class="display-4">Get In Touch</h2>
+                <p class="lead">I'd love to hear from you! Whether you have a project in mind, want to collaborate, or just want to say hello, feel free to reach out through any of the channels below.</p>
+            </div>
+        </section>
+        <!-- Contact Content -->
+        <section data-animate>
+            <div class="grid contact-stack">
+                <!-- Contact Information -->
+                <div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="center">
+                                <i class="fas fa-address-book fa-3x text-primary"></i>
+                            </div>
+                            <h3 class="card-title center">Contact Information</h3>
+                            <div class="contact-item center">
+                                <i class="fas fa-envelope fa-lg text-primary"></i>
+                                <h6>Email</h6>
+                                <a href="mailto:ahmedikram30@gmail.com">ahmedikram30@gmail.com</a>
+                            </div>
+                            <div class="contact-item center">
+                                <i class="fas fa-phone fa-lg text-primary"></i>
+                                <h6>Phone</h6>
+                                <a href="tel:+447421996048">+44 7421 996048</a>
+                            </div>
+                            <div class="contact-item center">
+                                <i class="fab fa-linkedin fa-lg text-primary"></i>
+                                <h6>LinkedIn</h6>
+                                <a href="https://www.linkedin.com/in/ahmed-ikram-student" target="_blank" rel="noopener">ahmed-ikram-student</a>
+                            </div>
+                            <div class="contact-item center">
+                                <i class="fab fa-github fa-lg text-primary"></i>
+                                <h6>GitHub</h6>
+                                <a href="https://github.com/ahmedikram05" target="_blank" rel="noopener">ahmedikram05</a>
+                            </div>
+                            <div class="contact-item center">
+                                <i class="fas fa-map-marker-alt fa-lg text-primary"></i>
+                                <h6>Location</h6>
+                                <span>Dundee, Scotland, UK</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Send Me a Message Card -->
+                <div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="center" style="margin-bottom: var(--spacing-lg);">
+                                <i class="fas fa-paper-plane fa-3x text-primary"></i>
+                            </div>
+                            <h3 class="card-title center">Send Me a Message</h3>
+                            <form class="contact-form needs-validation" novalidate aria-label="Contact Form" action="https://formspree.io/f/xbljrnpa" method="POST">
+                                <div class="form-row-grid">
+                                    <div class="form-group">
+                                        <label for="name"><i class="fas fa-user"></i>Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Full name" required aria-required="true">
+                                        <div class="invalid-feedback">Please enter your name.</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email"><i class="fas fa-envelope"></i>Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="your.email@example.com" required aria-required="true">
+                                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject"><i class="fas fa-tag"></i>Subject</label>
+                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="What's it about?">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message"><i class="fas fa-comment"></i>Message</label>
+                                    <textarea class="form-control" id="message" name="message" rows="6" placeholder="Enter your message here..." required aria-required="true"></textarea>
+                                    <div class="invalid-feedback">Please enter your message.</div>
+                                </div>
+                                <div class="center">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-paper-plane"></i>Send Message
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
         </section>
     </main>
 
@@ -199,7 +936,7 @@
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
-    <script src="main.js" defer></script>
+    <script src="main.js?v=2.0" defer></script>
 
     <!-- Back to Top Button -->
     <a href="#" id="back-to-top" class="back-to-top" aria-label="Back to Top">

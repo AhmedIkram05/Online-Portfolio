@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbarScroll();
   initProgressBars();
   initHeroTyping();
+  initScrollSpy();
+  initSPAInteraction();
   initHeaderScroll();
 });
 
@@ -454,4 +456,82 @@ function initProgressBars() {
   }, { threshold: 0.1 });
   
   progressBars.forEach(bar => observer.observe(bar));
+}
+
+// ===== SPA Migration Utilities =====
+
+function initScrollSpy() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  if (sections.length === 0) return;
+
+  function updateActiveLink() {
+    let current = '';
+    const scrollY = window.pageYOffset;
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      // Offset for fixed header (approx 150px)
+      if (scrollY >= (sectionTop - 150)) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      const href = link.getAttribute('href');
+      if (href && href.includes('#' + current)) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveLink);
+  // Call once on load
+  updateActiveLink();
+}
+
+function initSPAInteraction() {
+  // Mobile menu close on click
+  const navLinks = document.querySelectorAll('.nav-link');
+  const navbarNav = document.querySelector('.navbar-nav');
+  const navbarToggler = document.querySelector('.navbar-toggler');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (navbarNav && navbarNav.classList.contains('show')) {
+        navbarNav.classList.remove('show');
+        if (navbarToggler) {
+             // Bootstrap toggler usually doesn't need manual class removal but depends on implementation
+             // navbarToggler.classList.remove('active'); 
+        }
+      }
+    });
+  });
+
+  // Smooth scroll with offset for fixed header
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+            // Check for fixed header height
+            const headerOffset = 80; 
+            const elementPosition = targetSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+      }
+    });
+  });
 }
