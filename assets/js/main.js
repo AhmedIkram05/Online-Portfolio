@@ -450,41 +450,35 @@ function initProgressBars() {
 // ===== SPA Migration Utilities =====
 
 function initScrollSpy() {
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
+  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+  const sections = Array.from(navLinks).map(link => {
+      const id = link.getAttribute('href').substring(1);
+      return document.getElementById(id);
+  }).filter(section => section !== null);
   
   if (sections.length === 0) return;
 
   function updateActiveLink() {
+    const scrollY = window.pageYOffset;
+    // Offset for the fixed navbar height so active state changes just before section hits top
+    const offset = 120; 
+    
     let current = '';
     
-    // Check boundaries
-    const scrollY = window.pageYOffset;
-    const windowInnerHeight = window.innerHeight;
-    const bodyHeight = document.body.offsetHeight;
+    // Default to first section
+    if (sections.length > 0) current = sections[0].id;
 
-    // 1. If at bottom of page, allow highlighting the last section (Contact)
-    if ((scrollY + windowInnerHeight) >= (bodyHeight - 100)) {
-       if (sections.length > 0) {
-           current = sections[sections.length - 1].getAttribute('id');
-       }
+    // Check if at bottom of page -> activate last section
+    if ((window.innerHeight + scrollY) >= document.body.offsetHeight - 50) {
+        current = sections[sections.length - 1].id;
     } else {
-        // 2. Standard Loop: Find the last section whose top crossed the threshold
+        // Standard check: is scrollY passed the section top?
         sections.forEach(section => {
-            // Using getBoundingClientRect for viewport-relative positioning
-            const rect = section.getBoundingClientRect();
-            // If the section's top is "above" a threshold line (e.g., 200px down from top of viewport)
-            // It means we have scrolled past its start.
-            // Since sections are ordered, the last one satisfying this is the one we are "in".
-            if (rect.top <= 200) {
-                current = section.getAttribute('id');
+            // section.offsetTop is distance from top of document
+            if (scrollY + offset >= section.offsetTop) {
+                current = section.id;
             }
         });
-    }
-
-    // Default to the first section (usually 'home') if near top or nothing found
-    if (!current && sections.length > 0) {
-        current = sections[0].getAttribute('id');
     }
 
     navLinks.forEach(link => {
@@ -495,7 +489,6 @@ function initScrollSpy() {
     });
   }
 
-  // Use passive listener for better scroll performance
   window.addEventListener('scroll', updateActiveLink, { passive: true });
   // Call once on load
   updateActiveLink();
