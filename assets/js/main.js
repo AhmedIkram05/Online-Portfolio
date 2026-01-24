@@ -469,20 +469,34 @@ function initScrollSpy() {
   function updateActiveLink() {
     let current = '';
     const scrollY = window.pageYOffset;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.body.offsetHeight;
     
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      // Offset for fixed header (approx 150px)
-      if (scrollY >= (sectionTop - 150)) {
-        current = section.getAttribute('id');
-      }
-    });
+    // Check if we're at the bottom of the page (activate Contact/last section)
+    if ((scrollY + windowHeight) >= (documentHeight - 50)) {
+       if (sections.length > 0) {
+           current = sections[sections.length - 1].getAttribute('id');
+       }
+    } else {
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          // Offset for fixed header and comfortable triggering (approx 250px)
+          if (scrollY >= (sectionTop - 250)) {
+            current = section.getAttribute('id');
+          }
+        });
+    }
+
+    // Default to 'home' (About) if near top or no section found
+    if (current === '' || scrollY < 100) {
+        current = 'home';
+    }
 
     navLinks.forEach(link => {
       link.classList.remove('active');
       const href = link.getAttribute('href');
-      if (href && href.includes('#' + current)) {
+      // Exact match check
+      if (href === '#' + current) {
         link.classList.add('active');
       }
     });
