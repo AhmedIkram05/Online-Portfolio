@@ -468,41 +468,46 @@ function initScrollSpy() {
 
   function updateActiveLink() {
     let current = '';
-    const scrollY = window.pageYOffset;
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.body.offsetHeight;
     
-    // Check if we're at the bottom of the page (activate Contact/last section)
-    if ((scrollY + windowHeight) >= (documentHeight - 50)) {
+    // Check boundaries
+    const scrollY = window.pageYOffset;
+    const windowInnerHeight = window.innerHeight;
+    const bodyHeight = document.body.offsetHeight;
+
+    // 1. If at bottom of page, allow highlighting the last section (Contact)
+    if ((scrollY + windowInnerHeight) >= (bodyHeight - 100)) {
        if (sections.length > 0) {
            current = sections[sections.length - 1].getAttribute('id');
        }
     } else {
+        // 2. Standard Loop: Find the last section whose top crossed the threshold
         sections.forEach(section => {
-          const sectionTop = section.offsetTop;
-          // Offset for fixed header and comfortable triggering (approx 250px)
-          if (scrollY >= (sectionTop - 250)) {
-            current = section.getAttribute('id');
-          }
+            // Using getBoundingClientRect for viewport-relative positioning
+            const rect = section.getBoundingClientRect();
+            // If the section's top is "above" a threshold line (e.g., 200px down from top of viewport)
+            // It means we have scrolled past its start.
+            // Since sections are ordered, the last one satisfying this is the one we are "in".
+            if (rect.top <= 200) {
+                current = section.getAttribute('id');
+            }
         });
     }
 
-    // Default to 'home' (About) if near top or no section found
-    if (current === '' || scrollY < 100) {
-        current = 'home';
+    // Default to the first section (usually 'home') if near top or nothing found
+    if (!current && sections.length > 0) {
+        current = sections[0].getAttribute('id');
     }
 
     navLinks.forEach(link => {
       link.classList.remove('active');
-      const href = link.getAttribute('href');
-      // Exact match check
-      if (href === '#' + current) {
+      if (link.getAttribute('href') === `#${current}`) {
         link.classList.add('active');
       }
     });
   }
 
-  window.addEventListener('scroll', updateActiveLink);
+  // Use passive listener for better scroll performance
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
   // Call once on load
   updateActiveLink();
 }
