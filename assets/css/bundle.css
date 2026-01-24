@@ -423,7 +423,11 @@ main {
 }
 
 /* Ensure first section has extra top spacing */
-main > section:first-child {
+main > section:first-child,
+#projects > section:first-child,
+#experience > section:first-child,
+#cv > section:first-child,
+#contact > section:first-child {
     padding-top: calc(var(--spacing-3xl) + var(--spacing-xl)) !important;
 }
 
