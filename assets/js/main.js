@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Consolidated Navbar Init
   initNavbar();
-  
+
   initHeroSmoothScroll();
   initSmoothScrollAnimations();
   init3DHeroEffects();
@@ -45,7 +45,7 @@ function initNavbar() {
       let currentSectionId = '';
       
       // Standard Sections
-      const sections = ['home', 'projects', 'experience', 'cv', 'contact'];
+      const sections = ['about', 'projects', 'experience', 'cv', 'contact'];
       
       // Iterate backwards to find the first match (active section)
       // "Who is the lowest section on the page that I have scrolled past?"
@@ -116,8 +116,6 @@ function initNavbar() {
   // Initial Run
   setTimeout(onScroll, 100);
 }
-
-
 
 // Hero Overlay Pop-up functionality
 function initHeroOverlay() {
