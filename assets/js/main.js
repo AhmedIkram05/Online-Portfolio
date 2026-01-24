@@ -135,32 +135,21 @@ function initNavbarScroll() {
   const header = document.querySelector('header');
   if (!header) return;
   
-  let lastScrollTop = 0;
-  
   window.addEventListener('scroll', () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-    // Add scrolled class for styling
+    // Add scrolled class for styling background
     if (scrollTop > 50) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
     }
     
-    // Smooth hide/show entire header on scroll
-    if (scrollTop > lastScrollTop && scrollTop > 100) {
-      // Scrolling down - hide entire header with smooth animation
-      header.style.opacity = '0';
-      header.style.transform = 'translateY(-100%)';
-      header.style.pointerEvents = 'none';
-    } else {
-      // Scrolling up - show entire header with smooth animation
-      header.style.opacity = '1';
-      header.style.transform = 'translateY(0)';
-      header.style.pointerEvents = 'auto';
-    }
-    
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    // Hiding logic removed to keep navbar sticky at all times
+    // Ensure header is always visible
+    header.style.opacity = '1';
+    header.style.transform = 'translateY(0)';
+    header.style.pointerEvents = 'auto';
   });
 }
 
