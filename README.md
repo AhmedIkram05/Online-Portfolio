@@ -4,6 +4,10 @@
 
 A modern, responsive personal portfolio website for me (Ahmed Ikram), a Computer Science student and aspiring software developer. This webiste serves as a central hub to showcase professional skills, academic projects, and work experience through a clean and interactive user interface.
 
+## 📸 Screenshot
+
+![Screenshot](assets/images/example.png)
+
 ## 🧠 Tech Stack
 
 - **HTML5**: Semantic structure for all pages.
