@@ -430,61 +430,63 @@ function initScrollSpy() {
   
   if (navLinks.length === 0) return;
 
-  function updateActiveLink() {
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.body.offsetHeight;
-    const scrollY = window.pageYOffset;
-    
-    // Define a trigger zone: roughly 30% down the viewport.
-    const triggerPoint = windowHeight * 0.3;
+  // Use IntersectionObserver for more accurate scroll tracking
+  const observerOptions = {
+    root: null,
+    // Define a narrow active zone in the viewport (20% from top)
+    // This creates a "finish line" effect - when a section crosses this zone, it becomes active
+    rootMargin: '-20% 0px -75% 0px',
+    threshold: 0.01
+  };
 
-    let currentId = '';
-
-    // Priority Check: Bottom of page -> Always activate 'Contact' (or last item)
-    if ((scrollY + windowHeight) >= (documentHeight - 50)) {
-       const lastLink = navLinks[navLinks.length - 1];
-       if (lastLink) currentId = lastLink.getAttribute('href').substring(1);
-    } else {
-        // Standard Check: Find the last section whose top has crossed the trigger point
-        // We iterate in order, so the last one that matches overwrites previous matches.
-        navLinks.forEach(link => {
-            const id = link.getAttribute('href').substring(1);
-            const section = document.getElementById(id);
-            if (section) {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= triggerPoint) {
-                    currentId = id;
-                }
-            }
-        });
-    }
-
-    // Fallback: If no section is triggered (e.g. at very top), default to first one if visible
-    if (!currentId && navLinks.length > 0) {
-        // Only if we are near the top
-        if (scrollY < 100) {
-             currentId = navLinks[0].getAttribute('href').substring(1);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        
+        // Remove active class from all links
+        navLinks.forEach(link => link.classList.remove('active'));
+        
+        // Add active class to the link corresponding to this section
+        const activeLink = document.querySelector(`.navbar-nav .nav-link[href="#${id}"]`);
+        if (activeLink) {
+          activeLink.classList.add('active');
         }
-    }
-
-    navLinks.forEach(link => {
-      // Remove active class from all
-      link.classList.remove('active');
-      
-      // Add active class to match
-      const linkId = link.getAttribute('href').substring(1);
-      if (linkId === currentId) {
-        link.classList.add('active');
       }
     });
-  }
+  }, observerOptions);
 
-  // Use passive listener for performance
-  window.addEventListener('scroll', updateActiveLink, { passive: true });
-  // Initial check
-  updateActiveLink(); 
-  // Delayed check to handle any layout shifts
-  setTimeout(updateActiveLink, 100);
+  // Observe all sections linked from navbar
+  navLinks.forEach(link => {
+    const id = link.getAttribute('href').substring(1);
+    const section = document.getElementById(id);
+    if (section) {
+      observer.observe(section);
+    }
+  });
+
+  // Handle bottom of page case specifically (for Contact section)
+  window.addEventListener('scroll', () => {
+    const documentHeight = document.body.offsetHeight;
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+
+    if ((scrollY + windowHeight) >= (documentHeight - 50)) {
+       navLinks.forEach(link => link.classList.remove('active'));
+       const lastLink = navLinks[navLinks.length - 1];
+       if (lastLink) lastLink.classList.add('active');
+    }
+    
+    // Handle top of page specifically (for About/Home)
+    if (scrollY < 50 && navLinks.length > 0) {
+        const firstLink = navLinks[0];
+        // Only set active if not already (to avoid conflict with observer)
+        if (!firstLink.classList.contains('active')) {
+            // Optional: You might prioritize observer, but at strict 0 scroll it's safe
+            // Let observer handle normally, but fallback here if needed
+        }
+    }
+  }, { passive: true });
 }
 
 function initSPAInteraction() {
