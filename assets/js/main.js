@@ -454,9 +454,40 @@ function initFormValidation() {
             form.classList.add('was-validated');
             
             if (form.checkValidity()) {
-                alert('Message sent successfully! Thank you for contacting me.');
-                form.reset();
-                form.classList.remove('was-validated');
+                // Get button and show loading state
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+
+                // Send data using Fetch API
+                const formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Message sent successfully! Thank you for contacting me.');
+                        form.reset();
+                        form.classList.remove('was-validated');
+                    } else {
+                        alert('Oops! There was a problem submitting your form. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    alert('There was an error sending your message. Please email me directly.');
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    // Restore button state
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                });
             }
         });
         
