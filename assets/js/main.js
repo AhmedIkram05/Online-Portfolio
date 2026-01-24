@@ -45,7 +45,7 @@ function initNavbar() {
       let currentSectionId = '';
       
       // Standard Sections
-      const sections = ['about', 'projects', 'experience', 'cv', 'contact'];
+      const sections = ['home', 'projects', 'experience', 'cv', 'contact'];
       
       // Iterate backwards to find the first match (active section)
       // "Who is the lowest section on the page that I have scrolled past?"
