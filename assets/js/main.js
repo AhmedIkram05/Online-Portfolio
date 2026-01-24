@@ -8,17 +8,114 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroDisappearance();
   initHeroTypingEffect();
   initBackToTop();
-  initBurgerMenu();
+  
+  // Consolidated Navbar Init
+  initNavbar();
+  
   initHeroSmoothScroll();
   initSmoothScrollAnimations();
   init3DHeroEffects();
   initLazyLoad();
-  initNavbarScroll();
-  initHeroTyping();
-  initScrollSpy();
-  initSPAInteraction();
-  initHeaderScroll();
 });
+
+function initNavbar() {
+  const navLinks = document.querySelectorAll('.nav-link');
+  const indicator = document.querySelector('.nav-indicator');
+  const toggler = document.querySelector('.navbar-toggler');
+  const navMenu = document.getElementById('navMenu');
+  
+  if (!navMenu || !indicator) return;
+
+  function moveIndicator(link) {
+      if (window.innerWidth < 768) return; // Desktop only
+      
+      const menuRect = navMenu.getBoundingClientRect();
+      const linkRect = link.getBoundingClientRect();
+      
+      indicator.style.width = `${linkRect.width}px`;
+      indicator.style.transform = `translateX(${linkRect.left - menuRect.left}px)`;
+      indicator.style.display = 'block';
+  }
+
+  function onScroll() {
+      // 1. Get current scroll position (center of viewport approach)
+      const scrollPos = window.pageYOffset + (window.innerHeight / 2);
+      
+      // 2. Find which section we are in
+      let currentSectionId = '';
+      
+      // Standard Sections
+      const sections = ['home', 'projects', 'experience', 'cv', 'contact'];
+      
+      // Iterate backwards to find the first match (active section)
+      // "Who is the lowest section on the page that I have scrolled past?"
+      for (let i = sections.length - 1; i >= 0; i--) {
+          const section = document.getElementById(sections[i]);
+          if (section) {
+              // If we have scrolled PAST the top of this section
+              if (section.offsetTop <= scrollPos) {
+                  currentSectionId = sections[i];
+                  break; // Found it
+              }
+          }
+      }
+      
+      // Edge Case: Contact (Bottom of page logic)
+      if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 50) {
+          currentSectionId = 'contact';
+      }
+      
+      // Edge Case: Very top (Home)
+      if (window.pageYOffset < 100) {
+          currentSectionId = 'home';
+      }
+
+      // 3. Update Active Class
+      navLinks.forEach(link => {
+          link.classList.remove('active');
+          const href = link.getAttribute('href').substring(1);
+          if (href === currentSectionId) {
+              link.classList.add('active');
+              moveIndicator(link);
+          }
+      });
+  }
+
+  // Listeners
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  
+  // Click Handler
+  navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
+          
+          if (targetSection) {
+              // Scroll with offset
+              window.scrollTo({
+                  top: targetSection.offsetTop - 100,
+                  behavior: 'smooth'
+              });
+              
+              // Force update
+              navLinks.forEach(l => l.classList.remove('active'));
+              link.classList.add('active');
+              moveIndicator(link);
+              
+              // Close mobile
+               if (navMenu.classList.contains('show')) {
+                  navMenu.classList.remove('show');
+                  if (toggler) toggler.classList.remove('active');
+               }
+          }
+      });
+  });
+
+  // Initial Run
+  setTimeout(onScroll, 100);
+}
 
 
 
