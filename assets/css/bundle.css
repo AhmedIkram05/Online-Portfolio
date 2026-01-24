@@ -751,7 +751,7 @@ header.scrolled {
     .nav-link.active {
         background: none;
         border: none;
-        color: var(--text-light);
+        color: var(--text-light) !important;
         transform: translateY(-1px);
     }
     
