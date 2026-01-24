@@ -38,8 +38,8 @@ function initNavbar() {
   }
 
   function onScroll() {
-      // 1. Get current scroll position (center of viewport approach)
-      const scrollPos = window.pageYOffset + (window.innerHeight / 2);
+      // 1. Get current scroll position relative to viewport
+      const centerLine = window.innerHeight / 3; // Trigger earlier (top third)
       
       // 2. Find which section we are in
       let currentSectionId = '';
@@ -48,12 +48,12 @@ function initNavbar() {
       const sections = ['home', 'projects', 'experience', 'cv', 'contact'];
       
       // Iterate backwards to find the first match (active section)
-      // "Who is the lowest section on the page that I have scrolled past?"
+      // "Who is the lowest section on the page whose top has passed the scan line?"
       for (let i = sections.length - 1; i >= 0; i--) {
           const section = document.getElementById(sections[i]);
           if (section) {
-              // If we have scrolled PAST the top of this section
-              if (section.offsetTop <= scrollPos) {
+              const rect = section.getBoundingClientRect();
+              if (rect.top <= centerLine) {
                   currentSectionId = sections[i];
                   break; // Found it
               }
@@ -63,11 +63,6 @@ function initNavbar() {
       // Edge Case: Contact (Bottom of page logic)
       if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 50) {
           currentSectionId = 'contact';
-      }
-      
-      // Edge Case: Very top (Home)
-      if (window.pageYOffset < 100) {
-          currentSectionId = 'home';
       }
 
       // 3. Update Active Class
