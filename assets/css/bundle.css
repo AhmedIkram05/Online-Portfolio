@@ -659,7 +659,7 @@ header.scrolled {
     border-radius: var(--radius-small);
     transition: all var(--transition-medium);
     position: relative;
-    overflow: hidden;
+    overflow: visible; /* Ensure underline is visible */
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-size: 0.9rem;
@@ -704,6 +704,7 @@ header.scrolled {
 @media (min-width: 768px) {
     .navbar {
         justify-content: center;
+        width: 100%;
     }
     
     .navbar-toggler {
@@ -712,7 +713,7 @@ header.scrolled {
     
     .navbar-nav {
         display: flex !important;
-        position: static;
+        position: relative; /* REQUIRED for indicator */
         flex-direction: row;
         background: none;
         backdrop-filter: none;
@@ -731,6 +732,8 @@ header.scrolled {
     .nav-item {
         width: auto;
         margin: 0;
+        display: flex; /* Fix alignment */
+        align-items: center;
     }
     
     .nav-link {
@@ -739,16 +742,35 @@ header.scrolled {
         margin: 0;
         width: auto;
         text-align: left;
+        /* Ensure specific padding for hit area */
+        padding: 0.5rem 0; 
+        color: var(--text-light);
     }
     
     .nav-link:hover,
     .nav-link.active {
         background: none;
         border: none;
+        color: var(--secondary-color);
+        transform: translateY(-1px);
     }
     
     .nav-link::before {
-        display: block;
+        display: none !important;
+    }
+
+    /* INDICATOR */
+    .nav-indicator {
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        height: 3px;
+        background-color: var(--secondary-color);
+        border-radius: 3px 3px 0 0;
+        transition: transform 0.3s ease, width 0.3s ease;
+        z-index: 100;
+        display: block; /* Visible on desktop */
+        pointer-events: none;
     }
 }
 
@@ -843,7 +865,7 @@ header.scrolled {
         color: var(--text-light);
         text-decoration: none;
         position: relative;
-        overflow: hidden;
+        overflow: visible;
         min-height: 44px;
         /* Enhanced text visibility */
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
