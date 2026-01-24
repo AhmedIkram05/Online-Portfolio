@@ -751,11 +751,15 @@ header.scrolled {
     .nav-link.active {
         background: none;
         border: none;
-        color: var(--secondary-color);
+        color: var(--text-light);
         transform: translateY(-1px);
     }
     
     .nav-link::before {
+        display: block !important;
+    }
+
+    .nav-link.active::before {
         display: none !important;
     }
 
