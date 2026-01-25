@@ -2477,7 +2477,55 @@ select.form-control:focus {
     /* Grids */
     .grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-2xl); }
     .services { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-2xl); }
-    /* Home services: if only two cards fit in first row and third wraps, make third span full row */
+    /* ===== PROJECT FILTERS ===== */
+.project-filters {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all var(--transition-medium);
+    font-family: var(--font-primary);
+}
+
+.filter-btn:hover {
+    background: rgba(52, 152, 219, 0.2);
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+}
+
+/* Animate items when filtering */
+.project-card.hide {
+    display: none;
+}
+
+.project-card.show {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Home services: if only two cards fit in first row and third wraps, make third span full row */
     .services-home { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
     .services-home > .card:last-child { grid-column: 1 / -1; }
 
