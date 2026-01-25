@@ -2491,9 +2491,9 @@ select.form-control:focus {
 }
 
 .filter-btn.active {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
 }
 
 /* Animate items when filtering */
