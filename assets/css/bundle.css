@@ -302,9 +302,9 @@ section[data-animate] {
 
 /* ===== CARDS ===== */
 .card {
-    background: var(--card-gradient);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-large);
     box-shadow: var(--shadow-md);
@@ -315,32 +315,11 @@ section[data-animate] {
     height: 100%;
 }
 
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.1) 0%, 
-        rgba(255, 255, 255, 0.05) 50%, 
-        rgba(255, 255, 255, 0.02) 100%);
-    opacity: 0;
-    transition: opacity var(--transition-medium);
-    pointer-events: none;
-    z-index: 1;
-}
-
 .card:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
     border-color: rgba(231, 76, 60, 0.3);
     background: rgba(255, 255, 255, 0.08);
-}
-
-.card:hover::before {
-    opacity: 1;
 }
 
 .card-body {
@@ -487,8 +466,8 @@ a:hover {
     height: 50px;
     /* Glassmorphism design to match other elements */
     background: rgba(15, 25, 35, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--text-light);
     border-radius: 50%;
@@ -1640,8 +1619,8 @@ footer::after {
 /* ===== PROJECT CARDS ===== */
 .project-card {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-medium);
     box-shadow: var(--shadow-lg);
@@ -1978,8 +1957,8 @@ footer::after {
 .cv-viewer-card {
     padding: 0 !important;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-large);
     overflow: hidden;
@@ -2125,7 +2104,9 @@ select.form-control:focus {
     padding: var(--spacing-lg);
     border-radius: var(--radius-medium);
     transition: all var(--transition-medium);
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
