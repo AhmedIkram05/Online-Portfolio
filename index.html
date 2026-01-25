@@ -26,7 +26,7 @@
     <title>Ahmed Ikram - Online Portfolio</title>
 
     <!-- Bundled Stylesheet -->
-    <link rel="preload" href="assets/css/bundle.css?v=3.1" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="assets/css/bundle.css?v=3.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="assets/css/bundle.css?v=3.1"></noscript>
 
     <!-- JavaScript Bundle Update -->
@@ -137,11 +137,19 @@
         <!-- Projects Grid -->
         <section class="content-wrapper no-animate">
             
-            <!-- Python Projects -->
-            <h3 class="section-title" style="text-align: left; margin-top: 2rem;">Python Projects</h3>
-            <div class="services">
+            <!-- Filter Controls -->
+            <div class="project-filters center" style="margin-bottom: 3rem;">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="python">Python</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="systems">Systems</button>
+                <button class="filter-btn" data-filter="data">Data</button>
+            </div>
+
+            <div class="services project-grid">
                 <!-- Project: Texas Holdem Poker -->
-                <div class="card project-card">
+                <div class="card project-card" data-category="python">
                     <div class="card-img-wrapper">
                         <img src="https://opengraph.githubassets.com/1/AhmedIkram05/texas-holdem-poker" alt="Texas Holdem Poker" loading="lazy">
                         <div class="card-overlay">
@@ -160,7 +168,7 @@
                 </div>
 
                 <!-- Project: Process Scheduler -->
-                <div class="card project-card">
+                <div class="card project-card" data-category="python">
                     <div class="card-img-wrapper">
                         <img src="https://opengraph.githubassets.com/1/AhmedIkram05/process-scheduler" alt="Process Scheduler" loading="lazy">
                         <div class="card-overlay">
@@ -179,7 +187,7 @@
                 </div>
 
                 <!-- Project: Movie Recommendation System -->
-                <div class="card project-card">
+                <div class="card project-card" data-category="python">
                     <div class="card-img-wrapper">
                         <img src="https://opengraph.githubassets.com/1/AhmedIkram05/movie-recommendation-system" alt="Movie Recommendation System" loading="lazy">
                         <div class="card-overlay">
@@ -199,7 +207,7 @@
                 </div>
 
                 <!-- Project: Haggis Predictive Modeling -->
-                <div class="card project-card">
+                <div class="card project-card" data-category="python">
                     <div class="card-img-wrapper">
                         <img src="https://opengraph.githubassets.com/1/AhmedIkram05/haggis-predictive-modeling" alt="Haggis Predictive Modeling" loading="lazy">
                         <div class="card-overlay">
@@ -217,13 +225,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Web Development Projects -->
-            <h3 class="section-title" style="text-align: left; margin-top: 4rem;">Web Development (HTML, CSS, JS)</h3>
-            <div class="services">
                 <!-- Project: Klondike Solitaire -->
-                <div class="card project-card">
+                <div class="card project-card" data-category="web">
                     <div class="card-img-wrapper">
                         <img src="https://opengraph.githubassets.com/1/AhmedIkram05/klondike-solitaire" alt="Klondike Solitaire" loading="lazy">
                         <div class="card-overlay">
@@ -244,7 +248,7 @@
                 </div>
 
                 <!-- Project: Scientific Calculator -->
-                <div class="card project-card">
+                <div class="card project-card" data-category="web">
                     <div class="card-img-wrapper">
                         <img src="https://opengraph.githubassets.com/1/AhmedIkram05/scientific-calculator" alt="Scientific Calculator" loading="lazy">
                         <div class="card-overlay">
@@ -265,7 +269,7 @@
                 </div>
 
                 <!-- Project: Snapledger -->
-                <div class="card project-card">
+                <div class="card project-card" data-category="web">
                     <div class="card-img-wrapper">
                         <img src="https://opengraph.githubassets.com/1/AhmedIkram05/snapledger" alt="Snapledger" loading="lazy">
                         <div class="card-overlay">
@@ -287,7 +291,7 @@
                 </div>
 
                 <!-- Project: Online Portfolio -->
-                <div class="card project-card">
+                <div class="card project-card" data-category="web">
                     <div class="card-img-wrapper">
                         <img src="https://opengraph.githubassets.com/1/AhmedIkram05/Online-Portfolio" alt="Online Portfolio" loading="lazy">
                         <div class="card-overlay">
@@ -306,13 +310,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Mobile Development -->
-            <h3 class="section-title" style="text-align: left; margin-top: 4rem;">Mobile Development</h3>
-            <div class="services">
                 <!-- Project: Stocklens -->
-                <div class="card project-card">
+                <div class="card project-card" data-category="mobile">
                     <div class="card-img-wrapper">
                         <img src="https://opengraph.githubassets.com/1/AhmedIkram05/stocklens" alt="Stocklens" loading="lazy">
                         <div class="card-overlay">
@@ -333,14 +333,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Systems & Application Development -->
-            <h3 class="section-title" style="text-align: left; margin-top: 4rem;">Systems & Application Development</h3>
-            <div class="services">
 
                 <!-- Project: Java Messaging Application -->
-                <div class="card project-card">
+                <div class="card project-card" data-category="systems">
                     <div class="card-img-wrapper">
                         <img src="https://opengraph.githubassets.com/1/AhmedIkram05/java-messaging-application" alt="Java Messaging Application" loading="lazy">
                         <div class="card-overlay">
@@ -360,7 +355,7 @@
                 </div>
 
                 <!-- Project: Rental Car Company -->
-                <div class="card project-card">
+                <div class="card project-card" data-category="systems">
                     <div class="card-img-wrapper">
                         <img src="https://opengraph.githubassets.com/1/AhmedIkram05/rental-car-company" alt="Rental Car Company" loading="lazy">
                         <div class="card-overlay">
@@ -379,7 +374,7 @@
                 </div>
 
                 <!-- Project: Unix Version Control System -->
-                <div class="card project-card">
+                <div class="card project-card" data-category="systems">
                     <div class="card-img-wrapper">
                         <img src="https://opengraph.githubassets.com/1/AhmedIkram05/unix-version-control-system" alt="Unix Version Control System" loading="lazy">
                         <div class="card-overlay">
@@ -396,13 +391,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Data Analytics & Dashboards -->
-            <h3 class="section-title" style="text-align: left; margin-top: 4rem;">Data Analytics & Dashboards</h3>
-            <div class="services">
                 <!-- Project: Sales Analytics Dashboard -->
-                <div class="card project-card">
+                <div class="card project-card" data-category="data">
                     <div class="card-img-wrapper">
                         <img src="assets/images/supermarket-dashboard.png" alt="Sales Analytics Dashboard" loading="lazy">
                         <div class="card-overlay">
@@ -421,7 +412,7 @@
                 </div>
 
                 <!-- Project: Disasters Dashboard -->
-                <div class="card project-card">
+                <div class="card project-card" data-category="data">
                     <div class="card-img-wrapper">
                         <img src="assets/images/disasters-dashboard.png" alt="Disasters Dashboard" loading="lazy">
                         <div class="card-overlay">
@@ -438,6 +429,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
     
@@ -913,7 +905,7 @@
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
-    <script src="assets/js/main.js?v=3.5" defer></script>
+    <script src="assets/js/main.js?v=3.6" defer></script>
 
     <!-- Back to Top Button -->
     <a href="#" id="back-to-top" class="back-to-top" aria-label="Back to Top">

@@ -302,9 +302,9 @@ section[data-animate] {
 
 /* ===== CARDS ===== */
 .card {
-    background: var(--card-gradient);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-large);
     box-shadow: var(--shadow-md);
@@ -315,31 +315,11 @@ section[data-animate] {
     height: 100%;
 }
 
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.1) 0%, 
-        rgba(255, 255, 255, 0.05) 50%, 
-        rgba(255, 255, 255, 0.02) 100%);
-    opacity: 0;
-    transition: opacity var(--transition-medium);
-    pointer-events: none;
-    z-index: 1;
-}
-
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
-    border-color: rgba(255, 255, 255, 0.25);
-}
-
-.card:hover::before {
-    opacity: 1;
+    box-shadow: var(--shadow-xl);
+    border-color: rgba(231, 76, 60, 0.3);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .card-body {
@@ -404,6 +384,13 @@ section[data-animate] {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: var(--spacing-2xl);
     margin-top: var(--spacing-2xl);
+}
+
+.services .card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: rgba(231, 76, 60, 0.3);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 /* Contact stack layout - allows side-by-side on larger screens */
@@ -486,8 +473,8 @@ a:hover {
     height: 50px;
     /* Glassmorphism design to match other elements */
     background: rgba(15, 25, 35, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--text-light);
     border-radius: 50%;
@@ -512,11 +499,11 @@ a:hover {
 
 .back-to-top:hover {
     transform: scale(1.1) translateY(-2px);
-    background: rgba(52, 152, 219, 0.3);
-    border-color: rgba(52, 152, 219, 0.5);
+    background: rgba(231, 76, 60, 0.3);
+    border-color: rgba(231, 76, 60, 0.5);
     box-shadow: 
         var(--shadow-xl), 
-        0 0 20px rgba(52, 152, 219, 0.4);
+        0 0 20px rgba(231, 76, 60, 0.4);
     color: var(--text-light);
     text-decoration: none;
 }
@@ -1620,7 +1607,7 @@ footer::after {
 
 .profileImg:hover {
     transform: scale(1.05) rotateZ(2deg);
-    box-shadow: var(--shadow-xl), 0 0 40px rgba(52, 152, 219, 0.3);
+    box-shadow: var(--shadow-xl), 0 0 40px rgba(231, 76, 60, 0.3);
 }
 
 .profileImg:hover::before {
@@ -1639,8 +1626,8 @@ footer::after {
 /* ===== PROJECT CARDS ===== */
 .project-card {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-medium);
     box-shadow: var(--shadow-lg);
@@ -1656,7 +1643,8 @@ footer::after {
 .project-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-xl);
-    border-color: rgba(60, 171, 231, 0.3);
+    border-color: rgba(231, 76, 60, 0.3);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 /* ===== PROJECT CARD IMAGE WRAPPER ===== */
@@ -1784,16 +1772,64 @@ footer::after {
 }
 
 .tech-stack .badge:hover {
-    background: linear-gradient(135deg, rgba(52, 152, 219, 0.4), rgba(52, 152, 219, 0.7));
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.4), rgba(231, 76, 60, 0.7));
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
-    border-color: rgba(52, 152, 219, 0.8);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+    border-color: rgba(231, 76, 60, 0.8);
 }
 
 /* Mobile: ensure image shorter and body auto height with no gap */
 @media (max-width: 767px) {
     .project-card .card-img-wrapper { height: 180px; }
     .project-card .card-body { padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-xl); }
+}
+
+/* ===== PROJECT FILTERS ===== */
+.project-filters {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all var(--transition-medium);
+    font-family: var(--font-primary);
+}
+
+.filter-btn:hover {
+    background: rgba(231, 76, 60, 0.2);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+}
+
+/* Animate items when filtering */
+.project-card.hide {
+    display: none;
+}
+
+.project-card.show {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* ===== experience.css ===== */
@@ -1812,8 +1848,9 @@ footer::after {
 }
 
 .experience-item:hover {
-    transform: translateY(-2px);
-    border-color: rgba(52, 152, 219, 0.3);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: rgba(231, 76, 60, 0.3);
     background: rgba(255, 255, 255, 0.08);
 }
 
@@ -1953,12 +1990,12 @@ footer::after {
 }
 
 .tech-badge:hover {
-    background: rgba(52, 152, 219, 0.2);
-    border-color: var(--secondary-color);
+    background: rgba(231, 76, 60, 0.2);
+    border-color: var(--accent-color);
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.2);
     color: #fff;
-    text-shadow: 0 0 8px rgba(52, 152, 219, 0.6);
+    text-shadow: 0 0 8px rgba(231, 76, 60, 0.6);
 }
 
 /* ===== cv.css ===== */
@@ -1976,8 +2013,8 @@ footer::after {
 .cv-viewer-card {
     padding: 0 !important;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-large);
     overflow: hidden;
@@ -2056,9 +2093,9 @@ footer::after {
 
 .form-control:focus {
     background-color: rgba(70, 80, 95, 0.9) !important;
-    border-color: var(--secondary-color) !important;
+    border-color: var(--accent-color) !important;
     color: #ffffff !important;
-    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(231, 76, 60, 0.25);
     outline: none;
 }
 
@@ -2081,7 +2118,7 @@ textarea.form-control:focus,
 select.form-control:focus {
     background-color: rgba(70, 80, 95, 0.9) !important;
     color: #ffffff !important;
-    border-color: var(--secondary-color) !important;
+    border-color: var(--accent-color) !important;
 }
 
 /* ===== FORM VALIDATION ===== */
@@ -2123,12 +2160,17 @@ select.form-control:focus {
     padding: var(--spacing-lg);
     border-radius: var(--radius-medium);
     transition: all var(--transition-medium);
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .contact-item:hover {
-    background: rgba(255, 255, 255, 0.05);
-    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-8px);
+    border-color: rgba(231, 76, 60, 0.3);
+    box-shadow: var(--shadow-xl);
 }
 
 .contact-item i {
@@ -2152,7 +2194,7 @@ select.form-control:focus {
 }
 
 .contact-item a:hover {
-    color: var(--secondary-color);
+    color: var(--accent-color);
     text-decoration: none;
 }
 
@@ -2477,6 +2519,7 @@ select.form-control:focus {
     /* Grids */
     .grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-2xl); }
     .services { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-2xl); }
+    
     /* Home services: if only two cards fit in first row and third wraps, make third span full row */
     .services-home { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
     .services-home > .card:last-child { grid-column: 1 / -1; }
