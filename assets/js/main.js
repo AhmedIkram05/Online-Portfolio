@@ -367,7 +367,7 @@ function initProjectFilters() {
                 if (filterValue === 'all' || category === filterValue) {
                     // Slight delay to allow display:none to apply
                     setTimeout(() => {
-                        card.style.display = 'flex'; // Restore flex (cards are flex containers)
+                        card.style.display = ''; // Restore default display
                         // Trigger reflow
                         void card.offsetWidth; 
                         card.classList.add('show');
