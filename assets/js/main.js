@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initLazyLoad();
     initFormValidation();
     initParallax();
+    initProjectFilters();
 });
 
 /**
@@ -337,6 +338,42 @@ function initHeroSmoothScroll() {
             e.preventDefault();
             const target = document.querySelector('#main-content');
             if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+}
+
+function initProjectFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    if (!filterBtns.length || !projectCards.length) return;
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                
+                // Hide all first to trigger animation reset
+                card.style.display = 'none';
+                card.classList.remove('show');
+                
+                if (filterValue === 'all' || category === filterValue) {
+                    // Slight delay to allow display:none to apply
+                    setTimeout(() => {
+                        card.style.display = 'flex'; // Restore flex (cards are flex containers)
+                        // Trigger reflow
+                        void card.offsetWidth; 
+                        card.classList.add('show');
+                    }, 50);
+                }
+            });
         });
     });
 }
