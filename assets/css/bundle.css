@@ -960,28 +960,6 @@ header.scrolled {
         text-shadow: 0 0 8px rgba(52, 152, 219, 0.8);
     }
 
-    .nav-submenu {
-        position: relative;
-        display: flex !important;
-        background: transparent;
-        padding: 0;
-        gap: 0;
-        border: none;
-        box-shadow: none;
-        margin-left: var(--spacing-lg);
-        flex-direction: column;
-    }
-
-    .nav-link-sub {
-        text-transform: uppercase;
-        font-size: 0.9rem;
-        font-weight: 600;
-        letter-spacing: 0.6px;
-        padding: 0.25rem var(--spacing-lg);
-        border-left: 2px solid rgba(255, 255, 255, 0.2);
-        border-radius: 0;
-    }
-
     .nav-item.has-submenu > .nav-link::after {
         display: none;
     }
