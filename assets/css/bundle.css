@@ -1139,7 +1139,7 @@ footer::after {
     z-index: 10;
 }
 
-/* ===== CYBERPUNK FOOTER SECTIONS ===== */
+/* ===== CYBERPUNK FOOTER SECTIONS - SIMPLIFIED ===== */
 .footer-column {
     background: 
         linear-gradient(145deg, 
@@ -1153,16 +1153,10 @@ footer::after {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: all 0.3s ease;
-    animation: hologramFlicker 4s ease-in-out infinite;
 }
 
 .footer-column:hover {
     border-color: rgba(0, 255, 255, 0.8);
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 
-        0 10px 30px rgba(0, 255, 255, 0.2),
-        inset 0 1px 0 rgba(0, 255, 255, 0.5);
-    animation: neonPulse 2s ease-in-out infinite;
 }
 
 .footer-column:nth-child(2) {
@@ -1172,14 +1166,10 @@ footer::after {
             rgba(255, 0, 255, 0.05) 0%, 
             rgba(0, 255, 0, 0.03) 50%, 
             rgba(0, 255, 255, 0.05) 100%);
-    animation-delay: 1s;
 }
 
 .footer-column:nth-child(2):hover {
     border-color: rgba(255, 0, 255, 0.8);
-    box-shadow: 
-        0 10px 30px rgba(255, 0, 255, 0.2),
-        inset 0 1px 0 rgba(255, 0, 255, 0.5);
 }
 
 .footer-column:nth-child(3) {
@@ -1189,17 +1179,13 @@ footer::after {
             rgba(0, 255, 0, 0.05) 0%, 
             rgba(0, 255, 255, 0.03) 50%, 
             rgba(255, 0, 255, 0.05) 100%);
-    animation-delay: 2s;
 }
 
 .footer-column:nth-child(3):hover {
     border-color: rgba(0, 255, 0, 0.8);
-    box-shadow: 
-        0 10px 30px rgba(0, 255, 0, 0.2),
-        inset 0 1px 0 rgba(0, 255, 0, 0.5);
 }
 
-/* ===== NEON HEADERS ===== */
+/* ===== NEON HEADERS - SIMPLIFIED ===== */
 .footer-column h5 {
     color: #00ffff;
     font-family: 'Courier New', monospace;
@@ -1219,7 +1205,7 @@ footer::after {
     color: #00ff00;
 }
 
-/* ===== CYBERPUNK LINKS ===== */
+/* ===== CYBERPUNK LINKS - SIMPLIFIED ===== */
 .footer-column ul {
     list-style: none;
     padding: 0;
@@ -1260,7 +1246,7 @@ footer::after {
 
 .footer-column a:hover {
     color: #00ffff;
-    text-shadow: 0 0 10px currentColor;
+    text-shadow: none;
     transform: translateX(5px);
     text-decoration: none;
 }
@@ -1273,7 +1259,7 @@ footer::after {
     color: #00ff00;
 }
 
-/* ===== FUN FACTS SECTION ===== */
+/* ===== FUN FACTS SECTION - SIMPLIFIED ===== */
 .fun-facts {
     display: flex;
     flex-direction: column;
