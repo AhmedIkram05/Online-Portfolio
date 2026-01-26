@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
  * =========================================================================
  */
 function initNavigation() {
-    const navLinks = document.querySelectorAll('.nav-link');
+    const primaryNavLinks = document.querySelectorAll('.nav-link[data-level="primary"]');
+    const allNavLinks = document.querySelectorAll('.nav-link[data-level]');
     const indicator = document.querySelector('.nav-indicator');
     const header = document.querySelector('header');
     const navMenu = document.getElementById('navMenu');
@@ -77,7 +78,7 @@ function initNavigation() {
         }
 
         // Update classes and indicator
-        navLinks.forEach(link => {
+        primaryNavLinks.forEach(link => {
             link.classList.remove('active');
             const href = link.getAttribute('href').substring(1);
             if (href === currentSectionId) {
@@ -170,12 +171,12 @@ function initNavigation() {
     };
 
     // Click on Links (Smooth Scroll + Close Menu + Move Indicator)
-    navLinks.forEach(link => {
+    allNavLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const targetId = link.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
-            
+
             if (targetSection) {
                 // Temporarily disable CSS scroll-behavior
                 document.documentElement.style.scrollBehavior = 'auto';
@@ -189,9 +190,13 @@ function initNavigation() {
                 }, 1000);
                 
                 // Immediate visual update
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-                moveIndicator(link);
+                primaryNavLinks.forEach(l => l.classList.remove('active'));
+                const navItem = link.closest('.nav-item');
+                const primaryLink = navItem ? navItem.querySelector('.nav-link[data-level="primary"]') : null;
+                if (primaryLink) {
+                    primaryLink.classList.add('active');
+                    moveIndicator(primaryLink);
+                }
                 
                 // Close menu if open
                 closeMobileMenu();
