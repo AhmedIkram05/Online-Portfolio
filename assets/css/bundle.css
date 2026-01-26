@@ -162,7 +162,7 @@ p {
 }
 
 .lead {
-    font-size: 1.35rem;
+    font-size: 1.15rem;
     font-weight: 400;
     color: var(--text-light);
     line-height: 1.6;
@@ -187,7 +187,7 @@ p {
 
 .display-4 {
     display: inline-block;
-    font-size: 2.5rem;
+    font-size: 3rem; /* Increased size for main headings */
     font-weight: 800;
     color: var(--text-light);
     position: relative;
@@ -394,10 +394,9 @@ section[data-animate] {
 }
 
 .about-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    align-items: start;
-    gap: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl); /* Separation between the stacked sections */
 }
 
 /* Contact stack layout - allows side-by-side on larger screens */
