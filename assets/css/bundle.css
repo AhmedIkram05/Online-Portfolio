@@ -162,7 +162,7 @@ p {
 }
 
 .lead {
-    font-size: 1.35rem;
+    font-size: 1.15rem;
     font-weight: 400;
     color: var(--text-light);
     line-height: 1.6;
@@ -187,7 +187,7 @@ p {
 
 .display-4 {
     display: inline-block;
-    font-size: 2.5rem;
+    font-size: 3rem; /* Increased size for main headings */
     font-weight: 800;
     color: var(--text-light);
     position: relative;
@@ -393,6 +393,12 @@ section[data-animate] {
     background: rgba(255, 255, 255, 0.08);
 }
 
+.about-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl); /* Separation between the stacked sections */
+}
+
 /* Contact stack layout - allows side-by-side on larger screens */
 .contact-stack {
     align-items: stretch;
@@ -517,13 +523,20 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 11000; /* Final layer above all overlays (9999) and cards (10000) */
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     transition: opacity 0.4s ease, transform 0.4s ease, background 0.4s ease;
     box-shadow: var(--shadow-md);
+}
+
+/* Hide header while hero overlay is active */
+.hero-overlay:not(.hidden) ~ header {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-100%);
 }
 
 header.scrolled {
@@ -653,6 +666,80 @@ header.scrolled {
     display: block;
 }
 
+.nav-item.has-submenu {
+    overflow: visible;
+}
+
+.nav-item.has-submenu > .nav-link::after {
+    content: '\25BE';
+    font-size: 0.6rem;
+    margin-left: 0.35rem;
+    vertical-align: middle;
+    transition: transform var(--transition-medium);
+}
+
+.nav-submenu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Gap removed for better mouse tracking */
+    left: 0;
+    margin-top: 0.4rem; /* Visual spacing */
+    background: rgba(15, 25, 35, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: var(--radius-medium);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    min-width: 200px;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    z-index: 1100;
+    box-shadow: var(--shadow-lg);
+}
+
+/* Invisible bridge to prevent mouse-off when moving to submenu */
+.nav-submenu::before {
+    content: '';
+    position: absolute;
+    top: -0.6rem;
+    left: 0;
+    width: 100%;
+    height: 1rem;
+    background: transparent;
+}
+
+.nav-item.has-submenu:hover .nav-submenu {
+    display: flex;
+}
+
+/* Removed :focus-within to prevent click-sticking */
+/* .nav-item.has-submenu:focus-within .nav-submenu { display: flex; } */
+
+.nav-link-sub {
+    text-transform: none;
+    letter-spacing: 0.4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: 0.25rem 0;
+}
+
+.nav-link-sub:hover {
+    color: var(--text-light);
+}
+
+.section-anchor {
+    scroll-margin-top: 120px;
+}
+
+.anchor-target {
+    display: block;
+    width: 1px;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    pointer-events: none;
+}
+
 .nav-link:hover {
     color: var(--text-light);
     transform: translateY(-1px);
@@ -770,6 +857,14 @@ header.scrolled {
     .navbar-toggler {
         display: flex;
     }
+
+    /* Remove submenus on mobile */
+    .nav-item.has-submenu > .nav-link::after {
+        display: none;
+    }
+    .nav-submenu {
+        display: none !important;
+    }
     
     /* Show menu when hovering the side menu button, the menu itself, or when active */
     .navbar-toggler:hover ~ .navbar-nav,
@@ -883,6 +978,10 @@ header.scrolled {
             inset 0 1px 0 rgba(255, 255, 255, 0.3);
         color: #ffffff;
         text-shadow: 0 0 8px rgba(52, 152, 219, 0.8);
+    }
+
+    .nav-item.has-submenu > .nav-link::after {
+        display: none;
     }
     
     /* Add pulse animation for active state */
@@ -1576,7 +1675,6 @@ footer::after {
 /* ===== PROFILE IMAGE ===== */
 .profile-image {
     text-align: center;
-    margin-bottom: var(--spacing-xl);
 }
 
 .profileImg {
@@ -1589,6 +1687,8 @@ footer::after {
     box-shadow: var(--shadow-xl);
     transition: all var(--transition-medium);
     position: relative;
+    max-width: 100%; /* Responsive sizing inside grid */
+    height: auto;     /* Maintain aspect ratio */
 }
 
 .profileImg::before {

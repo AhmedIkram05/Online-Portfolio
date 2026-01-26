@@ -26,8 +26,8 @@
     <title>Ahmed Ikram - Online Portfolio</title>
 
     <!-- Bundled Stylesheet -->
-    <link rel="preload" href="assets/css/bundle.css?v=3.3" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/bundle.css?v=3.3"></noscript>
+    <link rel="preload" href="assets/css/bundle.css?v=3.4" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/bundle.css?v=3.4"></noscript>
 
     <!-- JavaScript Bundle Update -->
     <!-- Font Awesome Icons -->
@@ -77,20 +77,34 @@
                 <span class="side-menu-close">✕</span>
             </button>
             <ul class="navbar-nav" id="navMenu">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#home">About</a>
+                <li class="nav-item has-submenu">
+                    <a class="nav-link" href="#home" data-level="primary">About</a>
+                    <div class="nav-submenu" aria-label="About links">
+                        <a class="nav-link nav-link-sub" href="#about-all" data-level="secondary">What I’m All About</a>
+                        <a class="nav-link nav-link-sub" href="#about-journey" data-level="secondary">My Journey So Far</a>
+                        <a class="nav-link nav-link-sub" href="#about-difference" data-level="secondary">What Sets Me Apart</a>
+                        <a class="nav-link nav-link-sub" href="#about-looking" data-level="secondary">What I’m Looking For</a>
+                        <a class="nav-link nav-link-sub" href="#about-beyond" data-level="secondary">Beyond the Code</a>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#projects">Projects</a>
+                    <a class="nav-link" href="#projects" data-level="primary">Projects</a>
+                </li>
+                <li class="nav-item has-submenu">
+                    <a class="nav-link" href="#experience" data-level="primary">Experience</a>
+                    <div class="nav-submenu" aria-label="Experience links">
+                        <a class="nav-link nav-link-sub" href="#experience-work" data-level="secondary">Work Experience</a>
+                        <a class="nav-link nav-link-sub" href="#experience-education" data-level="secondary">Education</a>
+                        <a class="nav-link nav-link-sub" href="#experience-certifications" data-level="secondary">Certifications</a>
+                        <a class="nav-link nav-link-sub" href="#experience-skills" data-level="secondary">Technical Skills</a>
+                        <a class="nav-link nav-link-sub" href="#experience-transferable" data-level="secondary">Transferable Skills</a>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#experience">Experience</a>
+                    <a class="nav-link" href="#cv" data-level="primary">CV</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#cv">CV</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact</a>
+                    <a class="nav-link" href="#contact" data-level="primary">Contact</a>
                 </li>
                 <span class="nav-indicator"></span>
             </ul>
@@ -107,16 +121,49 @@
                 <p class="lead">A little about me and my background, and my journey in software development.</p>
             </div>
             
-            <div class="grid">
-                <div class="profile-image">
-                    <img src="assets/images/ahmed-ikram.jpeg" loading="lazy" class="profileImg" alt="Ahmed Ikram">
-                </div>
-                <div>
-                    <div class="card">
+            <div class="about-grid">
+                <div class="about-item section-anchor" id="about-all">
+                    <h3 class="section-title">What I'm All About</h3>
+                    <div class="card about-card">
                         <div class="card-body">
-                            <p class="card-text">I'm a passionate Computer Science student at the University of Dundee, driven by the endless possibilities of technology. My journey in software development spans from creating intuitive games to building robust system applications, each project teaching me something new about the art of coding.</p>
-                            <p class="card-text">What excites me most is solving complex problems with elegant solutions. Whether I'm working with Python's versatility, Java's robustness, or diving deep into Unix systems, I approach each challenge with curiosity and determination. My experience extends beyond academics into real-world applications, including microcontroller programming with Raspberry Pi and collaborative development using Git.</p>
-                            <p class="card-text">My vision is to become a catalyst in the tech industry, contributing to projects that push the boundaries of what's possible. I thrive in Agile environments and believe that the best software comes from teams that communicate, innovate, and iterate together.</p>
+                            <p class="card-text">Hi, I'm Ahmed Ikram – a Computer Science student at the University of Dundee with a passion for building things that actually work and solve real problems. I'm currently pursuing my BSc (Hons) in Computer Science with a focus on Data Science and AI, and I'm on the lookout for a 12-month industrial placement where I can dive deep into challenging projects and continue growing as a developer.</p>
+                            <p class="card-text">I've always been drawn to the intersection of data and development. There's something incredibly satisfying about taking a messy dataset or a vague idea and transforming it into a functioning system that people can use. Whether it's building a full-stack mobile app, engineering a machine learning pipeline, or optimizing backend systems, I genuinely enjoy the entire process – from the initial problem-solving phase right through to deployment.</p>
+                            <p class="card-text">My technical toolkit is pretty diverse. I'm comfortable working with Python, Java, C/C++, JavaScript, and TypeScript, and I've built projects across the full stack using everything from React Native and Flask to SQL databases and cloud infrastructure on AWS. I'm particularly interested in how machine learning and AI can be applied to real-world challenges, which is why I've focused on data-driven projects throughout my studies.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-item section-anchor" id="about-journey">
+                    <h3 class="section-title">My Journey So Far</h3>
+                    <div class="card about-card">
+                        <div class="card-body">
+                            <p class="card-text">My education at the University of Dundee has given me solid foundations in Data Structures & Algorithms, Multi-Paradigm Programming, and Data Engineering. I've also completed AWS Academy certifications in Cloud Foundations and Machine Learning, which have given me hands-on experience with cloud-native architectures and tools like SageMaker, EC2, and S3.</p>
+                            <p class="card-text">But honestly, some of my best learning has come from just building stuff. I led an end-to-end machine learning project where I took raw data all the way through exploratory analysis, feature engineering, and model deployment – achieving around 90% classification accuracy with XGBoost and Random Forest. I also built StockLens, a React Native mobile app that uses OCR to scan receipts and turn them into structured digital records. These projects taught me that getting something to work in a Jupyter notebook is one thing, but building a reliable, user-friendly system is a whole different challenge – and that's the challenge I love.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-item section-anchor" id="about-difference">
+                    <h3 class="section-title">What Sets Me Apart</h3>
+                    <div class="card about-card">
+                        <div class="card-body">
+                            <p class="card-text">I think what makes me a bit different is that I don't just focus on the code. Yes, I care deeply about writing clean, efficient, scalable solutions, but I also think a lot about why we're building something and who it's for. My work experience in customer-facing roles – from training staff at Zulus Peri Peri to troubleshooting problems at Beauly Mini Market – has taught me the importance of communication, process optimization, and understanding user needs. These aren't traditionally "tech" skills, but they've been invaluable when it comes to gathering requirements, explaining complex concepts to non-technical stakeholders, and building systems that people actually want to use.</p>
+                            <p class="card-text">I'm also comfortable learning quickly. When I encounter a new technology, framework, or massive codebase I've never seen before, I don't get intimidated – I get curious. I ask questions, I experiment, I break things (in safe environments!), and I figure it out. That adaptability has served me well in university projects and I know it'll be essential in an industrial placement.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-item section-anchor" id="about-looking">
+                    <h3 class="section-title">What I'm Looking For</h3>
+                    <div class="card about-card">
+                        <div class="card-body">
+                            <p class="card-text">Right now, I'm searching for a placement opportunity where I can contribute meaningfully while continuing to learn from experienced developers and engineers. I want to work on projects that matter – whether that's building scalable backend systems, developing intelligent applications, or working with large datasets to extract actionable insights. I'm excited about roles that will challenge me, push me out of my comfort zone, and help me develop into the kind of developer who can handle complex, real-world problems.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-item section-anchor" id="about-beyond">
+                    <h3 class="section-title">Beyond the Code</h3>
+                    <div class="card about-card">
+                        <div class="card-body">
+                            <p class="card-text">When I'm not coding or studying, I'm probably exploring new technologies, contributing to open-source projects, or working on side projects that catch my interest. I believe in continuous learning – not because I have to, but because I genuinely enjoy it. The tech world moves fast, and I like keeping pace.</p>
+                            <p class="card-text">If you're looking for someone who's technically capable, eager to learn, and genuinely passionate about building great software, let's connect. I'd love to hear about what you're working on and explore how I might contribute to your team.</p>
                         </div>
                     </div>
                 </div>
@@ -325,11 +372,10 @@
                         <h4 class="card-title">Stocklens</h4>
                         <p class="card-text">Scan Your Spending, See Your Missed Investing</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">React Native</span>
+                            <span class="badge badge-secondary">React Native Expo</span>
                             <span class="badge badge-secondary">TypeScript</span>
                             <span class="badge badge-secondary">JavaScript</span>
                             <span class="badge badge-secondary">Firebase</span>
-                            <span class="badge badge-secondary">Expo</span>
                         </div>
                     </div>
                 </div>
@@ -447,7 +493,7 @@
         </section>
 
         <!-- Work Experience Section -->
-        <section data-animate class="content-wrapper">
+        <section data-animate class="content-wrapper section-anchor" id="experience-work">
             <h3 class="section-title">Work Experience</h3>
             
             <div class="experience-item">
@@ -474,7 +520,7 @@
         </section>
 
         <!-- Education Section -->
-        <section data-animate class="content-wrapper">
+        <section data-animate class="content-wrapper section-anchor" id="experience-education">
             <h3 class="section-title">Education</h3>
             
             <div class="experience-item">
@@ -502,7 +548,7 @@
         </section>
 
         <!-- Certifications Section -->
-        <section data-animate class="content-wrapper">
+        <section data-animate class="content-wrapper section-anchor" id="experience-certifications">
             <h3 class="section-title">Certifications</h3>
             
             <div class="services">
@@ -569,7 +615,7 @@
         </section>
 
         <!-- Skills Section -->
-        <section data-animate class="content-wrapper">
+        <section data-animate class="content-wrapper section-anchor" id="experience-skills">
             <h3 class="section-title">Technical Skills</h3>
             <div class="services">
                 <!-- Programming Languages -->
@@ -595,8 +641,7 @@
                         <i class="fas fa-laptop-code fa-3x text-success"></i>
                         <h3 class="card-title">Web & Mobile Development</h3>
                         <div class="tech-badges">
-                            <span class="tech-badge"><i class="fab fa-react"></i> React</span>
-                            <span class="tech-badge"><i class="fab fa-react"></i> React Native</span>
+                            <span class="tech-badge"><i class="fab fa-react"></i> React Native Expo</span>
                             <span class="tech-badge"><i class="fas fa-flask"></i> Flask</span>
                             <span class="tech-badge"><i class="fab fa-html5"></i> HTML</span>
                             <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS</span>
@@ -684,7 +729,7 @@
         </section>
 
         <!-- Transferable Skills Section -->
-        <section data-animate class="content-wrapper" style="margin-top: 2rem;">
+        <section data-animate class="content-wrapper section-anchor" style="margin-top: 2rem;" id="experience-transferable">
             <h3 class="section-title">Transferable Skills</h3>
             <div class="services">
                 <div class="card">
@@ -888,12 +933,12 @@
                 <div class="footer-column">
                     <h5>Fun Facts</h5>
                     <div class="fun-facts">
-                        <div class="fact">☕ Coffee consumed: 1000+ cups</div>
+                        <div class="fact">☕ Tea's consumed: 1000+ cups</div>
                         <div class="fact">🐛 Bugs fixed: Countless</div>
-                        <div class="fact">🌙 Coding at 3 AM: Often</div>
-                        <div class="fact">🎯 Favorite language: Python</div>
-                        <div class="fact">🚀 Dream job: Tech innovator</div>
-                        <div class="fact">💡 Lines of code: 10,000+</div>
+                        <div class="fact">🌙 Coding at 3 AM: Always</div>
+                        <div class="fact">🎯 Favorite programming language: Python</div>
+                        <div class="fact">🚀 Dream job: AI Architect</div>
+                        <div class="fact">🎵 Coding music: Hip-hop</div>
                     </div>
                 </div>
             </div>
@@ -905,7 +950,7 @@
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
-    <script src="assets/js/main.js?v=3.6" defer></script>
+    <script src="assets/js/main.js?v=3.7" defer></script>
 
     <!-- Back to Top Button -->
     <a href="#" id="back-to-top" class="back-to-top" aria-label="Back to Top">
