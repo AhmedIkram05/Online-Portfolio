@@ -395,7 +395,8 @@ section[data-animate] {
 
 .about-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: start;
     gap: var(--spacing-md);
 }
 
@@ -1675,7 +1676,6 @@ footer::after {
 /* ===== PROFILE IMAGE ===== */
 .profile-image {
     text-align: center;
-    margin-bottom: var(--spacing-xl);
 }
 
 .profileImg {
@@ -1688,6 +1688,8 @@ footer::after {
     box-shadow: var(--shadow-xl);
     transition: all var(--transition-medium);
     position: relative;
+    max-width: 100%; /* Responsive sizing inside grid */
+    height: auto;     /* Maintain aspect ratio */
 }
 
 .profileImg::before {
