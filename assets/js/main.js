@@ -381,6 +381,19 @@ function initProjectFilters() {
             });
         });
     });
+
+    // Link navbar submenu items to filter buttons
+    const navFilterLinks = document.querySelectorAll('.nav-link[data-filter]');
+    navFilterLinks.forEach(link => {
+        link.addEventListener('click', () => {
+             const filterValue = link.getAttribute('data-filter');
+             const targetBtn = document.querySelector(`.filter-btn[data-filter="${filterValue}"]`);
+             if (targetBtn) {
+                 // Trigger the filter logic by simulating a click
+                 targetBtn.click();
+             }
+        });
+    });
 }
 
 /**
