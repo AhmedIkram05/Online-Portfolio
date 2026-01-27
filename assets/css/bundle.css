@@ -806,6 +806,18 @@ header.scrolled {
         display: block; /* Visible on desktop */
         pointer-events: none;
     }
+
+    .sub-nav-indicator {
+        position: absolute;
+        left: 0;
+        width: 3px;
+        background-color: var(--secondary-color);
+        border-radius: 0 3px 3px 0;
+        transition: transform 0.3s ease, height 0.3s ease;
+        z-index: 10;
+        display: block;
+        pointer-events: none;
+    }
 }
 
 /* ===== MOBILE NAVIGATION (below 768px) ===== */

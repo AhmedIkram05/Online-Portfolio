@@ -53,10 +53,36 @@ function initNavigation() {
         indicator.style.display = 'block';
     }
 
+    function moveSubIndicator(link) {
+        const submenu = link.closest('.nav-submenu');
+        if (!submenu) return;
+        const subIndicator = submenu.querySelector('.sub-nav-indicator');
+        if (!subIndicator) return;
+
+        const menuRect = submenu.getBoundingClientRect();
+        const linkRect = link.getBoundingClientRect();
+        
+        subIndicator.style.height = `${linkRect.height}px`;
+        subIndicator.style.transform = `translateY(${linkRect.top - menuRect.top}px)`;
+        subIndicator.style.display = 'block';
+    }
+
     /* --- 2. Active State on Scroll (Spy) --- */
     function onScrollSpy() {
         const centerLine = window.innerHeight / 3; // Trigger earlier (top third)
-        const sections = ['home', 'projects', 'experience', 'cv', 'contact'];
+        // Expanded sections list to include sub-sections
+        // Note: Order matters. Deeper/later sections should be checked first in reverse loop,
+        // or just ensure they are in DOM order for the loop logic.
+        // Projects filters share the same ID, so we only track the main section.
+        const sections = [
+            'home', 
+            'about-all', 'about-journey', 'about-difference', 'about-looking', 'about-beyond',
+            'projects', 
+            'experience',
+            'experience-work', 'experience-education', 'experience-certifications', 'experience-skills', 'experience-transferable',
+            'cv', 
+            'contact'
+        ];
         let currentSectionId = '';
 
         // "Who is the lowest section on the page whose top has passed the scan line?"
@@ -77,14 +103,44 @@ function initNavigation() {
         }
 
         // Update classes and indicator
-        primaryNavLinks.forEach(link => {
-            link.classList.remove('active');
-            const href = link.getAttribute('href').substring(1);
-            if (href === currentSectionId) {
-                link.classList.add('active');
-                moveIndicator(link);
+        // Reset all active states first is expensive, so we do it carefully
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+
+        // Find the link corresponding to the current section
+        let activeLink = document.querySelector(`.nav-link[href="#${currentSectionId}"]`);
+        
+        // Special handling for Projects section to respect active filter
+        if (currentSectionId === 'projects') {
+            const activeFilterBtn = document.querySelector('.filter-btn.active');
+            if (activeFilterBtn) {
+                const filterValue = activeFilterBtn.getAttribute('data-filter');
+                const filterLink = document.querySelector(`.nav-link-sub[data-filter="${filterValue}"]`);
+                if (filterLink) {
+                    activeLink = filterLink;
+                }
             }
-        });
+        }
+        
+        if (activeLink) {
+            activeLink.classList.add('active');
+            
+            // If it's a sub-link
+            if (activeLink.classList.contains('nav-link-sub')) {
+                moveSubIndicator(activeLink);
+                // Also activate the parent primary link
+                const parentItem = activeLink.closest('.nav-item');
+                if (parentItem) {
+                    const primaryLink = parentItem.querySelector('.nav-link[data-level="primary"]');
+                    if (primaryLink) {
+                        primaryLink.classList.add('active');
+                        moveIndicator(primaryLink);
+                    }
+                }
+            } else {
+                // It's a primary link
+                moveIndicator(activeLink);
+            }
+        }
     }
 
     /* --- 3. Sticky Header Logic --- */
