@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Navigation & Layout
     initNavigation();
-    initBackToTop();
     
     // Hero Section modules
     initHeroFeatures();
@@ -399,7 +398,7 @@ function initProjectFilters() {
 /**
  * =========================================================================
  * GLOBAL UTILITIES
- * Handles: Lazy Loading, Animations, Back to Top, Forms, Parallax
+ * Handles: Lazy Loading, Animations, Forms, Parallax
  * =========================================================================
  */
 
@@ -482,20 +481,6 @@ function initLazyLoad() {
     });
   
     document.querySelectorAll('img').forEach(img => imageObserver.observe(img));
-}
-
-function initBackToTop() {
-    const btn = document.getElementById('back-to-top');
-    if (!btn) return;
-    
-    window.addEventListener('scroll', () => {
-        btn.style.display = window.pageYOffset > 300 ? 'block' : 'none';
-    });
-    
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
 }
 
 function initFormValidation() {
