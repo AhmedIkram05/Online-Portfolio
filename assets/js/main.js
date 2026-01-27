@@ -107,7 +107,19 @@ function initNavigation() {
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
 
         // Find the link corresponding to the current section
-        const activeLink = document.querySelector(`.nav-link[href="#${currentSectionId}"]`);
+        let activeLink = document.querySelector(`.nav-link[href="#${currentSectionId}"]`);
+        
+        // Special handling for Projects section to respect active filter
+        if (currentSectionId === 'projects') {
+            const activeFilterBtn = document.querySelector('.filter-btn.active');
+            if (activeFilterBtn) {
+                const filterValue = activeFilterBtn.getAttribute('data-filter');
+                const filterLink = document.querySelector(`.nav-link-sub[data-filter="${filterValue}"]`);
+                if (filterLink) {
+                    activeLink = filterLink;
+                }
+            }
+        }
         
         if (activeLink) {
             activeLink.classList.add('active');
