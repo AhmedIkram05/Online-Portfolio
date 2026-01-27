@@ -25,18 +25,4 @@ A modern, responsive personal portfolio website for me (Ahmed Ikram), a Computer
 
 ## 🧪 How to Run
 
-### Option 1: Live Demo
-
 Use the link provided in the repository bio (GitHub Pages).
-
-### Option 2: Local Development
-
-1. **Clone Repository**
-
-   ```bash
-   git clone https://github.com/AhmedIkram05/Online-Portfolio.git
-   ```
-
-2. **Run Server**
-
-   Open [index.html](index.html) directly in any modern web browser, or use the **Live Server** extension in VS Code for real-time updates.
