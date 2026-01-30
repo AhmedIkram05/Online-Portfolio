@@ -679,6 +679,24 @@ header.scrolled {
     padding: 0.25rem 0;
 }
 
+/* Override generic nav-link hover indicator for sub-links */
+.nav-link-sub::before {
+    left: -1.5rem !important;
+    top: 0 !important;
+    bottom: auto !important;
+    width: 3px !important;
+    height: 100% !important;
+    transform: none !important;
+    border-radius: 0 3px 3px 0 !important;
+    background: transparent;
+    transition: background-color 0.2s ease !important;
+}
+
+.nav-link-sub:hover::before {
+    background: #ff4444;
+    width: 3px !important;
+}
+
 .nav-link-sub:hover {
     color: var(--text-light);
 }
