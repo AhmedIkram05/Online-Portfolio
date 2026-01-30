@@ -210,13 +210,21 @@ function initNavigation() {
                 // Use native smooth scrolling (respects scroll-margin-top)
                 targetSection.scrollIntoView({ behavior: 'smooth' });
                 
-                // Immediate visual update
-                primaryNavLinks.forEach(l => l.classList.remove('active'));
+                // Immediate visual update - reset all nav links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                
                 const navItem = link.closest('.nav-item');
                 const primaryLink = navItem ? navItem.querySelector('.nav-link[data-level="primary"]') : null;
+                
                 if (primaryLink) {
                     primaryLink.classList.add('active');
                     moveIndicator(primaryLink);
+                }
+
+                // Activate clicked sub-link immediately
+                if (link.classList.contains('nav-link-sub')) {
+                    link.classList.add('active');
+                    moveSubIndicator(link);
                 }
                 
                 // Close menu if open
