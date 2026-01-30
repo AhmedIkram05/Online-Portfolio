@@ -207,9 +207,39 @@ function initNavigation() {
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
-                // Use native smooth scrolling (respects scroll-margin-top)
-                targetSection.scrollIntoView({ behavior: 'smooth' });
+                // Custom slow smooth scroll
+                const startPosition = window.pageYOffset;
+                // Get scroll-margin-top from CSS or default to 120
+                const scrollMargin = parseInt(window.getComputedStyle(targetSection).scrollMarginTop) || 120;
+                const elementPosition = targetSection.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + startPosition - scrollMargin;
+                const distance = offsetPosition - startPosition;
+                const duration = 1500; // 1.5s for professional, slower feel
+                let start = null;
+
+                // Temporarily disable native smooth scroll to prevent conflict
+                const originalBehavior = document.documentElement.style.scrollBehavior;
+                document.documentElement.style.scrollBehavior = 'auto';
+
+                function step(timestamp) {
+                    if (!start) start = timestamp;
+                    const progress = timestamp - start;
+                    const percent = Math.min(progress / duration, 1);
+                    
+                    // Ease In Out Cubic
+                    const ease = percent < 0.5 ? 4 * percent * percent * percent : 1 - Math.pow(-2 * percent + 2, 3) / 2;
+
+                    window.scrollTo(0, startPosition + (distance * ease));
+
+                    if (progress < duration) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        document.documentElement.style.scrollBehavior = originalBehavior;
+                    }
+                }
                 
+                window.requestAnimationFrame(step);
+
                 // Immediate visual update - reset all nav links
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
                 
