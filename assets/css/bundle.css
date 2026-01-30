@@ -682,19 +682,20 @@ header.scrolled {
 /* Override generic nav-link hover indicator for sub-links */
 .nav-link-sub::before {
     left: -1.5rem !important;
-    top: 0 !important;
+    top: 50% !important;
     bottom: auto !important;
     width: 3px !important;
-    height: 100% !important;
-    transform: none !important;
+    height: 0 !important;
+    transform: translateY(-50%) !important;
     border-radius: 0 3px 3px 0 !important;
     background: transparent;
-    transition: background-color 0.2s ease !important;
+    transition: height var(--transition-medium), background-color var(--transition-medium) !important;
 }
 
 .nav-link-sub:hover::before {
     background: #ff4444;
     width: 3px !important;
+    height: 100% !important;
 }
 
 .nav-link-sub:hover {
