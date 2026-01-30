@@ -202,13 +202,10 @@ function initNavigation() {
     // Click on Links (Smooth Scroll + Close Menu + Move Indicator)
     allNavLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
             const targetId = link.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
-                // Use native smooth scrolling (respects scroll-margin-top)
-                targetSection.scrollIntoView({ behavior: 'smooth' });
                 
                 // Immediate visual update - reset all nav links
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
