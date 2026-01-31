@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initLazyLoad();
     initFormValidation();
-    initParallax();
     initProjectFilters();
 });
 
@@ -181,9 +180,16 @@ function initNavigation() {
     /* --- 5. Event Binding --- */
     
     // Scroll Listeners
+    let navTicking = false;
     window.addEventListener('scroll', () => {
-        onScrollSpy();
-        onScrollHeader();
+        if (!navTicking) {
+            window.requestAnimationFrame(() => {
+                onScrollSpy();
+                onScrollHeader();
+                navTicking = false;
+            });
+            navTicking = true;
+        }
     }, { passive: true });
     
     window.addEventListener('resize', onScrollSpy, { passive: true });
@@ -313,9 +319,16 @@ function initHeroOverlay() {
     });
 
     // Dismiss on scroll
+    let heroDismissTicking = false;
     window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 50) dismissHero();
-    });
+        if (!heroDismissTicking) {
+            window.requestAnimationFrame(() => {
+                if (window.pageYOffset > 50) dismissHero();
+                heroDismissTicking = false;
+            });
+            heroDismissTicking = true;
+        }
+    }, { passive: true });
     
     // Dismiss on key press
     document.addEventListener('keydown', (e) => {
@@ -375,16 +388,24 @@ function initHeroDisappearance() {
     const hero = document.querySelector('.hero');
     if (!hero) return;
     
+    let heroHiddenTicking = false;
     window.addEventListener('scroll', () => {
-        const threshold = hero.offsetHeight / 3;
-        hero.classList.toggle('hero-hidden', window.pageYOffset > threshold);
-    });
+        if (!heroHiddenTicking) {
+            window.requestAnimationFrame(() => {
+                const threshold = hero.offsetHeight / 3;
+                hero.classList.toggle('hero-hidden', window.pageYOffset > threshold);
+                heroHiddenTicking = false;
+            });
+            heroHiddenTicking = true;
+        }
+    }, { passive: true });
 }
 
 function init3DHeroEffects() {
     const hero = document.querySelector('.hero');
     if (!hero) return;
     
+    let hero3DTicking = false;
     const updateTransform = () => {
         const scrollY = window.pageYOffset;
         // Limit depth to avoid visual glitches
@@ -392,7 +413,15 @@ function init3DHeroEffects() {
         hero.style.transform = `translateZ(${-depth}px)`;
     };
     
-    window.addEventListener('scroll', updateTransform, { passive: true });
+    window.addEventListener('scroll', () => {
+        if (!hero3DTicking) {
+            hero3DTicking = true;
+            window.requestAnimationFrame(() => {
+                updateTransform();
+                hero3DTicking = false;
+            });
+        }
+    }, { passive: true });
 }
 
 function initHeroSmoothScroll() {
@@ -606,12 +635,5 @@ function initFormValidation() {
                 }
             });
         });
-    });
-}
-
-function initParallax() {
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        document.body.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
     });
 }
