@@ -104,7 +104,8 @@ body {
         calc(100% + 100px) calc(100% + 100px),
         50% -100px,
         calc(100% + 50px) 50%;
-    animation: modernAbstractBg 20s ease-in-out infinite;
+    /* Animation removed for performance */
+    /* animation: modernAbstractBg 20s ease-in-out infinite; */
 }
 
 @keyframes modernAbstractBg {
