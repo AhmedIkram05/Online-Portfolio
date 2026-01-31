@@ -398,7 +398,7 @@ function initHeroDisappearance() {
             });
             heroHiddenTicking = true;
         }
-    });
+    }, { passive: true });
 }
 
 function init3DHeroEffects() {
@@ -407,19 +407,21 @@ function init3DHeroEffects() {
     
     let hero3DTicking = false;
     const updateTransform = () => {
-        if (!hero3DTicking) {
-            window.requestAnimationFrame(() => {
-                const scrollY = window.pageYOffset;
-                // Limit depth to avoid visual glitches
-                const depth = Math.min(50, (scrollY / window.innerHeight) * 50);
-                hero.style.transform = `translateZ(${-depth}px)`;
-                hero3DTicking = false;
-            });
-            hero3DTicking = true;
-        }
+        const scrollY = window.pageYOffset;
+        // Limit depth to avoid visual glitches
+        const depth = Math.min(50, (scrollY / window.innerHeight) * 50);
+        hero.style.transform = `translateZ(${-depth}px)`;
     };
     
-    window.addEventListener('scroll', updateTransform, { passive: true });
+    window.addEventListener('scroll', () => {
+        if (!hero3DTicking) {
+            hero3DTicking = true;
+            window.requestAnimationFrame(() => {
+                updateTransform();
+                hero3DTicking = false;
+            });
+        }
+    }, { passive: true });
 }
 
 function initHeroSmoothScroll() {
