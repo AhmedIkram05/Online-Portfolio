@@ -2076,6 +2076,10 @@ footer::after {
 /* CV Page Specific Styles (cv.html) */
 
 /* ===== CV VIEWER ===== */
+.cv-embed-wrapper {
+    min-height: 800px;
+}
+
 .embed-responsive-item {
     border: none;
     border-radius: var(--radius-medium);
@@ -2518,6 +2522,7 @@ select.form-control:focus {
     }
 
     /* CV page */
+    .cv-embed-wrapper { min-height: 560px; }
     .embed-responsive-item {
         height: 560px !important;
         border-radius: var(--radius-small);
@@ -2622,6 +2627,7 @@ select.form-control:focus {
     .contact-item { padding: var(--spacing-xl); }
 
     /* CV viewer */
+    .cv-embed-wrapper { min-height: 760px; }
     .embed-responsive-item { height: 760px !important; }
 
     /* Footer */
