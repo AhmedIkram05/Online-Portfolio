@@ -854,9 +854,8 @@ header.scrolled {
         display: none !important;
     }
     
-    /* Show menu when hovering the side menu button, the menu itself, or when active */
-    .navbar-toggler:hover ~ .navbar-nav,
-    .navbar-nav:hover,
+    /* Show menu when toggled open */
+    .navbar-toggler.active ~ .navbar-nav,
     .navbar-nav.show {
         opacity: 1;
         visibility: visible;
