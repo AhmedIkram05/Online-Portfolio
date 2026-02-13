@@ -840,8 +840,8 @@ header.scrolled {
     }
 }
 
-/* ===== MOBILE NAVIGATION (below 768px) ===== */
-@media (max-width: 767px) {
+/* ===== LEGACY MOBILE SIDEBAR NAVIGATION (disabled) ===== */
+@media (max-width: 0) {
     .navbar-toggler {
         display: flex;
     }
@@ -994,6 +994,28 @@ header.scrolled {
             opacity: 0.3; 
             transform: scale(1.02); 
         }
+    }
+}
+
+/* ===== MOBILE/TABLET NAVIGATION (regular navbar, no burger) ===== */
+@media (max-width: 767px) {
+    .navbar {
+        justify-content: center;
+    }
+
+    .navbar-toggler {
+        display: none !important;
+    }
+
+    .navbar-nav {
+        gap: var(--spacing-md);
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-link {
+        padding: 0.4rem 0;
+        font-size: 0.8rem;
     }
 }
 
