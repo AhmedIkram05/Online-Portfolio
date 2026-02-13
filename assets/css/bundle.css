@@ -851,14 +851,14 @@ header.scrolled {
     }
 
     .navbar-nav {
-        gap: var(--spacing-md);
-        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+        flex-wrap: nowrap;
         justify-content: center;
     }
 
     .nav-link {
-        padding: var(--spacing-xs) var(--spacing-sm);
-        font-size: 1rem;
+        padding: var(--spacing-xs) var(--spacing-xs);
+        font-size: 0.85rem;
         min-height: 44px;
         display: flex;
         align-items: center;
