@@ -1,28 +1,45 @@
-# Online-Portfolio
+# Ahmed Ikram — Online Portfolio
 
-## 🚀 Overview
+**🌐 [Live Site](https://ahmedikram05.github.io/Online-Portfolio/index.html)**
 
-A modern, responsive personal portfolio website for me (Ahmed Ikram), a Computer Science student and aspiring software developer. This webiste serves as a central hub to showcase professional skills, academic projects, and work experience through a clean and interactive user interface.
+A personal portfolio website built from scratch with vanilla HTML, CSS, and JavaScript. Designed to give recruiters and collaborators a clear picture of my projects, skills, and background in one place.
 
 ## 📸 Screenshot
 
-![Screenshot](assets/images/example.png)
+![Portfolio Screenshot](assets/images/example.png)
 
 ## 🧠 Tech Stack
 
-- **HTML5**: Semantic structure for all pages.
-- **CSS3**: Modularized styling with custom animations (blobs, typing effects) and full responsiveness.
-- **JavaScript**: Vanilla JS for interactive elements like the navigation menu and dynamic text.
-- **Font Awesome**: Scalable vector icons for social links and UI elements.
+- **HTML5** — Semantic structure throughout
+- **CSS3** — Custom animations (blob backgrounds, typing effects), modular stylesheets, fully responsive layout
+- **JavaScript** — Vanilla JS for navigation, dynamic text, project filtering, and contact form handling
+- **Font Awesome** — Icons for social links and UI elements
+- **GitHub Pages** — Hosting and deployment
 
 ## 📑 Pages
 
-- **Home**: Features an interactive hero section with animated backgrounds and a dynamic typing introduction.
-- **Projects**: A dedicated gallery showcasing various software development and academic projects.
-- **Experience**: A detailed breakdown of professional roles, internships, and academic milestones.
-- **CV**: Provides a professional overview of qualifications with options to view or download the resume.
-- **Contact**: Includes a functional contact form and direct links to professional social media profiles.
+- **Home** — Animated hero section with dynamic typing introduction and blob background effects
+- **Projects** — Filterable gallery of software and data science projects, organised by category
+- **Experience** — Full breakdown of work experience, education, certifications, and technical skills
+- **CV** — Download links for role-specific CV versions (SWE, Data Science, General)
+- **Contact** — Contact form with direct links to LinkedIn, GitHub, and email
+
+## ✨ Features
+
+- Smooth scroll navigation with active section highlighting
+- Project filter by category (Python, Web, Mobile, Systems, Data)
+- Responsive design — works across desktop, tablet, and mobile
+- Custom CSS animations with no external animation libraries
+- Dark-themed aesthetic with consistent design language throughout
 
 ## 🧪 How to Run
 
-Use the link provided in the repository bio (GitHub Pages).
+The site is live at the link above. To run locally:
+
+```bash
+git clone https://github.com/AhmedIkram05/Online-Portfolio.git
+cd Online-Portfolio
+python3 -m http.server 8000
+```
+
+Then visit `http://localhost:8000`.
