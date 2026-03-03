@@ -5,8 +5,127 @@
  * Description: Handles all interactive elements, animations, and navigation logic.
  */
 
+/* =========================================================================
+   Analytics consent + dynamic gtag loader
+   Moved from inline <head> into this file so consent handling is centralized.
+   ========================================================================= */
+
+// Ensure dataLayer and gtag helper exist early
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);} 
+
+// Default: deny analytics-related storage until user gives consent
+gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'personalization_storage': 'denied',
+    'security_storage': 'granted'
+});
+
+function loadGoogleAnalytics() {
+    if (window.gaLoaded) return;
+    var gaScript = document.createElement('script');
+    gaScript.async = true;
+    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-0LCXMLYZHQ';
+    gaScript.onload = function () {
+        gtag('js', new Date());
+        gtag('config', 'G-0LCXMLYZHQ');
+    };
+    document.head.appendChild(gaScript);
+    window.gaLoaded = true;
+}
+
+function hideConsentBanner() {
+    var b = document.getElementById('cookie-consent-banner');
+    if (b && b.parentNode) b.parentNode.removeChild(b);
+}
+
+function grantAnalyticsConsent() {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+    try { window.localStorage.setItem('ga_consent', 'granted'); } catch (e) {}
+    loadGoogleAnalytics();
+    hideConsentBanner();
+}
+
+function denyAnalyticsConsent() {
+    try { window.localStorage.setItem('ga_consent', 'denied'); } catch (e) {}
+    hideConsentBanner();
+}
+
+function initAnalyticsConsentBanner() {
+    var stored = null;
+    try { stored = window.localStorage.getItem('ga_consent'); } catch (e) {}
+    if (stored === 'granted') {
+        gtag('consent', 'update', { 'analytics_storage': 'granted' });
+        loadGoogleAnalytics();
+        return;
+    }
+    if (stored === 'denied') return;
+
+    // No prior decision: create a small consent banner
+    var banner = document.createElement('div');
+    banner.id = 'cookie-consent-banner';
+    banner.style.position = 'fixed';
+    banner.style.left = '0';
+    banner.style.right = '0';
+    banner.style.bottom = '0';
+    banner.style.zIndex = '12000';
+    banner.style.backgroundColor = '#111';
+    banner.style.color = '#fff';
+    banner.style.padding = '0.9rem';
+    banner.style.display = 'flex';
+    banner.style.justifyContent = 'space-between';
+    banner.style.alignItems = 'center';
+    banner.style.gap = '0.5rem';
+    banner.style.fontSize = '0.95rem';
+
+    var text = document.createElement('div');
+    text.textContent = 'This site uses Google Analytics for anonymous usage statistics. Analytics are disabled until you allow them.';
+    text.style.flex = '1';
+
+    var actions = document.createElement('div');
+
+    var accept = document.createElement('button');
+    accept.type = 'button';
+    accept.textContent = 'Allow analytics';
+    accept.style.marginLeft = '0.5rem';
+    accept.style.padding = '0.5rem 0.75rem';
+    accept.style.border = 'none';
+    accept.style.backgroundColor = '#0b84ff';
+    accept.style.color = '#fff';
+    accept.style.cursor = 'pointer';
+    accept.onclick = grantAnalyticsConsent;
+
+    var decline = document.createElement('button');
+    decline.type = 'button';
+    decline.textContent = 'Decline';
+    decline.style.marginLeft = '0.5rem';
+    decline.style.padding = '0.5rem 0.75rem';
+    decline.style.border = '1px solid #555';
+    decline.style.backgroundColor = 'transparent';
+    decline.style.color = '#fff';
+    decline.style.cursor = 'pointer';
+    decline.onclick = denyAnalyticsConsent;
+
+    actions.appendChild(decline);
+    actions.appendChild(accept);
+
+    banner.appendChild(text);
+    banner.appendChild(actions);
+
+    if (document.body) {
+        document.body.appendChild(banner);
+    } else {
+        document.addEventListener('readystatechange', function () {
+            if (document.readyState === 'complete') document.body.appendChild(banner);
+        });
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Portfolio initialized');
+    // Initialize analytics consent/banner
+    try { initAnalyticsConsentBanner(); } catch (e) { /* fail silently */ }
     
     // Navigation & Layout
     initNavigation();
