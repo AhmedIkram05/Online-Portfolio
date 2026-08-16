@@ -576,7 +576,7 @@ function initProjectFilters() {
                 card.style.display = 'none';
                 card.classList.remove('show');
                 
-                if (filterValue === 'all' || category === filterValue) {
+                if (filterValue === 'all' || (category || '').split(' ').includes(filterValue)) {
                     // Slight delay to allow display:none to apply
                     setTimeout(() => {
                         card.style.display = ''; // Restore default display
