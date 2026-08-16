@@ -546,9 +546,10 @@ header.scrolled {
     background: #23923c;
 }
 
-/* Hide availability badge below 1024px — below this the centered nav items
-   (About/Projects/Experience/CV/Contact ≈ 610px) reach into the badge zone */
-@media (max-width: 1023.98px) {
+/* Hide availability badge below 1052px — badge is ~205px wide + 24px right edge;
+   below this the centered nav (About/Projects/Experience/CV/Contact ≈ 594px)
+   reaches into the badge zone (e.g. 14px overlap at 1024px) */
+@media (max-width: 1051.98px) {
     .navbar-badge {
         display: none;
     }
@@ -890,22 +891,39 @@ header.scrolled {
         display: none;
     }
 
+    .nav-indicator {
+        display: none; /* desktop-only underline; inline flex child below 768 otherwise */
+    }
+
     .navbar-nav {
-        gap: var(--spacing-sm);
+        gap: 4px;
         flex-wrap: nowrap;
         justify-content: center;
     }
 
     .nav-link {
-        padding: var(--spacing-xs) var(--spacing-xs);
-        font-size: 0.85rem;
+        padding: 4px 6px;
+        font-size: 0.78rem;
         min-height: 44px;
         display: flex;
         align-items: center;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.25px;
         font-weight: 600;
         color: var(--text-light);
+    }
+}
+
+/* Very small phones: shrink further so all 5 links fit (no burger below 768px) */
+@media (max-width: 360px) {
+    .navbar-nav {
+        gap: 2px;
+    }
+
+    .nav-link {
+        padding: 2px 4px;
+        font-size: 0.72rem;
+        letter-spacing: 0;
     }
 }
 
