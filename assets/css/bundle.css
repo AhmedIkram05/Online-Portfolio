@@ -709,6 +709,11 @@ header.scrolled {
     display: flex;
 }
 
+/* Touch devices: tap-to-open (JS toggles .open; see initTouchNav) */
+.nav-item.has-submenu.open .nav-submenu {
+    display: flex;
+}
+
 /* Removed :focus-within to prevent click-sticking */
 /* .nav-item.has-submenu:focus-within .nav-submenu { display: flex; } */
 
@@ -746,6 +751,42 @@ header.scrolled {
 
 .section-anchor {
     scroll-margin-top: 120px;
+}
+
+/* Anchor offset for the fixed header (JS smooth scroll reads this computed value) */
+section[id] {
+    scroll-margin-top: 90px;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    right: var(--spacing-lg);
+    bottom: var(--spacing-lg);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(231, 76, 60, 0.9);
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 10500;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: #ff4444;
 }
 
 .anchor-target {
@@ -881,44 +922,85 @@ header.scrolled {
     }
 }
 
-/* ===== MOBILE/TABLET NAVIGATION (regular navbar, no burger) ===== */
+/* ===== MOBILE NAVIGATION (burger menu + slide-down panel) ===== */
 @media (max-width: 767px) {
     .navbar {
-        justify-content: center;
+        justify-content: flex-start;
+        position: relative;
     }
 
     .navbar-toggler {
-        display: none;
+        display: inline-flex;
     }
 
     .nav-indicator {
-        display: none; /* desktop-only underline; inline flex child below 768 otherwise */
+        display: none; /* desktop-only underline */
     }
 
     .navbar-nav {
-        gap: 2px;
-        flex-wrap: nowrap;
-        justify-content: center;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        justify-content: flex-start;
+        background: rgba(8, 12, 18, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        padding: var(--spacing-sm) var(--spacing-lg) var(--spacing-lg);
+        transform: translateY(-12px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    }
+
+    .navbar-nav.show {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
     }
 
     .nav-link {
-        padding: 2px 5px;
-        font-size: 0.74rem;
         min-height: 44px;
         display: flex;
         align-items: center;
+        font-size: 0.95rem;
+        padding: 0.75rem 0.25rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         text-transform: uppercase;
-        letter-spacing: 0;
+        letter-spacing: 0.5px;
         font-weight: 600;
         color: var(--text-light);
     }
-}
 
-/* Very small phones: shrink further so all 5 links fit (no burger below 768px) */
-@media (max-width: 340px) {
-    .nav-link {
-        padding: 2px 3px;
-        font-size: 0.68rem;
+    /* Submenus become in-panel accordions */
+    .nav-item.has-submenu .nav-submenu {
+        position: static;
+        min-width: 0;
+        width: 100%;
+        padding: 0 0 0.5rem 1.25rem;
+        background: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        box-shadow: none;
+        border-radius: 0;
+        gap: 0;
+    }
+
+    .nav-item.has-submenu.open .nav-submenu {
+        display: flex;
+    }
+
+    .nav-item.has-submenu.open > .nav-link::after {
+        transform: rotate(180deg);
+    }
+
+    .nav-submenu .sub-nav-indicator {
+        display: none;
     }
 }
 
@@ -1721,6 +1803,14 @@ footer::after {
     opacity: 1;
 }
 
+/* Touch devices: overlay always visible (no hover), so the View Code button stays reachable */
+@media (hover: none) {
+    .project-card .card-overlay {
+        opacity: 1;
+        background: rgba(26, 26, 26, 0.55);
+    }
+}
+
 /* ===== PROJECT CARD CONTENT ===== */
 .project-card .card-body {
     padding: var(--spacing-xl);
@@ -2451,7 +2541,7 @@ select.form-control:focus {
     }
     .form-control {
         padding: var(--spacing-sm);
-        font-size: 0.95rem;
+        font-size: 16px; /* ≥16px prevents iOS Safari focus zoom */
         border-radius: var(--radius-small);
     }
     .contact-item {
