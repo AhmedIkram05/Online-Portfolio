@@ -2113,10 +2113,9 @@ select.form-control:focus {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    display: grid;
-    grid-template-columns: 48px minmax(80px, 110px) 1fr;
-    gap: var(--spacing-md);
+    display: flex;
     align-items: center;
+    gap: var(--spacing-md);
     text-align: left;
 }
 
@@ -2133,6 +2132,7 @@ select.form-control:focus {
     color: var(--secondary-color);
     width: 48px;
     height: 48px;
+    flex: 0 0 48px;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
@@ -2143,6 +2143,8 @@ select.form-control:focus {
 .contact-item h6 {
     font-weight: 600;
     margin: 0;
+    flex: 0 0 auto;
+    white-space: nowrap;
     color: var(--text-light);
     font-size: 1.1rem;
 }
