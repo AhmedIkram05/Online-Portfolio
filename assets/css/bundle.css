@@ -400,12 +400,9 @@ section[data-animate] {
     gap: var(--spacing-2xl); /* Separation between the stacked sections */
 }
 
-/* Contact stack layout - allows side-by-side on larger screens */
+/* Contact stack layout - side-by-side on desktop, stacked on mobile */
 .contact-stack {
     align-items: stretch;
-    grid-template-columns: 1fr;
-    max-width: 980px;
-    margin: 0 auto;
 }
 
 /* ===== SECTIONS ===== */
@@ -2117,7 +2114,7 @@ select.form-control:focus {
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: grid;
-    grid-template-columns: 48px minmax(110px, 170px) 1fr;
+    grid-template-columns: 48px minmax(80px, 110px) 1fr;
     gap: var(--spacing-md);
     align-items: center;
     text-align: left;
@@ -2155,6 +2152,7 @@ select.form-control:focus {
     color: var(--text-muted);
     text-decoration: none;
     transition: color var(--transition-fast);
+    overflow-wrap: anywhere;
 }
 
 .contact-item a:hover {
