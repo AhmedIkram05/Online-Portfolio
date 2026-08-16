@@ -475,10 +475,10 @@ function initHeroTypingEffect() {
     if (!heroText) return;
 
     const messages = [
-        "Building innovative solutions with modern technology",
-        "Passionate about clean code and user experience", 
-        "Ready to collaborate on your next big idea",
-        "Transforming ideas into reality through code"
+        "Final year CS student seeking graduate roles",
+        "Open to entry-level software engineering opportunities",
+        "Building data & AI solutions with modern technology",
+        "Ready to collaborate on your next big idea"
     ];
     let messageIndex = 0;
     let charIndex = 0;
