@@ -546,8 +546,9 @@ header.scrolled {
     background: #23923c;
 }
 
-/* Hide availability badge on small screens (matches the existing mobile breakpoint) */
-@media (max-width: 767.98px) {
+/* Hide availability badge below 1024px — below this the centered nav items
+   (About/Projects/Experience/CV/Contact ≈ 610px) reach into the badge zone */
+@media (max-width: 1023.98px) {
     .navbar-badge {
         display: none;
     }
