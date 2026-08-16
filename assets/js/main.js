@@ -138,6 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initLazyLoad();
     initFormValidation();
     initProjectFilters();
+    initTouchNav();
+    initBackToTop();
 });
 
 /**
@@ -754,5 +756,53 @@ function initFormValidation() {
                 }
             });
         });
+    });
+}
+
+/**
+ * =========================================================================
+ * TOUCH NAV MODULE
+ * Tap-to-open submenus on touch devices (hover never fires on touch).
+ * Capture phase so parent links act as accordion toggles, not scroll jumps.
+ * =========================================================================
+ */
+function initTouchNav() {
+    if (!window.matchMedia('(hover: none)').matches) return;
+
+    // Any tap closes all open submenus; tapping a parent link re-opens its own
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.nav-item.has-submenu.open').forEach(i => i.classList.remove('open'));
+    }, true);
+
+    document.querySelectorAll('.nav-item.has-submenu').forEach(item => {
+        const link = item.querySelector(':scope > .nav-link');
+        if (!link) return;
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            item.classList.toggle('open');
+        }, true);
+    });
+}
+
+/**
+ * =========================================================================
+ * BACK TO TOP MODULE
+ * Shows a floating button after scrolling past 400px; smooth scrolls to top.
+ * =========================================================================
+ */
+function initBackToTop() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+
+    const onScroll = () => {
+        const y = window.pageYOffset || document.documentElement.scrollTop;
+        btn.classList.toggle('visible', y > 400);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
