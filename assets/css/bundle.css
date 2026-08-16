@@ -896,34 +896,29 @@ header.scrolled {
     }
 
     .navbar-nav {
-        gap: 4px;
+        gap: 2px;
         flex-wrap: nowrap;
         justify-content: center;
     }
 
     .nav-link {
-        padding: 4px 6px;
-        font-size: 0.78rem;
+        padding: 2px 5px;
+        font-size: 0.74rem;
         min-height: 44px;
         display: flex;
         align-items: center;
         text-transform: uppercase;
-        letter-spacing: 0.25px;
+        letter-spacing: 0;
         font-weight: 600;
         color: var(--text-light);
     }
 }
 
 /* Very small phones: shrink further so all 5 links fit (no burger below 768px) */
-@media (max-width: 360px) {
-    .navbar-nav {
-        gap: 2px;
-    }
-
+@media (max-width: 340px) {
     .nav-link {
-        padding: 2px 4px;
-        font-size: 0.72rem;
-        letter-spacing: 0;
+        padding: 2px 3px;
+        font-size: 0.68rem;
     }
 }
 
