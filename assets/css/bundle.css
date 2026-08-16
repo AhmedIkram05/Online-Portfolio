@@ -2523,7 +2523,7 @@ select.form-control:focus {
     .experience-item ul li { font-size: 0.95rem; }
 
     /* Contact page */
-    .form-row-grid { grid-template-columns: 1fr 1fr; gap: var(--spacing-xl); }
+    .form-row-grid { grid-template-columns: 1fr; gap: var(--spacing-lg); }
     .contact-item { padding: var(--spacing-xl); }
 
     /* CV viewer */
