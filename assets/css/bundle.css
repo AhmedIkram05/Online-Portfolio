@@ -514,6 +514,38 @@ header.scrolled {
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
+/* Availability badge pinned to far right of navbar */
+.navbar-badge {
+    position: absolute;
+    right: var(--spacing-lg);
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #28a745;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    box-shadow: 0 0 12px rgba(40, 167, 69, 0.5);
+    animation: availabilityPulse 2.5s ease-in-out infinite;
+    z-index: 1100;
+}
+
+@keyframes availabilityPulse {
+    0%, 100% { box-shadow: 0 0 8px rgba(40, 167, 69, 0.4); }
+    50% { box-shadow: 0 0 20px rgba(40, 167, 69, 0.85); }
+}
+
+.navbar-badge:hover {
+    background: #23923c;
+}
+
 .navbar-toggler {
     display: none;
     background: none;
