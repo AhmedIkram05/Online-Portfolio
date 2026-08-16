@@ -93,11 +93,11 @@
                     <div class="nav-submenu" aria-label="Project filters">
                         <div class="sub-nav-indicator"></div>
                         <a class="nav-link nav-link-sub" href="#projects" data-filter="all" data-level="secondary">All Projects</a>
-                        <a class="nav-link nav-link-sub" href="#projects" data-filter="python" data-level="secondary">Python</a>
+                        <a class="nav-link nav-link-sub" href="#projects" data-filter="ai-ml" data-level="secondary">AI & ML</a>
+                        <a class="nav-link nav-link-sub" href="#projects" data-filter="data" data-level="secondary">Data Engineering</a>
                         <a class="nav-link nav-link-sub" href="#projects" data-filter="web" data-level="secondary">Web Development</a>
                         <a class="nav-link nav-link-sub" href="#projects" data-filter="mobile" data-level="secondary">Mobile Apps</a>
                         <a class="nav-link nav-link-sub" href="#projects" data-filter="systems" data-level="secondary">Systems</a>
-                        <a class="nav-link nav-link-sub" href="#projects" data-filter="data" data-level="secondary">Data Science</a>
                     </div>
                 </li>
                 <li class="nav-item has-submenu">
@@ -119,6 +119,9 @@
                 </li>
                 <span class="nav-indicator"></span>
             </ul>
+            <span class="navbar-badge" title="Availability">
+                <i class="fas fa-check-circle"></i>Open to Opportunities
+            </span>
         </nav>
     </header>
 
@@ -196,76 +199,162 @@
             <!-- Filter Controls -->
             <div class="project-filters center" style="margin-bottom: 3rem;">
                 <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="python">Python</button>
+                <button class="filter-btn" data-filter="ai-ml">AI & ML</button>
+                <button class="filter-btn" data-filter="data">Data Engineering</button>
                 <button class="filter-btn" data-filter="web">Web</button>
                 <button class="filter-btn" data-filter="mobile">Mobile</button>
                 <button class="filter-btn" data-filter="systems">Systems</button>
-                <button class="filter-btn" data-filter="data">Data</button>
             </div>
 
             <div class="services project-grid">
-                <!-- Project: Texas Holdem Poker -->
-                <div class="card project-card" data-category="python">
+                <!-- Project: Stocklens -->
+                <div class="card project-card" data-category="mobile ai-ml">
                     <div class="card-img-wrapper">
-                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/texas-holdem-poker" alt="Texas Holdem Poker" loading="lazy" width="1200" height="630">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/stocklens" alt="Stocklens" loading="lazy" decoding="async" width="1200" height="630">
                         <div class="card-overlay">
-                            <a href="https://github.com/AhmedIkram05/texas-holdem-poker" target="_blank" class="btn btn-hero-secondary">
+                            <a href="https://github.com/AhmedIkram05/stocklens" target="_blank" class="btn btn-hero-secondary">
                                 <i class="fab fa-github"></i>View Code
                             </a>
                         </div>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">Texas Holdem Poker</h4>
-                        <p class="card-text">Full Texas Hold'em implementation with Tkinter GUI, rule-based AI opponents, complete hand evaluation, and real-time chip tracking.</p>
+                        <h4 class="card-title">StockLens</h4>
+                        <p class="card-text">Scan receipts, trade stocks with your spending, track portfolios with LSTM forecasts & an AI agent. FastAPI + PyTorch + LangGraph + Rust backend.</p>
                         <div class="tech-stack">
+                            <span class="badge badge-secondary">React Native</span>
+                            <span class="badge badge-secondary">FastAPI</span>
+                            <span class="badge badge-secondary">PyTorch</span>
+                            <span class="badge badge-secondary">LangGraph</span>
+                            <span class="badge badge-secondary">Rust</span>
+                            <span class="badge badge-secondary">Terraform</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: W3C ETL Pipeline -->
+                <div class="card project-card" data-category="data">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/w3c-etl-pipeline" alt="W3C Web Logs ETL Pipeline" loading="lazy" decoding="async" width="1200" height="630">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/w3c-etl-pipeline" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">W3C Web Logs ETL Pipeline</h4>
+                        <p class="card-text">Serverless Databricks DLT pipeline ingesting 93 W3C IIS log files through a Bronze→Silver medallion architecture into Azure SQL, transformed via dbt into a star schema with Power BI-ready exports — orchestrated by Airflow, provisioned with Terraform.</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">Databricks</span>
+                            <span class="badge badge-secondary">dbt</span>
+                            <span class="badge badge-secondary">Airflow</span>
+                            <span class="badge badge-secondary">Azure</span>
+                            <span class="badge badge-secondary">Terraform</span>
                             <span class="badge badge-secondary">Python</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project: Process Scheduler -->
-                <div class="card project-card" data-category="python">
+                <!-- Project: DevSync -->
+                <div class="card project-card" data-category="web">
                     <div class="card-img-wrapper">
-                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/process-scheduler" alt="Process Scheduler" loading="lazy" width="1200" height="630">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/devsync" alt="DevSync" loading="lazy" decoding="async" width="1200" height="630">
                         <div class="card-overlay">
-                            <a href="https://github.com/AhmedIkram05/process-scheduler" target="_blank" class="btn btn-hero-secondary">
+                            <a href="https://github.com/AhmedIkram05/devsync" target="_blank" class="btn btn-hero-secondary">
                                 <i class="fab fa-github"></i>View Code
                             </a>
                         </div>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">Process Scheduler</h4>
-                        <p class="card-text">Simulates and compares FIFO, STCF, and Round Robin CPU scheduling algorithms with metrics including turnaround time, response time, and CPU utilisation.</p>
+                        <h4 class="card-title">DevSync</h4>
+                        <p class="card-text">Production full-stack project management platform with real-time collaboration, GitHub OAuth 2.0, and bidirectional Issue/PR sync — React 18 + Flask + PostgreSQL, deployed on AWS ECS Fargate with OIDC-authenticated CI/CD.</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">Python</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project: Movie Recommendation System -->
-                <div class="card project-card" data-category="python">
-                    <div class="card-img-wrapper">
-                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/movie-recommendation-system" alt="Movie Recommendation System" loading="lazy" width="1200" height="630">
-                        <div class="card-overlay">
-                            <a href="https://github.com/AhmedIkram05/movie-recommendation-system" target="_blank" class="btn btn-hero-secondary">
-                                <i class="fab fa-github"></i>View Code
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Movie Recommendation System</h4>
-                        <p class="card-text">Hybrid recommendation engine (collaborative filtering + content-based) achieving ~0.75 Hit Rate and ~0.22 Precision@10 on the MovieLens dataset. Deployed via Flask.</p>
-                        <div class="tech-stack">
-                            <span class="badge badge-secondary">Python</span>
+                            <span class="badge badge-secondary">React</span>
                             <span class="badge badge-secondary">Flask</span>
+                            <span class="badge badge-secondary">PostgreSQL</span>
+                            <span class="badge badge-secondary">Socket.io</span>
+                            <span class="badge badge-secondary">AWS</span>
+                            <span class="badge badge-secondary">Docker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: LAAD -->
+                <div class="card project-card" data-category="data ai-ml">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/laad" alt="LAAD - ATM Log Aggregation & Anomaly Detection" loading="lazy" decoding="async" width="1200" height="630">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/laad" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">LAAD</h4>
+                        <p class="card-text">ATM log aggregation, multi-layer anomaly detection & AI-assisted diagnostics — Kafka ingestion through 3-layer ML/statistical/heuristic detection to a React dashboard and Agentic Hybrid RAG assistant, on AWS ECS Fargate with SageMaker inference.</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">FastAPI</span>
+                            <span class="badge badge-secondary">Kafka</span>
+                            <span class="badge badge-secondary">XGBoost</span>
+                            <span class="badge badge-secondary">LangChain</span>
+                            <span class="badge badge-secondary">React</span>
+                            <span class="badge badge-secondary">AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: SWE-Qwen -->
+                <div class="card project-card" data-category="ai-ml">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/SWE-Qwen" alt="SWE-Qwen" loading="lazy" decoding="async" width="1200" height="630">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/SWE-Qwen" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">SWE-Qwen</h4>
+                        <p class="card-text">LLMOps platform turning 20,477 SWE-bench issues into a 17,456-example training corpus — 3 QLoRA variants of Qwen3-14B fine-tuned on Modal A100s, execution-based evaluation with statistical champion/challenger gating, served via an OpenAI-compatible inference API.</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">PyTorch</span>
+                            <span class="badge badge-secondary">QLoRA</span>
+                            <span class="badge badge-secondary">FastAPI</span>
+                            <span class="badge badge-secondary">Modal</span>
+                            <span class="badge badge-secondary">Terraform</span>
+                            <span class="badge badge-secondary">Google Cloud</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: WikiStream -->
+                <div class="card project-card" data-category="data">
+                    <div class="card-img-wrapper">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/WikiStream" alt="WikiStream" loading="lazy" decoding="async" width="1200" height="630">
+                        <div class="card-overlay">
+                            <a href="https://github.com/AhmedIkram05/WikiStream" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fab fa-github"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">WikiStream</h4>
+                        <p class="card-text">Real-time streaming analytics platform ingesting every public Wikipedia edit via SSE into a self-hosted ClickHouse cluster — live dashboards, hourly warehouse exports, 58.9M+ events with zero data loss at 5,655 events/sec.</p>
+                        <div class="tech-stack">
+                            <span class="badge badge-secondary">Python</span>
+                            <span class="badge badge-secondary">ClickHouse</span>
+                            <span class="badge badge-secondary">Grafana</span>
+                            <span class="badge badge-secondary">BigQuery</span>
+                            <span class="badge badge-secondary">Terraform</span>
+                            <span class="badge badge-secondary">Google Cloud</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project: Haggis Predictive Modeling -->
-                <div class="card project-card" data-category="data">
+                <div class="card project-card" data-category="ai-ml">
                     <div class="card-img-wrapper">
-                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/haggis-predictive-modeling" alt="Haggis Predictive Modeling" loading="lazy" width="1200" height="630">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/haggis-predictive-modeling" alt="Haggis Predictive Modeling" loading="lazy" decoding="async" width="1200" height="630">
                         <div class="card-overlay">
                             <a href="https://github.com/AhmedIkram05/haggis-predictive-modeling" target="_blank" class="btn btn-hero-secondary">
                                 <i class="fab fa-github"></i>View Code
@@ -282,115 +371,10 @@
                     </div>
                 </div>
 
-                <!-- Project: Klondike Solitaire -->
-                <div class="card project-card" data-category="web">
-                    <div class="card-img-wrapper">
-                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/klondike-solitaire" alt="Klondike Solitaire" loading="lazy" width="1200" height="630">
-                        <div class="card-overlay">
-                            <a href="https://ahmedikram05.github.io/klondike-solitaire/" target="_blank" class="btn btn-hero-secondary">
-                                <i class="fab fa-github"></i>Play Game
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Klondike Solitaire</h4>
-                        <p class="card-text">Fully playable Klondike Solitaire with drag-and-drop, undo, win detection, and auto-save via localStorage. Live demo available.</p>
-                        <div class="tech-stack">
-                            <span class="badge badge-secondary">HTML</span>
-                            <span class="badge badge-secondary">CSS</span>
-                            <span class="badge badge-secondary">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project: Snapledger -->
-                <div class="card project-card" data-category="web">
-                    <div class="card-img-wrapper">
-                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/snapledger" alt="Snapledger" loading="lazy" width="1200" height="630">
-                        <div class="card-overlay">
-                            <a href="https://ahmedikram05.github.io/snapledger/" target="_blank" class="btn btn-hero-secondary">
-                                <i class="fab fa-github"></i>View Site
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Snapledger</h4>
-                        <p class="card-text">Personal finance manager PWA made using HTML, CSS, JavaScript and TensorFlow</p>
-                        <div class="tech-stack">
-                            <span class="badge badge-secondary">HTML</span>
-                            <span class="badge badge-secondary">CSS</span>
-                            <span class="badge badge-secondary">JavaScript</span>
-                            <span class="badge badge-secondary">TensorFlow</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project: Stocklens -->
-                <div class="card project-card" data-category="mobile">
-                    <div class="card-img-wrapper">
-                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/stocklens" alt="Stocklens" loading="lazy" width="1200" height="630">
-                        <div class="card-overlay">
-                            <a href="https://github.com/AhmedIkram05/stocklens" target="_blank" class="btn btn-hero-secondary">
-                                <i class="fab fa-github"></i>View Code
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Stocklens</h4>
-                        <p class="card-text">Scan Your Spending, See Your Missed Investing</p>
-                        <div class="tech-stack">
-                            <span class="badge badge-secondary">React Native</span>
-                            <span class="badge badge-secondary">TypeScript</span>
-                            <span class="badge badge-secondary">JavaScript</span>
-                            <span class="badge badge-secondary">Python</span>
-                            <span class="badge badge-secondary">Firebase</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project: Java Messaging Application -->
-                <div class="card project-card" data-category="systems">
-                    <div class="card-img-wrapper">
-                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/java-messaging-application" alt="Java Messaging Application" loading="lazy" width="1200" height="630">
-                        <div class="card-overlay">
-                            <a href="https://github.com/AhmedIkram05/java-messaging-application" target="_blank" class="btn btn-hero-secondary">
-                                <i class="fab fa-github"></i>View Code
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Java Messaging Application</h4>
-                        <p class="card-text">Messaging application made using Java Swing</p>
-                        <div class="tech-stack">
-                            <span class="badge badge-secondary">Java</span>
-                            <span class="badge badge-secondary">Swing</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project: Rental Car Company -->
-                <div class="card project-card" data-category="systems">
-                    <div class="card-img-wrapper">
-                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/rental-car-company" alt="Rental Car Company" loading="lazy" width="1200" height="630">
-                        <div class="card-overlay">
-                            <a href="https://github.com/AhmedIkram05/rental-car-company" target="_blank" class="btn btn-hero-secondary">
-                                <i class="fab fa-github"></i>View Code
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Rental Car Company</h4>
-                        <p class="card-text">Rental Company app made using C++</p>
-                        <div class="tech-stack">
-                            <span class="badge badge-secondary">C++</span>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Project: Unix Version Control System -->
                 <div class="card project-card" data-category="systems">
                     <div class="card-img-wrapper">
-                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/unix-version-control-system" alt="Unix Version Control System" loading="lazy" width="1200" height="630">
+                        <img src="https://opengraph.githubassets.com/1/AhmedIkram05/unix-version-control-system" alt="Unix Version Control System" loading="lazy" decoding="async" width="1200" height="630">
                         <div class="card-overlay">
                             <a href="https://github.com/AhmedIkram05/unix-version-control-system" target="_blank" class="btn btn-hero-secondary">
                                 <i class="fab fa-github"></i>View Code
@@ -401,7 +385,7 @@
                         <h4 class="card-title">Unix Version Control System</h4>
                         <p class="card-text">Version Control System made using Bash script</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">Bash Script</span>
+                            <span class="badge badge-secondary">Bash</span>
                         </div>
                     </div>
                 </div>
@@ -409,7 +393,7 @@
                 <!-- Project: Sales Analytics Dashboard -->
                 <div class="card project-card" data-category="data">
                     <div class="card-img-wrapper">
-                        <img src="assets/images/supermarket-dashboard.png" alt="Sales Analytics Dashboard" loading="lazy" width="1200" height="630">
+                        <img src="assets/images/supermarket-dashboard.png" alt="Sales Analytics Dashboard" loading="lazy" decoding="async" width="1200" height="630">
                         <div class="card-overlay">
                             <a href="https://docs.google.com/spreadsheets/d/1U3ses0Be0aEx2zEmHLyPUzurkSA20xeZ/edit?usp=share_link" target="_blank" class="btn btn-hero-secondary">
                                 <i class="fab fa-google"></i>View Dashboard
@@ -503,7 +487,7 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="https://www.credly.com/badges/c4f6bb59-3638-48fe-8c0b-af5c3976731d/print" target="_blank" rel="noopener">
-                            <img src="assets/images/aws-academy-graduate-aws-academy-cloud-foundations.png" alt="AWS Academy Cloud Foundations" style="max-height:250px; object-fit:contain; width:100%;" height="250" loading="lazy">
+                            <img src="assets/images/aws-academy-graduate-aws-academy-cloud-foundations.png" alt="AWS Academy Cloud Foundations" style="max-height:250px; object-fit:contain; width:100%;" height="250" loading="lazy" decoding="async">
                         </a>
                         <h3 class="card-title">AWS Academy Graduate - Cloud Foundations</h3>
                         <p class="card-text"><small class="text-muted">2024</small></p>
@@ -518,7 +502,7 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="https://www.credly.com/badges/0c546295-6fe4-4055-b9eb-bed62233dce7/linked_in_profile" target="_blank" rel="noopener">
-                            <img src="assets/images/aws-academy-graduate-aws-academy-machine-learning-foundations.png" alt="AWS Academy Machine Learning" style="max-height:250px; object-fit:contain; width:100%;" height="250" loading="lazy">
+                            <img src="assets/images/aws-academy-graduate-aws-academy-machine-learning-foundations.png" alt="AWS Academy Machine Learning" style="max-height:250px; object-fit:contain; width:100%;" height="250" loading="lazy" decoding="async">
                         </a>
                         <h3 class="card-title">AWS Academy Graduate - Machine Learning</h3>
                         <p class="card-text"><small class="text-muted">2025</small></p>
@@ -533,7 +517,7 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="https://www.linkedin.com/learning/certificates/e3dc3610a320ee93d032317f3906e12d09f41da322c5fc1c94d272cef7f224c9?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BT9fo%2BcR8Q0eO%2BgT7rijPLQ%3D%3D" target="_blank" rel="noopener">
-                            <img src="assets/images/azure-ai-cert.png" alt="Foundations of Azure AI" style="max-height:250px; object-fit:contain; width:100%;" height="250" loading="lazy">
+                            <img src="assets/images/azure-ai-cert.png" alt="Foundations of Azure AI" style="max-height:250px; object-fit:contain; width:100%;" height="250" loading="lazy" decoding="async">
                         </a>
                         <h3 class="card-title">Foundations of Azure Artificial Intelligence</h3>
                         <p class="card-text"><small class="text-muted">2024</small></p>
@@ -548,7 +532,7 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="https://www.linkedin.com/learning/certificates/ac25c12cd98c650dd6defa81b8ba13ba0a032539bda4cc6c76e15c353ae81855?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BT9fo%2BcR8Q0eO%2BgT7rijPLQ%3D%3D" target="_blank" rel="noopener">
-                            <img src="assets/images/nasba-cloud-computing-cert.png" alt="Cloud Computing: Understanding Core Concepts" style="max-height:250px; object-fit:contain; width:100%;" height="250" loading="lazy">
+                            <img src="assets/images/nasba-cloud-computing-cert.png" alt="Cloud Computing: Understanding Core Concepts" style="max-height:250px; object-fit:contain; width:100%;" height="250" loading="lazy" decoding="async">
                         </a>
                         <h3 class="card-title">Cloud Computing: Understanding Core Concepts</h3>
                         <p class="card-text"><small class="text-muted">2024</small></p>
@@ -573,11 +557,9 @@
                         <h3 class="card-title">Programming Languages</h3>
                         <div class="tech-badges">
                             <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
-                            <span class="tech-badge"><i class="fab fa-java"></i> Java</span>
-                            <span class="tech-badge"><i class="fas fa-code"></i> C</span>
-                            <span class="tech-badge"><i class="fas fa-code"></i> C++</span>
-                            <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
                             <span class="tech-badge"><i class="fab fa-js-square"></i> TypeScript</span>
+                            <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="tech-badge"><i class="fas fa-code"></i> Rust</span>
                             <span class="tech-badge"><i class="fas fa-terminal"></i> Bash</span>
                         </div>
                     </div>
@@ -589,12 +571,23 @@
                         <i class="fas fa-laptop-code fa-3x text-success"></i>
                         <h3 class="card-title">Web & Mobile Development</h3>
                         <div class="tech-badges">
+                            <span class="tech-badge"><i class="fab fa-react"></i> React</span>
                             <span class="tech-badge"><i class="fab fa-react"></i> React Native</span>
+                            <span class="tech-badge"><i class="fab fa-react"></i> Expo</span>
+                            <span class="tech-badge"><i class="fab fa-css3"></i> Tailwind CSS</span>
+                            <span class="tech-badge"><i class="fas fa-bolt"></i> Vite</span>
                             <span class="tech-badge"><i class="fas fa-flask"></i> Flask</span>
+                            <span class="tech-badge"><i class="fas fa-flask"></i> FastAPI</span>
+                            <span class="tech-badge"><i class="fas fa-plug"></i> Socket.io</span>
                             <span class="tech-badge"><i class="fab fa-html5"></i> HTML</span>
                             <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS</span>
-                            <span class="tech-badge"><i class="fab fa-css3"></i> Tailwind CSS</span>
-                            <span class="tech-badge"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                            <span class="tech-badge"><i class="fab fa-node-js"></i> Node.js</span>
+                            <span class="tech-badge"><i class="fas fa-project-diagram"></i> GraphQL</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> SQLAlchemy</span>
+                            <span class="tech-badge"><i class="fas fa-server"></i> Gunicorn</span>
+                            <span class="tech-badge"><i class="fas fa-code"></i> Jinja2</span>
+                            <span class="tech-badge"><i class="fas fa-tachometer-alt"></i> slowapi</span>
+                            <span class="tech-badge"><i class="fas fa-chart-line"></i> Chart.js</span>
                         </div>
                     </div>
                 </div>
@@ -606,10 +599,18 @@
                         <h3 class="card-title">Databases & APIs</h3>
                         <div class="tech-badges">
                             <span class="tech-badge"><i class="fas fa-database"></i> SQL</span>
-                            <span class="tech-badge"><i class="fas fa-database"></i> MySQL</span>
                             <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</span>
-                            <span class="tech-badge"><i class="fab fa-mdb"></i> NoSQL</span>
-                            <span class="tech-badge"><i class="fas fa-network-wired"></i> REST APIs</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> MySQL</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> MongoDB</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> SQLite</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> SQL Server</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> Redis</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> ElastiCache</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> ClickHouse</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> BigQuery</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> ChromaDB</span>
+                            <span class="tech-badge"><i class="fas fa-network-wired"></i> Pydantic</span>
+                            <span class="tech-badge"><i class="fas fa-network-wired"></i> Uvicorn</span>
                         </div>
                     </div>
                 </div>
@@ -620,14 +621,67 @@
                         <i class="fas fa-brain fa-3x text-info"></i>
                         <h3 class="card-title">Data Science & ML</h3>
                         <div class="tech-badges">
-                            <span class="tech-badge"><i class="fas fa-book"></i> Jupyter Notebook</span>
-                            <span class="tech-badge"><i class="fas fa-chart-bar"></i> Power BI</span>
+                            <span class="tech-badge"><i class="fas fa-fire"></i> PyTorch</span>
+                            <span class="tech-badge"><i class="fas fa-cogs"></i> XGBoost</span>
+                            <span class="tech-badge"><i class="fas fa-cogs"></i> scikit-learn</span>
                             <span class="tech-badge"><i class="fas fa-table"></i> Pandas</span>
                             <span class="tech-badge"><i class="fas fa-calculator"></i> NumPy</span>
-                            <span class="tech-badge"><i class="fas fa-cogs"></i> scikit-learn</span>
-                            <span class="tech-badge"><i class="fas fa-fire"></i> PyTorch</span>
                             <span class="tech-badge"><i class="fas fa-chart-line"></i> Matplotlib</span>
                             <span class="tech-badge"><i class="fas fa-chart-pie"></i> seaborn</span>
+                            <span class="tech-badge"><i class="fas fa-book"></i> Jupyter Notebook</span>
+                            <span class="tech-badge"><i class="fas fa-chart-bar"></i> Power BI</span>
+                            <span class="tech-badge"><i class="fas fa-file-excel"></i> Excel</span>
+                            <span class="tech-badge"><i class="fas fa-flask"></i> MLflow</span>
+                            <span class="tech-badge"><i class="fas fa-flask"></i> Optuna</span>
+                            <span class="tech-badge"><i class="fas fa-cloud"></i> SageMaker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI & LLM Engineering -->
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-robot fa-3x text-primary"></i>
+                        <h3 class="card-title">AI & LLM Engineering</h3>
+                        <div class="tech-badges">
+                            <span class="tech-badge"><i class="fas fa-brain"></i> LangChain</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> LangGraph</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> Ollama</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> QLoRA</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> PEFT</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> Unsloth</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> vLLM</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> Qwen3</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> Hugging Face</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> TRL</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> bitsandbytes</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> HF Datasets</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> Weights & Biases</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> Langfuse</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> RAGAS</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> Evidently AI</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> Modal</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> Typer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Engineering -->
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-server fa-3x text-warning"></i>
+                        <h3 class="card-title">Data Engineering</h3>
+                        <div class="tech-badges">
+                            <span class="tech-badge"><i class="fas fa-database"></i> Databricks</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> Spark</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> PySpark</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> Delta Lake</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> dbt</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> Airflow</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> Kafka</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> Power Automate</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> Great Expectations</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> SSE</span>
                         </div>
                     </div>
                 </div>
@@ -635,16 +689,22 @@
                 <!-- Cloud & DevOps -->
                 <div class="card">
                     <div class="card-body">
-                        <i class="fas fa-cloud fa-3x text-primary"></i>
+                        <i class="fas fa-cloud fa-3x text-success"></i>
                         <h3 class="card-title">Cloud & DevOps</h3>
                         <div class="tech-badges">
                             <span class="tech-badge"><i class="fab fa-aws"></i> AWS</span>
                             <span class="tech-badge"><i class="fab fa-microsoft"></i> Azure</span>
+                            <span class="tech-badge"><i class="fas fa-cloud"></i> Google Cloud</span>
+                            <span class="tech-badge"><i class="fas fa-dharmachakra"></i> Terraform</span>
                             <span class="tech-badge"><i class="fab fa-docker"></i> Docker</span>
-                            <span class="tech-badge"><i class="fas fa-dharmachakra"></i> Kubernetes</span>
+                            <span class="tech-badge"><i class="fab fa-docker"></i> Docker Compose</span>
+                            <span class="tech-badge"><i class="fab fa-github"></i> GitHub Actions</span>
                             <span class="tech-badge"><i class="fab fa-git-alt"></i> Git</span>
-                            <span class="tech-badge"><i class="fab fa-github"></i> GitHub</span>
-                            <span class="tech-badge"><i class="fas fa-sync"></i> CI/CD (GitHub Actions)</span>
+                            <span class="tech-badge"><i class="fab fa-linux"></i> Linux</span>
+                            <span class="tech-badge"><i class="fas fa-chart-line"></i> Grafana</span>
+                            <span class="tech-badge"><i class="fas fa-tachometer-alt"></i> Prometheus</span>
+                            <span class="tech-badge"><i class="fas fa-server"></i> Nginx</span>
+                            <span class="tech-badge"><i class="fas fa-terminal"></i> systemd</span>
                         </div>
                     </div>
                 </div>
@@ -655,25 +715,35 @@
                         <i class="fas fa-tools fa-3x text-danger"></i>
                         <h3 class="card-title">Testing & Tools</h3>
                         <div class="tech-badges">
-                            <span class="tech-badge"><i class="fas fa-code"></i> VS Code</span>
                             <span class="tech-badge"><i class="fas fa-vial"></i> pytest</span>
-                            <span class="tech-badge"><i class="fas fa-check-circle"></i> JUnit</span>
-                            <span class="tech-badge"><i class="fas fa-paper-plane"></i> Postman</span>
                             <span class="tech-badge"><i class="fab fa-pied-piper-hat"></i> Jest</span>
-                            <span class="tech-badge"><i class="fab fa-react"></i> React Native Testing Library</span>
+                            <span class="tech-badge"><i class="fas fa-check-circle"></i> Cypress</span>
+                            <span class="tech-badge"><i class="fas fa-play"></i> Playwright</span>
+                            <span class="tech-badge"><i class="fab fa-react"></i> React Testing Library</span>
+                            <span class="tech-badge"><i class="fas fa-cogs"></i> PyO3</span>
+                            <span class="tech-badge"><i class="fas fa-cogs"></i> Maturin</span>
+                            <span class="tech-badge"><i class="fas fa-chart-bar"></i> Codecov</span>
+                            <span class="tech-badge"><i class="fas fa-sync"></i> Dependabot</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Operating Systems -->
+                <!-- Security & Code Quality -->
                 <div class="card">
                     <div class="card-body">
-                        <i class="fas fa-desktop fa-3x text-secondary"></i>
-                        <h3 class="card-title">Operating Systems</h3>
+                        <i class="fas fa-shield-alt fa-3x text-primary"></i>
+                        <h3 class="card-title">Security & Code Quality</h3>
                         <div class="tech-badges">
-                            <span class="tech-badge"><i class="fab fa-linux"></i> Linux (Ubuntu)</span>
-                            <span class="tech-badge"><i class="fab fa-apple"></i> macOS</span>
-                            <span class="tech-badge"><i class="fab fa-windows"></i> Windows</span>
+                            <span class="tech-badge"><i class="fas fa-shield-alt"></i> Trivy</span>
+                            <span class="tech-badge"><i class="fas fa-shield-alt"></i> CodeQL</span>
+                            <span class="tech-badge"><i class="fas fa-shield-alt"></i> checkov</span>
+                            <span class="tech-badge"><i class="fas fa-shield-alt"></i> tfsec</span>
+                            <span class="tech-badge"><i class="fas fa-shield-alt"></i> Gitleaks</span>
+                            <span class="tech-badge"><i class="fas fa-shield-alt"></i> hadolint</span>
+                            <span class="tech-badge"><i class="fas fa-broom"></i> Ruff</span>
+                            <span class="tech-badge"><i class="fas fa-broom"></i> Mypy</span>
+                            <span class="tech-badge"><i class="fas fa-broom"></i> ESLint</span>
+                            <span class="tech-badge"><i class="fas fa-broom"></i> Prettier</span>
                         </div>
                     </div>
                 </div>
@@ -749,7 +819,7 @@
                 <div class="cv-download-section" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
                     <a href="assets/documents/Ahmed-Ikram-CV-2026-AI:ML.pdf" class="btn btn-hero-primary" download>
                         <i class="fas fa-download"></i>
-                        <span>AI/ML Engineering</span>
+                        <span>AI Engineering</span>
                     </a>
                     <a href="assets/documents/Ahmed-Ikram-CV-2026-DE.pdf" class="btn btn-hero-primary" download>
                         <i class="fas fa-download"></i>
@@ -769,7 +839,7 @@
                 <div class="card">
                     <div class="card-body" style="padding:0;">
                         <div class="cv-embed-wrapper">
-                            <embed src="assets/documents/Ahmed-Ikram-CV-2026-DE.pdf" type="application/pdf" loading="lazy" style="width:100%; height:800px;" class="embed-responsive-item">
+                            <embed src="assets/documents/Ahmed-Ikram-CV-2026-DE.pdf" type="application/pdf" loading="lazy" decoding="async" style="width:100%; height:800px;" class="embed-responsive-item">
                         </div>
                     </div>
                 </div>
@@ -867,45 +937,10 @@
         </section>
     </main>
 
-    <!-- Modern Footer -->
-    <footer class="footer">
-        <div class="content-wrapper">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h5>Availability Status</h5>
-                    <div class="status-box" style="margin-bottom: 1.5rem;">
-                        <p style="margin-bottom: 0.5rem; opacity: 0.8;">Current Status:</p>
-                        <span class="badge badge-success" style="font-size: 0.9rem; padding: 0.5rem 1rem; color: #fff; background-color: #28a745; border: none;">
-                            <i class="fas fa-check-circle" style="margin-right: 10px;"></i>Open to Opportunities
-                        </span>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h5>Stay Connected</h5>
-                    <p>Let's turn ideas into reality. Reach out for collaborations or just a chat!</p>
-                    <p style="margin-top: 1rem;"><i class="fas fa-envelope mr-2"></i> <a href="mailto:ahmedikram30@gmail.com">ahmedikram30@gmail.com</a></p>
-                    <div class="footer-socials" style="margin-top: 1.5rem;">
-                        <a href="https://www.linkedin.com/in/ahmed-ikram-student" target="_blank" rel="noopener" title="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/ahmedikram05" target="_blank" rel="noopener" title="GitHub Profile"><i class="fab fa-github"></i></a>
-                        <a href="https://www.instagram.com/ahmed_ikram826" target="_blank" rel="noopener" title="Instagram Profile"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-    <h5>Featured Projects</h5>
-    <ul>
-        <li><a href="https://github.com/AhmedIkram05/StockLens" target="_blank" rel="noopener">StockLens — React Native App</a></li>
-        <li><a href="https://github.com/AhmedIkram05/movie-recommendation-system" target="_blank" rel="noopener">CineMatch - AI/ML Movie Recommendation System</a></li>
-        <li><a href="https://github.com/AhmedIkram05/haggis-predictive-modeling" target="_blank" rel="noopener">Haggis Dataset - Data Mining and Machine Learning Notebook</a></li>
-        <li><a href="https://github.com/AhmedIkram05/rental-car-company" target="_blank" rel="noopener">Rental Car System - C++</a></li>
-        <li><a href="https://github.com/AhmedIkram05/laad" target="_blank" rel="noopener">Log Aggregation, Analysis and Diagnostics Platform</a></li>
-    </ul>
-</div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Ahmed Ikram. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Back to top -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
