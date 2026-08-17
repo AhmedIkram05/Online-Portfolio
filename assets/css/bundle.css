@@ -267,6 +267,20 @@ section[data-animate] {
     box-shadow: var(--shadow-blue);
 }
 
+/* LinkedIn-branded CTA: official brand blue #0A66C2 */
+.btn-hero-linkedin {
+    background: linear-gradient(135deg, #0a66c2, #0a52a0);
+    color: var(--text-light);
+    box-shadow: 0 4px 14px rgba(10, 102, 194, 0.4);
+}
+
+.btn-hero-linkedin:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-xl), 0 4px 14px rgba(10, 102, 194, 0.4);
+    color: var(--text-light);
+    text-decoration: none;
+}
+
 .btn-hero-primary:hover {
     transform: translateY(-3px) scale(1.02);
     box-shadow: var(--shadow-xl), var(--shadow-blue);
