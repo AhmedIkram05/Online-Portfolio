@@ -2198,48 +2198,7 @@ select.form-control:focus {
         border-radius: var(--radius-small);
     }
 
-    /* Footer */
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-xl);
-        padding: var(--spacing-xl) var(--spacing-md);
-    }
-    .footer-column {
-        padding: var(--spacing-lg);
-        text-align: center;
-    }
-    .footer-column h5 {
-        font-size: 1.1rem;
-        letter-spacing: 1px;
-        margin-bottom: var(--spacing-md);
-    }
-    .footer-socials {
-        gap: var(--spacing-md);
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    .footer-socials a {
-        width: 45px;
-        height: 45px;
-        font-size: 1.2rem;
-    }
-    .fun-facts {
-        gap: var(--spacing-sm);
-    }
-    .fact {
-        padding: var(--spacing-sm);
-        font-size: 0.9rem;
-        text-align: center;
-    }
-    .footer-bottom {
-        padding: var(--spacing-xl) var(--spacing-md) var(--spacing-2xl);
-    }
-    .footer-bottom p {
-        font-size: 0.85rem;
-        letter-spacing: 0.5px;
-    }
 }
-
 
 
 /* ===== MEDIUM SCREENS (TABLET & SMALL LAPTOP) - 768px to 1199px ===== */
@@ -2292,25 +2251,6 @@ select.form-control:focus {
     /* CV viewer */
     .cv-embed-wrapper { min-height: 760px; }
     .embed-responsive-item { height: 760px !important; }
-
-    /* Footer */
-    .footer-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--spacing-2xl); padding: var(--spacing-2xl) var(--spacing-xl); }
-    /* If the last footer column wraps to its own row (common at mid widths with only 2 columns), let it span full width to avoid empty space on the right */
-    .footer-grid .footer-column:last-child { grid-column: 1 / -1; }
-
-    /* Narrower segment of medium (tablet portrait & small landscape) force exactly 2 columns then span last */
-    @media (min-width: 768px) and (max-width: 899px) {
-        .footer-grid { grid-template-columns: repeat(2, 1fr); }
-        .footer-grid .footer-column:last-child { grid-column: 1 / -1; }
-    }
-    .footer-column { padding: var(--spacing-xl); text-align: left; }
-    .footer-column h5 { font-size: 1.2rem; letter-spacing: 1px; margin-bottom: var(--spacing-md); }
-    .footer-socials { gap: var(--spacing-md); justify-content: flex-start; flex-wrap: wrap; }
-    .footer-socials a { width: 50px; height: 50px; font-size: 1.15rem; }
-    .fun-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--spacing-sm); }
-    .fact { font-size: 0.85rem; padding: var(--spacing-sm); }
-    .footer-bottom { padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-2xl); }
-    .footer-bottom p { font-size: 0.85rem; letter-spacing: 0.5px; }
 
     /* Navbar adjustments (slightly tighter gap than desktop XL) */
     header .navbar { padding: var(--spacing-md) var(--spacing-xl); }
