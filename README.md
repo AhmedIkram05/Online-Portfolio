@@ -21,7 +21,7 @@ A personal portfolio website built from scratch with vanilla HTML, CSS, and Java
 - **Home** — Animated hero section with dynamic typing introduction and blob background effects
 - **Projects** — Filterable gallery of software and data science projects, organised by category
 - **Experience** — Full breakdown of work experience, education, certifications, and technical skills
-- **CV** — Download links for role-specific CV versions (SWE, Data Science, General)
+- **CV** — In-browser preview of role-specific CV versions (AI Engineering, Data Engineering, Software Engineering)
 - **Contact** — Contact form with direct links to LinkedIn, GitHub, and email
 
 ## ✨ Features

@@ -138,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initLazyLoad();
     initFormValidation();
     initProjectFilters();
+    initCvViewer();
     initTouchNav();
     initBackToTop();
 });
@@ -475,10 +476,10 @@ function initHeroTypingEffect() {
     if (!heroText) return;
 
     const messages = [
-        "Building innovative solutions with modern technology",
-        "Passionate about clean code and user experience", 
-        "Ready to collaborate on your next big idea",
-        "Transforming ideas into reality through code"
+        "Final year CS student seeking graduate roles",
+        "Open to entry-level software engineering opportunities",
+        "Building data & AI solutions with modern technology",
+        "Ready to collaborate on your next big idea"
     ];
     let messageIndex = 0;
     let charIndex = 0;
@@ -754,6 +755,33 @@ function initFormValidation() {
                         input.classList.add('is-invalid');
                     }
                 }
+            });
+        });
+    });
+}
+
+/**
+ * =========================================================================
+ * CV VIEWER TABS MODULE
+ * Tabbed PDF preview: one embed per CV. PDF src is assigned on first tab
+ * activation so only the visible CV downloads (lazy).
+ * =========================================================================
+ */
+function initCvViewer() {
+    const tabs = document.querySelectorAll('[data-cv-tab]');
+    if (!tabs.length) return;
+
+    tabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabs.forEach(b => {
+                b.classList.toggle('active', b === btn);
+                b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+            });
+            const embed = document.getElementById('cv-' + btn.dataset.cvTab);
+            if (!embed) return;
+            if (embed.dataset.src && !embed.src) embed.src = embed.dataset.src; // first view only
+            document.querySelectorAll('.cv-embed-wrapper embed').forEach(e => {
+                e.hidden = e !== embed;
             });
         });
     });

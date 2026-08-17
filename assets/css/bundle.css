@@ -267,6 +267,34 @@ section[data-animate] {
     box-shadow: var(--shadow-blue);
 }
 
+/* LinkedIn-branded CTA: official brand blue #0A66C2 */
+.btn-hero-linkedin {
+    background: linear-gradient(135deg, #0a66c2, #0a52a0);
+    color: var(--text-light);
+    box-shadow: 0 4px 14px rgba(10, 102, 194, 0.4);
+}
+
+.btn-hero-linkedin:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-xl), 0 4px 14px rgba(10, 102, 194, 0.4);
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+/* GitHub-branded CTA: official brand dark #24292E */
+.btn-hero-github {
+    background: linear-gradient(135deg, #24292e, #1b1f24);
+    color: var(--text-light);
+    box-shadow: 0 4px 14px rgba(36, 41, 46, 0.4);
+}
+
+.btn-hero-github:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-xl), 0 4px 14px rgba(36, 41, 46, 0.4);
+    color: var(--text-light);
+    text-decoration: none;
+}
+
 .btn-hero-primary:hover {
     transform: translateY(-3px) scale(1.02);
     box-shadow: var(--shadow-xl), var(--shadow-blue);
@@ -1442,6 +1470,7 @@ footer::after {
     left: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 30%, #34495e 60%, #3498db 100%);
     z-index: 9999;
     display: flex;
@@ -1450,7 +1479,12 @@ footer::after {
     opacity: 1;
     visibility: visible;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
+    overflow-y: auto;
+}
+
+/* ponytail: margin:auto keeps flex centering but makes overflow reachable from the top */
+.hero-content {
+    margin: auto;
 }
 
 .hero-overlay.hidden {
@@ -1556,6 +1590,16 @@ footer::after {
     gap: var(--spacing-lg);
     justify-content: center;
     flex-wrap: wrap;
+}
+
+/* Get In Touch wraps to its own line below the brand buttons (desktop/tablet only) */
+@media (min-width: 768px) {
+    .hero-cta-brands {
+        display: flex;
+        gap: var(--spacing-lg);
+        justify-content: center;
+        flex-basis: 100%;
+    }
 }
 
 /* Icon/Text spacing for Hero CTA buttons */
@@ -2090,8 +2134,31 @@ footer::after {
 /* CV Page Specific Styles (cv.html) */
 
 /* ===== CV VIEWER ===== */
+.cv-viewer-tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: var(--spacing-lg) 0;
+}
+
+.cv-viewer-tabs .btn {
+    opacity: 0.6;
+}
+
+.cv-viewer-tabs .btn.active {
+    opacity: 1;
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
 .cv-embed-wrapper {
     min-height: 800px;
+}
+
+/* Exactly one CV embed is visible at a time: hidden wins over any display rule */
+.cv-embed-wrapper embed[hidden] {
+    display: none;
 }
 
 .embed-responsive-item {
@@ -2115,22 +2182,6 @@ footer::after {
 .cv-viewer-card .card-body {
     padding: 0;
 }
-
-/* ===== CV DOWNLOAD SECTION ===== */
-.cv-download-section {
-    margin-bottom: var(--spacing-2xl);
-}
-
-.cv-download-section .btn {
-    margin-top: var(--spacing-lg);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: var(--spacing-sm); /* increased spacing between icon and text */
-}
-
-/* Fallback for browsers without flex gap support */
-.cv-download-section .btn i { margin-right: var(--spacing-sm); }
 
 /* ===== contact.css ===== */
 /* Contact Page Specific Styles (contact.html) */
@@ -2412,25 +2463,25 @@ select.form-control:focus {
     .hero-name {
         font-size: 2.2rem;
         line-height: 1.1;
-        margin-bottom: var(--spacing-md);
+        margin-bottom: 0.5rem;
     }
     .hero-title {
         font-size: 1.1rem;
-        margin-bottom: var(--spacing-lg);
+        margin-bottom: 0.75rem;
     }
     .hero-typing {
         font-size: 1.1rem;
     }
     .hero-typing-container {
-        height: 60px;
-        margin-bottom: var(--spacing-xl);
+        height: 44px;
+        margin-bottom: var(--spacing-lg);
     }
     .profileImg {
         width: 220px;
         height: 220px;
     }
     .hero-card {
-        padding: var(--spacing-2xl) var(--spacing-lg);
+        padding: var(--spacing-lg) var(--spacing-md);
         max-width: 90%;
         margin: 0 auto;
     }
@@ -2442,6 +2493,10 @@ select.form-control:focus {
     .hero-cta .btn {
         width: 100%;
         max-width: 280px;
+    }
+    /* keep brand buttons as direct flex items on mobile (same stacked layout as before) */
+    .hero-cta-brands {
+        display: contents;
     }
     .blob {
         filter: blur(60px);
@@ -2569,13 +2624,6 @@ select.form-control:focus {
     .embed-responsive-item {
         height: 560px !important;
         border-radius: var(--radius-small);
-    }
-    .cv-download-section {
-        margin-bottom: var(--spacing-xl);
-    }
-    .cv-download-section .btn {
-        width: 100%;
-        max-width: 280px;
     }
 
     /* Footer */
