@@ -618,7 +618,7 @@ function initScrollAnimations() {
     const autoSelectors = [
         'main section', '.experience-item', '.project-card', 
         '.contact-item', '.skill', '.services .card', 
-        '.footer-grid > *', '.footer-bottom', '.section-title'
+        '.section-title'
     ];
     
     // Tag elements
