@@ -1594,7 +1594,10 @@ footer::after {
 
 /* Get In Touch wraps to its own line below the brand buttons (desktop/tablet only) */
 @media (min-width: 768px) {
-    .hero-cta .btn:last-child {
+    .hero-cta-brands {
+        display: flex;
+        gap: var(--spacing-lg);
+        justify-content: center;
         flex-basis: 100%;
     }
 }
@@ -2490,6 +2493,10 @@ select.form-control:focus {
     .hero-cta .btn {
         width: 100%;
         max-width: 280px;
+    }
+    /* keep brand buttons as direct flex items on mobile (same stacked layout as before) */
+    .hero-cta-brands {
+        display: contents;
     }
     .blob {
         filter: blur(60px);
