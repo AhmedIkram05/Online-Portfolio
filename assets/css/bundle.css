@@ -328,13 +328,6 @@ section[data-animate] {
     text-align: center;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-xl);
-    align-items: center;
-}
-
 .services {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -382,13 +375,7 @@ main > section:first-child,
 
 /* ===== TEXT COLORS ===== */
 .text-primary { color: var(--secondary-color) !important; }
-.text-secondary { color: var(--text-secondary) !important; }
 .text-success { color: var(--success-color) !important; }
-.text-warning { color: var(--warning-color) !important; }
-.text-info { color: var(--info-color) !important; }
-.text-danger { color: var(--accent-color) !important; }
-.text-dark { color: var(--text-dark) !important; }
-.text-light { color: var(--text-light) !important; }
 .text-muted { color: var(--text-muted) !important; }
 
 /* ===== LINKS ===== */
@@ -728,15 +715,6 @@ section[id] {
 
 .back-to-top:hover {
     background: #a3360a;
-}
-
-.anchor-target {
-    display: block;
-    width: 1px;
-    height: 0;
-    overflow: hidden;
-    visibility: hidden;
-    pointer-events: none;
 }
 
 .nav-link:hover {
@@ -1082,37 +1060,6 @@ section[id] {
     margin-right: 0;
 }
 
-/* ===== PROFILE IMAGE ===== */
-.profile-image {
-    text-align: center;
-}
-
-.profileImg {
-    width: 320px;
-    height: 320px;
-    object-fit: cover;
-    object-position: center 25%;
-    border-radius: 50%;
-    border: 1px solid #e7e0d5;
-    box-shadow: var(--shadow-sm);
-    transition: all var(--transition-medium);
-    position: relative;
-    max-width: 100%; /* Responsive sizing inside grid */
-    height: auto;     /* Maintain aspect ratio */
-}
-
-.profileImg:hover {
-    transform: scale(1.03);
-    box-shadow: var(--shadow-md);
-    border-color: rgba(194, 65, 12, 0.4);
-}
-
-/* ===== CTA SECTION ===== */
-.cta-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
 /* ===== projects.css ===== */
 /* Projects Page Specific Styles (projects.html) */
 
@@ -1314,11 +1261,6 @@ section[id] {
     color: #ffffff;
 }
 
-/* Animate items when filtering */
-.project-card.hide {
-    display: none;
-}
-
 .project-card.show {
     animation: fadeIn 0.5s ease forwards;
 }
@@ -1381,44 +1323,6 @@ section[id] {
     left: 0;
     color: var(--secondary-color);
     font-weight: bold;
-}
-
-/* ===== SKILLS SECTION ===== */
-.skill {
-    margin-bottom: var(--spacing-lg);
-}
-
-.skill h6 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-light);
-    margin-bottom: var(--spacing-xs);
-}
-
-.skill h6 span {
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-/* ===== PROGRESS BARS ===== */
-.progress {
-    background: #e7e0d5;
-    border-radius: var(--radius-small);
-    height: 10px;
-    width: 100%;
-    overflow: hidden;
-    margin-bottom: var(--spacing-sm);
-}
-
-.progress-bar {
-    height: 100%;
-    border-radius: var(--radius-small);
-    background: var(--accent-color);
-    transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
 }
 
 /* ===== CERTIFICATION CARDS ===== */
@@ -1526,19 +1430,6 @@ section[id] {
     background: #ffffff;
 }
 
-/* ===== CV CARD CONTAINER ===== */
-.cv-viewer-card {
-    padding: 0 !important;
-    background: #ffffff;
-    border: 1px solid #e7e0d5;
-    border-radius: var(--radius-large);
-    overflow: hidden;
-}
-
-.cv-viewer-card .card-body {
-    padding: 0;
-}
-
 /* ===== contact.css ===== */
 /* Contact Page Specific Styles (contact.html) */
 
@@ -1628,18 +1519,7 @@ select.form-control:focus {
     margin-top: var(--spacing-xs);
 }
 
-.valid-feedback {
-    color: var(--success-color);
-    display: none;
-    font-size: 0.875rem;
-    margin-top: var(--spacing-xs);
-}
-
 .was-validated .form-control:invalid ~ .invalid-feedback {
-    display: block;
-}
-
-.was-validated .form-control:valid ~ .valid-feedback {
     display: block;
 }
 
@@ -1715,7 +1595,6 @@ select.form-control:focus {
 }
 
 .banner-email { border-color: rgba(59, 130, 246, 0.6); }
-.banner-phone { border-color: rgba(34, 197, 94, 0.6); }
 .banner-linkedin { border-color: rgba(14, 165, 233, 0.6); }
 .banner-github { border-color: rgba(100, 116, 139, 0.6); }
 .banner-location { border-color: rgba(249, 115, 22, 0.6); }
@@ -1793,12 +1672,6 @@ select.form-control:focus {
     }
 
     /* Grids */
-    .grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--spacing-xl);
-        align-items: start;
-    }
     .services {
         grid-template-columns: 1fr;
         gap: var(--spacing-xl);
@@ -1829,10 +1702,6 @@ select.form-control:focus {
     .hero-typing-container {
         height: 44px;
         margin-bottom: var(--spacing-lg);
-    }
-    .profileImg {
-        width: 220px;
-        height: 220px;
     }
     .hero-card {
         padding: var(--spacing-lg) var(--spacing-md);
@@ -1900,19 +1769,6 @@ select.form-control:focus {
     .experience-item ul li {
         padding-left: var(--spacing-md);
         font-size: 0.9rem;
-    }
-    .skill h6 {
-        font-size: 0.9rem;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--spacing-xs);
-    }
-    .skill h6 span {
-        font-size: 0.8rem;
-    }
-    .progress {
-        height: 8px;
-        margin-bottom: var(--spacing-md);
     }
     /* Generic card images inside services (exclude project cards to avoid height gap) */
     .services .card:not(.project-card) img {
@@ -1998,13 +1854,8 @@ select.form-control:focus {
     .lead { font-size: 1.15rem; line-height: 1.6; max-width: 90%; margin-left: auto; margin-right: auto; }
 
     /* Grids */
-    .grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-2xl); }
     .services { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-2xl); }
     
-    /* Home services: if only two cards fit in first row and third wraps, make third span full row */
-    .services-home { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
-    .services-home > .card:last-child { grid-column: 1 / -1; }
-
     /* Cards */
     .card { border-radius: var(--radius-medium); }
     .card-body { padding: var(--spacing-xl); }

@@ -48,14 +48,14 @@
                 <div class="hero-cta">
                     <div class="hero-cta-brands">
                         <a href="https://github.com/ahmedikram05" target="_blank" rel="noopener" class="btn btn-hero-github">
-                            <i class="fab fa-github mr-2"></i>GitHub
+                            <i class="fab fa-github"></i>GitHub
                         </a>
                         <a href="https://www.linkedin.com/in/ahmed-ikram-student" target="_blank" rel="noopener" class="btn btn-hero-linkedin">
-                            <i class="fab fa-linkedin-in mr-2"></i>LinkedIn
+                            <i class="fab fa-linkedin-in"></i>LinkedIn
                         </a>
                     </div>
                     <a href="#contact" class="btn btn-hero-secondary">
-                        <i class="fas fa-envelope mr-2"></i>Get In Touch
+                        <i class="fas fa-envelope"></i>Get In Touch
                     </a>
                 </div>
                 <p style="margin-top: 1rem; opacity: 0.7; font-size: 0.9rem;">
@@ -132,44 +132,44 @@
             </div>
             
             <div class="about-grid">
-            <div class="about-item section-anchor" id="about-all">
+            <div class="section-anchor" id="about-all">
                 <h3 class="section-title">Who I Am</h3>
-                <div class="card about-card" data-animate>
+                <div class="card" data-animate>
                     <div class="card-body">
                         <p class="card-text">I'm Ahmed Ikram, a final-year Computer Science student at the University of Dundee specialising in Data Science and AI, on track for a First-Class degree and graduating in June 2027. I build across the stack — production LLM systems in Python, full-stack platforms in TypeScript and React, and data pipelines on AWS, Azure and GCP.</p>
                         <p class="card-text">I hold AWS Academy certifications in Cloud Foundations and Machine Learning, plus a Foundations of Azure AI certification — all completed independently alongside full-time study.</p>
                     </div>
                 </div>
             </div>
-            <div class="about-item section-anchor" id="about-journey">
+            <div class="section-anchor" id="about-journey">
                 <h3 class="section-title">What I've Built</h3>
-                <div class="card about-card" data-animate>
+                <div class="card" data-animate>
                     <div class="card-body">
                         <p class="card-text">My strongest work ships end-to-end with real guardrails. As ML and backend lead for a 7-person team building NCR Atleos' ATM log analysis platform, I built a LangGraph hybrid RAG assistant that nearly doubles retrieval recall over deterministic routing (0.708 vs 0.350), and a 3-layer anomaly detector reaching 0.70 F1 on a live Kafka stream.</p>
                         <p class="card-text">On my own: SWE-Qwen, a full LLMOps platform that fine-tuned Qwen3-14B and drove its fix rate 7x over the base model; StockLens, a FinTech app with a native Rust extension and LSTM forecaster; DevSync, a full-stack project management platform guarded by 1,452 tests; and two data platforms — WikiStream, ingesting 58.9M+ real-time events with zero loss, and an Azure ETL pipeline serving Power BI.</p>
                     </div>
                 </div>
             </div>
-            <div class="about-item section-anchor" id="about-difference">
+            <div class="section-anchor" id="about-difference">
                 <h3 class="section-title">What I Bring</h3>
-                <div class="card about-card" data-animate>
+                <div class="card" data-animate>
                     <div class="card-body">
                         <p class="card-text">Most of my engineering habits come from real pressure: five years of part-time work has me training staff, managing competing priorities, and resolving system failures live. That experience taught me clear communication and ownership of outcomes — habits that carry directly into technical work.</p>
                         <p class="card-text">I build for the gap between "works on my machine" and "works for real users". Concretely: my CI gates block any merge that regresses a RAGAS metric by more than 0.05, model promotion is gated behind statistical significance tests, and streaming pipelines hold at-least-once delivery under chaos injections — with zero long-lived credentials across every deployment.</p>
                     </div>
                 </div>
             </div>
-            <div class="about-item section-anchor" id="about-looking">
+            <div class="section-anchor" id="about-looking">
                 <h3 class="section-title">What I'm Looking For</h3>
-                <div class="card about-card" data-animate>
+                <div class="card" data-animate>
                     <div class="card-body">
                         <p class="card-text">I'm looking for a graduate role in AI engineering, data engineering, or software engineering, starting after I graduate in June 2027. I want to contribute to production systems alongside experienced engineers, and I'm open to any sector. I'm based in Dundee but open to relocation across the UK.</p>
                     </div>
                 </div>
             </div>
-            <div class="about-item section-anchor" id="about-beyond">
+            <div class="section-anchor" id="about-beyond">
                 <h3 class="section-title">Outside of Work</h3>
-                <div class="card about-card" data-animate>
+                <div class="card" data-animate>
                     <div class="card-body">
                         <p class="card-text">Outside of work I build personal projects, follow developments in AI and cloud infrastructure, and train on competitive programming. I completed three cloud and AI certifications independently alongside full-time study.</p>
                     </div>
@@ -202,7 +202,7 @@
                 <button class="filter-btn" data-filter="systems">Systems</button>
             </div>
 
-            <div class="services project-grid">
+            <div class="services">
                 <!-- Project: Stocklens -->
                 <div class="card project-card" data-category="mobile ai-ml">
                     <div class="card-img-wrapper">
@@ -217,12 +217,12 @@
                         <h4 class="card-title">StockLens</h4>
                         <p class="card-text">Scan receipts, trade stocks with your spending, track portfolios with LSTM forecasts & an AI agent. FastAPI + PyTorch + LangGraph + Rust backend.</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">React Native</span>
-                            <span class="badge badge-secondary">FastAPI</span>
-                            <span class="badge badge-secondary">PyTorch</span>
-                            <span class="badge badge-secondary">LangGraph</span>
-                            <span class="badge badge-secondary">Rust</span>
-                            <span class="badge badge-secondary">Terraform</span>
+                            <span class="badge">React Native</span>
+                            <span class="badge">FastAPI</span>
+                            <span class="badge">PyTorch</span>
+                            <span class="badge">LangGraph</span>
+                            <span class="badge">Rust</span>
+                            <span class="badge">Terraform</span>
                         </div>
                     </div>
                 </div>
@@ -241,12 +241,12 @@
                         <h4 class="card-title">W3C Web Logs ETL Pipeline</h4>
                         <p class="card-text">Serverless Databricks DLT pipeline ingesting 93 W3C IIS log files through a Bronze→Silver medallion architecture into Azure SQL, transformed via dbt into a star schema with Power BI-ready exports — orchestrated by Airflow, provisioned with Terraform.</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">Databricks</span>
-                            <span class="badge badge-secondary">dbt</span>
-                            <span class="badge badge-secondary">Airflow</span>
-                            <span class="badge badge-secondary">Azure</span>
-                            <span class="badge badge-secondary">Terraform</span>
-                            <span class="badge badge-secondary">Python</span>
+                            <span class="badge">Databricks</span>
+                            <span class="badge">dbt</span>
+                            <span class="badge">Airflow</span>
+                            <span class="badge">Azure</span>
+                            <span class="badge">Terraform</span>
+                            <span class="badge">Python</span>
                         </div>
                     </div>
                 </div>
@@ -265,12 +265,12 @@
                         <h4 class="card-title">DevSync</h4>
                         <p class="card-text">Production full-stack project management platform with real-time collaboration, GitHub OAuth 2.0, and bidirectional Issue/PR sync — React 18 + Flask + PostgreSQL, deployed on AWS ECS Fargate with OIDC-authenticated CI/CD.</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">React</span>
-                            <span class="badge badge-secondary">Flask</span>
-                            <span class="badge badge-secondary">PostgreSQL</span>
-                            <span class="badge badge-secondary">Socket.io</span>
-                            <span class="badge badge-secondary">AWS</span>
-                            <span class="badge badge-secondary">Docker</span>
+                            <span class="badge">React</span>
+                            <span class="badge">Flask</span>
+                            <span class="badge">PostgreSQL</span>
+                            <span class="badge">Socket.io</span>
+                            <span class="badge">AWS</span>
+                            <span class="badge">Docker</span>
                         </div>
                     </div>
                 </div>
@@ -289,12 +289,12 @@
                         <h4 class="card-title">ATM Log Aggregation, Anomaly Detection & Diagnostics Platform</h4>
                         <p class="card-text">ATM log aggregation, multi-layer anomaly detection & AI-assisted diagnostics — Kafka ingestion through 3-layer ML/statistical/heuristic detection to a React dashboard and Agentic Hybrid RAG assistant, on AWS ECS Fargate with SageMaker inference.</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">FastAPI</span>
-                            <span class="badge badge-secondary">Kafka</span>
-                            <span class="badge badge-secondary">XGBoost</span>
-                            <span class="badge badge-secondary">LangChain</span>
-                            <span class="badge badge-secondary">React</span>
-                            <span class="badge badge-secondary">AWS</span>
+                            <span class="badge">FastAPI</span>
+                            <span class="badge">Kafka</span>
+                            <span class="badge">XGBoost</span>
+                            <span class="badge">LangChain</span>
+                            <span class="badge">React</span>
+                            <span class="badge">AWS</span>
                         </div>
                     </div>
                 </div>
@@ -313,12 +313,12 @@
                         <h4 class="card-title">SWE-Qwen</h4>
                         <p class="card-text">LLMOps platform turning 20,477 SWE-bench issues into a 17,456-example training corpus — 3 QLoRA variants of Qwen3-14B fine-tuned on Modal A100s, execution-based evaluation with statistical champion/challenger gating, served via an OpenAI-compatible inference API.</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">PyTorch</span>
-                            <span class="badge badge-secondary">QLoRA</span>
-                            <span class="badge badge-secondary">FastAPI</span>
-                            <span class="badge badge-secondary">Modal</span>
-                            <span class="badge badge-secondary">Terraform</span>
-                            <span class="badge badge-secondary">Google Cloud</span>
+                            <span class="badge">PyTorch</span>
+                            <span class="badge">QLoRA</span>
+                            <span class="badge">FastAPI</span>
+                            <span class="badge">Modal</span>
+                            <span class="badge">Terraform</span>
+                            <span class="badge">Google Cloud</span>
                         </div>
                     </div>
                 </div>
@@ -337,12 +337,12 @@
                         <h4 class="card-title">WikiStream</h4>
                         <p class="card-text">Real-time streaming analytics platform ingesting every public Wikipedia edit via SSE into a self-hosted ClickHouse cluster — live dashboards, hourly warehouse exports, 58.9M+ events with zero data loss at 5,655 events/sec.</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">Python</span>
-                            <span class="badge badge-secondary">ClickHouse</span>
-                            <span class="badge badge-secondary">Grafana</span>
-                            <span class="badge badge-secondary">BigQuery</span>
-                            <span class="badge badge-secondary">Terraform</span>
-                            <span class="badge badge-secondary">Google Cloud</span>
+                            <span class="badge">Python</span>
+                            <span class="badge">ClickHouse</span>
+                            <span class="badge">Grafana</span>
+                            <span class="badge">BigQuery</span>
+                            <span class="badge">Terraform</span>
+                            <span class="badge">Google Cloud</span>
                         </div>
                     </div>
                 </div>
@@ -361,8 +361,8 @@
                         <h4 class="card-title">Haggis Predictive Modeling</h4>
                         <p class="card-text">End-to-end ML pipeline: EDA, feature engineering, XGBoost and Random Forest modelling. Achieved ~90% classification accuracy, validated with F1-scores and cross-validation.</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">Python</span>
-                            <span class="badge badge-secondary">Jupyter Notebook</span>
+                            <span class="badge">Python</span>
+                            <span class="badge">Jupyter Notebook</span>
                         </div>
                     </div>
                 </div>
@@ -381,7 +381,7 @@
                         <h4 class="card-title">Unix Version Control System</h4>
                         <p class="card-text">Version Control System made using Bash script</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">Bash</span>
+                            <span class="badge">Bash</span>
                         </div>
                     </div>
                 </div>
@@ -400,7 +400,7 @@
                         <h4 class="card-title">Business Performance Case Study Dashboard</h4>
                         <p class="card-text">Interactive performance analytics dashboard with data visualisations, trends, insights and KPIs</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">Excel</span>
+                            <span class="badge">Excel</span>
                         </div>
                     </div>
                 </div>

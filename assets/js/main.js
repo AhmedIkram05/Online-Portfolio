@@ -411,9 +411,6 @@ function initNavigation() {
 function initHeroFeatures() {
     initHeroOverlay();
     initHeroTypingEffect();
-    initHeroDisappearance();
-    init3DHeroEffects();
-    initHeroSmoothScroll();
 }
 
 function initHeroOverlay() {
@@ -456,19 +453,6 @@ function initHeroOverlay() {
     document.addEventListener('keydown', (e) => {
         if (!e.target.matches('input, textarea')) dismissHero();
     });
-    
-    // Explore Button
-    const exploreBtn = document.getElementById('exploreBtn');
-    if (exploreBtn) {
-        exploreBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            dismissHero();
-            setTimeout(() => {
-                const mainContent = document.getElementById('main-content');
-                if (mainContent) mainContent.scrollIntoView({ behavior: 'smooth' });
-            }, 500);
-        });
-    }
 }
 
 function initHeroTypingEffect() {
@@ -504,57 +488,6 @@ function initHeroTypingEffect() {
     }
   
     setTimeout(type, 1500);
-}
-
-function initHeroDisappearance() {
-    const hero = document.querySelector('.hero');
-    if (!hero) return;
-    
-    let heroHiddenTicking = false;
-    window.addEventListener('scroll', () => {
-        if (!heroHiddenTicking) {
-            window.requestAnimationFrame(() => {
-                const threshold = hero.offsetHeight / 3;
-                hero.classList.toggle('hero-hidden', window.pageYOffset > threshold);
-                heroHiddenTicking = false;
-            });
-            heroHiddenTicking = true;
-        }
-    }, { passive: true });
-}
-
-function init3DHeroEffects() {
-    const hero = document.querySelector('.hero');
-    if (!hero) return;
-    
-    let hero3DTicking = false;
-    const updateTransform = () => {
-        const scrollY = window.pageYOffset;
-        // Limit depth to avoid visual glitches
-        const depth = Math.min(50, (scrollY / window.innerHeight) * 50);
-        hero.style.transform = `translateZ(${-depth}px)`;
-    };
-    
-    window.addEventListener('scroll', () => {
-        if (!hero3DTicking) {
-            hero3DTicking = true;
-            window.requestAnimationFrame(() => {
-                updateTransform();
-                hero3DTicking = false;
-            });
-        }
-    }, { passive: true });
-}
-
-function initHeroSmoothScroll() {
-    const exploreBtns = document.querySelectorAll('a[href="#main-content"]');
-    exploreBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const target = document.querySelector('#main-content');
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
-        });
-    });
 }
 
 function initProjectFilters() {
@@ -617,7 +550,7 @@ function initScrollAnimations() {
     // Select elements to animate
     const autoSelectors = [
         'main section', '.experience-item', '.project-card', 
-        '.contact-item', '.skill', '.services .card', 
+        '.contact-item', '.services .card', 
         '.section-title'
     ];
     
