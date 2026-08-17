@@ -727,7 +727,7 @@ section[id] {
 }
 
 .back-to-top:hover {
-    background: #ff4444;
+    background: #a3360a;
 }
 
 .anchor-target {
@@ -765,12 +765,12 @@ section[id] {
 
 .nav-link:hover::before {
     width: 85%;
-    background: #ff4444;
+    background: #c2410c;
 }
 
 .nav-link.active::before {
     width: 85%;
-    background: #3498db;
+    background: #c2410c;
 }
 
 /* ===== DESKTOP NAVIGATION (768px and above) ===== */
@@ -887,11 +887,9 @@ section[id] {
         align-items: stretch;
         gap: 0;
         justify-content: flex-start;
-        background: rgba(8, 12, 18, 0.97);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        background: #ffffff;
+        border-top: 1px solid #e7e0d5;
+        box-shadow: 0 8px 32px rgba(28, 25, 23, 0.12);
         padding: var(--spacing-sm) var(--spacing-lg) var(--spacing-lg);
         transform: translateY(-12px);
         opacity: 0;
@@ -911,7 +909,7 @@ section[id] {
         align-items: center;
         font-size: 0.95rem;
         padding: 0.75rem 0.25rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        border-bottom: 1px solid #f0ece3;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         font-weight: 600;
