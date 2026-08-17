@@ -954,7 +954,7 @@ section[id] {
     width: 100vw;
     height: 100vh;
     height: 100dvh;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 30%, #34495e 60%, #3498db 100%);
+    background: var(--light-color);
     z-index: 9999;
     display: flex;
     align-items: center;
@@ -976,34 +976,13 @@ section[id] {
     pointer-events: none;
 }
 
-.hero-overlay::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 40% 40%, rgba(46, 204, 113, 0.08) 0%, transparent 50%);
-    pointer-events: none;
-    animation: heroOverlay 20s ease-in-out infinite;
-}
-
-@keyframes heroOverlay {
-    0%, 100% { opacity: 0.7; }
-    50% { opacity: 1; }
-}
-
 /* ===== HERO CARD ===== */
 .hero-card {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+    background: #ffffff;
     border-radius: var(--radius-large);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid #e7e0d5;
     padding: var(--spacing-3xl) var(--spacing-xl);
-    box-shadow: var(--shadow-xl);
-    transform: translateZ(50px);
+    box-shadow: var(--shadow-sm);
     transition: all var(--transition-medium);
     max-width: 700px;
     position: relative;
@@ -1012,8 +991,8 @@ section[id] {
 }
 
 .hero-card:hover {
-    transform: translateZ(60px) rotateX(2deg) rotateY(-2deg);
-    box-shadow: var(--shadow-xl), 0 25px 50px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
 }
 
 /* ===== HERO TEXT ELEMENTS ===== */
@@ -1024,7 +1003,6 @@ section[id] {
     font-weight: 700;
     letter-spacing: -0.01em;
     margin-bottom: var(--spacing-lg);
-    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
     line-height: 1.1;
 }
 
