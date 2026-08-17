@@ -2090,8 +2090,31 @@ footer::after {
 /* CV Page Specific Styles (cv.html) */
 
 /* ===== CV VIEWER ===== */
+.cv-viewer-tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-lg);
+}
+
+.cv-viewer-tabs .btn {
+    opacity: 0.6;
+}
+
+.cv-viewer-tabs .btn.active {
+    opacity: 1;
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
 .cv-embed-wrapper {
     min-height: 800px;
+}
+
+/* Exactly one CV embed is visible at a time: hidden wins over any display rule */
+.cv-embed-wrapper embed[hidden] {
+    display: none;
 }
 
 .embed-responsive-item {
@@ -2118,7 +2141,7 @@ footer::after {
 
 /* ===== CV DOWNLOAD SECTION ===== */
 .cv-download-section {
-    margin-bottom: var(--spacing-2xl);
+    margin-bottom: var(--spacing-lg);
 }
 
 .cv-download-section .btn {

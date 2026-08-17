@@ -815,19 +815,11 @@
         <section data-animate>
             <div class="content-wrapper center">
                 <h2 class="display-4">My CVs</h2>
-                <p class="lead">I have three role-specific CVs depending on the type of role you may be hiring for. Download the most relevant version below.</p>
+                <p class="lead">I have three role-specific CVs depending on the type of role you may be hiring for. Preview the versions below and download the one that fits.</p>
                 <div class="cv-download-section" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
-                    <a href="assets/documents/Ahmed-Ikram-CV-2026-AI.pdf" class="btn btn-hero-primary" download>
+                    <a id="cv-download" href="assets/documents/Ahmed-Ikram-CV-2026-AI.pdf" class="btn btn-hero-primary" download>
                         <i class="fas fa-download"></i>
-                        <span>AI Engineering</span>
-                    </a>
-                    <a href="assets/documents/Ahmed-Ikram-CV-2026-DE.pdf" class="btn btn-hero-primary" download>
-                        <i class="fas fa-download"></i>
-                        <span>Data Engineering & Analytics</span>
-                    </a>
-                    <a href="assets/documents/Ahmed-Ikram-CV-2026-SWE.pdf" class="btn btn-hero-primary" download>
-                        <i class="fas fa-download"></i>
-                        <span>Software Engineering</span>
+                        <span>Download CV</span>
                     </a>
                 </div>
             </div>
@@ -836,10 +828,17 @@
         <!-- CV Viewer -->
         <section data-animate>
             <div class="content-wrapper center">
+                <div class="cv-viewer-tabs" role="tablist" aria-label="CV preview tabs">
+                    <button class="btn btn-hero-primary active" data-cv-tab="ai" role="tab" aria-selected="true">AI Engineering</button>
+                    <button class="btn btn-hero-primary" data-cv-tab="de" role="tab" aria-selected="false">Data Engineering &amp; Analytics</button>
+                    <button class="btn btn-hero-primary" data-cv-tab="swe" role="tab" aria-selected="false">Software Engineering</button>
+                </div>
                 <div class="card">
                     <div class="card-body" style="padding:0;">
                         <div class="cv-embed-wrapper">
-                            <embed src="assets/documents/Ahmed-Ikram-CV-2026-DE.pdf" type="application/pdf" loading="lazy" decoding="async" style="width:100%; height:800px;" class="embed-responsive-item">
+                            <embed id="cv-ai" src="assets/documents/Ahmed-Ikram-CV-2026-AI.pdf" type="application/pdf" style="width:100%; height:800px;" class="embed-responsive-item">
+                            <embed id="cv-de" data-src="assets/documents/Ahmed-Ikram-CV-2026-DE.pdf" type="application/pdf" hidden style="width:100%; height:800px;" class="embed-responsive-item">
+                            <embed id="cv-swe" data-src="assets/documents/Ahmed-Ikram-CV-2026-SWE.pdf" type="application/pdf" hidden style="width:100%; height:800px;" class="embed-responsive-item">
                         </div>
                     </div>
                 </div>
