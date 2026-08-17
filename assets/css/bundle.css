@@ -2095,7 +2095,7 @@ footer::after {
     gap: var(--spacing-sm);
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
 }
 
 .cv-viewer-tabs .btn {
@@ -2138,22 +2138,6 @@ footer::after {
 .cv-viewer-card .card-body {
     padding: 0;
 }
-
-/* ===== CV DOWNLOAD SECTION ===== */
-.cv-download-section {
-    margin-bottom: var(--spacing-lg);
-}
-
-.cv-download-section .btn {
-    margin-top: var(--spacing-lg);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: var(--spacing-sm); /* increased spacing between icon and text */
-}
-
-/* Fallback for browsers without flex gap support */
-.cv-download-section .btn i { margin-right: var(--spacing-sm); }
 
 /* ===== contact.css ===== */
 /* Contact Page Specific Styles (contact.html) */
@@ -2592,13 +2576,6 @@ select.form-control:focus {
     .embed-responsive-item {
         height: 560px !important;
         border-radius: var(--radius-small);
-    }
-    .cv-download-section {
-        margin-bottom: var(--spacing-xl);
-    }
-    .cv-download-section .btn {
-        width: 100%;
-        max-width: 280px;
     }
 
     /* Footer */

@@ -783,12 +783,6 @@ function initCvViewer() {
             document.querySelectorAll('.cv-embed-wrapper embed').forEach(e => {
                 e.hidden = e !== embed;
             });
-            // Single download button follows the active tab
-            const downloadBtn = document.getElementById('cv-download');
-            if (downloadBtn) {
-                const src = embed.src || embed.dataset.src;
-                if (src) downloadBtn.href = src;
-            }
         });
     });
 }
