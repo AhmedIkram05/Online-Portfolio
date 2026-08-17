@@ -436,12 +436,12 @@ header {
     left: 0;
     right: 0;
     z-index: 11000; /* Final layer above all overlays (9999) and cards (10000) */
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid #e7e0d5;
     transition: opacity 0.4s ease, transform 0.4s ease, background 0.4s ease;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-xs);
 }
 
 /* Hide header while hero overlay is active */
@@ -452,10 +452,10 @@ header {
 }
 
 header.scrolled {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    box-shadow: var(--shadow-lg);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-sm);
 }
 
 .navbar {
@@ -478,7 +478,7 @@ header.scrolled {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: #28a745;
+    background: #15803d;
     color: #fff;
     font-size: 0.72rem;
     font-weight: 600;
@@ -487,18 +487,11 @@ header.scrolled {
     padding: 6px 12px;
     border-radius: 20px;
     white-space: nowrap;
-    box-shadow: 0 0 12px rgba(40, 167, 69, 0.5);
-    animation: availabilityPulse 2.5s ease-in-out infinite;
     z-index: 1100;
 }
 
-@keyframes availabilityPulse {
-    0%, 100% { box-shadow: 0 0 8px rgba(40, 167, 69, 0.4); }
-    50% { box-shadow: 0 0 20px rgba(40, 167, 69, 0.85); }
-}
-
 .navbar-badge:hover {
-    background: #23923c;
+    background: #166534;
 }
 
 /* Hide availability badge below 1052px — badge is ~205px wide + 24px right edge;
@@ -526,30 +519,26 @@ header.scrolled {
     padding: 0;
     border-radius: var(--radius-small);
     position: relative;
-    /* Enhanced glassmorphism for side menu button */
-    background: rgba(15, 25, 35, 0.6);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: var(--shadow-sm);
-    font-family: 'Courier New', monospace;
+    /* Flat light toggle for side menu button */
+    background: #ffffff;
+    border: 1px solid #e7e0d5;
+    box-shadow: var(--shadow-xs);
+    font-family: var(--font-secondary);
     font-weight: bold;
 }
 
 .navbar-toggler:hover {
     transform: scale(1.05);
-    background: rgba(231, 76, 60, 0.3);
-    border-color: rgba(231, 76, 60, 0.5);
-    box-shadow: 
-        var(--shadow-md),
-        0 0 15px rgba(231, 76, 60, 0.3);
+    background: rgba(194, 65, 12, 0.08);
+    border-color: rgba(194, 65, 12, 0.4);
+    box-shadow: var(--shadow-sm);
 }
 
 .navbar-toggler:focus {
     outline: none;
-    box-shadow: 
-        0 0 0 2px rgba(231, 76, 60, 0.5),
-        var(--shadow-md);
+    box-shadow:
+        0 0 0 2px rgba(194, 65, 12, 0.4),
+        var(--shadow-sm);
 }
 
 /* Programming icon visibility control */
