@@ -281,6 +281,20 @@ section[data-animate] {
     text-decoration: none;
 }
 
+/* GitHub-branded CTA: official brand dark #24292E */
+.btn-hero-github {
+    background: linear-gradient(135deg, #24292e, #1b1f24);
+    color: var(--text-light);
+    box-shadow: 0 4px 14px rgba(36, 41, 46, 0.4);
+}
+
+.btn-hero-github:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-xl), 0 4px 14px rgba(36, 41, 46, 0.4);
+    color: var(--text-light);
+    text-decoration: none;
+}
+
 .btn-hero-primary:hover {
     transform: translateY(-3px) scale(1.02);
     box-shadow: var(--shadow-xl), var(--shadow-blue);
@@ -1576,6 +1590,13 @@ footer::after {
     gap: var(--spacing-lg);
     justify-content: center;
     flex-wrap: wrap;
+}
+
+/* Get In Touch wraps to its own line below the brand buttons (desktop/tablet only) */
+@media (min-width: 768px) {
+    .hero-cta .btn:last-child {
+        flex-basis: 100%;
+    }
 }
 
 /* Icon/Text spacing for Hero CTA buttons */
