@@ -550,7 +550,6 @@ header.scrolled {
     transform: translate(-50%, -50%);
     transition: opacity 0.3s ease, transform 0.3s ease;
     font-size: 1.1rem;
-    text-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
 }
 
 .navbar-toggler .side-menu-open {
@@ -562,7 +561,7 @@ header.scrolled {
 .navbar-toggler .side-menu-close {
     opacity: 0;
     transform: translate(-50%, -50%) rotate(90deg);
-    color: #ff4444;
+    color: #c2410c;
     font-size: 1.3rem;
 }
 
@@ -577,7 +576,6 @@ header.scrolled {
 .navbar-toggler.active .side-menu-close {
     opacity: 1;
     transform: translate(-50%, -50%) rotate(0deg);
-    text-shadow: 0 0 8px rgba(231, 76, 60, 0.8);
 }
 
 .navbar-nav {
@@ -626,16 +624,15 @@ header.scrolled {
     top: 100%; /* Gap removed for better mouse tracking */
     left: 0;
     margin-top: 0.4rem; /* Visual spacing */
-    background: rgba(15, 25, 35, 0.95);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    background: #ffffff;
+    border: 1px solid #e7e0d5;
     border-radius: var(--radius-medium);
     padding: var(--spacing-sm) var(--spacing-lg);
     min-width: 200px;
     flex-direction: column;
     gap: var(--spacing-xs);
     z-index: 1100;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-md);
 }
 
 /* Invisible bridge to prevent mouse-off when moving to submenu */
@@ -684,7 +681,7 @@ header.scrolled {
 }
 
 .nav-link-sub:hover::before {
-    background: #ff4444;
+    background: #c2410c;
     width: 3px !important;
     height: 100% !important;
 }
