@@ -1456,6 +1456,7 @@ footer::after {
     left: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 30%, #34495e 60%, #3498db 100%);
     z-index: 9999;
     display: flex;
@@ -1464,7 +1465,12 @@ footer::after {
     opacity: 1;
     visibility: visible;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
+    overflow-y: auto;
+}
+
+/* ponytail: margin:auto keeps flex centering but makes overflow reachable from the top */
+.hero-content {
+    margin: auto;
 }
 
 .hero-overlay.hidden {
@@ -2433,25 +2439,25 @@ select.form-control:focus {
     .hero-name {
         font-size: 2.2rem;
         line-height: 1.1;
-        margin-bottom: var(--spacing-md);
+        margin-bottom: 0.5rem;
     }
     .hero-title {
         font-size: 1.1rem;
-        margin-bottom: var(--spacing-lg);
+        margin-bottom: 0.75rem;
     }
     .hero-typing {
         font-size: 1.1rem;
     }
     .hero-typing-container {
-        height: 60px;
-        margin-bottom: var(--spacing-xl);
+        height: 44px;
+        margin-bottom: var(--spacing-lg);
     }
     .profileImg {
         width: 220px;
         height: 220px;
     }
     .hero-card {
-        padding: var(--spacing-2xl) var(--spacing-lg);
+        padding: var(--spacing-lg) var(--spacing-md);
         max-width: 90%;
         margin: 0 auto;
     }
