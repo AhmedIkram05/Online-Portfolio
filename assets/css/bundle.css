@@ -1895,4 +1895,7 @@ select.form-control:focus {
     .hero-name { font-size: 3rem; }
     .hero-title { font-size: 1.25rem; }
     .hero-card { padding: var(--spacing-3xl) var(--spacing-2xl); }
+
+    /* LinkedIn embed scaling */
+    .card iframe { height: 350px !important; }
 }

@@ -153,7 +153,7 @@
                 <h3 class="section-title">What I've Built</h3>
                 <div class="card" data-animate>
                     <div class="card-body">
-                        <p class="card-text">My strongest work ships end-to-end with real guardrails. As ML and backend lead for a 7-person team building NCR Atleos' ATM log analysis platform, I built a LangGraph hybrid RAG assistant that nearly doubles retrieval recall over deterministic routing (0.708 vs 0.350), and a 3-layer anomaly detector reaching 0.70 F1 on a live Kafka stream.</p>
+                        <p class="card-text">My strongest work ships end-to-end with real guardrails. LAAD began as a 7-person university team project — after the module ended, I rebuilt and extended it independently over the summer. I built a LangGraph hybrid RAG assistant that nearly doubles retrieval recall over deterministic routing (0.708 vs 0.350), a 3-layer anomaly detector reaching 0.70 F1 on a live Kafka stream, a full Kafka streaming pipeline, and a complete AWS/Terraform deployment — all solo.</p>
                         <p class="card-text">On my own: SWE-Qwen, a full LLMOps platform that fine-tuned Qwen3-14B and drove its fix rate 7x over the base model; StockLens, a FinTech app with a native Rust extension and LSTM forecaster; DevSync, a full-stack project management platform guarded by 1,452 tests; and two data platforms — WikiStream, ingesting 58.9M+ real-time events with zero loss, and an Azure ETL pipeline serving Power BI.</p>
                     </div>
                 </div>
@@ -295,7 +295,7 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">ATM Log Aggregation, Anomaly Detection & Diagnostics Platform</h4>
-                        <p class="card-text">ATM log aggregation, multi-layer anomaly detection & AI-assisted diagnostics — Kafka ingestion through 3-layer ML/statistical/heuristic detection to a React dashboard and Agentic Hybrid RAG assistant, on AWS ECS Fargate with SageMaker inference.</p>
+                        <p class="card-text">Started as a university team project — rebuilt and extended solo over the summer. Kafka ingestion through 3-layer ML/statistical/heuristic detection, a LangGraph agentic RAG assistant, full AWS/Terraform deployment, and 1,438 automated tests.</p>
                         <div class="tech-stack">
                             <span class="badge">FastAPI</span>
                             <span class="badge">Kafka</span>
@@ -424,17 +424,17 @@
         <section data-animate>
             <div class="content-wrapper center">
                 <h2 class="display-4">Case Study: LAAD</h2>
-                <p class="lead">A production-grade ATM log aggregation, anomaly detection and diagnostics platform built for NCR Atleos as the CS32002 Industrial Team Project.</p>
+                <p class="lead">A production-grade ATM log aggregation, anomaly detection and diagnostics platform built for NCR Atleos.</p>
             </div>
         </section>
 
         <!-- Problem & Role -->
-        <section data-animate class="content-wrapper section-anchor" id="case-study-overview">
+<section data-animate class="content-wrapper section-anchor" id="case-study-overview">
             <div class="experience-item">
                 <h5>The Problem</h5>
-                <p class="text-muted">NCR Atleos ATMs generate ~3.5GB of log data per day across seven sources — application logs, hardware sensor metrics, terminal handler logs, Kafka, Prometheus, Windows OS and GCP cloud metrics. Field engineers were flying blind: faults surfaced only after customers reported them, and root-causing a single ATM meant grepping millions of unstructured lines by hand.</p>
-                <h5>My Role — Backend &amp; Data Engineering Lead</h5>
-                <p class="text-muted">On a 7-person team I owned the ingestion pipeline, the multi-layer ML detection engine, MLOps, the agentic RAG assistant and all AWS infrastructure. After the module ended I kept building — the Kafka message bus, the 3-layer detection engine, confidence-fused RAG, the 1,438-test suite and the full Terraform deployment are my independent post-submission extension.</p>
+                <p class="text-muted">NCR Atleos ATMs generate MBs of log data each day across several sources — application logs, hardware sensor metrics, terminal handler logs, Kafka, Prometheus, Windows OS and GCP cloud metrics. Field engineers are flying blind: faults surface only after customers report them, and root-causing a single ATM meant grepping millions of unstructured lines by hand.</p>
+                <h5>My Role — Solo Builder</h5>
+                <p class="text-muted">LAAD began as part of a 7-person university team project. After the module ended, I continued developing it independently throughout the summer and substantially rebuilt the system. The original submission had basic rule-based detection and a simple database-writing generator — the majority of the current architecture was designed, implemented and deployed by me alone.</p>
                 <ul>
                     <li><strong>2.5M events</strong> processed end-to-end at ~100 messages/second with zero loss</li>
                     <li><strong>99.8% &plusmn; 0.1%</strong> cross-validated accuracy on the XGBoost detection ensemble</li>
@@ -618,6 +618,15 @@
                 <a href="https://github.com/AhmedIkram05/laad" target="_blank" class="btn btn-hero-primary">View the Repository</a>
                 <a href="https://github.com/AhmedIkram05/laad/blob/main/README.md" target="_blank" class="btn btn-hero-secondary">Read the Full Write-up</a>
             </div>
+
+            <!-- LinkedIn Post -->
+            <div class="services" style="margin-top: var(--spacing-2xl);">
+                <div class="card" style="max-width: 552px; margin: 0 auto; width: 100%;">
+                    <div style="padding: var(--spacing-lg) 0;">
+                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7495444108929527808?collapsed=1" height="554" width="100%" frameborder="0" allowfullscreen="" title="LAAD case study post on LinkedIn" style="max-width: 504px; display: block; margin: 0 auto;"></iframe>
+                    </div>
+                </div>
+            </div>
         </section>
 
         </section>
@@ -734,21 +743,6 @@
                             <li>Explored Azure AI services: Computer Vision, NLP, and Cognitive Services</li>
                             <li>Implemented AI models in cloud-based applications</li>
                             <li>Understood AI ethics and responsible deployment</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-body">
-                        <a href="https://www.linkedin.com/learning/certificates/ac25c12cd98c650dd6defa81b8ba13ba0a032539bda4cc6c76e15c353ae81855?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BT9fo%2BcR8Q0eO%2BgT7rijPLQ%3D%3D" target="_blank" rel="noopener">
-                            <img src="assets/images/nasba-cloud-computing-cert.png" alt="Cloud Computing: Understanding Core Concepts" style="max-height:250px; object-fit:contain; width:100%;" height="250" loading="lazy" decoding="async">
-                        </a>
-                        <h3 class="card-title">Cloud Computing: Understanding Core Concepts</h3>
-                        <p class="card-text"><small class="text-muted">2024</small></p>
-                        <ul>
-                            <li>Covers key concepts: virtualization, networking, security, and cloud models (IaaS, PaaS, SaaS)</li>
-                            <li>Compared major cloud providers and their service offerings</li>
-                            <li>Strengthened theoretical foundation for cloud-based implementations</li>
                         </ul>
                     </div>
                 </div>
