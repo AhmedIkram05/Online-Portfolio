@@ -464,7 +464,7 @@ header.scrolled {
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* Availability badge pinned to far right of navbar */
+/* Availability badge pinned to far right of the full-width header bar */
 .navbar-badge {
     position: absolute;
     right: var(--spacing-lg);
@@ -489,10 +489,11 @@ header.scrolled {
     background: #166534;
 }
 
-/* Hide availability badge below 1052px — badge is ~205px wide + 24px right edge;
-   below this the centered nav (About/Projects/Experience/CV/Contact ≈ 594px)
-   reaches into the badge zone (e.g. 14px overlap at 1024px) */
-@media (max-width: 1051.98px) {
+/* Hide badge when the centered 6-item nav reaches into the badge zone
+   (~219px + 24px right offset, anchored to the header's right edge).
+   Measured live at the 1200px boundary: below 1200px the nav widens and
+   overlaps the badge; at >= 1200px there is always room. */
+@media (max-width: 1199.98px) {
     .navbar-badge {
         display: none;
     }
