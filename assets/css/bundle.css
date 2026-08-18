@@ -431,12 +431,7 @@ header {
     box-shadow: var(--shadow-xs);
 }
 
-/* Hide header while hero overlay is active */
-.hero-overlay:not(.hidden) ~ header {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-100%);
-}
+
 
 header.scrolled {
     background: rgba(255, 255, 255, 0.95);
@@ -924,22 +919,15 @@ section[id] {
 /* ===== home.css ===== */
 /* Home Page Specific Styles (index.html) */
 
-/* ===== HERO OVERLAY POPUP ===== */
-.hero-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh;
+/* ===== HERO ===== */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
     background: var(--light-color);
-    z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 1;
-    visibility: visible;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow-y: auto;
 }
 
@@ -948,10 +936,25 @@ section[id] {
     margin: auto;
 }
 
-.hero-overlay.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+/* ===== HERO SCROLL INDICATOR ===== */
+.hero-scroll {
+    position: absolute;
+    bottom: var(--spacing-xl);
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-muted);
+    font-size: 1.4rem;
+    opacity: 0.8;
+    animation: heroScrollBounce 2s infinite;
+}
+
+.hero-scroll:hover {
+    opacity: 1;
+}
+
+@keyframes heroScrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
 }
 
 /* ===== HERO CARD ===== */
@@ -991,36 +994,6 @@ section[id] {
     font-weight: 400;
     opacity: 0.9;
     line-height: 1.6;
-}
-
-/* ===== HERO TYPING EFFECT ===== */
-.hero-typing-container {
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--spacing-2xl);
-}
-
-.hero-typing {
-    font-size: 1.5rem;
-    color: var(--text-light);
-    font-weight: 500;
-    min-height: 2rem;
-    position: relative;
-    transition: all var(--transition-fast);
-}
-
-.hero-typing::after {
-    content: '|';
-    animation: typingCursor 1s infinite;
-    color: var(--accent-color);
-    margin-left: 2px;
-}
-
-@keyframes typingCursor {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
 }
 
 /* ===== HERO CTA BUTTONS ===== */
@@ -1696,13 +1669,6 @@ select.form-control:focus {
         font-size: 1.1rem;
         margin-bottom: 0.75rem;
     }
-    .hero-typing {
-        font-size: 1.1rem;
-    }
-    .hero-typing-container {
-        height: 44px;
-        margin-bottom: var(--spacing-lg);
-    }
     .hero-card {
         padding: var(--spacing-lg) var(--spacing-md);
         max-width: 90%;
@@ -1890,7 +1856,5 @@ select.form-control:focus {
     /* Hero section (home) */
     .hero-name { font-size: 3rem; }
     .hero-title { font-size: 1.25rem; }
-    .hero-typing { font-size: 1.3rem; }
-    .hero-typing-container { height: 70px; }
     .hero-card { padding: var(--spacing-3xl) var(--spacing-2xl); }
 }

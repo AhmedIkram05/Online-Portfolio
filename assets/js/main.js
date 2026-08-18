@@ -130,9 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Navigation & Layout
     initNavigation();
     
-    // Hero Section modules
-    initHeroFeatures();
-    
     // Global UI/UX
     initScrollAnimations();
     initLazyLoad();
@@ -405,92 +402,9 @@ function initNavigation() {
 
 /**
  * =========================================================================
- * HERO SECTION MODULE
- * Handles: Overlay, Typing effect, Disappearance on scroll, 3D effect
+ * PROJECT FILTERS
  * =========================================================================
  */
-function initHeroFeatures() {
-    initHeroOverlay();
-    initHeroTypingEffect();
-}
-
-function initHeroOverlay() {
-    const heroOverlay = document.getElementById('heroOverlay');
-    if (!heroOverlay) return;
-    
-    let dismissed = false;
-  
-    function dismissHero() {
-        if (dismissed) return;
-        dismissed = true;
-        
-        heroOverlay.classList.add('hidden');
-        setTimeout(() => {
-            heroOverlay.style.display = 'none';
-        }, 400);
-    }
-  
-    // Dismiss triggers
-    heroOverlay.addEventListener('click', (e) => {
-        const heroCard = heroOverlay.querySelector('.hero-card');
-        if (heroCard && !heroCard.contains(e.target)) {
-            dismissHero();
-        }
-    });
-
-    // Dismiss on scroll
-    let heroDismissTicking = false;
-    window.addEventListener('scroll', () => {
-        if (!heroDismissTicking) {
-            window.requestAnimationFrame(() => {
-                if (window.pageYOffset > 50) dismissHero();
-                heroDismissTicking = false;
-            });
-            heroDismissTicking = true;
-        }
-    }, { passive: true });
-    
-    // Dismiss on key press
-    document.addEventListener('keydown', (e) => {
-        if (!e.target.matches('input, textarea')) dismissHero();
-    });
-}
-
-function initHeroTypingEffect() {
-    const heroText = document.querySelector('.hero-typing');
-    if (!heroText) return;
-
-    const messages = [
-        "Final year CS student seeking graduate roles",
-        "Open to entry-level software engineering opportunities",
-        "Building data & AI solutions with modern technology",
-        "Ready to collaborate on your next big idea"
-    ];
-    let messageIndex = 0;
-    let charIndex = 0;
-  
-    function type() {
-        if (charIndex < messages[messageIndex].length) {
-            heroText.textContent += messages[messageIndex].charAt(charIndex++);
-            setTimeout(type, 60);
-        } else {
-            setTimeout(erase, 2000);
-        }
-    }
-  
-    function erase() {
-        if (charIndex > 0) {
-            heroText.textContent = messages[messageIndex].substring(0, --charIndex);
-            setTimeout(erase, 30);
-        } else {
-            messageIndex = (messageIndex + 1) % messages.length;
-            setTimeout(type, 800);
-        }
-    }
-  
-    setTimeout(type, 1500);
-}
-
 function initProjectFilters() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
