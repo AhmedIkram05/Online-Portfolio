@@ -374,6 +374,9 @@ section[data-animate] {
 
 /* Contact stack layout - side-by-side on desktop, stacked on mobile */
 .contact-stack {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
     align-items: stretch;
 }
 
@@ -1674,6 +1677,10 @@ select.form-control:focus {
         grid-template-columns: 1fr;
         gap: var(--spacing-xl);
         margin-top: var(--spacing-xl);
+    }
+    .contact-stack {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
     }
 
     /* Buttons */
