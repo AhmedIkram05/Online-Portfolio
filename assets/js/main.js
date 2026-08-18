@@ -197,6 +197,7 @@ function initNavigation() {
             'about-all', 'about-journey', 'about-difference', 'about-looking', 'about-beyond',
             'projects', 
             'case-study',
+            'case-study-overview', 'case-study-stats', 'case-study-architecture', 'case-study-detection', 'case-study-rag', 'case-study-delivery',
             'experience',
             'experience-work', 'experience-education', 'experience-certifications', 'experience-core', 'experience-skills',
             'cv', 

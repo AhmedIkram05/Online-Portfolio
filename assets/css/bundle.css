@@ -245,6 +245,19 @@ section[data-animate] {
     text-decoration: none;
 }
 
+/* Email CTA: distinct green so it stands out from brand buttons */
+.btn-hero-email {
+    background: var(--success-color);
+    color: #ffffff;
+}
+
+.btn-hero-email:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-md);
+    color: #ffffff;
+    text-decoration: none;
+}
+
 .btn-success {
     background: var(--success-color);
     color: #ffffff;
