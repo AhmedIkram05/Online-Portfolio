@@ -199,8 +199,9 @@ function initNavigation() {
             'home', 
             'about-all', 'about-journey', 'about-difference', 'about-looking', 'about-beyond',
             'projects', 
+            'case-study',
             'experience',
-            'experience-work', 'experience-education', 'experience-certifications', 'experience-skills', 'experience-transferable',
+            'experience-work', 'experience-education', 'experience-certifications', 'experience-core', 'experience-skills',
             'cv', 
             'contact'
         ];
