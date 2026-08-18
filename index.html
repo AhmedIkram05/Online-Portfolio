@@ -490,6 +490,12 @@
                     <li><strong>API</strong> — FastAPI, 30 endpoints across 6 routers, JWT auth and 8 Redis patterns (rate limiting, caching, locks, Pub/Sub, DLQ) with graceful degradation</li>
                 </ul>
             </div>
+            <div class="services">
+                <div class="card">
+                    <img src="https://raw.githubusercontent.com/AhmedIkram05/laad/main/docs/demos/architecture-overview.gif" alt="LAAD architecture animation: 7 log sources through Kafka to the React dashboard" loading="lazy" style="max-height: 400px; width: 100%; object-fit: contain;">
+                    <div class="card-body"><p class="card-text">End-to-end flow: 7 log sources &rarr; Kafka &rarr; 3-layer detection &rarr; API &rarr; React dashboard</p></div>
+                </div>
+            </div>
         </section>
 
         <!-- Detection Engine -->
@@ -528,6 +534,12 @@
                             <li>A live <strong>SageMaker champion endpoint</strong> cross-checks predictions without overriding them</li>
                         </ul>
                     </div>
+                </div>
+            </div>
+            <div class="services">
+                <div class="card">
+                    <img src="https://raw.githubusercontent.com/AhmedIkram05/laad/main/docs/demos/detection-engine.gif" alt="LAAD detection engine animation: ML ensemble, z-score and heuristic alerts in the anomaly list" loading="lazy" style="max-height: 400px; width: 100%; object-fit: contain;">
+                    <div class="card-body"><p class="card-text">All 3 layers in action: ML ensemble, z-score drift and heuristic alerts surfacing in the anomaly list</p></div>
                 </div>
             </div>
         </section>
@@ -575,6 +587,12 @@
                 </table>
                 <p class="text-muted">Evaluated on a 50-query golden set (82% human-reviewed) with a committed baseline and a CI gate that fails any PR with faithfulness &lt; 0.5, context recall &lt; 0.3, or a drop &gt; 0.05 vs baseline.</p>
             </div>
+            <div class="services">
+                <div class="card">
+                    <img src="https://raw.githubusercontent.com/AhmedIkram05/laad/main/docs/demos/rag-assistant.gif" alt="LAAD RAG assistant animation: conversation with confidence breakdown and citation grounding" loading="lazy" style="max-height: 400px; width: 100%; object-fit: contain;">
+                    <div class="card-body"><p class="card-text">Diagnostic conversation: confidence breakdown and grounded citations on live anomaly data</p></div>
+                </div>
+            </div>
         </section>
 
         <!-- Delivery & Observability -->
@@ -587,28 +605,6 @@
                     <li><strong>MLOps</strong> — MLflow on RDS with S3 artifact storage, champion alias promotion, auto-retrain on corruption, every run tagged with its git SHA</li>
                     <li><strong>Observability</strong> — every RAG run persisted to a traces table; anomaly alerts via Redis Pub/Sub; CloudWatch + Grafana dashboards</li>
                 </ul>
-            </div>
-            <div class="services">
-                <div class="card">
-                    <img src="assets/images/laad/vpc.png" alt="LAAD multi-AZ VPC architecture diagram" loading="lazy">
-                    <div class="card-body"><p class="card-text">Multi-AZ VPC: private subnets, NAT, ALB, ECS Fargate across 2 AZs</p></div>
-                </div>
-                <div class="card">
-                    <img src="assets/images/laad/ecs-cluster.png" alt="LAAD ECS cluster" loading="lazy">
-                    <div class="card-body"><p class="card-text">ECS Fargate cluster running API + consumer tasks</p></div>
-                </div>
-                <div class="card">
-                    <img src="assets/images/laad/sagemaker.png" alt="LAAD SageMaker endpoint" loading="lazy">
-                    <div class="card-body"><p class="card-text">SageMaker champion endpoint cross-checking live predictions</p></div>
-                </div>
-                <div class="card">
-                    <img src="assets/images/laad/ci.png" alt="LAAD CI pipeline" loading="lazy">
-                    <div class="card-body"><p class="card-text">CI: lint + checkov + full test suite on every PR</p></div>
-                </div>
-                <div class="card">
-                    <img src="assets/images/laad/terraform.png" alt="LAAD Terraform plan output" loading="lazy">
-                    <div class="card-body"><p class="card-text">118 resources / 10 modules, DynamoDB-locked + S3-versioned state</p></div>
-                </div>
             </div>
             <div class="center" style="margin-top: var(--spacing-xl);">
                 <a href="https://github.com/AhmedIkram05/laad" target="_blank" class="btn btn-hero-primary">View the Repository</a>
