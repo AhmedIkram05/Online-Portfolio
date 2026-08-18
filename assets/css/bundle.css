@@ -348,6 +348,12 @@ section[data-animate] {
     padding: 0 var(--spacing-lg);
 }
 
+/* Nested wrappers (sections inside <main class="content-wrapper">) must not
+   add another inset — keeps every section's content edges aligned. */
+.content-wrapper .content-wrapper {
+    padding: 0;
+}
+
 .center {
     text-align: center;
 }
