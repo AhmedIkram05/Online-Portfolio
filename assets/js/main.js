@@ -587,6 +587,7 @@ function initFormValidation() {
                     // Restore button state
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = originalText;
+                    updateSubmitState();
                 });
             }
         });
@@ -606,6 +607,15 @@ function initFormValidation() {
                 }
             });
         });
+
+        // Live submit state: dimmed until every required field is valid,
+        // solid green when the form is complete
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const updateSubmitState = () => {
+            submitBtn.disabled = !form.checkValidity();
+        };
+        inputs.forEach(input => input.addEventListener('input', updateSubmitState));
+        updateSubmitState();
     });
 }
 

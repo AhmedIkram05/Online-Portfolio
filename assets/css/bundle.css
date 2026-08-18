@@ -271,6 +271,17 @@ section[data-animate] {
     text-decoration: none;
 }
 
+/* Contact submit: dimmed until the form is complete, solid green when ready */
+.btn-success:disabled {
+    background: #faf6ef;
+    color: #c2410c;
+    border-color: #e7e0d5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 1;
+}
+
 /* ===== CARDS ===== */
 .card {
     background: #ffffff;
