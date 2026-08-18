@@ -245,6 +245,19 @@ section[data-animate] {
     text-decoration: none;
 }
 
+/* Email CTA: distinct green so it stands out from brand buttons */
+.btn-hero-email {
+    background: var(--success-color);
+    color: #ffffff;
+}
+
+.btn-hero-email:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-md);
+    color: #ffffff;
+    text-decoration: none;
+}
+
 .btn-success {
     background: var(--success-color);
     color: #ffffff;
@@ -256,6 +269,17 @@ section[data-animate] {
     box-shadow: var(--shadow-md);
     color: #ffffff;
     text-decoration: none;
+}
+
+/* Contact submit: dimmed until the form is complete, solid green when ready */
+.btn-success:disabled {
+    background: #faf6ef;
+    color: #c2410c;
+    border-color: #e7e0d5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 1;
 }
 
 /* ===== CARDS ===== */
@@ -324,15 +348,14 @@ section[data-animate] {
     padding: 0 var(--spacing-lg);
 }
 
-.center {
-    text-align: center;
+/* Nested wrappers (sections inside <main class="content-wrapper">) must not
+   add another inset — keeps every section's content edges aligned. */
+.content-wrapper .content-wrapper {
+    padding: 0;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-xl);
-    align-items: center;
+.center {
+    text-align: center;
 }
 
 .services {
@@ -357,6 +380,9 @@ section[data-animate] {
 
 /* Contact stack layout - side-by-side on desktop, stacked on mobile */
 .contact-stack {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
     align-items: stretch;
 }
 
@@ -382,13 +408,7 @@ main > section:first-child,
 
 /* ===== TEXT COLORS ===== */
 .text-primary { color: var(--secondary-color) !important; }
-.text-secondary { color: var(--text-secondary) !important; }
 .text-success { color: var(--success-color) !important; }
-.text-warning { color: var(--warning-color) !important; }
-.text-info { color: var(--info-color) !important; }
-.text-danger { color: var(--accent-color) !important; }
-.text-dark { color: var(--text-dark) !important; }
-.text-light { color: var(--text-light) !important; }
 .text-muted { color: var(--text-muted) !important; }
 
 /* ===== LINKS ===== */
@@ -444,12 +464,7 @@ header {
     box-shadow: var(--shadow-xs);
 }
 
-/* Hide header while hero overlay is active */
-.hero-overlay:not(.hidden) ~ header {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-100%);
-}
+
 
 header.scrolled {
     background: rgba(255, 255, 255, 0.95);
@@ -469,7 +484,7 @@ header.scrolled {
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* Availability badge pinned to far right of navbar */
+/* Availability badge pinned to far right of the full-width header bar */
 .navbar-badge {
     position: absolute;
     right: var(--spacing-lg);
@@ -494,10 +509,11 @@ header.scrolled {
     background: #166534;
 }
 
-/* Hide availability badge below 1052px — badge is ~205px wide + 24px right edge;
-   below this the centered nav (About/Projects/Experience/CV/Contact ≈ 594px)
-   reaches into the badge zone (e.g. 14px overlap at 1024px) */
-@media (max-width: 1051.98px) {
+/* Hide badge when the centered 6-item nav reaches into the badge zone
+   (~219px + 24px right offset, anchored to the header's right edge).
+   Measured live at the 1200px boundary: below 1200px the nav widens and
+   overlaps the badge; at >= 1200px there is always room. */
+@media (max-width: 1199.98px) {
     .navbar-badge {
         display: none;
     }
@@ -730,15 +746,6 @@ section[id] {
     background: #a3360a;
 }
 
-.anchor-target {
-    display: block;
-    width: 1px;
-    height: 0;
-    overflow: hidden;
-    visibility: hidden;
-    pointer-events: none;
-}
-
 .nav-link:hover {
     color: var(--text-light);
     transform: translateY(-1px);
@@ -946,22 +953,15 @@ section[id] {
 /* ===== home.css ===== */
 /* Home Page Specific Styles (index.html) */
 
-/* ===== HERO OVERLAY POPUP ===== */
-.hero-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh;
+/* ===== HERO ===== */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
     background: var(--light-color);
-    z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 1;
-    visibility: visible;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow-y: auto;
 }
 
@@ -970,10 +970,25 @@ section[id] {
     margin: auto;
 }
 
-.hero-overlay.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+/* ===== HERO SCROLL INDICATOR ===== */
+.hero-scroll {
+    position: absolute;
+    bottom: var(--spacing-xl);
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-muted);
+    font-size: 1.4rem;
+    opacity: 0.8;
+    animation: heroScrollBounce 2s infinite;
+}
+
+.hero-scroll:hover {
+    opacity: 1;
+}
+
+@keyframes heroScrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
 }
 
 /* ===== HERO CARD ===== */
@@ -1015,36 +1030,6 @@ section[id] {
     line-height: 1.6;
 }
 
-/* ===== HERO TYPING EFFECT ===== */
-.hero-typing-container {
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--spacing-2xl);
-}
-
-.hero-typing {
-    font-size: 1.5rem;
-    color: var(--text-light);
-    font-weight: 500;
-    min-height: 2rem;
-    position: relative;
-    transition: all var(--transition-fast);
-}
-
-.hero-typing::after {
-    content: '|';
-    animation: typingCursor 1s infinite;
-    color: var(--accent-color);
-    margin-left: 2px;
-}
-
-@keyframes typingCursor {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-}
-
 /* ===== HERO CTA BUTTONS ===== */
 .hero-cta {
     display: flex;
@@ -1080,37 +1065,6 @@ section[id] {
 .hero-cta .btn i:only-child,
 .hero-cta .btn svg:only-child {
     margin-right: 0;
-}
-
-/* ===== PROFILE IMAGE ===== */
-.profile-image {
-    text-align: center;
-}
-
-.profileImg {
-    width: 320px;
-    height: 320px;
-    object-fit: cover;
-    object-position: center 25%;
-    border-radius: 50%;
-    border: 1px solid #e7e0d5;
-    box-shadow: var(--shadow-sm);
-    transition: all var(--transition-medium);
-    position: relative;
-    max-width: 100%; /* Responsive sizing inside grid */
-    height: auto;     /* Maintain aspect ratio */
-}
-
-.profileImg:hover {
-    transform: scale(1.03);
-    box-shadow: var(--shadow-md);
-    border-color: rgba(194, 65, 12, 0.4);
-}
-
-/* ===== CTA SECTION ===== */
-.cta-container {
-    max-width: 800px;
-    margin: 0 auto;
 }
 
 /* ===== projects.css ===== */
@@ -1314,11 +1268,6 @@ section[id] {
     color: #ffffff;
 }
 
-/* Animate items when filtering */
-.project-card.hide {
-    display: none;
-}
-
 .project-card.show {
     animation: fadeIn 0.5s ease forwards;
 }
@@ -1381,44 +1330,6 @@ section[id] {
     left: 0;
     color: var(--secondary-color);
     font-weight: bold;
-}
-
-/* ===== SKILLS SECTION ===== */
-.skill {
-    margin-bottom: var(--spacing-lg);
-}
-
-.skill h6 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-light);
-    margin-bottom: var(--spacing-xs);
-}
-
-.skill h6 span {
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-/* ===== PROGRESS BARS ===== */
-.progress {
-    background: #e7e0d5;
-    border-radius: var(--radius-small);
-    height: 10px;
-    width: 100%;
-    overflow: hidden;
-    margin-bottom: var(--spacing-sm);
-}
-
-.progress-bar {
-    height: 100%;
-    border-radius: var(--radius-small);
-    background: var(--accent-color);
-    transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
 }
 
 /* ===== CERTIFICATION CARDS ===== */
@@ -1526,19 +1437,6 @@ section[id] {
     background: #ffffff;
 }
 
-/* ===== CV CARD CONTAINER ===== */
-.cv-viewer-card {
-    padding: 0 !important;
-    background: #ffffff;
-    border: 1px solid #e7e0d5;
-    border-radius: var(--radius-large);
-    overflow: hidden;
-}
-
-.cv-viewer-card .card-body {
-    padding: 0;
-}
-
 /* ===== contact.css ===== */
 /* Contact Page Specific Styles (contact.html) */
 
@@ -1628,18 +1526,7 @@ select.form-control:focus {
     margin-top: var(--spacing-xs);
 }
 
-.valid-feedback {
-    color: var(--success-color);
-    display: none;
-    font-size: 0.875rem;
-    margin-top: var(--spacing-xs);
-}
-
 .was-validated .form-control:invalid ~ .invalid-feedback {
-    display: block;
-}
-
-.was-validated .form-control:valid ~ .valid-feedback {
     display: block;
 }
 
@@ -1715,7 +1602,6 @@ select.form-control:focus {
 }
 
 .banner-email { border-color: rgba(59, 130, 246, 0.6); }
-.banner-phone { border-color: rgba(34, 197, 94, 0.6); }
 .banner-linkedin { border-color: rgba(14, 165, 233, 0.6); }
 .banner-github { border-color: rgba(100, 116, 139, 0.6); }
 .banner-location { border-color: rgba(249, 115, 22, 0.6); }
@@ -1793,16 +1679,14 @@ select.form-control:focus {
     }
 
     /* Grids */
-    .grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--spacing-xl);
-        align-items: start;
-    }
     .services {
         grid-template-columns: 1fr;
         gap: var(--spacing-xl);
         margin-top: var(--spacing-xl);
+    }
+    .contact-stack {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
     }
 
     /* Buttons */
@@ -1822,17 +1706,6 @@ select.form-control:focus {
     .hero-title {
         font-size: 1.1rem;
         margin-bottom: 0.75rem;
-    }
-    .hero-typing {
-        font-size: 1.1rem;
-    }
-    .hero-typing-container {
-        height: 44px;
-        margin-bottom: var(--spacing-lg);
-    }
-    .profileImg {
-        width: 220px;
-        height: 220px;
     }
     .hero-card {
         padding: var(--spacing-lg) var(--spacing-md);
@@ -1900,19 +1773,6 @@ select.form-control:focus {
     .experience-item ul li {
         padding-left: var(--spacing-md);
         font-size: 0.9rem;
-    }
-    .skill h6 {
-        font-size: 0.9rem;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--spacing-xs);
-    }
-    .skill h6 span {
-        font-size: 0.8rem;
-    }
-    .progress {
-        height: 8px;
-        margin-bottom: var(--spacing-md);
     }
     /* Generic card images inside services (exclude project cards to avoid height gap) */
     .services .card:not(.project-card) img {
@@ -1998,13 +1858,8 @@ select.form-control:focus {
     .lead { font-size: 1.15rem; line-height: 1.6; max-width: 90%; margin-left: auto; margin-right: auto; }
 
     /* Grids */
-    .grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-2xl); }
     .services { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-2xl); }
     
-    /* Home services: if only two cards fit in first row and third wraps, make third span full row */
-    .services-home { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
-    .services-home > .card:last-child { grid-column: 1 / -1; }
-
     /* Cards */
     .card { border-radius: var(--radius-medium); }
     .card-body { padding: var(--spacing-xl); }
@@ -2039,7 +1894,5 @@ select.form-control:focus {
     /* Hero section (home) */
     .hero-name { font-size: 3rem; }
     .hero-title { font-size: 1.25rem; }
-    .hero-typing { font-size: 1.3rem; }
-    .hero-typing-container { height: 70px; }
     .hero-card { padding: var(--spacing-3xl) var(--spacing-2xl); }
 }

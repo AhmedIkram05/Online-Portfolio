@@ -35,35 +35,31 @@
 </head>
 
 <body>
-    <!-- Hero Pop-up Overlay -->
-    <div class="hero-overlay" id="heroOverlay">
-        <!-- Hero Content Overlay -->
+    <!-- Hero Section -->
+    <section class="hero" aria-label="Intro">
         <div class="hero-content content-wrapper center">
             <div class="hero-card">
                 <h1 class="hero-name display-1">Ahmed Ikram</h1>
                 <p class="hero-title">Final Year Computer Science Student @ University of Dundee</p>
-                <div class="hero-typing-container">
-                    <p id="heroTyping" class="hero-typing"></p>
-                </div>
                 <div class="hero-cta">
                     <div class="hero-cta-brands">
                         <a href="https://github.com/ahmedikram05" target="_blank" rel="noopener" class="btn btn-hero-github">
-                            <i class="fab fa-github mr-2"></i>GitHub
+                            <i class="fab fa-github"></i>GitHub
                         </a>
                         <a href="https://www.linkedin.com/in/ahmed-ikram-student" target="_blank" rel="noopener" class="btn btn-hero-linkedin">
-                            <i class="fab fa-linkedin-in mr-2"></i>LinkedIn
+                            <i class="fab fa-linkedin-in"></i>LinkedIn
                         </a>
                     </div>
-                    <a href="#contact" class="btn btn-hero-secondary">
-                        <i class="fas fa-envelope mr-2"></i>Get In Touch
+                    <a href="#contact" class="btn btn-hero-email">
+                        <i class="fas fa-envelope"></i>Get In Touch
                     </a>
                 </div>
-                <p style="margin-top: 1rem; opacity: 0.7; font-size: 0.9rem;">
-                    <i class="fas fa-mouse"></i> Press anywhere or scroll to continue
-                </p>
             </div>
         </div>
-    </div>
+        <a href="#home" class="hero-scroll" aria-label="Scroll to content">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
 
     <header>
         <!-- Modern Navbar -->
@@ -97,14 +93,26 @@
                     </div>
                 </li>
                 <li class="nav-item has-submenu">
+                    <a class="nav-link" href="#case-study" data-level="primary">Case Study</a>
+                    <div class="nav-submenu" aria-label="Case study links">
+                        <div class="sub-nav-indicator"></div>
+                        <a class="nav-link nav-link-sub" href="#case-study-overview" data-level="secondary">Overview</a>
+                        <a class="nav-link nav-link-sub" href="#case-study-stats" data-level="secondary">Key Results</a>
+                        <a class="nav-link nav-link-sub" href="#case-study-architecture" data-level="secondary">Architecture</a>
+                        <a class="nav-link nav-link-sub" href="#case-study-detection" data-level="secondary">Detection Engine</a>
+                        <a class="nav-link nav-link-sub" href="#case-study-rag" data-level="secondary">RAG Assistant</a>
+                        <a class="nav-link nav-link-sub" href="#case-study-delivery" data-level="secondary">Delivery & Ops</a>
+                    </div>
+                </li>
+                <li class="nav-item has-submenu">
                     <a class="nav-link" href="#experience" data-level="primary">Experience</a>
                     <div class="nav-submenu" aria-label="Experience links">
                         <div class="sub-nav-indicator"></div>
                         <a class="nav-link nav-link-sub" href="#experience-work" data-level="secondary">Work Experience</a>
                         <a class="nav-link nav-link-sub" href="#experience-education" data-level="secondary">Education</a>
                         <a class="nav-link nav-link-sub" href="#experience-certifications" data-level="secondary">Certifications</a>
+                        <a class="nav-link nav-link-sub" href="#experience-core" data-level="secondary">Core Skills</a>
                         <a class="nav-link nav-link-sub" href="#experience-skills" data-level="secondary">Technical Skills</a>
-                        <a class="nav-link nav-link-sub" href="#experience-transferable" data-level="secondary">Transferable Skills</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -115,10 +123,10 @@
                 </li>
                 <span class="nav-indicator"></span>
             </ul>
-            <span class="navbar-badge" title="Availability">
-                <i class="fas fa-check-circle"></i>Open to Opportunities
-            </span>
         </nav>
+        <span class="navbar-badge" title="Availability">
+            <i class="fas fa-check-circle"></i>Open to Opportunities
+        </span>
     </header>
 
     <!-- Main Content -->
@@ -132,44 +140,44 @@
             </div>
             
             <div class="about-grid">
-            <div class="about-item section-anchor" id="about-all">
+            <div class="section-anchor" id="about-all">
                 <h3 class="section-title">Who I Am</h3>
-                <div class="card about-card" data-animate>
+                <div class="card" data-animate>
                     <div class="card-body">
                         <p class="card-text">I'm Ahmed Ikram, a final-year Computer Science student at the University of Dundee specialising in Data Science and AI, on track for a First-Class degree and graduating in June 2027. I build across the stack — production LLM systems in Python, full-stack platforms in TypeScript and React, and data pipelines on AWS, Azure and GCP.</p>
                         <p class="card-text">I hold AWS Academy certifications in Cloud Foundations and Machine Learning, plus a Foundations of Azure AI certification — all completed independently alongside full-time study.</p>
                     </div>
                 </div>
             </div>
-            <div class="about-item section-anchor" id="about-journey">
+            <div class="section-anchor" id="about-journey">
                 <h3 class="section-title">What I've Built</h3>
-                <div class="card about-card" data-animate>
+                <div class="card" data-animate>
                     <div class="card-body">
                         <p class="card-text">My strongest work ships end-to-end with real guardrails. As ML and backend lead for a 7-person team building NCR Atleos' ATM log analysis platform, I built a LangGraph hybrid RAG assistant that nearly doubles retrieval recall over deterministic routing (0.708 vs 0.350), and a 3-layer anomaly detector reaching 0.70 F1 on a live Kafka stream.</p>
                         <p class="card-text">On my own: SWE-Qwen, a full LLMOps platform that fine-tuned Qwen3-14B and drove its fix rate 7x over the base model; StockLens, a FinTech app with a native Rust extension and LSTM forecaster; DevSync, a full-stack project management platform guarded by 1,452 tests; and two data platforms — WikiStream, ingesting 58.9M+ real-time events with zero loss, and an Azure ETL pipeline serving Power BI.</p>
                     </div>
                 </div>
             </div>
-            <div class="about-item section-anchor" id="about-difference">
+            <div class="section-anchor" id="about-difference">
                 <h3 class="section-title">What I Bring</h3>
-                <div class="card about-card" data-animate>
+                <div class="card" data-animate>
                     <div class="card-body">
                         <p class="card-text">Most of my engineering habits come from real pressure: five years of part-time work has me training staff, managing competing priorities, and resolving system failures live. That experience taught me clear communication and ownership of outcomes — habits that carry directly into technical work.</p>
                         <p class="card-text">I build for the gap between "works on my machine" and "works for real users". Concretely: my CI gates block any merge that regresses a RAGAS metric by more than 0.05, model promotion is gated behind statistical significance tests, and streaming pipelines hold at-least-once delivery under chaos injections — with zero long-lived credentials across every deployment.</p>
                     </div>
                 </div>
             </div>
-            <div class="about-item section-anchor" id="about-looking">
+            <div class="section-anchor" id="about-looking">
                 <h3 class="section-title">What I'm Looking For</h3>
-                <div class="card about-card" data-animate>
+                <div class="card" data-animate>
                     <div class="card-body">
                         <p class="card-text">I'm looking for a graduate role in AI engineering, data engineering, or software engineering, starting after I graduate in June 2027. I want to contribute to production systems alongside experienced engineers, and I'm open to any sector. I'm based in Dundee but open to relocation across the UK.</p>
                     </div>
                 </div>
             </div>
-            <div class="about-item section-anchor" id="about-beyond">
+            <div class="section-anchor" id="about-beyond">
                 <h3 class="section-title">Outside of Work</h3>
-                <div class="card about-card" data-animate>
+                <div class="card" data-animate>
                     <div class="card-body">
                         <p class="card-text">Outside of work I build personal projects, follow developments in AI and cloud infrastructure, and train on competitive programming. I completed three cloud and AI certifications independently alongside full-time study.</p>
                     </div>
@@ -202,7 +210,7 @@
                 <button class="filter-btn" data-filter="systems">Systems</button>
             </div>
 
-            <div class="services project-grid">
+            <div class="services">
                 <!-- Project: Stocklens -->
                 <div class="card project-card" data-category="mobile ai-ml">
                     <div class="card-img-wrapper">
@@ -217,12 +225,12 @@
                         <h4 class="card-title">StockLens</h4>
                         <p class="card-text">Scan receipts, trade stocks with your spending, track portfolios with LSTM forecasts & an AI agent. FastAPI + PyTorch + LangGraph + Rust backend.</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">React Native</span>
-                            <span class="badge badge-secondary">FastAPI</span>
-                            <span class="badge badge-secondary">PyTorch</span>
-                            <span class="badge badge-secondary">LangGraph</span>
-                            <span class="badge badge-secondary">Rust</span>
-                            <span class="badge badge-secondary">Terraform</span>
+                            <span class="badge">React Native</span>
+                            <span class="badge">FastAPI</span>
+                            <span class="badge">PyTorch</span>
+                            <span class="badge">LangGraph</span>
+                            <span class="badge">Rust</span>
+                            <span class="badge">Terraform</span>
                         </div>
                     </div>
                 </div>
@@ -241,12 +249,12 @@
                         <h4 class="card-title">W3C Web Logs ETL Pipeline</h4>
                         <p class="card-text">Serverless Databricks DLT pipeline ingesting 93 W3C IIS log files through a Bronze→Silver medallion architecture into Azure SQL, transformed via dbt into a star schema with Power BI-ready exports — orchestrated by Airflow, provisioned with Terraform.</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">Databricks</span>
-                            <span class="badge badge-secondary">dbt</span>
-                            <span class="badge badge-secondary">Airflow</span>
-                            <span class="badge badge-secondary">Azure</span>
-                            <span class="badge badge-secondary">Terraform</span>
-                            <span class="badge badge-secondary">Python</span>
+                            <span class="badge">Databricks</span>
+                            <span class="badge">dbt</span>
+                            <span class="badge">Airflow</span>
+                            <span class="badge">Azure</span>
+                            <span class="badge">Terraform</span>
+                            <span class="badge">Python</span>
                         </div>
                     </div>
                 </div>
@@ -265,12 +273,12 @@
                         <h4 class="card-title">DevSync</h4>
                         <p class="card-text">Production full-stack project management platform with real-time collaboration, GitHub OAuth 2.0, and bidirectional Issue/PR sync — React 18 + Flask + PostgreSQL, deployed on AWS ECS Fargate with OIDC-authenticated CI/CD.</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">React</span>
-                            <span class="badge badge-secondary">Flask</span>
-                            <span class="badge badge-secondary">PostgreSQL</span>
-                            <span class="badge badge-secondary">Socket.io</span>
-                            <span class="badge badge-secondary">AWS</span>
-                            <span class="badge badge-secondary">Docker</span>
+                            <span class="badge">React</span>
+                            <span class="badge">Flask</span>
+                            <span class="badge">PostgreSQL</span>
+                            <span class="badge">Socket.io</span>
+                            <span class="badge">AWS</span>
+                            <span class="badge">Docker</span>
                         </div>
                     </div>
                 </div>
@@ -289,12 +297,12 @@
                         <h4 class="card-title">ATM Log Aggregation, Anomaly Detection & Diagnostics Platform</h4>
                         <p class="card-text">ATM log aggregation, multi-layer anomaly detection & AI-assisted diagnostics — Kafka ingestion through 3-layer ML/statistical/heuristic detection to a React dashboard and Agentic Hybrid RAG assistant, on AWS ECS Fargate with SageMaker inference.</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">FastAPI</span>
-                            <span class="badge badge-secondary">Kafka</span>
-                            <span class="badge badge-secondary">XGBoost</span>
-                            <span class="badge badge-secondary">LangChain</span>
-                            <span class="badge badge-secondary">React</span>
-                            <span class="badge badge-secondary">AWS</span>
+                            <span class="badge">FastAPI</span>
+                            <span class="badge">Kafka</span>
+                            <span class="badge">XGBoost</span>
+                            <span class="badge">LangChain</span>
+                            <span class="badge">React</span>
+                            <span class="badge">AWS</span>
                         </div>
                     </div>
                 </div>
@@ -313,12 +321,12 @@
                         <h4 class="card-title">SWE-Qwen</h4>
                         <p class="card-text">LLMOps platform turning 20,477 SWE-bench issues into a 17,456-example training corpus — 3 QLoRA variants of Qwen3-14B fine-tuned on Modal A100s, execution-based evaluation with statistical champion/challenger gating, served via an OpenAI-compatible inference API.</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">PyTorch</span>
-                            <span class="badge badge-secondary">QLoRA</span>
-                            <span class="badge badge-secondary">FastAPI</span>
-                            <span class="badge badge-secondary">Modal</span>
-                            <span class="badge badge-secondary">Terraform</span>
-                            <span class="badge badge-secondary">Google Cloud</span>
+                            <span class="badge">PyTorch</span>
+                            <span class="badge">QLoRA</span>
+                            <span class="badge">FastAPI</span>
+                            <span class="badge">Modal</span>
+                            <span class="badge">Terraform</span>
+                            <span class="badge">Google Cloud</span>
                         </div>
                     </div>
                 </div>
@@ -337,12 +345,12 @@
                         <h4 class="card-title">WikiStream</h4>
                         <p class="card-text">Real-time streaming analytics platform ingesting every public Wikipedia edit via SSE into a self-hosted ClickHouse cluster — live dashboards, hourly warehouse exports, 58.9M+ events with zero data loss at 5,655 events/sec.</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">Python</span>
-                            <span class="badge badge-secondary">ClickHouse</span>
-                            <span class="badge badge-secondary">Grafana</span>
-                            <span class="badge badge-secondary">BigQuery</span>
-                            <span class="badge badge-secondary">Terraform</span>
-                            <span class="badge badge-secondary">Google Cloud</span>
+                            <span class="badge">Python</span>
+                            <span class="badge">ClickHouse</span>
+                            <span class="badge">Grafana</span>
+                            <span class="badge">BigQuery</span>
+                            <span class="badge">Terraform</span>
+                            <span class="badge">Google Cloud</span>
                         </div>
                     </div>
                 </div>
@@ -361,8 +369,8 @@
                         <h4 class="card-title">Haggis Predictive Modeling</h4>
                         <p class="card-text">End-to-end ML pipeline: EDA, feature engineering, XGBoost and Random Forest modelling. Achieved ~90% classification accuracy, validated with F1-scores and cross-validation.</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">Python</span>
-                            <span class="badge badge-secondary">Jupyter Notebook</span>
+                            <span class="badge">Python</span>
+                            <span class="badge">Jupyter Notebook</span>
                         </div>
                     </div>
                 </div>
@@ -381,7 +389,7 @@
                         <h4 class="card-title">Unix Version Control System</h4>
                         <p class="card-text">Version Control System made using Bash script</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">Bash</span>
+                            <span class="badge">Bash</span>
                         </div>
                     </div>
                 </div>
@@ -400,13 +408,218 @@
                         <h4 class="card-title">Business Performance Case Study Dashboard</h4>
                         <p class="card-text">Interactive performance analytics dashboard with data visualisations, trends, insights and KPIs</p>
                         <div class="tech-stack">
-                            <span class="badge badge-secondary">Excel</span>
+                            <span class="badge">Excel</span>
                         </div>
                     </div>
                 </div>
 
             </div>
         </section>
+        </section>
+
+        <!-- Case Study Section -->
+        <section id="case-study" class="no-animate">
+
+        <!-- Header Section -->
+        <section data-animate>
+            <div class="content-wrapper center">
+                <h2 class="display-4">Case Study: LAAD</h2>
+                <p class="lead">A production-grade ATM log aggregation, anomaly detection and diagnostics platform built for NCR Atleos as the CS32002 Industrial Team Project.</p>
+            </div>
+        </section>
+
+        <!-- Problem & Role -->
+        <section data-animate class="content-wrapper section-anchor" id="case-study-overview">
+            <div class="experience-item">
+                <h5>The Problem</h5>
+                <p class="text-muted">NCR Atleos ATMs generate ~3.5GB of log data per day across seven sources — application logs, hardware sensor metrics, terminal handler logs, Kafka, Prometheus, Windows OS and GCP cloud metrics. Field engineers were flying blind: faults surfaced only after customers reported them, and root-causing a single ATM meant grepping millions of unstructured lines by hand.</p>
+                <h5>My Role — Backend &amp; Data Engineering Lead</h5>
+                <p class="text-muted">On a 7-person team I owned the ingestion pipeline, the multi-layer ML detection engine, MLOps, the agentic RAG assistant and all AWS infrastructure. After the module ended I kept building — the Kafka message bus, the 3-layer detection engine, confidence-fused RAG, the 1,438-test suite and the full Terraform deployment are my independent post-submission extension.</p>
+                <ul>
+                    <li><strong>2.5M events</strong> processed end-to-end at ~100 messages/second with zero loss</li>
+                    <li><strong>99.8% &plusmn; 0.1%</strong> cross-validated accuracy on the XGBoost detection ensemble</li>
+                    <li><strong>0.708 context recall</strong> from the agentic RAG assistant — 2&times; the deterministic baseline</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Headline Stats -->
+        <section data-animate class="content-wrapper section-anchor" id="case-study-stats">
+            <div class="services">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">99.8%</h3>
+                        <p class="card-text">XGBoost cross-validated accuracy (&plusmn;0.1%) across 8 anomaly classes</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">2&times;</h3>
+                        <p class="card-text">RAG context recall vs the deterministic baseline — 0.708 vs 0.350 on a 50-query golden set</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">1,438</h3>
+                        <p class="card-text">Automated tests: 959 pytest, 394 vitest, 10 Playwright E2E, 75 Terraform assertions</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">2.5M</h3>
+                        <p class="card-text">Events processed at ~100 msg/sec with zero loss, gzip-compressed ~65% on the wire</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">30</h3>
+                        <p class="card-text">REST API endpoints behind JWT auth, role-aware access and Redis rate limiting</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">0.70</h3>
+                        <p class="card-text">F1 on live Kafka traffic — Isolation Forest, 97.3% precision, AUC-ROC 0.9502</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pipeline & Architecture -->
+        <section data-animate class="content-wrapper section-anchor" id="case-study-architecture">
+            <h3 class="section-title">Pipeline &amp; Architecture</h3>
+            <div class="experience-item">
+                <p class="text-muted" style="font-style: normal;">Seven heterogeneous sources stream into a continuous Kafka producer (gzip, acks=all, retries 5), land on two KRaft topics with 7-day retention, and are consumed by a pipeline that deduplicates, parses, dual-writes to PostgreSQL and a ChromaDB vector store, and feeds a detection engine every 30 seconds — surfaced through a FastAPI backend and a React dashboard.</p>
+                <ul>
+                    <li><strong>Ingestion</strong> — Kafka KRaft, 2 topics &times; 3 partitions, ~65% gzip compression (250KB/s &rarr; 85KB/s on the wire), 3.5GB/day &rarr; 1.2GB/day on disk</li>
+                    <li><strong>Reliability</strong> — dedup via Redis SET + 10K in-memory LRU, manual offset commits, failed messages land on a Redis Stream DLQ with exponential backoff (5s &rarr; 10s &rarr; 20s)</li>
+                    <li><strong>Schema-on-read storage</strong> — PostgreSQL 16 with JSONB payloads: adding a new source means adding a parser, never a migration. 10 tables, 3 views, 14 indexes, hourly retention cleanup</li>
+                    <li><strong>Vector store</strong> — ChromaDB with semantic chunking and local 768-dim embeddings for the RAG assistant</li>
+                    <li><strong>API</strong> — FastAPI, 30 endpoints across 6 routers, JWT auth and 8 Redis patterns (rate limiting, caching, locks, Pub/Sub, DLQ) with graceful degradation</li>
+                </ul>
+            </div>
+            <div class="services">
+                <div class="card">
+                    <video src="assets/images/laad/architecture-overview.mp4" autoplay muted loop playsinline preload="none" aria-label="LAAD architecture animation: 7 log sources through Kafka to the React dashboard" style="max-height: 400px; width: 100%; object-fit: contain;"></video>
+                    <div class="card-body"><p class="card-text">End-to-end flow: 7 log sources &rarr; Kafka &rarr; 3-layer detection &rarr; API &rarr; React dashboard</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detection Engine -->
+        <section data-animate class="content-wrapper section-anchor" id="case-study-detection">
+            <h3 class="section-title">The 3-Layer Detection Engine</h3>
+            <div class="services">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-brain fa-3x text-primary"></i>
+                        <h3 class="card-title">Layer 1 — ML Ensemble</h3>
+                        <ul>
+                            <li>XGBoost: 49 engineered features in 7 groups, 8 anomaly classes, <strong>99.8% &plusmn; 0.1%</strong> stratified CV accuracy</li>
+                            <li>Isolation Forest on the 46 highest-importance features: <strong>AUC-ROC 0.9502</strong>, 97.3% precision, Youden's-J threshold from a 200-point sweep</li>
+                            <li>Known faults at confidence &ge; 0.70; novel patterns flagged as UNKNOWN</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-chart-line fa-3x text-success"></i>
+                        <h3 class="card-title">Layer 2 — Statistical Drift</h3>
+                        <ul>
+                            <li>Rolling 20-window median/std baseline; alert on |z| &gt; 3.0</li>
+                            <li>Catches concept drift and unseen behaviours with zero model dependency</li>
+                            <li>Confidence from the z-score magnitude — no training data required</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-cogs fa-3x text-warning"></i>
+                        <h3 class="card-title">Layer 3 — Heuristic Rules</h3>
+                        <ul>
+                            <li>7 deterministic detectors (A1&ndash;A7): network timeouts, cash cassette faults, JVM memory leaks, container restarts, response spikes, OS memory pressure, out-of-order Kafka</li>
+                            <li>10-minute dedup window per (anomaly type, ATM)</li>
+                            <li>A live <strong>SageMaker champion endpoint</strong> cross-checks predictions without overriding them</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="services">
+                <div class="card">
+                    <video src="assets/images/laad/detection-engine.mp4" autoplay muted loop playsinline preload="none" aria-label="LAAD detection engine animation: ML ensemble, z-score and heuristic alerts in the anomaly list" style="max-height: 400px; width: 100%; object-fit: contain;"></video>
+                    <div class="card-body"><p class="card-text">All 3 layers in action: ML ensemble, z-score drift and heuristic alerts surfacing in the anomaly list</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agentic RAG -->
+        <section data-animate class="content-wrapper section-anchor" id="case-study-rag">
+            <h3 class="section-title">Agentic Hybrid RAG</h3>
+            <div class="experience-item">
+                <p class="text-muted" style="font-style: normal;">A LangGraph agent with 12 MCP tools answers operator questions over the anomaly corpus: ChromaDB retrieval with metadata filters and temporal decay, cross-encoder reranking, then a 4-stage reasoning loop — self-consistency sampling, verbalised confidence, reflexion and citation grounding — fused into a single score (0.30 retrieval + 0.25 self-consistency + 0.25 verbalised + 0.20 grounding) and Platt-calibrated on real feedback.</p>
+                <table style="width: 100%; border-collapse: collapse; margin: var(--spacing-lg) 0; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--secondary-color);">
+                            <th style="padding: var(--spacing-sm); text-align: left; color: var(--text-light);">RAGAS Metric</th>
+                            <th style="padding: var(--spacing-sm); text-align: center; color: var(--text-muted);">Fixed Retrieval</th>
+                            <th style="padding: var(--spacing-sm); text-align: center; color: var(--text-muted);">Hybrid Agent</th>
+                            <th style="padding: var(--spacing-sm); text-align: center; color: var(--secondary-color); font-weight: 700;">Agentic Agent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #e7e0d5;">
+                            <td style="padding: var(--spacing-sm);">Context Recall</td>
+                            <td style="padding: var(--spacing-sm); text-align: center;">0.533</td>
+                            <td style="padding: var(--spacing-sm); text-align: center;">0.350</td>
+                            <td style="padding: var(--spacing-sm); text-align: center; font-weight: 700; color: var(--secondary-color);">0.708</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e7e0d5;">
+                            <td style="padding: var(--spacing-sm);">Context Precision</td>
+                            <td style="padding: var(--spacing-sm); text-align: center;">0.711</td>
+                            <td style="padding: var(--spacing-sm); text-align: center;">0.645</td>
+                            <td style="padding: var(--spacing-sm); text-align: center; font-weight: 700; color: var(--secondary-color);">0.874</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e7e0d5;">
+                            <td style="padding: var(--spacing-sm);">Faithfulness</td>
+                            <td style="padding: var(--spacing-sm); text-align: center;">0.982</td>
+                            <td style="padding: var(--spacing-sm); text-align: center;">0.908</td>
+                            <td style="padding: var(--spacing-sm); text-align: center; font-weight: 700; color: var(--secondary-color);">0.940</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: var(--spacing-sm);">Answer Relevancy</td>
+                            <td style="padding: var(--spacing-sm); text-align: center;">0.650</td>
+                            <td style="padding: var(--spacing-sm); text-align: center;">0.602</td>
+                            <td style="padding: var(--spacing-sm); text-align: center; font-weight: 700; color: var(--secondary-color);">0.801</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-muted">Evaluated on a 50-query golden set (82% human-reviewed) with a committed baseline and a CI gate that fails any PR with faithfulness &lt; 0.5, context recall &lt; 0.3, or a drop &gt; 0.05 vs baseline.</p>
+            </div>
+            <div class="services">
+                <div class="card">
+                    <video src="assets/images/laad/rag-assistant.mp4" autoplay muted loop playsinline preload="none" aria-label="LAAD RAG assistant animation: conversation with confidence breakdown and citation grounding" style="max-height: 400px; width: 100%; object-fit: contain;"></video>
+                    <div class="card-body"><p class="card-text">Diagnostic conversation: confidence breakdown and grounded citations on live anomaly data</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Delivery & Observability -->
+        <section data-animate class="content-wrapper section-anchor" id="case-study-delivery">
+            <h3 class="section-title">Delivery &amp; Observability</h3>
+            <div class="experience-item">
+                <ul>
+                    <li><strong>1,438 automated tests</strong> — 959 pytest (10 tiers), 394 vitest (41 suites), 10 Playwright E2E, 75 Terraform assertions — with Codecov and a checkov-hardened IaC pipeline</li>
+                    <li><strong>Zero-trust deployment</strong> — 6 least-privilege IAM roles (OIDC-based CI/CD, ECS, SageMaker, CloudWatch, MLflow), 8 secrets injected from Secrets Manager, no long-lived credentials</li>
+                    <li><strong>MLOps</strong> — MLflow on RDS with S3 artifact storage, champion alias promotion, auto-retrain on corruption, every run tagged with its git SHA</li>
+                    <li><strong>Observability</strong> — every RAG run persisted to a traces table; anomaly alerts via Redis Pub/Sub; CloudWatch + Grafana dashboards</li>
+                </ul>
+            </div>
+            <div class="center" style="margin-top: var(--spacing-xl);">
+                <a href="https://github.com/AhmedIkram05/laad" target="_blank" class="btn btn-hero-primary">View the Repository</a>
+                <a href="https://github.com/AhmedIkram05/laad/blob/main/README.md" target="_blank" class="btn btn-hero-secondary">Read the Full Write-up</a>
+            </div>
+        </section>
+
         </section>
 
         <!-- Experience Section -->
@@ -451,7 +664,7 @@
             
             <div class="experience-item">
                 <h5>University of Dundee</h5>
-                <p class="text-muted">BSc (Hons) Computer Science (Data Science and AI) • September 2023 – June 2028 (Expected)</p>
+                <p class="text-muted">BSc (Hons) Computer Science (Data Science and AI) • September 2023 – June 2027 (Expected)</p>
                 <p style="margin-bottom: 0.5rem; color: var(--text-light);"><strong>Most relevant modules:</strong></p>
                 <ul>
                     <li>Data Structures & Algorithms (Java)</li>
@@ -537,6 +750,41 @@
                             <li>Compared major cloud providers and their service offerings</li>
                             <li>Strengthened theoretical foundation for cloud-based implementations</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Skills Section -->
+        <section data-animate class="content-wrapper section-anchor" id="experience-core">
+            <h3 class="section-title">Core Skills</h3>
+            <div class="services">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-robot fa-3x text-primary"></i>
+                        <h3 class="card-title">AI Engineering</h3>
+                        <div class="tech-badges">
+                            <span class="tech-badge">Fine-tuning LLMs (QLoRA / PEFT)</span>
+                            <span class="tech-badge">Agentic RAG (LangGraph)</span>
+                            <span class="tech-badge">RAG evaluation (RAGAS)</span>
+                            <span class="tech-badge">ML lifecycle (MLflow)</span>
+                            <span class="tech-badge">Model deployment (SageMaker)</span>
+                            <span class="tech-badge">LLM evaluation &amp; calibration</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-server fa-3x text-warning"></i>
+                        <h3 class="card-title">Data Engineering</h3>
+                        <div class="tech-badges">
+                            <span class="tech-badge">Streaming pipelines (Kafka)</span>
+                            <span class="tech-badge">Data modelling (PostgreSQL, dbt)</span>
+                            <span class="tech-badge">ELT (Databricks, Spark)</span>
+                            <span class="tech-badge">Infrastructure as Code (Terraform)</span>
+                            <span class="tech-badge">CI/CD (GitHub Actions, OIDC)</span>
+                            <span class="tech-badge">Testing &amp; data quality gates</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -746,62 +994,8 @@
             </div>
         </section>
 
-        <!-- Transferable Skills Section -->
-        <section data-animate class="content-wrapper section-anchor" style="margin-top: 2rem;" id="experience-transferable">
-            <h3 class="section-title">Transferable Skills</h3>
-            <div class="services">
-                <div class="card">
-                    <div class="card-body">
-                        <i class="fas fa-users fa-3x text-danger"></i>
-                        <h3 class="card-title">Collaboration & Leadership</h3>
-                        <p class="card-text">Team-oriented, experienced in mentoring and cross-functional collaboration.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <i class="fas fa-chess-knight fa-3x text-warning"></i>
-                        <h3 class="card-title">Strategic Execution</h3>
-                        <p class="card-text">Strong planning and time management for end-to-end project delivery.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <i class="fas fa-comments fa-3x text-info"></i>
-                        <h3 class="card-title">Technical Communication</h3>
-                        <p class="card-text">Translate complex concepts into clear, actionable insights.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <i class="fas fa-puzzle-piece fa-3x text-success"></i>
-                        <h3 class="card-title">Problem-Solving & Analysis</h3>
-                        <p class="card-text">Skilled in root cause analysis and scalable system optimization.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <i class="fas fa-search fa-3x text-primary"></i>
-                        <h3 class="card-title">Attention to Detail</h3>
-                        <p class="card-text">Committed to accuracy through rigorous testing and best practices.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <i class="fas fa-sync-alt fa-3x text-secondary"></i>
-                        <h3 class="card-title">Continuous Learning</h3>
-                        <p class="card-text">Rapidly master new technologies and pivot strategies as needed.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <i class="fas fa-chart-line fa-3x text-warning"></i>
-                        <h3 class="card-title">Data-Driven Decision Making</h3>
-                        <p class="card-text">Use metrics and performance analysis to guide decisions effectively.</p>
-                    </div>
-                </div>
-            </div>
         </section>
-    
+
         </section>
 
         <!-- CV Section -->
@@ -912,7 +1106,7 @@
                                     <div class="invalid-feedback">Please enter your message.</div>
                                 </div>
                                 <div class="center">
-                                    <button type="submit" class="btn btn-success">
+                                    <button type="submit" id="contactSubmit" class="btn btn-success">
                                         <i class="fas fa-paper-plane"></i>Send Message
                                     </button>
                                 </div>
