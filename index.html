@@ -409,6 +409,215 @@
         </section>
         </section>
 
+        <!-- Case Study Section -->
+        <section id="case-study" class="no-animate">
+
+        <!-- Header Section -->
+        <section data-animate>
+            <div class="content-wrapper center">
+                <h2 class="display-4">Case Study: LAAD</h2>
+                <p class="lead">A production-grade ATM log aggregation, anomaly detection and diagnostics platform built for NCR Atleos as the CS32002 Industrial Team Project.</p>
+            </div>
+        </section>
+
+        <!-- Problem & Role -->
+        <section data-animate class="content-wrapper section-anchor" id="case-study-overview">
+            <div class="experience-item">
+                <h5>The Problem</h5>
+                <p class="text-muted">NCR Atleos ATMs generate ~3.5GB of log data per day across seven sources — application logs, hardware sensor metrics, terminal handler logs, Kafka, Prometheus, Windows OS and GCP cloud metrics. Field engineers were flying blind: faults surfaced only after customers reported them, and root-causing a single ATM meant grepping millions of unstructured lines by hand.</p>
+                <h5>My Role — Backend &amp; Data Engineering Lead</h5>
+                <p class="text-muted">On a 7-person team I owned the ingestion pipeline, the multi-layer ML detection engine, MLOps, the agentic RAG assistant and all AWS infrastructure. After the module ended I kept building — the Kafka message bus, the 3-layer detection engine, confidence-fused RAG, the 1,438-test suite and the full Terraform deployment are my independent post-submission extension.</p>
+                <ul>
+                    <li><strong>2.5M events</strong> processed end-to-end at ~100 messages/second with zero loss</li>
+                    <li><strong>99.8% &plusmn; 0.1%</strong> cross-validated accuracy on the XGBoost detection ensemble</li>
+                    <li><strong>0.708 context recall</strong> from the agentic RAG assistant — 2&times; the deterministic baseline</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Headline Stats -->
+        <section data-animate class="content-wrapper section-anchor" id="case-study-stats">
+            <div class="services">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">99.8%</h3>
+                        <p class="card-text">XGBoost cross-validated accuracy (&plusmn;0.1%) across 8 anomaly classes</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">2&times;</h3>
+                        <p class="card-text">RAG context recall vs the deterministic baseline — 0.708 vs 0.350 on a 50-query golden set</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">1,438</h3>
+                        <p class="card-text">Automated tests: 959 pytest, 394 vitest, 10 Playwright E2E, 75 Terraform assertions</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">2.5M</h3>
+                        <p class="card-text">Events processed at ~100 msg/sec with zero loss, gzip-compressed ~65% on the wire</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">30</h3>
+                        <p class="card-text">REST API endpoints behind JWT auth, role-aware access and Redis rate limiting</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">0.70</h3>
+                        <p class="card-text">F1 on live Kafka traffic — Isolation Forest, 97.3% precision, AUC-ROC 0.9502</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pipeline & Architecture -->
+        <section data-animate class="content-wrapper section-anchor" id="case-study-architecture">
+            <h3 class="section-title">Pipeline &amp; Architecture</h3>
+            <div class="experience-item">
+                <p class="text-muted" style="font-style: normal;">Seven heterogeneous sources stream into a continuous Kafka producer (gzip, acks=all, retries 5), land on two KRaft topics with 7-day retention, and are consumed by a pipeline that deduplicates, parses, dual-writes to PostgreSQL and a ChromaDB vector store, and feeds a detection engine every 30 seconds — surfaced through a FastAPI backend and a React dashboard.</p>
+                <ul>
+                    <li><strong>Ingestion</strong> — Kafka KRaft, 2 topics &times; 3 partitions, ~65% gzip compression (250KB/s &rarr; 85KB/s on the wire), 3.5GB/day &rarr; 1.2GB/day on disk</li>
+                    <li><strong>Reliability</strong> — dedup via Redis SET + 10K in-memory LRU, manual offset commits, failed messages land on a Redis Stream DLQ with exponential backoff (5s &rarr; 10s &rarr; 20s)</li>
+                    <li><strong>Schema-on-read storage</strong> — PostgreSQL 16 with JSONB payloads: adding a new source means adding a parser, never a migration. 10 tables, 3 views, 14 indexes, hourly retention cleanup</li>
+                    <li><strong>Vector store</strong> — ChromaDB with semantic chunking and local 768-dim embeddings for the RAG assistant</li>
+                    <li><strong>API</strong> — FastAPI, 30 endpoints across 6 routers, JWT auth and 8 Redis patterns (rate limiting, caching, locks, Pub/Sub, DLQ) with graceful degradation</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Detection Engine -->
+        <section data-animate class="content-wrapper section-anchor" id="case-study-detection">
+            <h3 class="section-title">The 3-Layer Detection Engine</h3>
+            <div class="services">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-brain fa-3x text-primary"></i>
+                        <h3 class="card-title">Layer 1 — ML Ensemble</h3>
+                        <ul>
+                            <li>XGBoost: 49 engineered features in 7 groups, 8 anomaly classes, <strong>99.8% &plusmn; 0.1%</strong> stratified CV accuracy</li>
+                            <li>Isolation Forest on the 46 highest-importance features: <strong>AUC-ROC 0.9502</strong>, 97.3% precision, Youden's-J threshold from a 200-point sweep</li>
+                            <li>Known faults at confidence &ge; 0.70; novel patterns flagged as UNKNOWN</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-chart-line fa-3x text-success"></i>
+                        <h3 class="card-title">Layer 2 — Statistical Drift</h3>
+                        <ul>
+                            <li>Rolling 20-window median/std baseline; alert on |z| &gt; 3.0</li>
+                            <li>Catches concept drift and unseen behaviours with zero model dependency</li>
+                            <li>Confidence from the z-score magnitude — no training data required</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-cogs fa-3x text-warning"></i>
+                        <h3 class="card-title">Layer 3 — Heuristic Rules</h3>
+                        <ul>
+                            <li>7 deterministic detectors (A1&ndash;A7): network timeouts, cash cassette faults, JVM memory leaks, container restarts, response spikes, OS memory pressure, out-of-order Kafka</li>
+                            <li>10-minute dedup window per (anomaly type, ATM)</li>
+                            <li>A live <strong>SageMaker champion endpoint</strong> cross-checks predictions without overriding them</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agentic RAG -->
+        <section data-animate class="content-wrapper section-anchor" id="case-study-rag">
+            <h3 class="section-title">Agentic Hybrid RAG</h3>
+            <div class="experience-item">
+                <p class="text-muted" style="font-style: normal;">A LangGraph agent with 12 MCP tools answers operator questions over the anomaly corpus: ChromaDB retrieval with metadata filters and temporal decay, cross-encoder reranking, then a 4-stage reasoning loop — self-consistency sampling, verbalised confidence, reflexion and citation grounding — fused into a single score (0.30 retrieval + 0.25 self-consistency + 0.25 verbalised + 0.20 grounding) and Platt-calibrated on real feedback.</p>
+                <table style="width: 100%; border-collapse: collapse; margin: var(--spacing-lg) 0; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--secondary-color);">
+                            <th style="padding: var(--spacing-sm); text-align: left; color: var(--text-light);">RAGAS Metric</th>
+                            <th style="padding: var(--spacing-sm); text-align: center; color: var(--text-muted);">Fixed Retrieval</th>
+                            <th style="padding: var(--spacing-sm); text-align: center; color: var(--text-muted);">Hybrid Agent</th>
+                            <th style="padding: var(--spacing-sm); text-align: center; color: var(--secondary-color); font-weight: 700;">Agentic Agent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #e7e0d5;">
+                            <td style="padding: var(--spacing-sm);">Context Recall</td>
+                            <td style="padding: var(--spacing-sm); text-align: center;">0.533</td>
+                            <td style="padding: var(--spacing-sm); text-align: center;">0.350</td>
+                            <td style="padding: var(--spacing-sm); text-align: center; font-weight: 700; color: var(--secondary-color);">0.708</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e7e0d5;">
+                            <td style="padding: var(--spacing-sm);">Context Precision</td>
+                            <td style="padding: var(--spacing-sm); text-align: center;">0.711</td>
+                            <td style="padding: var(--spacing-sm); text-align: center;">0.645</td>
+                            <td style="padding: var(--spacing-sm); text-align: center; font-weight: 700; color: var(--secondary-color);">0.874</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e7e0d5;">
+                            <td style="padding: var(--spacing-sm);">Faithfulness</td>
+                            <td style="padding: var(--spacing-sm); text-align: center;">0.982</td>
+                            <td style="padding: var(--spacing-sm); text-align: center;">0.908</td>
+                            <td style="padding: var(--spacing-sm); text-align: center; font-weight: 700; color: var(--secondary-color);">0.940</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: var(--spacing-sm);">Answer Relevancy</td>
+                            <td style="padding: var(--spacing-sm); text-align: center;">0.650</td>
+                            <td style="padding: var(--spacing-sm); text-align: center;">0.602</td>
+                            <td style="padding: var(--spacing-sm); text-align: center; font-weight: 700; color: var(--secondary-color);">0.801</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-muted">Evaluated on a 50-query golden set (82% human-reviewed) with a committed baseline and a CI gate that fails any PR with faithfulness &lt; 0.5, context recall &lt; 0.3, or a drop &gt; 0.05 vs baseline.</p>
+            </div>
+        </section>
+
+        <!-- Delivery & Observability -->
+        <section data-animate class="content-wrapper section-anchor" id="case-study-delivery">
+            <h3 class="section-title">Delivery &amp; Observability</h3>
+            <div class="experience-item">
+                <ul>
+                    <li><strong>1,438 automated tests</strong> — 959 pytest (10 tiers), 394 vitest (41 suites), 10 Playwright E2E, 75 Terraform assertions — with Codecov and a checkov-hardened IaC pipeline</li>
+                    <li><strong>Zero-trust deployment</strong> — 6 least-privilege IAM roles (OIDC-based CI/CD, ECS, SageMaker, CloudWatch, MLflow), 8 secrets injected from Secrets Manager, no long-lived credentials</li>
+                    <li><strong>MLOps</strong> — MLflow on RDS with S3 artifact storage, champion alias promotion, auto-retrain on corruption, every run tagged with its git SHA</li>
+                    <li><strong>Observability</strong> — every RAG run persisted to a traces table; anomaly alerts via Redis Pub/Sub; CloudWatch + Grafana dashboards</li>
+                </ul>
+            </div>
+            <div class="services">
+                <div class="card">
+                    <img src="assets/images/laad/vpc.png" alt="LAAD multi-AZ VPC architecture diagram" loading="lazy">
+                    <div class="card-body"><p class="card-text">Multi-AZ VPC: private subnets, NAT, ALB, ECS Fargate across 2 AZs</p></div>
+                </div>
+                <div class="card">
+                    <img src="assets/images/laad/ecs-cluster.png" alt="LAAD ECS cluster" loading="lazy">
+                    <div class="card-body"><p class="card-text">ECS Fargate cluster running API + consumer tasks</p></div>
+                </div>
+                <div class="card">
+                    <img src="assets/images/laad/sagemaker.png" alt="LAAD SageMaker endpoint" loading="lazy">
+                    <div class="card-body"><p class="card-text">SageMaker champion endpoint cross-checking live predictions</p></div>
+                </div>
+                <div class="card">
+                    <img src="assets/images/laad/ci.png" alt="LAAD CI pipeline" loading="lazy">
+                    <div class="card-body"><p class="card-text">CI: lint + checkov + full test suite on every PR</p></div>
+                </div>
+                <div class="card">
+                    <img src="assets/images/laad/terraform.png" alt="LAAD Terraform plan output" loading="lazy">
+                    <div class="card-body"><p class="card-text">118 resources / 10 modules, DynamoDB-locked + S3-versioned state</p></div>
+                </div>
+            </div>
+            <div class="center" style="margin-top: var(--spacing-xl);">
+                <a href="https://github.com/AhmedIkram05/laad" target="_blank" class="btn btn-hero-primary">View the Repository</a>
+                <a href="https://github.com/AhmedIkram05/laad/blob/main/README.md" target="_blank" class="btn btn-hero-secondary">Read the Full Write-up</a>
+            </div>
+        </section>
+
+        </section>
+
         <!-- Experience Section -->
         <section id="experience" class="no-animate">
 
