@@ -420,22 +420,30 @@ function initProjectFilters() {
 
             const filterValue = btn.getAttribute('data-filter');
 
-            projectCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                
-                // Hide all first to trigger animation reset
-                card.style.display = 'none';
-                card.classList.remove('show');
-                
-                if (filterValue === 'all' || (category || '').split(' ').includes(filterValue)) {
-                    // Slight delay to allow display:none to apply
-                    setTimeout(() => {
-                        card.style.display = ''; // Restore default display
-                        // Trigger reflow
-                        void card.offsetWidth; 
-                        card.classList.add('show');
-                    }, 50);
-                }
+            // Filter per group so empty groups (heading + cards) hide entirely
+            document.querySelectorAll('.project-group').forEach(group => {
+                let visibleCount = 0;
+
+                group.querySelectorAll('.project-card').forEach(card => {
+                    const category = card.getAttribute('data-category');
+
+                    // Hide all first to trigger animation reset
+                    card.style.display = 'none';
+                    card.classList.remove('show');
+
+                    if (filterValue === 'all' || (category || '').split(' ').includes(filterValue)) {
+                        visibleCount++;
+                        // Slight delay to allow display:none to apply
+                        setTimeout(() => {
+                            card.style.display = ''; // Restore default display
+                            // Trigger reflow
+                            void card.offsetWidth;
+                            card.classList.add('show');
+                        }, 50);
+                    }
+                });
+
+                group.style.display = visibleCount ? '' : 'none';
             });
         });
     });
