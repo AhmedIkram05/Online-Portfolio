@@ -628,7 +628,22 @@ function initFormValidation() {
  */
 function initCvViewer() {
     const tabs = document.querySelectorAll('[data-cv-tab]');
+    const download = document.getElementById('cv-download');
+    const section = document.getElementById('cv');
     if (!tabs.length) return;
+
+    // Point the pin at the visible CV: embed.src is populated lazily
+    const syncDownload = embed => {
+        if (download && embed) download.href = embed.src || embed.dataset.src;
+    };
+
+    // Hop the pin each time the active CV changes
+    const bump = () => {
+        if (!download) return;
+        download.classList.remove('jump');
+        void download.offsetWidth; // force reflow so the animation restarts
+        download.classList.add('jump');
+    };
 
     tabs.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -642,8 +657,18 @@ function initCvViewer() {
             document.querySelectorAll('.cv-embed-wrapper embed').forEach(e => {
                 e.hidden = e !== embed;
             });
+            syncDownload(embed);
+            bump();
         });
     });
+    syncDownload(document.querySelector('.cv-embed-wrapper embed:not([hidden])'));
+
+    // Pin exists only while the CV section is on screen
+    if (download && section && 'IntersectionObserver' in window) {
+        new IntersectionObserver(entries => {
+            download.hidden = !entries[0].isIntersecting;
+        }, { threshold: 0.05 }).observe(section);
+    }
 }
 
 /**
