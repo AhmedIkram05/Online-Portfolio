@@ -4,6 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#c2410c">
     <meta name="description" content="Online portfolio of Ahmed Ikram showcasing skills, projects, CV and contact information">
 
     <!-- Open Graph / Facebook / LinkedIn -->
@@ -21,12 +22,17 @@
     <meta property="twitter:image" content="https://ahmedikram05.github.io/Online-Portfolio/assets/images/ahmed-ikram.jpeg">
 
     <title>Ahmed Ikram - Online Portfolio</title>
-    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg?v=6">
+
+    <!-- Fonts (moved from @import in CSS to parallel, non-blocking fetch) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
 
     <!-- Bundled Stylesheet -->
-    <link rel="preload" href="assets/css/bundle.css?v=5.1" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/bundle.css?v=5.1"></noscript>
+<link rel="preload" href="assets/css/bundle.css?v=7.6" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
+    <noscript><link rel="stylesheet" href="assets/css/bundle.css?v=7.6"></noscript>
     <!-- JavaScript Bundle Update -->
     <!-- Font Awesome Icons (subset, self-hosted) -->
     <link rel="stylesheet" href="assets/css/fa-subset.css?v=1.1">
@@ -63,8 +69,11 @@
         <!-- Modern Navbar -->
         <nav class="navbar" role="navigation" aria-label="Main Navigation">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle side menu">
-                <span class="side-menu-open">&lt;/&gt;</span>
-                <span class="side-menu-close">✕</span>
+                <span class="side-menu-open" aria-hidden="true">
+                    <span class="bar bar-top"></span>
+                    <span class="bar bar-mid"></span>
+                    <span class="bar bar-bottom"></span>
+                </span>
             </button>
             <ul class="navbar-nav" id="navMenu">
                 <li class="nav-item has-submenu">
@@ -121,6 +130,17 @@
                 </li>
                 <span class="nav-indicator"></span>
             </ul>
+            <a class="navbar-logo" href="#home" aria-label="Ahmed Ikram — home">
+                <span class="logo-sizer" aria-hidden="true">Ahmed Ikram</span>
+                <span class="logo-stage">
+                    <span class="lg-open">&lt;/</span>
+                    <span class="lg-a">A</span>
+                    <span class="lg-rest-l">hmed </span>
+                    <span class="lg-i">I</span>
+                    <span class="lg-rest-r">kram</span>
+                    <span class="lg-close">&gt;</span>
+                </span>
+            </a>
         </nav>
         <span class="navbar-badge" title="Availability">
             <i class="fas fa-check-circle"></i>Open to Opportunities
@@ -1129,6 +1149,6 @@
     </button>
 
     <!-- JavaScript -->
-    <script src="assets/js/main.js?v=5.0" defer></script>
+    <script src="assets/js/main.js?v=5.4" defer></script>
 </body>
 </html>
