@@ -703,13 +703,21 @@ function initTouchNav() {
         const link = item.querySelector(':scope > .nav-link');
         if (!link) return;
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopImmediatePropagation(); // accordion only - no scroll/panel close
-            // Accordion: close sibling submenus, toggle this one
+            // If submenu is open, close it and block navigation.
+            // If submenu is closed, open it and let the link navigate.
+            if (item.classList.contains('open')) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-item.has-submenu.open').forEach(i => {
+                    if (i !== item) i.classList.remove('open');
+                });
+                item.classList.remove('open');
+                return;
+            }
+            // Accordion: close sibling submenus, open this one
             document.querySelectorAll('.nav-item.has-submenu.open').forEach(i => {
                 if (i !== item) i.classList.remove('open');
             });
-            item.classList.toggle('open');
+            item.classList.add('open');
         }, true);
     });
 }

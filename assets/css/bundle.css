@@ -1360,11 +1360,39 @@ section[id] {
     opacity: 1;
 }
 
-/* Touch devices: overlay always visible (no hover), so the View Code button stays reachable */
+/* Mobile: hide overlay, show the real View Code pill link */
 @media (hover: none) {
     .project-card .card-overlay {
-        opacity: 1;
-        background: rgba(26, 26, 26, 0.55);
+        display: none;
+    }
+}
+
+/* View Code pill — always visible, real tappable link */
+.view-code-pill {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(26, 26, 26, 0.7);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    text-decoration: none;
+    transition: background 0.2s ease;
+    display: none;
+}
+.view-code-pill:hover,
+.view-code-pill:active {
+    background: rgba(26, 26, 26, 0.9);
+}
+@media (hover: none) {
+    .view-code-pill {
+        display: inline-block;
     }
 }
 
