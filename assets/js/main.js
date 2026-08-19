@@ -284,9 +284,6 @@ function initNavigation() {
         if (navbarNav && toggler) {
             navbarNav.classList.toggle('show');
             toggler.classList.toggle('active');
-            
-            // Prevent body scroll when menu is open
-            document.body.style.overflow = navbarNav.classList.contains('show') ? 'hidden' : '';
         }
     }
 
@@ -294,7 +291,6 @@ function initNavigation() {
         if (navbarNav && navbarNav.classList.contains('show')) {
             navbarNav.classList.remove('show');
             if (toggler) toggler.classList.remove('active');
-            document.body.style.overflow = '';
         }
     }
 
@@ -307,6 +303,8 @@ function initNavigation() {
             window.requestAnimationFrame(() => {
                 onScrollSpy();
                 onScrollHeader();
+                // Scrolling the page dismisses the open burger menu
+                if (navbarNav && navbarNav.classList.contains('show')) closeMobileMenu();
                 navTicking = false;
             });
             navTicking = true;
@@ -511,7 +509,7 @@ function initScrollAnimations() {
         });
         
         lastScrollY = window.pageYOffset;
-    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -50px 0px' });
 
     items.forEach(el => observer.observe(el));
 }
@@ -628,7 +626,22 @@ function initFormValidation() {
  */
 function initCvViewer() {
     const tabs = document.querySelectorAll('[data-cv-tab]');
+    const download = document.getElementById('cv-download');
+    const section = document.getElementById('cv');
     if (!tabs.length) return;
+
+    // Point the pin at the visible CV: embed.src is populated lazily
+    const syncDownload = embed => {
+        if (download && embed) download.href = embed.src || embed.dataset.src;
+    };
+
+    // Hop the pin each time the active CV changes
+    const bump = () => {
+        if (!download) return;
+        download.classList.remove('jump');
+        void download.offsetWidth; // force reflow so the animation restarts
+        download.classList.add('jump');
+    };
 
     tabs.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -642,22 +655,38 @@ function initCvViewer() {
             document.querySelectorAll('.cv-embed-wrapper embed').forEach(e => {
                 e.hidden = e !== embed;
             });
+            syncDownload(embed);
+            bump();
         });
     });
+    syncDownload(document.querySelector('.cv-embed-wrapper embed:not([hidden])'));
+
+    // Pin exists only while the CV section is on screen
+    if (download && section && 'IntersectionObserver' in window) {
+        new IntersectionObserver(entries => {
+            download.hidden = !entries[0].isIntersecting;
+        }, { threshold: 0.05 }).observe(section);
+    }
 }
 
 /**
  * =========================================================================
  * TOUCH NAV MODULE
- * Tap-to-open submenus on touch devices (hover never fires on touch).
- * Capture phase so parent links act as accordion toggles, not scroll jumps.
+ * Tap-to-open submenus on the mobile burger menu (clicks drive it, not hover).
+ * Accordion: opening one submenu closes the others; tapping a parent link
+ * again closes its own. Capture phase so parent links act as toggles, not
+ * scroll jumps.
  * =========================================================================
  */
 function initTouchNav() {
-    if (!window.matchMedia('(hover: none)').matches) return;
+    // Bind whenever the mobile menu layout is in use — on any device
+    // (hover-capable ones included), matching the burger CSS at max-width: 767px.
+    if (!window.matchMedia('(max-width: 767px)').matches) return;
 
-    // Any tap closes all open submenus; tapping a parent link re-opens its own
-    document.addEventListener('click', () => {
+    // Any tap closes all open submenus — except taps on a parent link,
+    // which the link's own handler toggles below.
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.nav-link[data-level="primary"]')) return;
         document.querySelectorAll('.nav-item.has-submenu.open').forEach(i => i.classList.remove('open'));
     }, true);
 
@@ -666,7 +695,11 @@ function initTouchNav() {
         if (!link) return;
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            e.stopPropagation();
+            e.stopImmediatePropagation(); // accordion only — no scroll/panel close
+            // Accordion: close sibling submenus, toggle this one
+            document.querySelectorAll('.nav-item.has-submenu.open').forEach(i => {
+                if (i !== item) i.classList.remove('open');
+            });
             item.classList.toggle('open');
         }, true);
     });

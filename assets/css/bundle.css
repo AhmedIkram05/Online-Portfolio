@@ -611,14 +611,12 @@ header.scrolled {
     font-size: 1.3rem;
 }
 
-/* Show X on both hover and active states */
-.navbar-toggler:hover .side-menu-open,
+/* Show X on active state only — hover keeps the burger so the icon always returns to normal after closing */
 .navbar-toggler.active .side-menu-open {
     opacity: 0;
     transform: translate(-50%, -50%) rotate(-90deg);
 }
 
-.navbar-toggler:hover .side-menu-close,
 .navbar-toggler.active .side-menu-close {
     opacity: 1;
     transform: translate(-50%, -50%) rotate(0deg);
@@ -938,6 +936,10 @@ section[id] {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
+        /* Menu taller than the viewport scrolls internally; page scroll closes it (see JS) */
+        max-height: calc(100vh - 100%);
+        max-height: calc(100dvh - 100%);
+        overflow-y: auto;
     }
 
     .nav-link {
@@ -1095,6 +1097,27 @@ section[id] {
 .hero-cta .btn i:only-child,
 .hero-cta .btn svg:only-child {
     margin-right: 0;
+}
+
+/* ===== CASE STUDY CTAs ===== */
+/* Same spacing pattern as the hero CTA row */
+.case-cta {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 767px) {
+    .case-cta {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+    .case-cta .btn {
+        width: 100%;
+        max-width: 280px;
+    }
 }
 
 /* ===== projects.css ===== */
@@ -1465,6 +1488,49 @@ section[id] {
     border: 1px solid #e7e0d5;
     border-radius: var(--radius-medium);
     background: #ffffff;
+}
+
+/* Floating download pin: viewport-fixed, sits just below the fixed header,
+   appears only while the CV section is on screen (hidden toggled by JS) */
+.cv-fab {
+    position: fixed;
+    top: 88px;
+    right: 20px;
+    z-index: 11001; /* above header (11000) */
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #ffffff;
+    color: var(--accent-color);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid #e7e0d5;
+    text-decoration: none;
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.cv-fab[hidden] {
+    display: none;
+}
+
+.cv-fab:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+    color: var(--accent-color);
+}
+
+/* Hop each time the active CV changes (class toggled by JS) */
+@keyframes cv-fab-jump {
+    0%   { transform: translateY(0) scale(1); }
+    30%  { transform: translateY(-10px) scale(1.08); }
+    60%  { transform: translateY(2px) scale(0.96); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+.cv-fab.jump {
+    animation: cv-fab-jump 0.4s ease;
 }
 
 /* ===== contact.css ===== */
