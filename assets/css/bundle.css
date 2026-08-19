@@ -611,14 +611,12 @@ header.scrolled {
     font-size: 1.3rem;
 }
 
-/* Show X on both hover and active states */
-.navbar-toggler:hover .side-menu-open,
+/* Show X on active state only — hover keeps the burger so the icon always returns to normal after closing */
 .navbar-toggler.active .side-menu-open {
     opacity: 0;
     transform: translate(-50%, -50%) rotate(-90deg);
 }
 
-.navbar-toggler:hover .side-menu-close,
 .navbar-toggler.active .side-menu-close {
     opacity: 1;
     transform: translate(-50%, -50%) rotate(0deg);
