@@ -674,15 +674,21 @@ function initCvViewer() {
 /**
  * =========================================================================
  * TOUCH NAV MODULE
- * Tap-to-open submenus on touch devices (hover never fires on touch).
- * Capture phase so parent links act as accordion toggles, not scroll jumps.
+ * Tap-to-open submenus on the mobile burger menu (clicks drive it, not hover).
+ * Accordion: opening one submenu closes the others; tapping a parent link
+ * again closes its own. Capture phase so parent links act as toggles, not
+ * scroll jumps.
  * =========================================================================
  */
 function initTouchNav() {
-    if (!window.matchMedia('(hover: none)').matches) return;
+    // Bind whenever the mobile menu layout is in use — on any device
+    // (hover-capable ones included), matching the burger CSS at max-width: 767px.
+    if (!window.matchMedia('(max-width: 767px)').matches) return;
 
-    // Any tap closes all open submenus; tapping a parent link re-opens its own
-    document.addEventListener('click', () => {
+    // Any tap closes all open submenus — except taps on a parent link,
+    // which the link's own handler toggles below.
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.nav-link[data-level="primary"]')) return;
         document.querySelectorAll('.nav-item.has-submenu.open').forEach(i => i.classList.remove('open'));
     }, true);
 
@@ -691,7 +697,11 @@ function initTouchNav() {
         if (!link) return;
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            e.stopPropagation();
+            e.stopImmediatePropagation(); // accordion only — no scroll/panel close
+            // Accordion: close sibling submenus, toggle this one
+            document.querySelectorAll('.nav-item.has-submenu.open').forEach(i => {
+                if (i !== item) i.classList.remove('open');
+            });
             item.classList.toggle('open');
         }, true);
     });
