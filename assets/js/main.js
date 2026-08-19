@@ -688,11 +688,11 @@ function initCvViewer() {
  * =========================================================================
  */
 function initTouchNav() {
-    // Bind whenever the mobile menu layout is in use — on any device
+    // Bind whenever the mobile menu layout is in use - on any device
     // (hover-capable ones included), matching the burger CSS at max-width: 767px.
     if (!window.matchMedia('(max-width: 767px)').matches) return;
 
-    // Any tap closes all open submenus — except taps on a parent link,
+    // Any tap closes all open submenus - except taps on a parent link,
     // which the link's own handler toggles below.
     document.addEventListener('click', (e) => {
         if (e.target.closest('.nav-link[data-level="primary"]')) return;
@@ -704,7 +704,7 @@ function initTouchNav() {
         if (!link) return;
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            e.stopImmediatePropagation(); // accordion only — no scroll/panel close
+            e.stopImmediatePropagation(); // accordion only - no scroll/panel close
             // Accordion: close sibling submenus, toggle this one
             document.querySelectorAll('.nav-item.has-submenu.open').forEach(i => {
                 if (i !== item) i.classList.remove('open');
@@ -727,7 +727,7 @@ function initLogoMorph() {
 
     // One-shot morph: leaving the very top of the page starts the full
     // animation (class .morphing); returning to the top plays it back
-    // (.unmorphing). The scroll only triggers — each run completes.
+    // (.unmorphing). The scroll only triggers - each run completes.
     let compact = false;
     const update = () => {
         const next = window.scrollY > 0;

@@ -16,7 +16,7 @@ html {
 
 /* ===== CSS VARIABLES ===== */
 :root {
-    /* Color Palette — Light Editorial */
+    /* Color Palette - Light Editorial */
     --primary-color: #1c1917;
     --secondary-color: #c2410c;
     --accent-color: #c2410c;
@@ -45,7 +45,7 @@ html {
     --button-gradient: #c2410c;
     --accent-gradient: #1c1917;
     
-    /* Shadows — kept subtle, hairline borders do the work */
+    /* Shadows - kept subtle, hairline borders do the work */
     --shadow-xs: 0 1px 2px rgba(28,25,23,0.06);
     --shadow-sm: 0 1px 3px rgba(28,25,23,0.08);
     --shadow-md: 0 2px 8px rgba(28,25,23,0.08);
@@ -79,7 +79,7 @@ html {
 }
 
 /* ===== TYPOGRAPHY ===== */
-/* Fonts are loaded via <link> in the HTML head (preconnect + parallel fetch) — @import removed */
+/* Fonts are loaded via <link> in the HTML head (preconnect + parallel fetch) - @import removed */
 
 body {
     font-family: var(--font-primary);
@@ -349,7 +349,7 @@ section[data-animate] {
 }
 
 /* Nested wrappers (sections inside <main class="content-wrapper">) must not
-   add another inset — keeps every section's content edges aligned. */
+   add another inset - keeps every section's content edges aligned. */
 .content-wrapper .content-wrapper {
     padding: 0;
 }
@@ -578,7 +578,7 @@ header.scrolled {
     box-shadow: none;
 }
 
-/* 3-bar hamburger — morphs into an ✕ on .active:
+/* 3-bar hamburger - morphs into an ✕ on .active:
    the top and bottom bars rotate ±45° and slide in to the
    centre; the middle bar fades out. Real elements (not
    pseudo-elements) so the transition works in every engine. */
@@ -610,7 +610,7 @@ header.scrolled {
 .navbar-toggler.active .bar-top { transform: translateY(6px) rotate(45deg); }
 .navbar-toggler.active .bar-bottom { transform: translateY(-6px) rotate(-45deg); }
 
-/* Site logo — "Ahmed Ikram" at the top of the page, scrubbed into
+/* Site logo - "Ahmed Ikram" at the top of the page, scrubbed into
    </AI> as the hero scrolls past (JS sets --logo-p 0→1; see main.js).
    Shown on mobile too (brand left, burger right) and on tablets/desktops. */
 .navbar-logo {
@@ -672,11 +672,11 @@ header.scrolled {
 
 /* Resting state = the full name: middle letters sit in their natural
    slots; the brackets are parked off either side AND hidden (they sweep
-   back in — and fade in — during the morph). */
+   back in - and fade in - during the morph). */
 .lg-open  { transform: translateX(-6ch); opacity: 0; }
 .lg-close { transform: translateX(6ch); opacity: 0; }
 
-/* One-shot morph. Each animation runs to completion once started — the
+/* One-shot morph. Each animation runs to completion once started - the
    scroll position only decides WHEN it starts, never how far it goes.
    Every direction has its OWN keyframes (no `reverse`, no shared names):
    a completed animation does not restart, so shared names made the
@@ -717,7 +717,7 @@ header.scrolled {
 }
 
 /* 1000-1075px: the full name would reach into the nav items, but the
-   compact </AI> mark still fits — pin it (same static state as the
+   compact </AI> mark still fits - pin it (same static state as the
    reduced-motion block) so the full name never blocks the nav. The morph
    animations are suppressed here: the logo simply rests as </AI>. */
 @media (min-width: 1000px) and (max-width: 1074.98px) {
@@ -1012,8 +1012,8 @@ section[id] {
 /* Hide the logo the same way as the badge when the centered nav reaches
    into its zone on the left edge. Measured live: below ~1000px the nav's
    left edge crosses the full name's right edge (~111px wide). The compact
-   </AI> mark still fits 1000-1075px — that band is pinned separately below.
-   Tablet/desktop only — mobile keeps the logo as the "Ahmed Ikram" brand.
+   </AI> mark still fits 1000-1075px - that band is pinned separately below.
+   Tablet/desktop only - mobile keeps the logo as the "Ahmed Ikram" brand.
    Placed AFTER the min-width:768 block so it wins the cascade. */
 @media (min-width: 768px) and (max-width: 999.98px) {
     .navbar-logo {
@@ -1031,7 +1031,7 @@ section[id] {
     /* Mobile: logo shows as the "Ahmed Ikram" brand (absolute, left);
        the burger shifts to the far right (Anthropic-style header).
        Pushed +3ch right so the full name sits where the </AI> mark sits
-       (both share one anchor — the name's left edge cannot move alone). */
+       (both share one anchor - the name's left edge cannot move alone). */
     .navbar-logo {
         display: flex;
         left: calc(var(--spacing-lg) + 3ch);
@@ -1102,7 +1102,7 @@ section[id] {
         gap: 0;
     }
 
-    /* Mobile: hover must not hold a submenu open — only .open does
+    /* Mobile: hover must not hold a submenu open - only .open does
        (base :hover rule is desktop-only) */
     .nav-item.has-submenu:hover .nav-submenu {
         display: none;
