@@ -2074,6 +2074,19 @@ select.form-control:focus {
 
 }
 
+/* ===== PROJECT CARD ACCENT BARS ===== */
+.project-card[data-accent].accent-stocklens .card-img-wrapper { border-top: 4px solid #10b981; }
+.project-card[data-accent].accent-w3c .card-img-wrapper { border-top: 4px solid #3b82f6; }
+.project-card[data-accent].accent-devsync .card-img-wrapper { border-top: 4px solid #f59e0b; }
+.project-card[data-accent].accent-laad .card-img-wrapper { border-top: 4px solid #8b5cf6; }
+.project-card[data-accent].accent-sweqwen .card-img-wrapper { border-top: 4px solid #059669; }
+.project-card[data-accent].accent-wikistream .card-img-wrapper { border-top: 4px solid #06b6d4; }
+.project-card[data-accent].accent-haggis .card-img-wrapper { border-top: 4px solid #14b8a6; }
+.project-card[data-accent].accent-unixvcs .card-img-wrapper { border-top: 4px solid #64748b; }
+.project-card[data-accent].accent-sales .card-img-wrapper { border-top: 4px solid #6366f1; }
+.project-card[data-accent] .card-img-wrapper { transition: border-top-width 0.2s ease; }
+.project-card:hover .card-img-wrapper { border-top-width: 5px; }
+
 
 /* ===== MEDIUM SCREENS (TABLET & SMALL LAPTOP) - 768px to 1199px ===== */
 @media (min-width: 768px) and (max-width: 1199px) {
