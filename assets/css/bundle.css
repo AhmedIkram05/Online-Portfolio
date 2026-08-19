@@ -509,6 +509,36 @@ header.scrolled {
     background: #166534;
 }
 
+/* Dated availability banner in the contact section (same visual language as
+   .navbar-badge, but static/centred so it stays visible on all viewports) */
+.availability-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #15803d;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.availability-banner:hover {
+    background: #166534;
+}
+
+/* Allow the long availability text to wrap on small phones */
+@media (max-width: 480px) {
+    .availability-banner {
+        white-space: normal;
+        text-align: center;
+        line-height: 1.4;
+    }
+}
+
 /* Hide badge when the centered 6-item nav reaches into the badge zone
    (~219px + 24px right offset, anchored to the header's right edge).
    Measured live at the 1200px boundary: below 1200px the nav widens and
