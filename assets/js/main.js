@@ -511,7 +511,7 @@ function initScrollAnimations() {
         });
         
         lastScrollY = window.pageYOffset;
-    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -50px 0px' });
 
     items.forEach(el => observer.observe(el));
 }
