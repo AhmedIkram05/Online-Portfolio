@@ -1097,6 +1097,27 @@ section[id] {
     margin-right: 0;
 }
 
+/* ===== CASE STUDY CTAs ===== */
+/* Same spacing pattern as the hero CTA row */
+.case-cta {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 767px) {
+    .case-cta {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+    .case-cta .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
 /* ===== projects.css ===== */
 /* Projects Page Specific Styles (projects.html) */
 
