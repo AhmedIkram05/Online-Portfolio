@@ -123,7 +123,6 @@ function initAnalyticsConsentBanner() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Portfolio initialized');
     // Initialize analytics consent/banner
     try { initAnalyticsConsentBanner(); } catch (e) { /* fail silently */ }
     
@@ -137,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initProjectFilters();
     initCvViewer();
     initTouchNav();
+    initLogoMorph();
     initBackToTop();
 });
 
@@ -282,8 +282,9 @@ function initNavigation() {
         
         // Ensure elements exist before toggling
         if (navbarNav && toggler) {
-            navbarNav.classList.toggle('show');
+            const open = navbarNav.classList.toggle('show');
             toggler.classList.toggle('active');
+            toggler.setAttribute('aria-expanded', String(open));
         }
     }
 
@@ -703,6 +704,33 @@ function initTouchNav() {
             item.classList.toggle('open');
         }, true);
     });
+}
+
+/**
+ * =========================================================================
+ * LOGO MORPH MODULE
+ * "Ahmed Ikram" scrubs into </AI> as the hero scrolls past (Anthropic-style).
+ * Sets --logo-p (0→1) on .navbar-logo; the CSS interpolates it.
+ * =========================================================================
+ */
+function initLogoMorph() {
+    const logo = document.querySelector('.navbar-logo');
+    if (!logo) return;
+
+    // One-shot morph: leaving the very top of the page starts the full
+    // animation (class .morphing); returning to the top plays it back
+    // (.unmorphing). The scroll only triggers — each run completes.
+    let compact = false;
+    const update = () => {
+        const next = window.scrollY > 0;
+        if (next === compact) return;
+        compact = next;
+        logo.classList.toggle('morphing', compact);
+        logo.classList.toggle('unmorphing', !compact);
+    };
+    window.addEventListener('scroll', () => { requestAnimationFrame(update); }, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
 }
 
 /**
