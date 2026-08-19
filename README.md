@@ -1,45 +1,37 @@
-# Ahmed Ikram — Online Portfolio
+# Ahmed Ikram - Online Portfolio
 
-**🌐 [Live Site](https://ahmedikram05.github.io/Online-Portfolio/index.html)**
+A personal portfolio site built from scratch with vanilla HTML, CSS, and JavaScript - no frameworks, no build step. Designed to give recruiters and collaborators a clear picture of my projects, skills, and background in one place, with a focus on AI engineering, data engineering, and software engineering.
 
-A personal portfolio website built from scratch with vanilla HTML, CSS, and JavaScript. Designed to give recruiters and collaborators a clear picture of my projects, skills, and background in one place.
+**Live site:** <https://ahmedikram05.github.io/Online-Portfolio/index.html>
 
-## 📸 Screenshot
+## Features
 
-![Portfolio Screenshot](assets/images/example.png)
+- Scroll-driven logo morph - "Ahmed Ikram" dissolves into the `</AI>` mark as you leave the top of the page, in the navbar and the mobile burger menu
+- Filterable project gallery (AI/ML, Data, Web, Mobile, Systems)
+- LAAD case study with embedded video walkthroughs (architecture, detection engine, RAG assistant)
+- CV viewer with three role-specific PDFs (AI Engineering, Data Engineering, Software Engineering) and a floating download pin that follows the active CV
+- Fully responsive - desktop, tablet, and mobile
+- Accessibility basics - `prefers-reduced-motion` support, semantic HTML, visible focus styles
 
-## 🧠 Tech Stack
+## Tech Stack
 
-- **HTML5** — Semantic structure throughout
-- **CSS3** — Custom animations (blob backgrounds, typing effects), modular stylesheets, fully responsive layout
-- **JavaScript** — Vanilla JS for navigation, dynamic text, project filtering, and contact form handling
-- **Font Awesome** — Icons for social links and UI elements
-- **GitHub Pages** — Hosting and deployment
+- **HTML5 / CSS3 / vanilla JavaScript** - zero dependencies, no build step
+- **Self-hosted Font Awesome subset** (59 icons) for social and UI icons
+- **Google Fonts** - Source Serif 4 (body) + JetBrains Mono (brand/code)
+- **Formspree** - contact form backend
+- **GitHub Pages** - hosting
 
-## 📑 Pages
+## Sections
 
-- **Home** — Animated hero section with dynamic typing introduction and blob background effects
-- **Projects** — Filterable gallery of software and data science projects, organised by category
-- **Experience** — Full breakdown of work experience, education, certifications, and technical skills
-- **CV** — In-browser preview of role-specific CV versions (AI Engineering, Data Engineering, Software Engineering)
-- **Contact** — Contact form with direct links to LinkedIn, GitHub, and email
+- **About** - introduction and summary
+- **Projects** - gallery of projects, filterable by category
+- **Case Study** - deep dive into the LAAD system
+- **Experience** - work experience, education, certifications, and skills
+- **CV** - in-browser preview and download of three role-specific CVs
+- **Contact** - contact form with direct links to LinkedIn, GitHub, and email
 
-## ✨ Features
+## Contact
 
-- Smooth scroll navigation with active section highlighting
-- Project filter by category (Python, Web, Mobile, Systems, Data)
-- Responsive design — works across desktop, tablet, and mobile
-- Custom CSS animations with no external animation libraries
-- Dark-themed aesthetic with consistent design language throughout
-
-## 🧪 How to Run
-
-The site is live at the link above. To run locally:
-
-```bash
-git clone https://github.com/AhmedIkram05/Online-Portfolio.git
-cd Online-Portfolio
-python3 -m http.server 8000
-```
-
-Then visit `http://localhost:8000`.
+- GitHub - <https://github.com/ahmedikram05>
+- LinkedIn - <https://www.linkedin.com/in/ahmed-ikram-student>
+- Email - <ahmedikram30@gmail.com>

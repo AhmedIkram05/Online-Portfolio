@@ -123,7 +123,6 @@ function initAnalyticsConsentBanner() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Portfolio initialized');
     // Initialize analytics consent/banner
     try { initAnalyticsConsentBanner(); } catch (e) { /* fail silently */ }
     
@@ -137,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initProjectFilters();
     initCvViewer();
     initTouchNav();
+    initLogoMorph();
     initBackToTop();
 });
 
@@ -282,8 +282,9 @@ function initNavigation() {
         
         // Ensure elements exist before toggling
         if (navbarNav && toggler) {
-            navbarNav.classList.toggle('show');
+            const open = navbarNav.classList.toggle('show');
             toggler.classList.toggle('active');
+            toggler.setAttribute('aria-expanded', String(open));
         }
     }
 
@@ -419,22 +420,30 @@ function initProjectFilters() {
 
             const filterValue = btn.getAttribute('data-filter');
 
-            projectCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                
-                // Hide all first to trigger animation reset
-                card.style.display = 'none';
-                card.classList.remove('show');
-                
-                if (filterValue === 'all' || (category || '').split(' ').includes(filterValue)) {
-                    // Slight delay to allow display:none to apply
-                    setTimeout(() => {
-                        card.style.display = ''; // Restore default display
-                        // Trigger reflow
-                        void card.offsetWidth; 
-                        card.classList.add('show');
-                    }, 50);
-                }
+            // Filter per group so empty groups (heading + cards) hide entirely
+            document.querySelectorAll('.project-group').forEach(group => {
+                let visibleCount = 0;
+
+                group.querySelectorAll('.project-card').forEach(card => {
+                    const category = card.getAttribute('data-category');
+
+                    // Hide all first to trigger animation reset
+                    card.style.display = 'none';
+                    card.classList.remove('show');
+
+                    if (filterValue === 'all' || (category || '').split(' ').includes(filterValue)) {
+                        visibleCount++;
+                        // Slight delay to allow display:none to apply
+                        setTimeout(() => {
+                            card.style.display = ''; // Restore default display
+                            // Trigger reflow
+                            void card.offsetWidth;
+                            card.classList.add('show');
+                        }, 50);
+                    }
+                });
+
+                group.style.display = visibleCount ? '' : 'none';
             });
         });
     });
@@ -679,11 +688,11 @@ function initCvViewer() {
  * =========================================================================
  */
 function initTouchNav() {
-    // Bind whenever the mobile menu layout is in use — on any device
+    // Bind whenever the mobile menu layout is in use - on any device
     // (hover-capable ones included), matching the burger CSS at max-width: 767px.
     if (!window.matchMedia('(max-width: 767px)').matches) return;
 
-    // Any tap closes all open submenus — except taps on a parent link,
+    // Any tap closes all open submenus - except taps on a parent link,
     // which the link's own handler toggles below.
     document.addEventListener('click', (e) => {
         if (e.target.closest('.nav-link[data-level="primary"]')) return;
@@ -694,15 +703,50 @@ function initTouchNav() {
         const link = item.querySelector(':scope > .nav-link');
         if (!link) return;
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopImmediatePropagation(); // accordion only — no scroll/panel close
-            // Accordion: close sibling submenus, toggle this one
+            // If submenu is open, close it and block navigation.
+            // If submenu is closed, open it and let the link navigate.
+            if (item.classList.contains('open')) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-item.has-submenu.open').forEach(i => {
+                    if (i !== item) i.classList.remove('open');
+                });
+                item.classList.remove('open');
+                return;
+            }
+            // Accordion: close sibling submenus, open this one
             document.querySelectorAll('.nav-item.has-submenu.open').forEach(i => {
                 if (i !== item) i.classList.remove('open');
             });
-            item.classList.toggle('open');
+            item.classList.add('open');
         }, true);
     });
+}
+
+/**
+ * =========================================================================
+ * LOGO MORPH MODULE
+ * "Ahmed Ikram" scrubs into </AI> as the hero scrolls past (Anthropic-style).
+ * Sets --logo-p (0→1) on .navbar-logo; the CSS interpolates it.
+ * =========================================================================
+ */
+function initLogoMorph() {
+    const logo = document.querySelector('.navbar-logo');
+    if (!logo) return;
+
+    // One-shot morph: leaving the very top of the page starts the full
+    // animation (class .morphing); returning to the top plays it back
+    // (.unmorphing). The scroll only triggers - each run completes.
+    let compact = false;
+    const update = () => {
+        const next = window.scrollY > 0;
+        if (next === compact) return;
+        compact = next;
+        logo.classList.toggle('morphing', compact);
+        logo.classList.toggle('unmorphing', !compact);
+    };
+    window.addEventListener('scroll', () => { requestAnimationFrame(update); }, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
 }
 
 /**

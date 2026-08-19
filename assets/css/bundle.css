@@ -16,7 +16,7 @@ html {
 
 /* ===== CSS VARIABLES ===== */
 :root {
-    /* Color Palette — Light Editorial */
+    /* Color Palette - Light Editorial */
     --primary-color: #1c1917;
     --secondary-color: #c2410c;
     --accent-color: #c2410c;
@@ -45,7 +45,7 @@ html {
     --button-gradient: #c2410c;
     --accent-gradient: #1c1917;
     
-    /* Shadows — kept subtle, hairline borders do the work */
+    /* Shadows - kept subtle, hairline borders do the work */
     --shadow-xs: 0 1px 2px rgba(28,25,23,0.06);
     --shadow-sm: 0 1px 3px rgba(28,25,23,0.08);
     --shadow-md: 0 2px 8px rgba(28,25,23,0.08);
@@ -79,7 +79,7 @@ html {
 }
 
 /* ===== TYPOGRAPHY ===== */
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+/* Fonts are loaded via <link> in the HTML head (preconnect + parallel fetch) - @import removed */
 
 body {
     font-family: var(--font-primary);
@@ -349,7 +349,7 @@ section[data-animate] {
 }
 
 /* Nested wrappers (sections inside <main class="content-wrapper">) must not
-   add another inset — keeps every section's content edges aligned. */
+   add another inset - keeps every section's content edges aligned. */
 .content-wrapper .content-wrapper {
     padding: 0;
 }
@@ -484,7 +484,10 @@ header.scrolled {
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* Availability badge pinned to far right of the full-width header bar */
+/* Availability badge pinned to the far right of the full-width header bar,
+   tucked in parallel with the navbar logo on the far left. Anchored to the
+   header's edge (24px from the viewport) so it always hugs the screen's
+   right side, regardless of the centered navbar's inset. */
 .navbar-badge {
     position: absolute;
     right: var(--spacing-lg);
@@ -553,8 +556,6 @@ header.scrolled {
     display: none;
     background: none;
     border: none;
-    color: var(--text-light);
-    font-size: 1.2rem;
     cursor: pointer;
     width: 48px;
     height: 48px;
@@ -565,61 +566,167 @@ header.scrolled {
     padding: 0;
     border-radius: var(--radius-small);
     position: relative;
-    /* Flat light toggle for side menu button */
-    background: #ffffff;
-    border: 1px solid #e7e0d5;
-    box-shadow: var(--shadow-xs);
-    font-family: var(--font-secondary);
-    font-weight: bold;
 }
 
 .navbar-toggler:hover {
     transform: scale(1.05);
-    background: rgba(194, 65, 12, 0.08);
-    border-color: rgba(194, 65, 12, 0.4);
-    box-shadow: var(--shadow-sm);
+    opacity: 0.85;
 }
 
 .navbar-toggler:focus {
     outline: none;
-    box-shadow:
-        0 0 0 2px rgba(194, 65, 12, 0.4),
-        var(--shadow-sm);
+    box-shadow: none;
 }
 
-/* Programming icon visibility control */
-.navbar-toggler .side-menu-open,
-.navbar-toggler .side-menu-close {
+/* 3-bar hamburger - morphs into an ✕ on .active:
+   the top and bottom bars rotate ±45° and slide in to the
+   centre; the middle bar fades out. Real elements (not
+   pseudo-elements) so the transition works in every engine. */
+.navbar-toggler .side-menu-open {
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 22px;
+    height: 14px;
     transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    font-size: 1.1rem;
 }
 
-.navbar-toggler .side-menu-open {
-    opacity: 1;
-    transform: translate(-50%, -50%) rotate(0deg);
-    color: var(--text-light);
+.navbar-toggler .bar {
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--accent-color);
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.navbar-toggler .side-menu-close {
-    opacity: 0;
-    transform: translate(-50%, -50%) rotate(90deg);
-    color: #c2410c;
-    font-size: 1.3rem;
+.navbar-toggler .bar-top    { top: 0; }
+.navbar-toggler .bar-mid    { top: 6px; }
+.navbar-toggler .bar-bottom { top: 12px; }
+
+/* ✕ on .active: top bar → \, bottom bar → /, middle bar fades */
+.navbar-toggler.active .bar-mid { opacity: 0; }
+.navbar-toggler.active .bar-top { transform: translateY(6px) rotate(45deg); }
+.navbar-toggler.active .bar-bottom { transform: translateY(-6px) rotate(-45deg); }
+
+/* Site logo - "Ahmed Ikram" at the top of the page, scrubbed into
+   </AI> as the hero scrolls past (JS sets --logo-p 0→1; see main.js).
+   Shown on mobile too (brand left, burger right) and on tablets/desktops. */
+.navbar-logo {
+    --logo-p: 0;
+    position: absolute;
+    left: var(--spacing-lg);
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+    align-items: center;
+    color: var(--accent-color);
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    line-height: 1;
+    white-space: nowrap;
 }
 
-/* Show X on active state only — hover keeps the burger so the icon always returns to normal after closing */
-.navbar-toggler.active .side-menu-open {
-    opacity: 0;
-    transform: translate(-50%, -50%) rotate(-90deg);
+.navbar-logo:hover {
+    opacity: 0.85;
 }
 
-.navbar-toggler.active .side-menu-close {
-    opacity: 1;
-    transform: translate(-50%, -50%) rotate(0deg);
+/* Scroll morph: "Ahmed Ikram" dissolves into </AI> once the user leaves the
+   very top of the page (one-shot, ~0.9s, triggered by .morphing in
+   initLogoMorph(); returning to the top plays it back via .unmorphing).
+   Choreography: the "hmed kram" middle letters fade back into the page
+   (opacity + a slight recede, no sideways drift), then A slides right to
+   meet I, then </ sweeps in from the left and > from the right to frame
+   them. Monospace (JetBrains Mono) = 1ch per character, offsets exact. */
+.logo-sizer {
+    display: inline-block;
+    opacity: 0; /* reserves the width of the full name */
+    pointer-events: none;
+}
+.logo-stage {
+    position: absolute;
+    inset: 0;
+}
+.logo-stage > span {
+    position: absolute;
+    top: 50%;
+    margin-top: -0.5em;
+    display: inline-block;
+}
+.lg-open   { left: 3ch; }
+.lg-a      { left: 0; }
+.lg-rest-l { left: 1ch; }
+.lg-i      { left: 6ch; }
+.lg-rest-r { left: 7ch; }
+.lg-close  { left: 7ch; }
+
+/* "AI" and the full name are black; the </> brackets keep the accent orange */
+.navbar-logo .lg-a,
+.navbar-logo .lg-i,
+.navbar-logo .lg-rest-l,
+.navbar-logo .lg-rest-r { color: var(--text-primary); }
+
+/* Resting state = the full name: middle letters sit in their natural
+   slots; the brackets are parked off either side AND hidden (they sweep
+   back in - and fade in - during the morph). */
+.lg-open  { transform: translateX(-6ch); opacity: 0; }
+.lg-close { transform: translateX(6ch); opacity: 0; }
+
+/* One-shot morph. Each animation runs to completion once started - the
+   scroll position only decides WHEN it starts, never how far it goes.
+   Every direction has its OWN keyframes (no `reverse`, no shared names):
+   a completed animation does not restart, so shared names made the
+   second trigger jump instantly to the end state. */
+.navbar-logo.morphing .lg-rest-l { animation: logo-rest-l-in 0.35s ease-out both; }
+.navbar-logo.morphing .lg-rest-r { animation: logo-rest-r-in 0.35s ease-out both; }
+.navbar-logo.morphing .lg-a      { animation: logo-a-in 0.4s ease-out 0.25s both; }
+.navbar-logo.morphing .lg-open   { animation: logo-bracket-l-in 0.3s ease-in-out 0.6s both; }
+.navbar-logo.morphing .lg-close  { animation: logo-bracket-r-in 0.3s ease-in-out 0.6s both; }
+
+.navbar-logo.unmorphing .lg-rest-l { animation: logo-rest-l-out 0.35s ease-out 0.6s both; }
+.navbar-logo.unmorphing .lg-rest-r { animation: logo-rest-r-out 0.35s ease-out 0.6s both; }
+.navbar-logo.unmorphing .lg-a      { animation: logo-a-out 0.4s ease-out 0.25s both; }
+.navbar-logo.unmorphing .lg-open   { animation: logo-bracket-l-out 0.3s ease-in-out both; }
+.navbar-logo.unmorphing .lg-close  { animation: logo-bracket-r-out 0.3s ease-in-out both; }
+
+/* name -> </AI> */
+@keyframes logo-rest-l-in  { from { opacity: 1; transform: scale(1); }   to { opacity: 0; transform: scale(0.88); } }
+@keyframes logo-rest-r-in  { from { opacity: 1; transform: scale(1); }   to { opacity: 0; transform: scale(0.88); } }
+@keyframes logo-a-in       { from { transform: translateX(0); }                  to { transform: translateX(5ch); } }
+@keyframes logo-bracket-l-in { from { opacity: 0; transform: translateX(-6ch); } to { opacity: 1; transform: translateX(0); } }
+@keyframes logo-bracket-r-in { from { opacity: 0; transform: translateX(6ch); }  to { opacity: 1; transform: translateX(0); } }
+/* </AI> -> name */
+@keyframes logo-rest-l-out { from { opacity: 0; transform: scale(0.88); } to { opacity: 1; transform: scale(1); } }
+@keyframes logo-rest-r-out { from { opacity: 0; transform: scale(0.88); } to { opacity: 1; transform: scale(1); } }
+@keyframes logo-a-out      { from { transform: translateX(5ch); }                to { transform: translateX(0); } }
+@keyframes logo-bracket-l-out { from { opacity: 1; transform: translateX(0); }   to { opacity: 0; transform: translateX(-6ch); } }
+@keyframes logo-bracket-r-out { from { opacity: 1; transform: translateX(0); }   to { opacity: 0; transform: translateX(6ch); } }
+
+@media (prefers-reduced-motion: reduce) {
+    /* Skip the morph: pin the logo to the compact </AI> mark */
+    .navbar-logo .logo-stage > span { animation: none !important; }
+    .navbar-logo .lg-rest-l,
+    .navbar-logo .lg-rest-r { opacity: 0; }
+    .navbar-logo .lg-a       { transform: translateX(5ch); }
+    .navbar-logo .lg-open,
+    .navbar-logo .lg-close   { transform: none; opacity: 1; }
+}
+
+/* 1000-1075px: the full name would reach into the nav items, but the
+   compact </AI> mark still fits - pin it (same static state as the
+   reduced-motion block) so the full name never blocks the nav. The morph
+   animations are suppressed here: the logo simply rests as </AI>. */
+@media (min-width: 1000px) and (max-width: 1074.98px) {
+    .navbar-logo .logo-stage > span { animation: none !important; }
+    .navbar-logo .lg-rest-l,
+    .navbar-logo .lg-rest-r { opacity: 0; }
+    .navbar-logo .lg-a       { transform: translateX(5ch); }
+    .navbar-logo .lg-open,
+    .navbar-logo .lg-close   { transform: none; opacity: 1; }
 }
 
 .navbar-nav {
@@ -814,6 +921,10 @@ section[id] {
         justify-content: center;
         width: 100%;
     }
+
+    .navbar-logo {
+        display: inline-flex;
+    }
     
     .navbar-toggler {
         display: none;
@@ -898,6 +1009,18 @@ section[id] {
     }
 }
 
+/* Hide the logo the same way as the badge when the centered nav reaches
+   into its zone on the left edge. Measured live: below ~1000px the nav's
+   left edge crosses the full name's right edge (~111px wide). The compact
+   </AI> mark still fits 1000-1075px - that band is pinned separately below.
+   Tablet/desktop only - mobile keeps the logo as the "Ahmed Ikram" brand.
+   Placed AFTER the min-width:768 block so it wins the cascade. */
+@media (min-width: 768px) and (max-width: 999.98px) {
+    .navbar-logo {
+        display: none;
+    }
+}
+
 /* ===== MOBILE NAVIGATION (burger menu + slide-down panel) ===== */
 @media (max-width: 767px) {
     .navbar {
@@ -905,8 +1028,18 @@ section[id] {
         position: relative;
     }
 
+    /* Mobile: logo shows as the "Ahmed Ikram" brand (absolute, left);
+       the burger shifts to the far right (Anthropic-style header).
+       Pushed +3ch right so the full name sits where the </AI> mark sits
+       (both share one anchor - the name's left edge cannot move alone). */
+    .navbar-logo {
+        display: flex;
+        left: calc(var(--spacing-lg) + 3ch);
+    }
+
     .navbar-toggler {
         display: inline-flex;
+        margin-left: auto;
     }
 
     .nav-indicator {
@@ -969,7 +1102,7 @@ section[id] {
         gap: 0;
     }
 
-    /* Mobile: hover must not hold a submenu open — only .open does
+    /* Mobile: hover must not hold a submenu open - only .open does
        (base :hover rule is desktop-only) */
     .nav-item.has-submenu:hover .nav-submenu {
         display: none;
@@ -1227,11 +1360,39 @@ section[id] {
     opacity: 1;
 }
 
-/* Touch devices: overlay always visible (no hover), so the View Code button stays reachable */
+/* Mobile: hide overlay, show the real View Code pill link */
 @media (hover: none) {
     .project-card .card-overlay {
-        opacity: 1;
-        background: rgba(26, 26, 26, 0.55);
+        display: none;
+    }
+}
+
+/* View Code pill — always visible, real tappable link */
+.view-code-pill {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(26, 26, 26, 0.7);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    text-decoration: none;
+    transition: background 0.2s ease;
+    display: none;
+}
+.view-code-pill:hover,
+.view-code-pill:active {
+    background: rgba(26, 26, 26, 0.9);
+}
+@media (hover: none) {
+    .view-code-pill {
+        display: inline-block;
     }
 }
 
@@ -1940,6 +2101,19 @@ select.form-control:focus {
     }
 
 }
+
+/* ===== PROJECT CARD ACCENT BARS ===== */
+.project-card[data-accent].accent-stocklens .card-img-wrapper { border-top: 4px solid #10b981; }
+.project-card[data-accent].accent-w3c .card-img-wrapper { border-top: 4px solid #3b82f6; }
+.project-card[data-accent].accent-devsync .card-img-wrapper { border-top: 4px solid #f59e0b; }
+.project-card[data-accent].accent-laad .card-img-wrapper { border-top: 4px solid #8b5cf6; }
+.project-card[data-accent].accent-sweqwen .card-img-wrapper { border-top: 4px solid #059669; }
+.project-card[data-accent].accent-wikistream .card-img-wrapper { border-top: 4px solid #06b6d4; }
+.project-card[data-accent].accent-haggis .card-img-wrapper { border-top: 4px solid #14b8a6; }
+.project-card[data-accent].accent-unixvcs .card-img-wrapper { border-top: 4px solid #64748b; }
+.project-card[data-accent].accent-sales .card-img-wrapper { border-top: 4px solid #6366f1; }
+.project-card[data-accent] .card-img-wrapper { transition: border-top-width 0.2s ease; }
+.project-card:hover .card-img-wrapper { border-top-width: 5px; }
 
 
 /* ===== MEDIUM SCREENS (TABLET & SMALL LAPTOP) - 768px to 1199px ===== */
