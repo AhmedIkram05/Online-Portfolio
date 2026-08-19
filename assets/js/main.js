@@ -284,9 +284,6 @@ function initNavigation() {
         if (navbarNav && toggler) {
             navbarNav.classList.toggle('show');
             toggler.classList.toggle('active');
-            
-            // Prevent body scroll when menu is open
-            document.body.style.overflow = navbarNav.classList.contains('show') ? 'hidden' : '';
         }
     }
 
@@ -294,7 +291,6 @@ function initNavigation() {
         if (navbarNav && navbarNav.classList.contains('show')) {
             navbarNav.classList.remove('show');
             if (toggler) toggler.classList.remove('active');
-            document.body.style.overflow = '';
         }
     }
 
@@ -307,6 +303,8 @@ function initNavigation() {
             window.requestAnimationFrame(() => {
                 onScrollSpy();
                 onScrollHeader();
+                // Scrolling the page dismisses the open burger menu
+                if (navbarNav && navbarNav.classList.contains('show')) closeMobileMenu();
                 navTicking = false;
             });
             navTicking = true;

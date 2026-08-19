@@ -938,6 +938,10 @@ section[id] {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
+        /* Menu taller than the viewport scrolls internally; page scroll closes it (see JS) */
+        max-height: calc(100vh - 100%);
+        max-height: calc(100dvh - 100%);
+        overflow-y: auto;
     }
 
     .nav-link {
