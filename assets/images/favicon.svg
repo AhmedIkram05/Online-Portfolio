@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#1c1917"/>
+  <rect width="64" height="64" rx="14" fill="#c2410c"/>
   <text x="32" y="43" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="middle">
-    <tspan fill="#c2410c">&lt;</tspan><tspan fill="#faf8f3">AI</tspan><tspan fill="#c2410c">/&gt;</tspan>
+    <tspan fill="#faf8f3">&lt;</tspan><tspan fill="#faf8f3">AI</tspan><tspan fill="#faf8f3">/&gt;</tspan>
   </text>
 </svg>
