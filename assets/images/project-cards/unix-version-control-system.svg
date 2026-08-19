@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200">
+  <defs>
+    <style>
+      .bg { fill: #0d1117; }
+      .titlebar { fill: #161b22; }
+      .dot { r: 5; }
+      .dot-red { fill: #ff5f57; }
+      .dot-yellow { fill: #febc2e; }
+      .dot-green { fill: #28c840; }
+      .title-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11px; fill: #8b949e; }
+      .prompt { font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace; font-size: 13px; fill: #79c0ff; }
+      .repo-name { font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace; font-size: 13px; fill: #f0f6fc; }
+      .desc { font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace; font-size: 12px; fill: #8b949e; }
+    </style>
+  </defs>
+
+  <!-- Terminal window -->
+  <rect class="bg" x="0" y="0" width="400" height="200" rx="8"/>
+  
+  <!-- Title bar -->
+  <rect class="titlebar" x="0" y="0" width="400" height="28" rx="8"/>
+  <rect fill="#0d1117" x="0" y="20" width="400" height="8"/>
+  
+  <!-- Dots -->
+  <circle class="dot dot-red" cx="18" cy="14"/>
+  <circle class="dot dot-yellow" cx="34" cy="14"/>
+  <circle class="dot dot-green" cx="50" cy="14"/>
+  
+  <!-- Title -->
+  <text class="title-text" x="200" y="18" text-anchor="middle">Unix VCS</text>
+
+  <!-- Content -->
+  <text class="prompt" x="20" y="60">❯</text>
+  <text class="repo-name" x="40" y="60">Unix VCS</text>
+
+  <text class="desc" x="20" y="90">Git-like system in Bash</text>
+</svg>
