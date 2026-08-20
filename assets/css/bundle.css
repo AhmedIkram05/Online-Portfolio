@@ -1102,10 +1102,12 @@ section[id] {
         gap: 0;
     }
 
-    /* Mobile: hover must not hold a submenu open - only .open does
-       (base :hover rule is desktop-only) */
-    .nav-item.has-submenu:hover .nav-submenu {
-        display: none;
+    /* Touch devices: hover must not hold a submenu open - tap-only (.open).
+       Mouse users at any width keep the base :hover rule (display: flex). */
+    @media (hover: none) {
+        .nav-item.has-submenu:hover .nav-submenu {
+            display: none;
+        }
     }
 
     .nav-item.has-submenu.open .nav-submenu {

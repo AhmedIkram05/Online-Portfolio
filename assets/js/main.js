@@ -688,9 +688,28 @@ function initCvViewer() {
  * =========================================================================
  */
 function initTouchNav() {
-    // Bind whenever the mobile menu layout is in use - on any device
-    // (hover-capable ones included), matching the burger CSS at max-width: 767px.
-    if (!window.matchMedia('(max-width: 767px)').matches) return;
+    const navbarNav = document.querySelector('.navbar-nav');
+
+    // Parent links only become accordion toggles while the burger menu is
+    // actually open. With the main navbar visible (any width), the submenu
+    // opens on hover, so the parent link must navigate normally - let the
+    // smooth-scroll handler in initNavigation do its job.
+    const burgerOpen = () => navbarNav && navbarNav.classList.contains('show');
+
+    // Hover opens the burger panel on mouse devices at narrow widths
+    // (touch keeps click-to-toggle). The panel is a descendant of .navbar,
+    // so moving the cursor into it keeps the panel open; leaving closes it.
+    const canHover = window.matchMedia('(hover: hover)').matches;
+    const nav = document.querySelector('.navbar');
+    if (canHover && nav) {
+        const isNarrow = () => window.matchMedia('(max-width: 767px)').matches;
+        nav.addEventListener('mouseenter', () => {
+            if (isNarrow()) navbarNav.classList.add('show');
+        });
+        nav.addEventListener('mouseleave', () => {
+            if (isNarrow()) navbarNav.classList.remove('show');
+        });
+    }
 
     // Any tap closes all open submenus - except taps on a parent link,
     // which the link's own handler toggles below.
@@ -703,6 +722,7 @@ function initTouchNav() {
         const link = item.querySelector(':scope > .nav-link');
         if (!link) return;
         link.addEventListener('click', (e) => {
+            if (!burgerOpen()) return; // main navbar: navigate, don't toggle
             e.preventDefault();
             e.stopImmediatePropagation(); // accordion only - no scroll/panel close
             // Accordion: close sibling submenus, toggle this one
