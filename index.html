@@ -30,9 +30,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
 
     <!-- Bundled Stylesheet -->
-<link rel="preload" href="assets/css/bundle.css?v=8.4" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="assets/css/bundle.css?v=8.5" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
-    <noscript><link rel="stylesheet" href="assets/css/bundle.css?v=8.4"></noscript>
+    <noscript><link rel="stylesheet" href="assets/css/bundle.css?v=8.5"></noscript>
     <!-- JavaScript Bundle Update -->
     <!-- Font Awesome Icons (subset, self-hosted) -->
     <link rel="stylesheet" href="assets/css/fa-subset.css?v=1.1">
@@ -823,9 +823,13 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
+        <!-- Skills Section — ponytail: 70 badges in 8 cards collapsed behind native <details>; Core Skills above stays visible -->
         <section data-animate class="content-wrapper section-anchor" id="experience-skills">
-            <h3 class="section-title">Technical Skills</h3>
+            <details class="skills-disclosure">
+                <summary class="skills-summary" aria-label="Toggle full technical skills list">
+                    <span class="skills-summary-title">Technical Skills</span>
+                    <span class="skills-summary-hint" aria-hidden="true"><span class="hint-show">Show all</span><span class="hint-hide">Hide</span> <i class="fas fa-chevron-down skills-chevron"></i></span>
+                </summary>
             <div class="services">
                 <!-- Programming Languages -->
                 <div class="card">
@@ -1025,6 +1029,7 @@
                     </div>
                 </div>
             </div>
+            </details>
         </section>
 
         </section>
