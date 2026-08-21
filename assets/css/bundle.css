@@ -2177,3 +2177,107 @@ select.form-control:focus {
     /* LinkedIn embed scaling */
     .card iframe { height: 350px !important; }
 }
+
+/* ===== SKILLS DISCLOSURE (collapsible Technical Skills) ===== */
+/* ponytail: native <details>/<summary> — zero JS, works on every device, keyboard + touch. */
+.skills-disclosure {
+    background: #ffffff;
+    border: 1px solid #e7e0d5;
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+}
+.skills-disclosure > .services {
+    margin-top: 0;
+    padding: 0 var(--spacing-xl) var(--spacing-2xl);
+}
+/* closed state: keep services hidden by native UA; padding above ensures no gap when open */
+.skills-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    width: 100%;
+    min-height: 64px;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background var(--transition-fast);
+}
+.skills-summary::-webkit-details-marker { display: none; }
+.skills-summary::marker { content: ""; }
+.skills-summary-title {
+    font-family: var(--font-secondary);
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-light);
+    line-height: 1.2;
+}
+.skills-summary-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    font-family: var(--font-secondary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    padding: 8px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+    line-height: 1;
+}
+.skills-chevron {
+    font-size: 0.7rem;
+    transition: transform var(--transition-medium);
+}
+.skills-disclosure[open] .skills-chevron {
+    transform: rotate(180deg);
+}
+.skills-disclosure:not([open]) .hint-hide { display: none; }
+.skills-disclosure[open] .hint-show { display: none; }
+.skills-summary:hover {
+    background: #fffaf5;
+}
+.skills-summary:active {
+    background: #fff7ed;
+}
+.skills-summary:focus-visible {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 2px;
+    border-radius: var(--radius-small);
+}
+/* content reveal: subtle fade, no layout shift */
+.skills-disclosure[open] > .services {
+    animation: skillsReveal 0.28s ease;
+}
+@keyframes skillsReveal {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 767px) {
+    .skills-summary {
+        min-height: 52px;
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    .skills-summary-title {
+        font-size: 1.45rem;
+    }
+    .skills-summary-hint {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+    }
+    .skills-disclosure > .services {
+        padding: 0 var(--spacing-md) var(--spacing-xl);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .skills-chevron { transition: none; }
+    .skills-disclosure[open] > .services { animation: none; }
+}
