@@ -1204,20 +1204,31 @@ section[id] {
 }
 
 /* ===== HERO CTA BUTTONS ===== */
+/* ponytail: 2×2 grid — square when space allows, never overflows */
 .hero-cta {
     display: flex;
-    gap: var(--spacing-lg);
     justify-content: center;
-    flex-wrap: wrap;
+    width: 100%;
 }
-
-/* Get In Touch wraps to its own line below the brand buttons (desktop/tablet only) */
-@media (min-width: 768px) {
+.hero-cta-brands {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-md);
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+}
+.hero-cta-brands .btn {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    justify-content: center;
+    white-space: nowrap;
+}
+@media (max-width: 380px) {
     .hero-cta-brands {
-        display: flex;
-        gap: var(--spacing-lg);
-        justify-content: center;
-        flex-basis: 100%;
+        grid-template-columns: 1fr;
+        max-width: 280px;
     }
 }
 
@@ -1238,6 +1249,38 @@ section[id] {
 .hero-cta .btn i:only-child,
 .hero-cta .btn svg:only-child {
     margin-right: 0;
+}
+
+/* ===== PROOF STRIP (under hero, above fold) ===== */
+.proof-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.35rem 0.85rem;
+    margin-top: var(--spacing-xl);
+    padding: 0.65rem 1rem;
+    background: #fdfbf7;
+    border: 1px solid #e7e0d5;
+    border-radius: 999px;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    line-height: 1.2;
+}
+.proof-strip strong {
+    color: var(--text-light);
+    font-weight: 800;
+}
+.proof-dot {
+    color: #c9b8a3;
+    font-weight: 400;
+}
+@media (max-width: 640px) {
+    .proof-strip {
+        font-size: 0.78rem;
+        padding: 0.55rem 0.85rem;
+        gap: 0.3rem 0.6rem;
+    }
 }
 
 /* ===== CASE STUDY CTAs ===== */
@@ -1979,16 +2022,16 @@ select.form-control:focus {
     }
     .hero-cta {
         gap: var(--spacing-md);
-        flex-direction: column;
-        align-items: center;
     }
-    .hero-cta .btn {
-        width: 100%;
-        max-width: 280px;
-    }
-    /* keep brand buttons as direct flex items on mobile (same stacked layout as before) */
     .hero-cta-brands {
-        display: contents;
+        gap: var(--spacing-sm);
+        max-width: 100%;
+    }
+    .hero-cta-brands .btn {
+        min-width: 0;
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+        font-size: 0.9rem;
     }
 
     /* Cards */

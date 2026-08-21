@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 function initNavigation() {
     const primaryNavLinks = document.querySelectorAll('.nav-link[data-level="primary"]');
-    const allNavLinks = document.querySelectorAll('.nav-link[data-level]');
+    const allNavLinks = document.querySelectorAll('.nav-link[data-level], .navbar-logo, .hero-scroll');
     const indicator = document.querySelector('.nav-indicator');
     const header = document.querySelector('header');
     const navMenu = document.getElementById('navMenu');
@@ -240,6 +240,14 @@ function initNavigation() {
                 }
             }
         }
+        // Special handling for CV section to respect active CV tab (parity with Projects)
+        if (currentSectionId === 'cv') {
+            const activeCvBtn = document.querySelector('.cv-viewer-tabs [data-cv-tab].active');
+            if (activeCvBtn) {
+                const cvLink = document.querySelector(`.nav-link-sub[data-cv-tab="${activeCvBtn.dataset.cvTab}"]`);
+                if (cvLink) activeLink = cvLink;
+            }
+        }
         
         if (activeLink) {
             activeLink.classList.add('active');
@@ -325,46 +333,18 @@ function initNavigation() {
         toggler.addEventListener('click', toggleMobileMenu);
     }
 
-    // Click on Links (Smooth Scroll + Close Menu + Move Indicator)
+    // Click on Links (Smooth Scroll + Close Menu + Move Indicator) — ponytail: native smooth (CSS scroll-behavior) like the logo had; 1.5s custom was the slow one — deleted
     allNavLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
+            const rawHref = link.getAttribute('href') || '';
+            const targetId = rawHref.startsWith('#') ? rawHref.substring(1) : rawHref;
+            const targetSection = targetId ? document.getElementById(targetId) : null;
 
             if (targetSection) {
-                // Custom slow smooth scroll
-                const startPosition = window.pageYOffset;
-                // Get scroll-margin-top from CSS or default to 120
-                const scrollMargin = parseInt(window.getComputedStyle(targetSection).scrollMarginTop) || 120;
-                const elementPosition = targetSection.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + startPosition - scrollMargin;
-                const distance = offsetPosition - startPosition;
-                const duration = 1500; // 1.5s for professional, slower feel
-                let start = null;
-
-                // Temporarily disable native smooth scroll to prevent conflict
-                const originalBehavior = document.documentElement.style.scrollBehavior;
-                document.documentElement.style.scrollBehavior = 'auto';
-
-                function step(timestamp) {
-                    if (!start) start = timestamp;
-                    const progress = timestamp - start;
-                    const percent = Math.min(progress / duration, 1);
-                    
-                    // Ease In Out Cubic
-                    const ease = percent < 0.5 ? 4 * percent * percent * percent : 1 - Math.pow(-2 * percent + 2, 3) / 2;
-
-                    window.scrollTo(0, startPosition + (distance * ease));
-
-                    if (progress < duration) {
-                        window.requestAnimationFrame(step);
-                    } else {
-                        document.documentElement.style.scrollBehavior = originalBehavior;
-                    }
-                }
-                
-                window.requestAnimationFrame(step);
+                // ponytail: native platform smooth — #top goes to exact 0, others use CSS scroll-margin-top (90px) via scrollIntoView
+                if (targetId === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+                else targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
                 // Immediate visual update - reset all nav links
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
@@ -634,7 +614,8 @@ function initFormValidation() {
  * =========================================================================
  */
 function initCvViewer() {
-    const tabs = document.querySelectorAll('[data-cv-tab]');
+    const tabs = document.querySelectorAll('.cv-viewer-tabs [data-cv-tab]');
+    const navCvLinks = document.querySelectorAll('.nav-link[data-cv-tab]');
     const download = document.getElementById('cv-download');
     const section = document.getElementById('cv');
     if (!tabs.length) return;
@@ -666,9 +647,19 @@ function initCvViewer() {
             });
             syncDownload(embed);
             bump();
+            // keep nav submenu in sync when viewer tabs are clicked directly
+            navCvLinks.forEach(l => l.classList.toggle('active', l.dataset.cvTab === btn.dataset.cvTab));
         });
     });
     syncDownload(document.querySelector('.cv-embed-wrapper embed:not([hidden])'));
+
+    // Link navbar CV submenu items to viewer tabs (parity with Projects filters)
+    navCvLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const tab = document.querySelector(`.cv-viewer-tabs [data-cv-tab="${link.dataset.cvTab}"]`);
+            if (tab) tab.click();
+        });
+    });
 
     // Pin exists only while the CV section is on screen
     if (download && section && 'IntersectionObserver' in window) {
@@ -778,7 +769,9 @@ function initBackToTop() {
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        // ponytail: native smooth like logo — platform default (~300-500ms), no custom 1.5s
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
