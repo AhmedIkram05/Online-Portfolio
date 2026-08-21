@@ -82,7 +82,6 @@
                         <div class="sub-nav-indicator"></div>
                         <a class="nav-link nav-link-sub" href="#about-all" data-level="secondary">Who I Am</a>
                         <a class="nav-link nav-link-sub" href="#about-journey" data-level="secondary">What I've Built</a>
-                        <a class="nav-link nav-link-sub" href="#about-difference" data-level="secondary">What I Bring</a>
                         <a class="nav-link nav-link-sub" href="#about-looking" data-level="secondary">What I'm Looking For</a>
                     </div>
                 </li>
@@ -170,17 +169,9 @@
                 <h3 class="section-title">What I've Built</h3>
                 <div class="card" data-animate>
                     <div class="card-body">
-                        <p class="card-text">My strongest work ships end-to-end with real guardrails. LAAD began as a 7-person university team project, after the module ended, I rebuilt and extended it independently over the summer. I built a LangGraph hybrid RAG assistant that nearly doubles retrieval recall over deterministic routing (0.708 vs 0.350), a 3-layer anomaly detector reaching 0.70 F1 on a live Kafka stream, a full Kafka streaming pipeline, and a complete AWS/Terraform deployment, all solo.</p>
-                        <p class="card-text">On my own: SWE-Qwen, a full LLMOps platform that fine-tuned Qwen3-14B and drove its fix rate 7x over the base model; StockLens, a FinTech app with a native Rust extension and LSTM forecaster; DevSync, a full-stack project management platform guarded by 1,452 tests; and two data platforms, WikiStream, ingesting 58.9M+ real-time events with zero loss, and an Azure ETL pipeline serving Power BI.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="section-anchor" id="about-difference">
-                <h3 class="section-title">What I Bring</h3>
-                <div class="card" data-animate>
-                    <div class="card-body">
-                        <p class="card-text">Most of my engineering habits come from real pressure: five years of part-time work has me training staff, managing competing priorities, and resolving system failures live. That experience taught me clear communication and ownership of outcomes, habits that carry directly into technical work.</p>
-                        <p class="card-text">I build for the gap between "works on my machine" and "works for real users". Concretely: my CI gates block any merge that regresses a RAGAS metric by more than 0.05, model promotion is gated behind statistical significance tests, and streaming pipelines hold at-least-once delivery under chaos injections, with zero long-lived credentials across every deployment.</p>
+                        <p class="card-text">My strongest work ships end-to-end with real guardrails. LAAD began as a 7-person university team project — after the module I rebuilt it solo: LangGraph hybrid RAG (0.708 vs 0.350 recall), 3-layer anomaly detector (0.70 F1) on a live Kafka stream, plus a full Kafka pipeline and AWS/Terraform deploy.</p>
+                        <p class="card-text">Solo: SWE-Qwen (fine-tuned Qwen3-14B, 7× fix rate), StockLens (Rust + LSTM), DevSync (1,452 tests), WikiStream (58.9M+ events, zero loss) and an Azure ETL → Power BI platform. All gated for real users — CI blocks RAGAS regress &gt;0.05, promos need sig tests, streams hold at-least-once under chaos, zero long-lived creds.</p>
+                        <!-- ponytail: What I Bring merged here — proof beats claims -->
                     </div>
                 </div>
             </div>
