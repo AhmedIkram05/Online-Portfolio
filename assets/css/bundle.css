@@ -2281,3 +2281,9 @@ select.form-control:focus {
     .skills-chevron { transition: none; }
     .skills-disclosure[open] > .services { animation: none; }
 }
+
+/* ponytail: Earlier Work uses same disclosure — needs same section gap as Technical Skills (separate animated sections elsewhere have 3xl padding) */
+.project-group[data-group="earlier"] { margin-top: var(--spacing-3xl); }
+@media (max-width: 767px) {
+    .project-group[data-group="earlier"] { margin-top: var(--spacing-2xl); }
+}

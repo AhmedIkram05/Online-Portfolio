@@ -30,9 +30,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
 
     <!-- Bundled Stylesheet -->
-<link rel="preload" href="assets/css/bundle.css?v=8.5" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="assets/css/bundle.css?v=8.6" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
-    <noscript><link rel="stylesheet" href="assets/css/bundle.css?v=8.5"></noscript>
+    <noscript><link rel="stylesheet" href="assets/css/bundle.css?v=8.6"></noscript>
     <!-- JavaScript Bundle Update -->
     <!-- Font Awesome Icons (subset, self-hosted) -->
     <link rel="stylesheet" href="assets/css/fa-subset.css?v=1.1">
@@ -368,8 +368,12 @@
             </div>
 
             <div class="project-group" data-group="earlier">
-                <h3 class="section-title">Earlier Work</h3>
-
+                <!-- ponytail: Earlier Work collapsed behind native <details> — same disclosure as Technical Skills, zero JS -->
+                <details class="skills-disclosure">
+                    <summary class="skills-summary" aria-label="Toggle earlier work">
+                        <span class="skills-summary-title">Earlier Work</span>
+                        <span class="skills-summary-hint" aria-hidden="true"><span class="hint-show">Show all</span><span class="hint-hide">Hide</span> <i class="fas fa-chevron-down skills-chevron"></i></span>
+                    </summary>
                 <div class="services">
                 <!-- Project: Haggis Predictive Modeling -->
                 <div class="card project-card accent-haggis" data-category="ai-ml" data-accent>
@@ -405,7 +409,7 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">Unix Version Control System</h4>
-                        <p class="card-text">Version Control System made using Bash script</p>
+                        <p class="card-text">Git-like VCS in pure Bash — check-in/out with file locking, timestamped backups, automatic diffs and filterable audit log. Zero deps beyond Unix utils.</p>
                         <div class="tech-stack">
                             <span class="badge">Bash</span>
                         </div>
@@ -433,6 +437,7 @@
                 </div>
 
                 </div>
+                </details>
             </div>
 </section>
     
