@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="WikiStream">
+  <rect width="1200" height="630" fill="#191613"/>
+  <g transform="translate(664,134)" opacity="0.07">
+  <g fill="none" stroke="#06b6d4" stroke-width="9" stroke-linecap="round">
+   <polyline points="15,75 85,75 115,40 145,110 175,75 255,75 285,45 315,95 345,75 425,75" opacity="0.9"/>
+   <polyline points="15,155 95,155 125,122 155,188 185,155 265,155 295,125 325,185 355,155 430,155" opacity="0.6"/>
+   <polyline points="15,235 90,235 120,204 150,270 180,235 255,235 285,210 315,260 345,235 425,235" opacity="0.35"/>
+  </g></g>
+  <text x="70" y="212" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="24" letter-spacing="8" fill="#9a917f">PROJECT</text>
+  <text x="68" y="330" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="700" fill="#f5f0e8">WikiStream</text>
+  <rect x="72" y="368" width="88" height="7" fill="#06b6d4"/>
+  <text x="70" y="446" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="27" fill="#06b6d4">Python · ClickHouse · Grafana</text>
+  <g transform="translate(700,170) scale(1.0)">
+  <g fill="none" stroke="#06b6d4" stroke-width="9" stroke-linecap="round">
+   <polyline points="15,75 85,75 115,40 145,110 175,75 255,75 285,45 315,95 345,75 425,75" opacity="0.9"/>
+   <polyline points="15,155 95,155 125,122 155,188 185,155 265,155 295,125 325,185 355,155 430,155" opacity="0.6"/>
+   <polyline points="15,235 90,235 120,204 150,270 180,235 255,235 285,210 315,260 345,235 425,235" opacity="0.35"/>
+  </g></g>
+</svg>
