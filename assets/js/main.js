@@ -642,8 +642,8 @@ function initCvViewer() {
             const embed = document.getElementById('cv-' + btn.dataset.cvTab);
             if (!embed) return;
             if (embed.dataset.src && !embed.src) embed.src = embed.dataset.src; // first view only
-            document.querySelectorAll('.cv-embed-wrapper embed').forEach(e => {
-                e.hidden = e !== embed;
+            document.querySelectorAll('.cv-embed-wrapper > [role="tabpanel"]').forEach(p => {
+                p.hidden = p !== embed.parentElement;
             });
             syncDownload(embed);
             bump();
@@ -651,7 +651,7 @@ function initCvViewer() {
             navCvLinks.forEach(l => l.classList.toggle('active', l.dataset.cvTab === btn.dataset.cvTab));
         });
     });
-    syncDownload(document.querySelector('.cv-embed-wrapper embed:not([hidden])'));
+    syncDownload(document.querySelector('.cv-embed-wrapper > [role="tabpanel"]:not([hidden]) embed'));
 
     // Link navbar CV submenu items to viewer tabs (parity with Projects filters)
     navCvLinks.forEach(link => {
