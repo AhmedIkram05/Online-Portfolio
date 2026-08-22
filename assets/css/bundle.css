@@ -2333,3 +2333,38 @@ select.form-control:focus {
 @media (max-width: 767px) {
     .project-group[data-group="earlier"] { margin-top: var(--spacing-2xl); }
 }
+
+/* ==========================================================================
+   SKIP LINK + FOOTER
+   ========================================================================== */
+
+.skip-link {
+    position: absolute;
+    top: -60px;
+    left: var(--spacing-lg);
+    z-index: 2000;
+    background: #c2410c;
+    color: #fff;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: 0 0 var(--radius-medium) var(--radius-medium);
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+.site-footer {
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid #e7e0d5;
+    margin-top: var(--spacing-2xl);
+}
+
+.site-footer p {
+    margin: 0;
+}
