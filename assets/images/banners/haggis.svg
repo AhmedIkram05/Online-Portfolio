@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Haggis ML">
+  <rect width="1200" height="630" fill="#191613"/>
+  <g transform="translate(664,134)" opacity="0.07">
+  <g fill="#14b8a6">
+   <rect x="30" y="150" width="52" height="160" rx="8" opacity="0.45"/>
+   <rect x="102" y="100" width="52" height="210" rx="8"/>
+   <rect x="210" y="180" width="52" height="130" rx="8" opacity="0.45"/>
+   <rect x="282" y="70" width="52" height="240" rx="8"/>
+  </g></g>
+  <text x="70" y="212" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="24" letter-spacing="8" fill="#9a917f">PROJECT</text>
+  <text x="68" y="330" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="700" fill="#f5f0e8">Haggis ML</text>
+  <rect x="72" y="368" width="88" height="7" fill="#14b8a6"/>
+  <text x="70" y="446" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="27" fill="#14b8a6">Python · XGBoost · scikit-learn</text>
+  <g transform="translate(700,170) scale(1.0)">
+  <g fill="#14b8a6">
+   <rect x="30" y="150" width="52" height="160" rx="8" opacity="0.45"/>
+   <rect x="102" y="100" width="52" height="210" rx="8"/>
+   <rect x="210" y="180" width="52" height="130" rx="8" opacity="0.45"/>
+   <rect x="282" y="70" width="52" height="240" rx="8"/>
+  </g></g>
+</svg>

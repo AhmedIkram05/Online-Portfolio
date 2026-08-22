@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="SWE-Qwen">
+  <rect width="1200" height="630" fill="#191613"/>
+  <g transform="translate(664,134)" opacity="0.07">
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-weight="700">
+   <text x="60" y="245" font-size="150" fill="#059669">{{</text>
+   <text x="300" y="245" font-size="150" fill="#059669">}</text>
+   <text x="185" y="130" font-size="44" fill="#059669">+</text>
+   <text x="228" y="130" font-size="44" fill="#059669">+</text>
+   <text x="206" y="192" font-size="50" fill="#9a917f">-</text>
+  </g></g>
+  <text x="70" y="212" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="24" letter-spacing="8" fill="#9a917f">PROJECT</text>
+  <text x="68" y="330" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="700" fill="#f5f0e8">SWE-Qwen</text>
+  <rect x="72" y="368" width="88" height="7" fill="#059669"/>
+  <text x="70" y="446" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="27" fill="#059669">PyTorch · QLoRA · vLLM</text>
+  <g transform="translate(700,170) scale(1.0)">
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-weight="700">
+   <text x="60" y="245" font-size="150" fill="#059669">{{</text>
+   <text x="300" y="245" font-size="150" fill="#059669">}</text>
+   <text x="185" y="130" font-size="44" fill="#059669">+</text>
+   <text x="228" y="130" font-size="44" fill="#059669">+</text>
+   <text x="206" y="192" font-size="50" fill="#9a917f">-</text>
+  </g></g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="W3C ETL">
+  <rect width="1200" height="630" fill="#191613"/>
+  <g transform="translate(664,134)" opacity="0.07">
+  <g stroke="#3b82f6" stroke-width="12" fill="#3b82f6">
+   <circle cx="45" cy="175" r="24"/><circle cx="205" cy="175" r="24"/><circle cx="365" cy="175" r="24"/>
+   <line x1="69" y1="175" x2="168" y2="175"/><line x1="229" y1="175" x2="328" y2="175"/>
+   <path d="M158 155 L184 175 L158 195 Z" stroke="none"/><path d="M318 155 L344 175 L318 195 Z" stroke="none"/>
+  </g></g>
+  <text x="70" y="212" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="24" letter-spacing="8" fill="#9a917f">PROJECT</text>
+  <text x="68" y="330" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="700" fill="#f5f0e8">W3C ETL</text>
+  <rect x="72" y="368" width="88" height="7" fill="#3b82f6"/>
+  <text x="70" y="446" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="27" fill="#3b82f6">Databricks · dbt · Airflow</text>
+  <g transform="translate(700,170) scale(1.0)">
+  <g stroke="#3b82f6" stroke-width="12" fill="#3b82f6">
+   <circle cx="45" cy="175" r="24"/><circle cx="205" cy="175" r="24"/><circle cx="365" cy="175" r="24"/>
+   <line x1="69" y1="175" x2="168" y2="175"/><line x1="229" y1="175" x2="328" y2="175"/>
+   <path d="M158 155 L184 175 L158 195 Z" stroke="none"/><path d="M318 155 L344 175 L318 195 Z" stroke="none"/>
+  </g></g>
+</svg>
