@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="LAAD">
+  <rect width="1200" height="630" fill="#191613"/>
+  <g transform="translate(664,134)" opacity="0.07">
+  <polyline points="10,175 110,175 150,175 178,55 212,300 240,175 305,175 340,175 362,115 388,225 408,175 450,175"
+   fill="none" stroke="#8b5cf6" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <text x="70" y="212" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="24" letter-spacing="8" fill="#9a917f">PROJECT</text>
+  <text x="68" y="330" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="700" fill="#f5f0e8">LAAD</text>
+  <rect x="72" y="368" width="88" height="7" fill="#8b5cf6"/>
+  <text x="70" y="446" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="27" fill="#8b5cf6">Kafka · XGBoost · LangGraph · AWS</text>
+  <g transform="translate(700,170) scale(1.0)">
+  <polyline points="10,175 110,175 150,175 178,55 212,300 240,175 305,175 340,175 362,115 388,225 408,175 450,175"
+   fill="none" stroke="#8b5cf6" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg>

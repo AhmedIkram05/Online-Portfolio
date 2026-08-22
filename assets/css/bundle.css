@@ -1562,10 +1562,12 @@ section[id] {
     background: #ffffff;
 }
 
-.experience-item h5 {
+.experience-item h3,
+.experience-item h4 {
     color: var(--text-light);
     font-weight: 600;
     margin-bottom: var(--spacing-sm);
+    font-size: 1.4rem; /* matches former h5 sizing */
 }
 
 .experience-item p {
@@ -1691,8 +1693,8 @@ section[id] {
     min-height: 800px;
 }
 
-/* Exactly one CV embed is visible at a time: hidden wins over any display rule */
-.cv-embed-wrapper embed[hidden] {
+/* Exactly one CV panel is visible at a time: hidden wins over any display rule */
+.cv-embed-wrapper [hidden] {
     display: none;
 }
 
@@ -1883,7 +1885,7 @@ select.form-control:focus {
     background: #f1ece3;
 }
 
-.contact-item h6 {
+.contact-item h4 {
     font-weight: 600;
     margin: 0;
     flex: 0 0 auto;
@@ -2075,7 +2077,8 @@ select.form-control:focus {
         padding: var(--spacing-lg);
         margin-bottom: var(--spacing-lg);
     }
-    .experience-item h5 {
+    .experience-item h3,
+    .experience-item h4 {
         font-size: 1.2rem;
     }
     .experience-item ul li {
@@ -2125,7 +2128,7 @@ select.form-control:focus {
         grid-template-columns: 42px 1fr;
         gap: var(--spacing-sm);
     }
-    .contact-item h6 {
+    .contact-item h4 {
         font-size: 1rem;
     }
     .contact-item i {
@@ -2196,7 +2199,7 @@ select.form-control:focus {
 
     /* Experience items */
     .experience-item { padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-2xl); }
-    .experience-item h5 { font-size: 1.3rem; }
+    .experience-item h3, .experience-item h4 { font-size: 1.3rem; }
     .experience-item ul li { font-size: 0.95rem; }
 
     /* Contact page */
@@ -2329,4 +2332,39 @@ select.form-control:focus {
 .project-group[data-group="earlier"] { margin-top: var(--spacing-3xl); }
 @media (max-width: 767px) {
     .project-group[data-group="earlier"] { margin-top: var(--spacing-2xl); }
+}
+
+/* ==========================================================================
+   SKIP LINK + FOOTER
+   ========================================================================== */
+
+.skip-link {
+    position: absolute;
+    top: -60px;
+    left: var(--spacing-lg);
+    z-index: 2000;
+    background: #c2410c;
+    color: #fff;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: 0 0 var(--radius-medium) var(--radius-medium);
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+.site-footer {
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid #e7e0d5;
+    margin-top: var(--spacing-2xl);
+}
+
+.site-footer p {
+    margin: 0;
 }

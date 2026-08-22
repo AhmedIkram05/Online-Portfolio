@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Unix VCS">
+  <rect width="1200" height="630" fill="#191613"/>
+  <g transform="translate(664,134)" opacity="0.07">
+  <g stroke="#64748b" stroke-width="8" fill="none" stroke-linecap="round">
+   <line x1="35" y1="215" x2="395" y2="215"/>
+   <line x1="150" y1="215" x2="205" y2="125"/><line x1="205" y1="125" x2="300" y2="125"/>
+  </g>
+  <g fill="#64748b">
+   <circle cx="35" cy="215" r="15"/><circle cx="150" cy="215" r="15"/>
+   <circle cx="205" cy="125" r="15"/><circle cx="300" cy="125" r="15"/><circle cx="395" cy="215" r="15"/>
+  </g></g>
+  <text x="70" y="212" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="24" letter-spacing="8" fill="#9a917f">PROJECT</text>
+  <text x="68" y="330" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="700" fill="#f5f0e8">Unix VCS</text>
+  <rect x="72" y="368" width="88" height="7" fill="#64748b"/>
+  <text x="70" y="446" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="27" fill="#64748b">check-in · lock · diff · Bash</text>
+  <g transform="translate(700,170) scale(1.0)">
+  <g stroke="#64748b" stroke-width="8" fill="none" stroke-linecap="round">
+   <line x1="35" y1="215" x2="395" y2="215"/>
+   <line x1="150" y1="215" x2="205" y2="125"/><line x1="205" y1="125" x2="300" y2="125"/>
+  </g>
+  <g fill="#64748b">
+   <circle cx="35" cy="215" r="15"/><circle cx="150" cy="215" r="15"/>
+   <circle cx="205" cy="125" r="15"/><circle cx="300" cy="125" r="15"/><circle cx="395" cy="215" r="15"/>
+  </g></g>
+</svg>
