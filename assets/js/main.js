@@ -149,43 +149,15 @@ document.addEventListener('DOMContentLoaded', () => {
 function initNavigation() {
     const primaryNavLinks = document.querySelectorAll('.nav-link[data-level="primary"]');
     const allNavLinks = document.querySelectorAll('.nav-link[data-level], .navbar-logo, .hero-scroll');
-    const indicator = document.querySelector('.nav-indicator');
     const header = document.querySelector('header');
     const navMenu = document.getElementById('navMenu');
     const toggler = document.querySelector('.navbar-toggler');
     const navbarNav = document.querySelector('.navbar-nav');
-    
+
     // Safety check for critical elements
     if (!header || !navMenu) return;
 
-    /* --- 1. Sliding Indicator Logic --- */
-    function moveIndicator(link) {
-        // Only run on desktop (768px+)
-        if (window.innerWidth < 768 || !indicator) return;
-        
-        const menuRect = navMenu.getBoundingClientRect();
-        const linkRect = link.getBoundingClientRect();
-        
-        indicator.style.width = `${linkRect.width}px`;
-        indicator.style.transform = `translateX(${linkRect.left - menuRect.left}px)`;
-        indicator.style.display = 'block';
-    }
-
-    function moveSubIndicator(link) {
-        const submenu = link.closest('.nav-submenu');
-        if (!submenu) return;
-        const subIndicator = submenu.querySelector('.sub-nav-indicator');
-        if (!subIndicator) return;
-
-        const menuRect = submenu.getBoundingClientRect();
-        const linkRect = link.getBoundingClientRect();
-        
-        subIndicator.style.height = `${linkRect.height}px`;
-        subIndicator.style.transform = `translateY(${linkRect.top - menuRect.top}px)`;
-        subIndicator.style.display = 'block';
-    }
-
-    /* --- 2. Active State on Scroll (Spy) --- */
+    /* --- 1. Active State on Scroll (Spy) --- */
     function onScrollSpy() {
         const centerLine = window.innerHeight / 3; // Trigger earlier (top third)
         // Expanded sections list to include sub-sections
@@ -251,27 +223,19 @@ function initNavigation() {
         
         if (activeLink) {
             activeLink.classList.add('active');
-            
-            // If it's a sub-link
+
+            // Sub-link active: highlight its parent section too
             if (activeLink.classList.contains('nav-link-sub')) {
-                moveSubIndicator(activeLink);
-                // Also activate the parent primary link
                 const parentItem = activeLink.closest('.nav-item');
                 if (parentItem) {
                     const primaryLink = parentItem.querySelector('.nav-link[data-level="primary"]');
-                    if (primaryLink) {
-                        primaryLink.classList.add('active');
-                        moveIndicator(primaryLink);
-                    }
+                    if (primaryLink) primaryLink.classList.add('active');
                 }
-            } else {
-                // It's a primary link
-                moveIndicator(activeLink);
             }
         }
     }
 
-    /* --- 3. Sticky Header Logic --- */
+    /* --- 2. Sticky Header Logic --- */
     function onScrollHeader() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         if (scrollTop > 50) {
@@ -281,7 +245,7 @@ function initNavigation() {
         }
     }
 
-    /* --- 4. Mobile Menu Logic --- */
+    /* --- 3. Drawer Menu Logic --- */
     function toggleMobileMenu(e) {
         if (e) {
             e.preventDefault();
@@ -299,7 +263,10 @@ function initNavigation() {
     function closeMobileMenu() {
         if (navbarNav && navbarNav.classList.contains('show')) {
             navbarNav.classList.remove('show');
-            if (toggler) toggler.classList.remove('active');
+            if (toggler) {
+                toggler.classList.remove('active');
+                toggler.setAttribute('aria-expanded', 'false');
+            }
         }
     }
 
@@ -333,6 +300,11 @@ function initNavigation() {
         toggler.addEventListener('click', toggleMobileMenu);
     }
 
+    // Escape closes the drawer
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMobileMenu();
+    });
+
     // Click on Links (Smooth Scroll + Close Menu + Move Indicator) — ponytail: native smooth (CSS scroll-behavior) like the logo had; 1.5s custom was the slow one — deleted
     allNavLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -351,18 +323,14 @@ function initNavigation() {
                 
                 const navItem = link.closest('.nav-item');
                 const primaryLink = navItem ? navItem.querySelector('.nav-link[data-level="primary"]') : null;
-                
-                if (primaryLink) {
-                    primaryLink.classList.add('active');
-                    moveIndicator(primaryLink);
-                }
+
+                if (primaryLink) primaryLink.classList.add('active');
 
                 // Activate clicked sub-link immediately
                 if (link.classList.contains('nav-link-sub')) {
                     link.classList.add('active');
-                    moveSubIndicator(link);
                 }
-                
+
                 // Close menu if open
                 closeMobileMenu();
             }
@@ -671,8 +639,8 @@ function initCvViewer() {
 
 /**
  * =========================================================================
- * TOUCH NAV MODULE
- * Tap-to-open submenus on the mobile burger menu (clicks drive it, not hover).
+ * DRAWER SUBMENU ACCORDIONS
+ * Tap/click-to-open submenus in the unified nav drawer (no hover anywhere).
  * Accordion: opening one submenu closes the others; tapping a parent link
  * again closes its own. Capture phase so parent links act as toggles, not
  * scroll jumps.
@@ -681,26 +649,10 @@ function initCvViewer() {
 function initTouchNav() {
     const navbarNav = document.querySelector('.navbar-nav');
 
-    // Parent links only become accordion toggles while the burger menu is
-    // actually open. With the main navbar visible (any width), the submenu
-    // opens on hover, so the parent link must navigate normally - let the
-    // smooth-scroll handler in initNavigation do its job.
+    // Parent links only act as accordion toggles while the drawer is open.
+    // With the drawer closed the links aren't visible anyway, so this is a
+    // belt-and-braces guard for programmatic clicks.
     const burgerOpen = () => navbarNav && navbarNav.classList.contains('show');
-
-    // Hover opens the burger panel on mouse devices at narrow widths
-    // (touch keeps click-to-toggle). The panel is a descendant of .navbar,
-    // so moving the cursor into it keeps the panel open; leaving closes it.
-    const canHover = window.matchMedia('(hover: hover)').matches;
-    const nav = document.querySelector('.navbar');
-    if (canHover && nav) {
-        const isNarrow = () => window.matchMedia('(max-width: 767px)').matches;
-        nav.addEventListener('mouseenter', () => {
-            if (isNarrow()) navbarNav.classList.add('show');
-        });
-        nav.addEventListener('mouseleave', () => {
-            if (isNarrow()) navbarNav.classList.remove('show');
-        });
-    }
 
     // Any tap closes all open submenus - except taps on a parent link,
     // which the link's own handler toggles below.
