@@ -485,12 +485,11 @@ header.scrolled {
 }
 
 /* Availability badge pinned to the far right of the full-width header bar,
-   tucked in parallel with the navbar logo on the far left. Anchored to the
-   header's edge (24px from the viewport) so it always hugs the screen's
-   right side, regardless of the centered navbar's inset. */
+   tucked in just left of the burger button so the two never collide.
+   Hidden on phones, where the header is too tight for it. */
 .navbar-badge {
     position: absolute;
-    right: var(--spacing-lg);
+    right: calc(var(--spacing-lg) + 60px);
     top: 50%;
     transform: translateY(-50%);
     display: inline-flex;
@@ -506,6 +505,12 @@ header.scrolled {
     border-radius: 20px;
     white-space: nowrap;
     z-index: 1100;
+}
+
+@media (max-width: 767.98px) {
+    .navbar-badge {
+        display: none;
+    }
 }
 
 .navbar-badge:hover {
@@ -542,18 +547,11 @@ header.scrolled {
     }
 }
 
-/* Hide badge when the centered 6-item nav reaches into the badge zone
-   (~219px + 24px right offset, anchored to the header's right edge).
-   Measured live at the 1200px boundary: below 1200px the nav widens and
-   overlaps the badge; at >= 1200px there is always room. */
-@media (max-width: 1199.98px) {
-    .navbar-badge {
-        display: none;
-    }
-}
+/* Hide badge when the header is too tight for it (handled above: phones only). */
 
 .navbar-toggler {
-    display: none;
+    display: inline-flex;
+    margin-left: auto;
     background: none;
     border: none;
     cursor: pointer;
@@ -612,14 +610,16 @@ header.scrolled {
 
 /* Site logo - "Ahmed Ikram" at the top of the page, scrubbed into
    </AI> as the hero scrolls past (JS sets --logo-p 0→1; see main.js).
-   Shown on mobile too (brand left, burger right) and on tablets/desktops. */
+   Shown at every width (brand left, burger right). Pushed +3ch right so
+   the full name sits where the </AI> mark sits - both share one anchor,
+   so the name's left edge cannot move when the morph plays. */
 .navbar-logo {
     --logo-p: 0;
     position: absolute;
-    left: var(--spacing-lg);
+    left: calc(var(--spacing-lg) + 3ch);
     top: 50%;
     transform: translateY(-50%);
-    display: none;
+    display: flex;
     align-items: center;
     color: var(--accent-color);
     font-family: var(--font-secondary);
@@ -716,26 +716,41 @@ header.scrolled {
     .navbar-logo .lg-close   { transform: none; opacity: 1; }
 }
 
-/* 1000-1075px: the full name would reach into the nav items, but the
-   compact </AI> mark still fits - pin it (same static state as the
-   reduced-motion block) so the full name never blocks the nav. The morph
-   animations are suppressed here: the logo simply rests as </AI>. */
-@media (min-width: 1000px) and (max-width: 1074.98px) {
-    .navbar-logo .logo-stage > span { animation: none !important; }
-    .navbar-logo .lg-rest-l,
-    .navbar-logo .lg-rest-r { opacity: 0; }
-    .navbar-logo .lg-a       { transform: translateX(5ch); }
-    .navbar-logo .lg-open,
-    .navbar-logo .lg-close   { transform: none; opacity: 1; }
-}
-
+/* ===== UNIFIED NAV DRAWER (all viewports) =====
+   One menu system at every width: the burger button is always visible and
+   opens this slide-down panel; submenus are tap/click accordions. There is
+   no :hover anywhere in the nav - hover-driven menus were the source of the
+   old fragility (mouse-off closes, scroll closes, accordion expansion moves
+   the panel out from under the cursor). */
 .navbar-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     display: flex;
     list-style: none;
     margin: 0;
-    padding: 0;
-    gap: var(--spacing-xl);
-    transition: all 0.4s ease;
+    padding: var(--spacing-sm) var(--spacing-lg) var(--spacing-lg);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: #ffffff;
+    border-top: 1px solid #e7e0d5;
+    box-shadow: 0 8px 32px rgba(28, 25, 23, 0.12);
+    transform: translateY(-12px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.navbar-nav.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    /* Menu taller than the viewport scrolls internally; page scroll closes it (see JS) */
+    max-height: calc(100vh - 100%);
+    max-height: calc(100dvh - 100%);
+    overflow-y: auto;
 }
 
 .nav-item {
@@ -746,15 +761,18 @@ header.scrolled {
     color: var(--text-light);
     text-decoration: none;
     font-weight: 600;
-    padding: var(--spacing-sm) var(--spacing-lg);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    padding: 0.75rem 0.25rem;
+    border-bottom: 1px solid #f0ece3;
     border-radius: var(--radius-small);
     transition: all var(--transition-medium);
     position: relative;
     overflow: visible; /* Ensure underline is visible */
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    font-size: 0.9rem;
-    display: block;
 }
 
 .nav-item.has-submenu {
@@ -769,41 +787,24 @@ header.scrolled {
     transition: transform var(--transition-medium);
 }
 
+/* In-panel accordion body: static, full width, indented under its parent */
 .nav-submenu {
     display: none;
-    position: absolute;
-    top: 100%; /* Gap removed for better mouse tracking */
-    left: 0;
-    margin-top: 0.4rem; /* Visual spacing */
-    background: #ffffff;
-    border: 1px solid #e7e0d5;
-    border-radius: var(--radius-medium);
-    padding: var(--spacing-sm) var(--spacing-lg);
-    min-width: 200px;
-    flex-direction: column;
-    gap: var(--spacing-xs);
-    z-index: 1100;
-    box-shadow: var(--shadow-md);
-}
-
-/* Invisible bridge to prevent mouse-off when moving to submenu */
-.nav-submenu::before {
-    content: '';
-    position: absolute;
-    top: -0.6rem;
-    left: 0;
+    position: static;
+    min-width: 0;
     width: 100%;
-    height: 1rem;
-    background: transparent;
+    flex-direction: column;
+    gap: 0;
+    padding: 0 0 0.5rem 1.25rem;
 }
 
-.nav-item.has-submenu:hover .nav-submenu {
-    display: flex;
-}
-
-/* Touch devices: tap-to-open (JS toggles .open; see initTouchNav) */
+/* Tap/click accordion: JS toggles .open (see initTouchNav) */
 .nav-item.has-submenu.open .nav-submenu {
     display: flex;
+}
+
+.nav-item.has-submenu.open > .nav-link::after {
+    transform: rotate(180deg);
 }
 
 /* Removed :focus-within to prevent click-sticking */
@@ -915,211 +916,15 @@ section[id] {
     background: #c2410c;
 }
 
-/* ===== DESKTOP NAVIGATION (768px and above) ===== */
+/* ===== WIDE SCREENS: drawer anchors to the right edge ===== */
 @media (min-width: 768px) {
-    .navbar {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .navbar-logo {
-        display: inline-flex;
-    }
-    
-    .navbar-toggler {
-        display: none;
-    }
-    
     .navbar-nav {
-        display: flex !important;
-        position: relative; /* REQUIRED for indicator */
-        flex-direction: row;
-        background: none;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        padding: 0;
-        border: none;
-        box-shadow: none;
-        width: auto;
-        gap: var(--spacing-xl);
-        transform: none;
-        opacity: 1;
-        visibility: visible;
-        transition: none;
-    }
-    
-    .nav-item {
-        width: auto;
-        margin: 0;
-        display: flex; /* Fix alignment */
-        align-items: center;
-    }
-    
-    .nav-link {
-        background: none;
-        border: none;
-        margin: 0;
-        width: auto;
-        text-align: left;
-        /* Ensure specific padding for hit area */
-        padding: 0.5rem 0; 
-        color: var(--text-light);
-    }
-    
-    .nav-link:hover,
-    .nav-link.active {
-        background: none;
-        border: none;
-        color: var(--text-light) !important;
-        transform: translateY(-1px);
-    }
-    
-    .nav-link::before {
-        display: block !important;
-    }
-
-    .nav-link.active::before {
-        display: none !important;
-    }
-
-    /* INDICATOR */
-    .nav-indicator {
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        height: 3px;
-        background-color: var(--secondary-color);
-        border-radius: 3px 3px 0 0;
-        transition: transform 0.3s ease, width 0.3s ease;
-        z-index: 100;
-        display: block; /* Visible on desktop */
-        pointer-events: none;
-    }
-
-    .sub-nav-indicator {
-        position: absolute;
-        left: 0;
-        width: 3px;
-        background-color: var(--secondary-color);
-        border-radius: 0 3px 3px 0;
-        transition: transform 0.3s ease, height 0.3s ease;
-        z-index: 10;
-        display: block;
-        pointer-events: none;
-    }
-}
-
-/* Hide the logo the same way as the badge when the centered nav reaches
-   into its zone on the left edge. Measured live: below ~1000px the nav's
-   left edge crosses the full name's right edge (~111px wide). The compact
-   </AI> mark still fits 1000-1075px - that band is pinned separately below.
-   Tablet/desktop only - mobile keeps the logo as the "Ahmed Ikram" brand.
-   Placed AFTER the min-width:768 block so it wins the cascade. */
-@media (min-width: 768px) and (max-width: 999.98px) {
-    .navbar-logo {
-        display: none;
-    }
-}
-
-/* ===== MOBILE NAVIGATION (burger menu + slide-down panel) ===== */
-@media (max-width: 767px) {
-    .navbar {
-        justify-content: flex-start;
-        position: relative;
-    }
-
-    /* Mobile: logo shows as the "Ahmed Ikram" brand (absolute, left);
-       the burger shifts to the far right (Anthropic-style header).
-       Pushed +3ch right so the full name sits where the </AI> mark sits
-       (both share one anchor - the name's left edge cannot move alone). */
-    .navbar-logo {
-        display: flex;
-        left: calc(var(--spacing-lg) + 3ch);
-    }
-
-    .navbar-toggler {
-        display: inline-flex;
-        margin-left: auto;
-    }
-
-    .nav-indicator {
-        display: none; /* desktop-only underline */
-    }
-
-    .navbar-nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
+        left: auto;
         right: 0;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        justify-content: flex-start;
-        background: #ffffff;
-        border-top: 1px solid #e7e0d5;
-        box-shadow: 0 8px 32px rgba(28, 25, 23, 0.12);
-        padding: var(--spacing-sm) var(--spacing-lg) var(--spacing-lg);
-        transform: translateY(-12px);
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-    }
-
-    .navbar-nav.show {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-        /* Menu taller than the viewport scrolls internally; page scroll closes it (see JS) */
-        max-height: calc(100vh - 100%);
-        max-height: calc(100dvh - 100%);
-        overflow-y: auto;
-    }
-
-    .nav-link {
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        font-size: 0.95rem;
-        padding: 0.75rem 0.25rem;
-        border-bottom: 1px solid #f0ece3;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        font-weight: 600;
-        color: var(--text-light);
-    }
-
-    /* Submenus become in-panel accordions */
-    .nav-item.has-submenu .nav-submenu {
-        position: static;
-        min-width: 0;
-        width: 100%;
-        padding: 0 0 0.5rem 1.25rem;
-        background: none;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        box-shadow: none;
-        border-radius: 0;
-        gap: 0;
-    }
-
-    /* Touch devices: hover must not hold a submenu open - tap-only (.open).
-       Mouse users at any width keep the base :hover rule (display: flex). */
-    @media (hover: none) {
-        .nav-item.has-submenu:hover .nav-submenu {
-            display: none;
-        }
-    }
-
-    .nav-item.has-submenu.open .nav-submenu {
-        display: flex;
-    }
-
-    .nav-item.has-submenu.open > .nav-link::after {
-        transform: rotate(180deg);
-    }
-
-    .nav-submenu .sub-nav-indicator {
-        display: none;
+        width: min(400px, 100%);
+        border: 1px solid #e7e0d5;
+        border-radius: var(--radius-medium);
+        box-shadow: var(--shadow-md);
     }
 }
 
