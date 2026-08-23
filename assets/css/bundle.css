@@ -1083,7 +1083,8 @@ section[id] {
         display: flex;
         align-items: center;
         font-size: 0.9rem;
-        padding: 0.6rem 0.25rem;
+        /* extra left padding keeps text clear of the accent bar (3px) */
+        padding: 0.6rem 0.25rem 0.6rem 0.75rem;
         border-bottom: none;
         text-transform: uppercase;
         letter-spacing: 0.5px;
