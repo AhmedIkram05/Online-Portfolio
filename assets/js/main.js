@@ -299,7 +299,10 @@ function initNavigation() {
     function closeMobileMenu() {
         if (navbarNav && navbarNav.classList.contains('show')) {
             navbarNav.classList.remove('show');
-            if (toggler) toggler.classList.remove('active');
+            if (toggler) {
+                toggler.classList.remove('active');
+                toggler.setAttribute('aria-expanded', 'false');
+            }
         }
     }
 
@@ -332,6 +335,11 @@ function initNavigation() {
     if (toggler) {
         toggler.addEventListener('click', toggleMobileMenu);
     }
+
+    // Escape closes the burger drawer
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMobileMenu();
+    });
 
     // Click on Links (Smooth Scroll + Close Menu + Move Indicator) — ponytail: native smooth (CSS scroll-behavior) like the logo had; 1.5s custom was the slow one — deleted
     allNavLinks.forEach(link => {
@@ -686,21 +694,6 @@ function initTouchNav() {
     // opens on hover, so the parent link must navigate normally - let the
     // smooth-scroll handler in initNavigation do its job.
     const burgerOpen = () => navbarNav && navbarNav.classList.contains('show');
-
-    // Hover opens the burger panel on mouse devices at narrow widths
-    // (touch keeps click-to-toggle). The panel is a descendant of .navbar,
-    // so moving the cursor into it keeps the panel open; leaving closes it.
-    const canHover = window.matchMedia('(hover: hover)').matches;
-    const nav = document.querySelector('.navbar');
-    if (canHover && nav) {
-        const isNarrow = () => window.matchMedia('(max-width: 767px)').matches;
-        nav.addEventListener('mouseenter', () => {
-            if (isNarrow()) navbarNav.classList.add('show');
-        });
-        nav.addEventListener('mouseleave', () => {
-            if (isNarrow()) navbarNav.classList.remove('show');
-        });
-    }
 
     // Any tap closes all open submenus - except taps on a parent link,
     // which the link's own handler toggles below.
