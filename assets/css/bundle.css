@@ -1053,7 +1053,7 @@ section[id] {
         right: 0;
         flex-direction: column;
         align-items: stretch;
-        gap: 0;
+        gap: var(--spacing-xs);
         justify-content: flex-start;
         background: #ffffff;
         border-top: 1px solid #e7e0d5;
@@ -1075,13 +1075,16 @@ section[id] {
         overflow-y: auto;
     }
 
+    /* Drawer rows styled like the desktop navbar links: same 0.9rem size,
+       no separator rules - whitespace does the separating, the accent
+       left-bar carries hover/active. */
     .nav-link {
         min-height: 44px;
         display: flex;
         align-items: center;
-        font-size: 0.95rem;
-        padding: 0.75rem 0.25rem;
-        border-bottom: 1px solid #f0ece3;
+        font-size: 0.9rem;
+        padding: 0.6rem 0.25rem;
+        border-bottom: none;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         font-weight: 600;
@@ -1107,18 +1110,32 @@ section[id] {
         width: 3px !important;
     }
 
-    /* Submenus become in-panel accordions */
+    /* Submenus become in-panel accordions, styled as inset versions of the
+       desktop dropdown cards (white, warm border, soft radius + shadow). */
     .nav-item.has-submenu .nav-submenu {
         position: static;
         min-width: 0;
         width: 100%;
-        padding: 0 0 0.5rem 1.25rem;
-        background: none;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        box-shadow: none;
-        border-radius: 0;
+        margin: 2px 0 0.25rem;
+        padding: var(--spacing-sm) var(--spacing-md);
+        background: #ffffff;
+        border: 1px solid #e7e0d5;
+        border-radius: var(--radius-medium);
+        box-shadow: var(--shadow-xs);
         gap: 0;
+    }
+
+    /* Sub-links keep their left-bar indicators; a touch more height for taps.
+       The bar anchors to the card's left edge (link sits one --spacing-md in). */
+    .nav-link-sub {
+        min-height: 36px;
+        display: flex;
+        align-items: center;
+        padding: 0.3rem 0.25rem;
+    }
+
+    .nav-item.has-submenu .nav-submenu .nav-link-sub::before {
+        left: calc(-1 * var(--spacing-md)) !important;
     }
 
     /* Touch devices: hover must not hold a submenu open - tap-only (.open).
