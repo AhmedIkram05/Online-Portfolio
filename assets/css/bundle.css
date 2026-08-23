@@ -36,7 +36,7 @@ html {
     --text-primary: #1c1917;
     --text-secondary: #57534e;
     --text-light: #1c1917;
-    --text-muted: rgba(28, 25, 23, 0.65);
+    --text-muted: rgba(28, 25, 23, 0.72);
     --text-dark: #1c1917;
     --text-accent: #c2410c;
     
@@ -89,6 +89,9 @@ body {
     font-weight: 400;
     background: var(--light-color);
 }
+
+:focus-visible { outline: 2px solid #c2410c; outline-offset: 2px; }
+:focus:not(:focus-visible) { outline: none; }
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
@@ -245,16 +248,18 @@ section[data-animate] {
     text-decoration: none;
 }
 
-/* Email CTA: distinct green so it stands out from brand buttons */
+/* Email CTA: clean white so dark brand buttons pop */
 .btn-hero-email {
-    background: var(--success-color);
-    color: #ffffff;
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 1px solid #e7e0d5;
+    box-shadow: var(--shadow-xs);
 }
 
 .btn-hero-email:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: var(--shadow-md);
-    color: #ffffff;
+    box-shadow: var(--shadow-sm);
+    color: #1a1a1a;
     text-decoration: none;
 }
 
