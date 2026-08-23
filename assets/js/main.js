@@ -308,6 +308,15 @@ function initNavigation() {
     // Click on Links (Smooth Scroll + Close Menu + Move Indicator) — ponytail: native smooth (CSS scroll-behavior) like the logo had; 1.5s custom was the slow one — deleted
     allNavLinks.forEach(link => {
         link.addEventListener('click', (e) => {
+            // Parent links of submenus inside the open drawer are accordion
+            // toggles - let initTouchNav's handler run instead of scrolling
+            // and closing the drawer. (Contact etc. have no submenu and take
+            // the normal navigate-and-close path below.)
+            if (navbarNav.classList.contains('show') &&
+                link.matches('.nav-link[data-level="primary"]') &&
+                link.closest('.nav-item.has-submenu')) {
+                return;
+            }
             e.preventDefault();
             const rawHref = link.getAttribute('href') || '';
             const targetId = rawHref.startsWith('#') ? rawHref.substring(1) : rawHref;
