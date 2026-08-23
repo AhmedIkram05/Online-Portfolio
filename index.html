@@ -83,7 +83,7 @@
     <header>
         <!-- Modern Navbar -->
         <nav class="navbar" aria-label="Main Navigation">
-            <button class="navbar-toggler" type="button" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle side menu">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle side menu">
                 <span class="side-menu-open" aria-hidden="true">
                     <span class="bar bar-top"></span>
                     <span class="bar bar-mid"></span>
@@ -94,6 +94,7 @@
                 <li class="nav-item has-submenu">
                     <a class="nav-link" href="#home" data-level="primary">About</a>
                     <div class="nav-submenu" role="group" aria-label="About links">
+                        <div class="sub-nav-indicator"></div>
                         <a class="nav-link nav-link-sub" href="#about-all" data-level="secondary">Who I Am</a>
                         <a class="nav-link nav-link-sub" href="#about-journey" data-level="secondary">What I've Built</a>
                         <a class="nav-link nav-link-sub" href="#about-looking" data-level="secondary">What I'm Looking For</a>
@@ -102,6 +103,7 @@
                 <li class="nav-item has-submenu">
                     <a class="nav-link" href="#projects" data-level="primary">Projects</a>
                     <div class="nav-submenu" role="group" aria-label="Project filters">
+                        <div class="sub-nav-indicator"></div>
                         <a class="nav-link nav-link-sub" href="#projects" data-filter="all" data-level="secondary">All Projects</a>
                         <a class="nav-link nav-link-sub" href="#projects" data-filter="ai-ml" data-level="secondary">AI & ML</a>
                         <a class="nav-link nav-link-sub" href="#projects" data-filter="data" data-level="secondary">Data Engineering</a>
@@ -113,6 +115,7 @@
                 <li class="nav-item has-submenu">
                     <a class="nav-link" href="#case-study" data-level="primary">Case Study</a>
                     <div class="nav-submenu" role="group" aria-label="Case study links">
+                        <div class="sub-nav-indicator"></div>
                         <a class="nav-link nav-link-sub" href="#case-study-overview" data-level="secondary">Overview</a>
                         <a class="nav-link nav-link-sub" href="#case-study-stats" data-level="secondary">Key Results</a>
                         <a class="nav-link nav-link-sub" href="#case-study-architecture" data-level="secondary">Architecture</a>
@@ -124,6 +127,7 @@
                 <li class="nav-item has-submenu">
                     <a class="nav-link" href="#experience" data-level="primary">Experience</a>
                     <div class="nav-submenu" role="group" aria-label="Experience links">
+                        <div class="sub-nav-indicator"></div>
                         <a class="nav-link nav-link-sub" href="#experience-work" data-level="secondary">Work Experience</a>
                         <a class="nav-link nav-link-sub" href="#experience-education" data-level="secondary">Education</a>
                         <a class="nav-link nav-link-sub" href="#experience-certifications" data-level="secondary">Certifications</a>
@@ -134,6 +138,7 @@
                 <li class="nav-item has-submenu">
                     <a class="nav-link" href="#cv" data-level="primary">CV</a>
                     <div class="nav-submenu" role="group" aria-label="CV versions">
+                        <div class="sub-nav-indicator"></div>
                         <a class="nav-link nav-link-sub" href="#cv" data-cv-tab="ai" data-level="secondary">AI Engineering</a>
                         <a class="nav-link nav-link-sub" href="#cv" data-cv-tab="de" data-level="secondary">Data Engineering</a>
                         <a class="nav-link nav-link-sub" href="#cv" data-cv-tab="swe" data-level="secondary">Software Engineering</a>
@@ -142,6 +147,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#contact" data-level="primary">Contact</a>
                 </li>
+                <li class="nav-indicator" aria-hidden="true"></li>
             </ul>
             <a class="navbar-logo" href="#top" aria-label="Ahmed Ikram, home">
                 <span class="logo-sizer" aria-hidden="true">Ahmed Ikram</span>
@@ -154,10 +160,10 @@
                     <span class="lg-close">&gt;</span>
                 </span>
             </a>
-            <span class="navbar-badge" title="Availability">
-                <i class="fas fa-check-circle"></i>Open to Opportunities
-            </span>
         </nav>
+        <span class="navbar-badge" title="Availability">
+            <i class="fas fa-check-circle"></i>Open to Opportunities
+        </span>
     </header>
 
     <!-- Main Content -->
