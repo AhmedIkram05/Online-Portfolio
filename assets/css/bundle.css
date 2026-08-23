@@ -1088,6 +1088,25 @@ section[id] {
         color: var(--text-light);
     }
 
+    /* Drawer rows: the horizontal navbar's centred bottom underline makes
+       no sense in a vertical list, so main-section rows reuse the sub-link
+       indicator language - a 3px accent bar on the left edge. The nesting
+       indent keeps parent/child hierarchy readable when both are active. */
+    .nav-link::before {
+        bottom: auto !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        width: 3px !important;
+        height: 100% !important;
+        border-radius: 0 3px 3px 0 !important;
+    }
+
+    .nav-link:hover::before,
+    .nav-link.active::before {
+        width: 3px !important;
+    }
+
     /* Submenus become in-panel accordions */
     .nav-item.has-submenu .nav-submenu {
         position: static;
