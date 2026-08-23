@@ -138,6 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initTouchNav();
     initLogoMorph();
     initBackToTop();
+
+    // Footer copyright year — never goes stale
+    const yearEl = document.getElementById('footer-year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
 
 /**
