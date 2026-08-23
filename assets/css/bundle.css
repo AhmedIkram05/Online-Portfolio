@@ -2234,6 +2234,7 @@ select.form-control:focus {
 
     /* Grids */
     .services { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-2xl); }
+    .contact-stack { grid-template-columns: 1fr; gap: var(--spacing-xl); }
     
     /* Cards */
     .card { border-radius: var(--radius-medium); }
