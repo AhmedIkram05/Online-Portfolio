@@ -484,15 +484,10 @@ header.scrolled {
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* Availability badge pinned to the far right of the full-width header bar,
-   sitting just left of the 48px burger button (24px header padding +
-   48px button + 24px gap) so the two never overlap. Hidden on phones,
-   where the header is too tight for it. */
+/* Availability badge: normal flex child of the navbar, so it always sits
+   between the logo and the burger button and can never overlap either.
+   Hidden on phones, where the header is too tight for it. */
 .navbar-badge {
-    position: absolute;
-    right: calc(var(--spacing-lg) + 96px);
-    top: 50%;
-    transform: translateY(-50%);
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -505,7 +500,12 @@ header.scrolled {
     padding: 6px 12px;
     border-radius: 20px;
     white-space: nowrap;
-    z-index: 1100;
+}
+
+@media (max-width: 767.98px) {
+    .navbar-badge {
+        display: none;
+    }
 }
 
 @media (max-width: 767.98px) {
