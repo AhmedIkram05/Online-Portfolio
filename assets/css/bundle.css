@@ -485,11 +485,12 @@ header.scrolled {
 }
 
 /* Availability badge pinned to the far right of the full-width header bar,
-   tucked in just left of the burger button so the two never collide.
-   Hidden on phones, where the header is too tight for it. */
+   sitting just left of the 48px burger button (24px header padding +
+   48px button + 24px gap) so the two never overlap. Hidden on phones,
+   where the header is too tight for it. */
 .navbar-badge {
     position: absolute;
-    right: calc(var(--spacing-lg) + 60px);
+    right: calc(var(--spacing-lg) + 96px);
     top: 50%;
     transform: translateY(-50%);
     display: inline-flex;
@@ -805,6 +806,21 @@ header.scrolled {
 
 .nav-item.has-submenu.open > .nav-link::after {
     transform: rotate(180deg);
+}
+
+/* Mouse users: hovering a parent row also expands its submenu inside the
+   open drawer (click still toggles via initTouchNav). Gated to hover-
+   capable fine pointers: touch devices keep tap-only accordions, because
+   sticky :hover on touch would fight the .open toggle. Moving the cursor
+   off a hover-opened row closes it again; clicked-open ones stay open. */
+@media (hover: hover) and (pointer: fine) {
+    .navbar-nav.show .nav-item.has-submenu:hover .nav-submenu {
+        display: flex;
+    }
+
+    .navbar-nav.show .nav-item.has-submenu:hover > .nav-link::after {
+        transform: rotate(180deg);
+    }
 }
 
 /* Removed :focus-within to prevent click-sticking */
