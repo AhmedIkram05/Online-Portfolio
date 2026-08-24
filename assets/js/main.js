@@ -639,6 +639,8 @@ function initCvViewer() {
     const section = document.getElementById('cv');
     if (!tabs.length) return;
 
+    initCvFallback();
+
     // Point the pin at the visible CV: embed.src is populated lazily
     const syncDownload = embed => {
         if (download && embed) download.href = embed.src || embed.dataset.src;
@@ -686,6 +688,32 @@ function initCvViewer() {
             download.hidden = !entries[0].isIntersecting;
         }, { threshold: 0.05 }).observe(section);
     }
+}
+
+/**
+ * PDF preview fallback for browsers with no built-in viewer (iOS Safari and
+ * some Android browsers render <embed type="application/pdf"> as a blank box).
+ * navigator.pdfViewerEnabled is the standard signal; `undefined` (very old
+ * browsers) is treated as capable — ponytail: revisit if iOS < 16.4 matters.
+ * Embeds are hidden but kept in the DOM so the tab logic and download pin
+ * (which read embed.dataset.src) keep working untouched.
+ */
+function initCvFallback() {
+    if (navigator.pdfViewerEnabled !== false) return;
+    document.querySelectorAll('.cv-panel').forEach(panel => {
+        const embed = panel.querySelector('embed');
+        if (!embed || embed.hidden) return;
+        embed.hidden = true;
+        const src = embed.dataset.src || embed.getAttribute('src');
+        const tab = document.querySelector(`.cv-viewer-tabs [data-cv-tab="${panel.id.replace('panel-cv-', '')}"]`);
+        const label = tab ? tab.textContent.trim() : 'CV';
+        const fallback = document.createElement('div');
+        fallback.className = 'cv-embed-fallback center';
+        fallback.innerHTML =
+            '<p class="text-muted">PDF preview isn\'t supported on this device.</p>' +
+            '<a class="btn btn-hero-primary" href="' + src + '" download>Download ' + label + ' CV (PDF)</a>';
+        panel.appendChild(fallback);
+    });
 }
 
 /**
