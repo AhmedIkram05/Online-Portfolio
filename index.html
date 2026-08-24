@@ -610,39 +610,39 @@
             <h3 class="section-title">Agentic Hybrid RAG</h3>
             <div class="experience-item">
                 <p class="text-muted" style="font-style: normal;">A LangGraph agent with 12 MCP tools answers operator questions over the anomaly corpus: ChromaDB retrieval with metadata filters and temporal decay, cross-encoder reranking, then a 4-stage reasoning loop, self-consistency sampling, verbalised confidence, reflexion and citation grounding, fused into a single score (0.30 retrieval + 0.25 self-consistency + 0.25 verbalised + 0.20 grounding) and Platt-calibrated on real feedback.</p>
-                <table style="width: 100%; border-collapse: collapse; margin: var(--spacing-lg) 0; font-size: 0.95rem;">
+                <table class="ragas-table">
                     <thead>
-                        <tr style="border-bottom: 2px solid var(--secondary-color);">
-                            <th style="padding: var(--spacing-sm); text-align: left; color: var(--text-light);">RAGAS Metric</th>
-                            <th style="padding: var(--spacing-sm); text-align: center; color: var(--text-muted);">Fixed Retrieval</th>
-                            <th style="padding: var(--spacing-sm); text-align: center; color: var(--text-muted);">Hybrid Agent</th>
-                            <th style="padding: var(--spacing-sm); text-align: center; color: var(--secondary-color); font-weight: 700;">Agentic Agent</th>
+                        <tr>
+                            <th>RAGAS Metric</th>
+                            <th>Fixed Retrieval</th>
+                            <th>Hybrid Agent</th>
+                            <th>Agentic Agent</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="border-bottom: 1px solid #e7e0d5;">
-                            <td style="padding: var(--spacing-sm);">Context Recall</td>
-                            <td style="padding: var(--spacing-sm); text-align: center;">0.533</td>
-                            <td style="padding: var(--spacing-sm); text-align: center;">0.350</td>
-                            <td style="padding: var(--spacing-sm); text-align: center; font-weight: 700; color: var(--secondary-color);">0.708</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e7e0d5;">
-                            <td style="padding: var(--spacing-sm);">Context Precision</td>
-                            <td style="padding: var(--spacing-sm); text-align: center;">0.711</td>
-                            <td style="padding: var(--spacing-sm); text-align: center;">0.645</td>
-                            <td style="padding: var(--spacing-sm); text-align: center; font-weight: 700; color: var(--secondary-color);">0.874</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e7e0d5;">
-                            <td style="padding: var(--spacing-sm);">Faithfulness</td>
-                            <td style="padding: var(--spacing-sm); text-align: center; font-weight: 700; color: var(--secondary-color);">0.982</td>
-                            <td style="padding: var(--spacing-sm); text-align: center;">0.908</td>
-                            <td style="padding: var(--spacing-sm); text-align: center;">0.940</td>
+                        <tr>
+                            <td>Context Recall</td>
+                            <td>0.533</td>
+                            <td>0.350</td>
+                            <td class="highlight">0.708</td>
                         </tr>
                         <tr>
-                            <td style="padding: var(--spacing-sm);">Answer Relevancy</td>
-                            <td style="padding: var(--spacing-sm); text-align: center;">0.650</td>
-                            <td style="padding: var(--spacing-sm); text-align: center;">0.602</td>
-                            <td style="padding: var(--spacing-sm); text-align: center; font-weight: 700; color: var(--secondary-color);">0.801</td>
+                            <td>Context Precision</td>
+                            <td>0.711</td>
+                            <td>0.645</td>
+                            <td class="highlight">0.874</td>
+                        </tr>
+                        <tr>
+                            <td>Faithfulness</td>
+                            <td class="highlight">0.982</td>
+                            <td>0.908</td>
+                            <td>0.940</td>
+                        </tr>
+                        <tr>
+                            <td>Answer Relevancy</td>
+                            <td>0.650</td>
+                            <td>0.602</td>
+                            <td class="highlight">0.801</td>
                         </tr>
                     </tbody>
                 </table>
@@ -674,9 +674,9 @@
 
             <!-- LinkedIn Post -->
             <div class="services" style="margin-top: var(--spacing-2xl);">
-                <div class="card" style="max-width: 552px; margin: 0 auto; width: 100%;">
-                    <div style="padding: var(--spacing-lg) 0;">
-                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7495444108929527808?collapsed=1" height="554" allowfullscreen="" title="LAAD case study post on LinkedIn" loading="lazy" style="width:100%; max-width:504px; border:0; display:block; margin:0 auto;"></iframe>
+                <div class="card linkedin-embed-card">
+                    <div class="linkedin-embed-wrap">
+                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7495444108929527808?collapsed=1" height="554" allowfullscreen="" title="LAAD case study post on LinkedIn" loading="lazy" class="linkedin-embed"></iframe>
                     </div>
                 </div>
             </div>
