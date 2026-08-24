@@ -1897,8 +1897,8 @@ section[id] {
     padding: var(--spacing-md) var(--spacing-lg);
     border-radius: var(--radius-medium);
     transition: all var(--transition-medium);
-    background: #ffffff;
-    border: 1px solid #e7e0d5;
+    background: var(--surface);
+    border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
@@ -1906,7 +1906,7 @@ section[id] {
 }
 
 .contact-item:hover {
-    background: #ffffff;
+    background: var(--surface);
     transform: translateY(-4px);
     border-color: rgba(194, 65, 12, 0.35);
     box-shadow: var(--shadow-sm);
@@ -1949,7 +1949,7 @@ section[id] {
 }
 
 .contact-banner {
-    background: #ffffff;
+    background: var(--surface);
 }
 
 .banner-email { border-color: rgba(59, 130, 246, 0.6); }
