@@ -551,7 +551,23 @@ function initLazyLoad() {
 
 function initFormValidation() {
     const forms = document.querySelectorAll('.needs-validation');
-    
+
+    // Inline status message instead of alert() popups
+    const showFormStatus = (form, msg, ok) => {
+        let status = form.querySelector('.form-status');
+        if (!status) {
+            status = document.createElement('p');
+            status.className = 'form-status';
+            status.setAttribute('role', 'status');
+            status.setAttribute('aria-live', 'polite');
+            (form.querySelector('.center') || form).appendChild(status);
+        }
+        status.textContent = msg;
+        status.style.marginTop = 'var(--spacing-sm)';
+        status.style.fontWeight = ok ? '600' : 'normal';
+        status.style.color = ok ? 'var(--success-color)' : 'var(--accent-color)';
+    };
+
     forms.forEach(form => {
         form.addEventListener('submit', event => {
             event.preventDefault();
@@ -578,15 +594,15 @@ function initFormValidation() {
                 })
                 .then(response => {
                     if (response.ok) {
-                        alert('Message sent successfully! Thank you for contacting me.');
+                        showFormStatus(form, 'Message sent — thank you! I\'ll get back to you soon.', true);
                         form.reset();
                         form.classList.remove('was-validated');
                     } else {
-                        alert('Oops! There was a problem submitting your form. Please try again.');
+                        showFormStatus(form, 'Oops - something went wrong submitting the form. Please try again.', false);
                     }
                 })
                 .catch(error => {
-                    alert('There was an error sending your message. Please email me directly.');
+                    showFormStatus(form, 'Network error - please email me directly at ahmedikram30@gmail.com.', false);
                     console.error('Error:', error);
                 })
                 .finally(() => {
