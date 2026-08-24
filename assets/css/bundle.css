@@ -2382,6 +2382,8 @@ select.form-control:focus {
     }
 }
 @media (prefers-reduced-motion: reduce) {
+    /* Skip scroll-reveal fade/slide entirely for users who opted out of motion */
+    [data-animate] { opacity: 1 !important; transform: none !important; transition: none !important; }
     .skills-chevron { transition: none; }
     .skills-disclosure[open] > .services { animation: none; }
 }
