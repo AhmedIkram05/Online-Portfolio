@@ -91,7 +91,7 @@ function initAnalyticsConsentBanner() {
     accept.type = 'button';
     accept.textContent = 'Allow analytics';
     accept.style.marginLeft = '0.5rem';
-    accept.style.padding = '0.5rem 0.75rem';
+    accept.style.padding = '0.4rem 0.7rem';
     accept.style.border = 'none';
     accept.style.backgroundColor = '#0b84ff';
     accept.style.color = '#fff';
@@ -102,7 +102,7 @@ function initAnalyticsConsentBanner() {
     decline.type = 'button';
     decline.textContent = 'Decline';
     decline.style.marginLeft = '0.5rem';
-    decline.style.padding = '0.5rem 0.75rem';
+    decline.style.padding = '0.4rem 0.7rem';
     decline.style.border = '1px solid #555';
     decline.style.backgroundColor = 'transparent';
     decline.style.color = '#fff';
