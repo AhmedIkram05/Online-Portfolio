@@ -72,16 +72,18 @@ function initAnalyticsConsentBanner() {
     banner.style.zIndex = '12000';
     banner.style.backgroundColor = '#111';
     banner.style.color = '#fff';
-    banner.style.padding = '0.9rem';
+    banner.style.padding = '0.75rem 0.9rem';
     banner.style.display = 'flex';
+    banner.style.flexWrap = 'wrap';
     banner.style.justifyContent = 'space-between';
     banner.style.alignItems = 'center';
     banner.style.gap = '0.5rem';
-    banner.style.fontSize = '0.95rem';
+    banner.style.fontSize = '0.85rem';
+    banner.style.lineHeight = '1.35';
 
     var text = document.createElement('div');
     text.textContent = 'This site uses Google Analytics for anonymous usage statistics. Analytics are disabled until you allow them.';
-    text.style.flex = '1';
+    text.style.flex = '1 1 16rem';
 
     var actions = document.createElement('div');
 
