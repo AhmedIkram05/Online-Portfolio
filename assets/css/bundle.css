@@ -1842,12 +1842,13 @@ section[id] {
 }
 
 /* ===== FORM CONTROLS ===== */
+/* No Bootstrap here — plain class rules win; no !important arms race needed */
 .form-control {
     padding: var(--spacing-md);
     border-radius: var(--radius-small);
-    background-color: #ffffff !important;
-    border: 1px solid #e7e0d5 !important;
-    color: var(--text-light) !important;
+    background-color: var(--surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
     font-size: 1rem;
     transition: all var(--transition-medium);
     -webkit-appearance: none;
@@ -1858,33 +1859,14 @@ section[id] {
 }
 
 .form-control:focus {
-    background-color: #ffffff !important;
-    border-color: var(--accent-color) !important;
-    color: var(--text-light) !important;
+    border-color: var(--accent-color);
     box-shadow: 0 0 0 0.2rem rgba(194, 65, 12, 0.2);
     outline: none;
 }
 
 .form-control::placeholder {
-    color: rgba(28, 25, 23, 0.5) !important;
+    color: rgba(28, 25, 23, 0.5);
     opacity: 1;
-}
-
-/* Force light styling on all form inputs */
-input.form-control,
-textarea.form-control,
-select.form-control {
-    background-color: #ffffff !important;
-    color: var(--text-light) !important;
-    border: 1px solid #e7e0d5 !important;
-}
-
-input.form-control:focus,
-textarea.form-control:focus,
-select.form-control:focus {
-    background-color: #ffffff !important;
-    color: var(--text-light) !important;
-    border-color: var(--accent-color) !important;
 }
 
 /* ===== FORM VALIDATION ===== */
@@ -1900,12 +1882,12 @@ select.form-control:focus {
 }
 
 .was-validated .form-control:invalid {
-    border-color: var(--accent-color) !important;
+    border-color: var(--accent-color);
     box-shadow: 0 0 0 0.2rem rgba(194, 65, 12, 0.2);
 }
 
 .was-validated .form-control:valid {
-    border-color: var(--success-color) !important;
+    border-color: var(--success-color);
     box-shadow: 0 0 0 0.2rem rgba(21, 128, 61, 0.2);
 }
 
