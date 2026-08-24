@@ -123,6 +123,11 @@ function initAnalyticsConsentBanner() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Respect reduced-motion: never autoplay the case-study videos
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('video[autoplay]').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
+    }
+
     // Initialize analytics consent/banner
     try { initAnalyticsConsentBanner(); } catch (e) { /* fail silently */ }
     
