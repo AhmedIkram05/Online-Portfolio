@@ -31,6 +31,8 @@ html {
     --copper: #c2410c;
     --silver: #d6d3d1;
     --gold: #d97706;
+    --surface: #ffffff;      /* card/input backgrounds (was hardcoded #ffffff) */
+    --border-color: #e7e0d5; /* hairline borders (was hardcoded #e7e0d5) */
     
     /* Text Colors */
     --text-primary: #1c1917;
