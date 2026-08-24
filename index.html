@@ -35,9 +35,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
 
     <!-- Bundled Stylesheet -->
-<link rel="preload" href="assets/css/bundle.css?v=9.4" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="assets/css/bundle.css?v=9.5" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
-    <noscript><link rel="stylesheet" href="assets/css/bundle.css?v=9.4"></noscript>
+    <noscript><link rel="stylesheet" href="assets/css/bundle.css?v=9.5"></noscript>
     <!-- JavaScript Bundle Update -->
     <!-- Font Awesome Icons (subset, self-hosted) -->
     <link rel="stylesheet" href="assets/css/fa-subset.css?v=1.3">
@@ -501,37 +501,37 @@
             <div class="services">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">99.8%</h3>
+                        <h3 class="card-title stat-number">99.8%</h3>
                         <p class="card-text">XGBoost cross-validated accuracy (&plusmn;0.1%) across 8 anomaly classes</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">2&times;</h3>
+                        <h3 class="card-title stat-number">2&times;</h3>
                         <p class="card-text">RAG context recall vs the deterministic baseline, 0.708 vs 0.350 on a 50-query golden set</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">1,438</h3>
+                        <h3 class="card-title stat-number">1,438</h3>
                         <p class="card-text">Automated tests: 959 pytest, 394 vitest, 10 Playwright E2E, 75 Terraform assertions</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">2.5M</h3>
+                        <h3 class="card-title stat-number">2.5M</h3>
                         <p class="card-text">Events processed at ~100 msg/sec with zero loss, gzip-compressed ~65% on the wire</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">30</h3>
+                        <h3 class="card-title stat-number">30</h3>
                         <p class="card-text">REST API endpoints behind JWT auth, role-aware access and Redis rate limiting</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title" style="font-size: 2.6rem; color: var(--secondary-color); margin-bottom: var(--spacing-sm);">0.70</h3>
+                        <h3 class="card-title stat-number">0.70</h3>
                         <p class="card-text">F1 on live Kafka traffic, Isolation Forest, 97.3% precision, AUC-ROC 0.9502</p>
                     </div>
                 </div>
@@ -553,7 +553,7 @@
             </div>
             <div class="services">
                 <div class="card">
-                    <video src="assets/images/laad/architecture-overview.mp4" autoplay muted loop playsinline preload="none" aria-label="LAAD architecture animation: 7 log sources through Kafka to the React dashboard" style="max-height: 400px; width: 100%; object-fit: contain;"></video>
+                    <video src="assets/images/laad/architecture-overview.mp4" autoplay muted loop playsinline preload="none" aria-label="LAAD architecture animation: 7 log sources through Kafka to the React dashboard" class="case-video"></video>
                     <div class="card-body"><p class="card-text">End-to-end flow: 7 log sources &rarr; Kafka &rarr; 3-layer detection &rarr; API &rarr; React dashboard</p></div>
                 </div>
             </div>
@@ -599,7 +599,7 @@
             </div>
             <div class="services">
                 <div class="card">
-                    <video src="assets/images/laad/detection-engine.mp4" autoplay muted loop playsinline preload="none" aria-label="LAAD detection engine animation: ML ensemble, z-score and heuristic alerts in the anomaly list" style="max-height: 400px; width: 100%; object-fit: contain;"></video>
+                    <video src="assets/images/laad/detection-engine.mp4" autoplay muted loop playsinline preload="none" aria-label="LAAD detection engine animation: ML ensemble, z-score and heuristic alerts in the anomaly list" class="case-video"></video>
                     <div class="card-body"><p class="card-text">All 3 layers in action: ML ensemble, z-score drift and heuristic alerts surfacing in the anomaly list</p></div>
                 </div>
             </div>
@@ -610,39 +610,39 @@
             <h3 class="section-title">Agentic Hybrid RAG</h3>
             <div class="experience-item">
                 <p class="text-muted" style="font-style: normal;">A LangGraph agent with 12 MCP tools answers operator questions over the anomaly corpus: ChromaDB retrieval with metadata filters and temporal decay, cross-encoder reranking, then a 4-stage reasoning loop, self-consistency sampling, verbalised confidence, reflexion and citation grounding, fused into a single score (0.30 retrieval + 0.25 self-consistency + 0.25 verbalised + 0.20 grounding) and Platt-calibrated on real feedback.</p>
-                <table style="width: 100%; border-collapse: collapse; margin: var(--spacing-lg) 0; font-size: 0.95rem;">
+                <table class="ragas-table">
                     <thead>
-                        <tr style="border-bottom: 2px solid var(--secondary-color);">
-                            <th style="padding: var(--spacing-sm); text-align: left; color: var(--text-light);">RAGAS Metric</th>
-                            <th style="padding: var(--spacing-sm); text-align: center; color: var(--text-muted);">Fixed Retrieval</th>
-                            <th style="padding: var(--spacing-sm); text-align: center; color: var(--text-muted);">Hybrid Agent</th>
-                            <th style="padding: var(--spacing-sm); text-align: center; color: var(--secondary-color); font-weight: 700;">Agentic Agent</th>
+                        <tr>
+                            <th>RAGAS Metric</th>
+                            <th>Fixed Retrieval</th>
+                            <th>Hybrid Agent</th>
+                            <th>Agentic Agent</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="border-bottom: 1px solid #e7e0d5;">
-                            <td style="padding: var(--spacing-sm);">Context Recall</td>
-                            <td style="padding: var(--spacing-sm); text-align: center;">0.533</td>
-                            <td style="padding: var(--spacing-sm); text-align: center;">0.350</td>
-                            <td style="padding: var(--spacing-sm); text-align: center; font-weight: 700; color: var(--secondary-color);">0.708</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e7e0d5;">
-                            <td style="padding: var(--spacing-sm);">Context Precision</td>
-                            <td style="padding: var(--spacing-sm); text-align: center;">0.711</td>
-                            <td style="padding: var(--spacing-sm); text-align: center;">0.645</td>
-                            <td style="padding: var(--spacing-sm); text-align: center; font-weight: 700; color: var(--secondary-color);">0.874</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e7e0d5;">
-                            <td style="padding: var(--spacing-sm);">Faithfulness</td>
-                            <td style="padding: var(--spacing-sm); text-align: center; font-weight: 700; color: var(--secondary-color);">0.982</td>
-                            <td style="padding: var(--spacing-sm); text-align: center;">0.908</td>
-                            <td style="padding: var(--spacing-sm); text-align: center;">0.940</td>
+                        <tr>
+                            <td>Context Recall</td>
+                            <td>0.533</td>
+                            <td>0.350</td>
+                            <td class="highlight">0.708</td>
                         </tr>
                         <tr>
-                            <td style="padding: var(--spacing-sm);">Answer Relevancy</td>
-                            <td style="padding: var(--spacing-sm); text-align: center;">0.650</td>
-                            <td style="padding: var(--spacing-sm); text-align: center;">0.602</td>
-                            <td style="padding: var(--spacing-sm); text-align: center; font-weight: 700; color: var(--secondary-color);">0.801</td>
+                            <td>Context Precision</td>
+                            <td>0.711</td>
+                            <td>0.645</td>
+                            <td class="highlight">0.874</td>
+                        </tr>
+                        <tr>
+                            <td>Faithfulness</td>
+                            <td class="highlight">0.982</td>
+                            <td>0.908</td>
+                            <td>0.940</td>
+                        </tr>
+                        <tr>
+                            <td>Answer Relevancy</td>
+                            <td>0.650</td>
+                            <td>0.602</td>
+                            <td class="highlight">0.801</td>
                         </tr>
                     </tbody>
                 </table>
@@ -650,7 +650,7 @@
             </div>
             <div class="services">
                 <div class="card">
-                    <video src="assets/images/laad/rag-assistant.mp4" autoplay muted loop playsinline preload="none" aria-label="LAAD RAG assistant animation: conversation with confidence breakdown and citation grounding" style="max-height: 400px; width: 100%; object-fit: contain;"></video>
+                    <video src="assets/images/laad/rag-assistant.mp4" autoplay muted loop playsinline preload="none" aria-label="LAAD RAG assistant animation: conversation with confidence breakdown and citation grounding" class="case-video"></video>
                     <div class="card-body"><p class="card-text">Diagnostic conversation: confidence breakdown and grounded citations on live anomaly data</p></div>
                 </div>
             </div>
@@ -674,9 +674,9 @@
 
             <!-- LinkedIn Post -->
             <div class="services" style="margin-top: var(--spacing-2xl);">
-                <div class="card" style="max-width: 552px; margin: 0 auto; width: 100%;">
-                    <div style="padding: var(--spacing-lg) 0;">
-                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7495444108929527808?collapsed=1" height="554" allowfullscreen="" title="LAAD case study post on LinkedIn" loading="lazy" style="width:100%; max-width:504px; border:0; display:block; margin:0 auto;"></iframe>
+                <div class="card linkedin-embed-card">
+                    <div class="linkedin-embed-wrap">
+                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7495444108929527808?collapsed=1" height="554" allowfullscreen="" title="LAAD case study post on LinkedIn" loading="lazy" class="linkedin-embed"></iframe>
                     </div>
                 </div>
             </div>
@@ -734,7 +734,7 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="https://www.credly.com/badges/c4f6bb59-3638-48fe-8c0b-af5c3976731d/print" target="_blank" rel="noopener">
-                            <img src="assets/images/aws-academy-graduate-aws-academy-cloud-foundations.png" alt="AWS Academy Cloud Foundations" style="max-height:250px; object-fit:contain; width:100%;" height="250" loading="lazy" decoding="async">
+                            <img src="assets/images/aws-academy-graduate-aws-academy-cloud-foundations.png" alt="AWS Academy Cloud Foundations" class="cert-img" height="250" loading="lazy" decoding="async">
                         </a>
                         <h3 class="card-title">AWS Academy Graduate - Cloud Foundations</h3>
                         <p class="card-text"><small class="text-muted">2024</small></p>
@@ -749,7 +749,7 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="https://www.credly.com/badges/0c546295-6fe4-4055-b9eb-bed62233dce7/linked_in_profile" target="_blank" rel="noopener">
-                            <img src="assets/images/aws-academy-graduate-aws-academy-machine-learning-foundations.png" alt="AWS Academy Machine Learning" style="max-height:250px; object-fit:contain; width:100%;" height="250" loading="lazy" decoding="async">
+                            <img src="assets/images/aws-academy-graduate-aws-academy-machine-learning-foundations.png" alt="AWS Academy Machine Learning" class="cert-img" height="250" loading="lazy" decoding="async">
                         </a>
                         <h3 class="card-title">AWS Academy Graduate - Machine Learning</h3>
                         <p class="card-text"><small class="text-muted">2025</small></p>
@@ -764,7 +764,7 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="https://www.linkedin.com/learning/certificates/e3dc3610a320ee93d032317f3906e12d09f41da322c5fc1c94d272cef7f224c9?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BT9fo%2BcR8Q0eO%2BgT7rijPLQ%3D%3D" target="_blank" rel="noopener">
-                            <img src="assets/images/azure-ai-cert.png" alt="Foundations of Azure AI" style="max-height:250px; object-fit:contain; width:100%;" height="250" loading="lazy" decoding="async">
+                            <img src="assets/images/azure-ai-cert.png" alt="Foundations of Azure AI" class="cert-img" height="250" loading="lazy" decoding="async">
                         </a>
                         <h3 class="card-title">Foundations of Azure Artificial Intelligence</h3>
                         <p class="card-text"><small class="text-muted">2024</small></p>
@@ -1047,13 +1047,13 @@
                     <div class="card-body" style="padding:0;">
                         <div class="cv-embed-wrapper">
                             <div class="cv-panel" role="tabpanel" id="panel-cv-ai" aria-labelledby="cv-tab-ai">
-                                <embed id="cv-ai" src="assets/docs/Ahmed-Ikram-CV-2026-AI.pdf" type="application/pdf" style="width:100%; height:800px;" class="embed-responsive-item">
+                                <embed id="cv-ai" src="assets/docs/Ahmed-Ikram-CV-2026-AI.pdf" type="application/pdf" class="embed-responsive-item cv-embed">
                             </div>
                             <div class="cv-panel" role="tabpanel" id="panel-cv-de" aria-labelledby="cv-tab-de" hidden>
-                                <embed id="cv-de" data-src="assets/docs/Ahmed-Ikram-CV-2026-DE.pdf" type="application/pdf" style="width:100%; height:800px;" class="embed-responsive-item">
+                                <embed id="cv-de" data-src="assets/docs/Ahmed-Ikram-CV-2026-DE.pdf" type="application/pdf" class="embed-responsive-item cv-embed">
                             </div>
                             <div class="cv-panel" role="tabpanel" id="panel-cv-swe" aria-labelledby="cv-tab-swe" hidden>
-                                <embed id="cv-swe" data-src="assets/docs/Ahmed-Ikram-CV-2026-SWE.pdf" type="application/pdf" style="width:100%; height:800px;" class="embed-responsive-item">
+                                <embed id="cv-swe" data-src="assets/docs/Ahmed-Ikram-CV-2026-SWE.pdf" type="application/pdf" class="embed-responsive-item cv-embed">
                             </div>
                         </div>
                     </div>
@@ -1187,6 +1187,6 @@
     </button>
 
     <!-- JavaScript -->
-    <script src="assets/js/main.js?v=6.6" defer></script>
+    <script src="assets/js/main.js?v=6.7" defer></script>
 </body>
 </html>

@@ -72,16 +72,18 @@ function initAnalyticsConsentBanner() {
     banner.style.zIndex = '12000';
     banner.style.backgroundColor = '#111';
     banner.style.color = '#fff';
-    banner.style.padding = '0.9rem';
+    banner.style.padding = '0.75rem 0.9rem';
     banner.style.display = 'flex';
+    banner.style.flexWrap = 'wrap';
     banner.style.justifyContent = 'space-between';
     banner.style.alignItems = 'center';
     banner.style.gap = '0.5rem';
-    banner.style.fontSize = '0.95rem';
+    banner.style.fontSize = '0.85rem';
+    banner.style.lineHeight = '1.35';
 
     var text = document.createElement('div');
     text.textContent = 'This site uses Google Analytics for anonymous usage statistics. Analytics are disabled until you allow them.';
-    text.style.flex = '1';
+    text.style.flex = '1 1 16rem';
 
     var actions = document.createElement('div');
 
@@ -89,7 +91,7 @@ function initAnalyticsConsentBanner() {
     accept.type = 'button';
     accept.textContent = 'Allow analytics';
     accept.style.marginLeft = '0.5rem';
-    accept.style.padding = '0.5rem 0.75rem';
+    accept.style.padding = '0.4rem 0.7rem';
     accept.style.border = 'none';
     accept.style.backgroundColor = '#0b84ff';
     accept.style.color = '#fff';
@@ -100,7 +102,7 @@ function initAnalyticsConsentBanner() {
     decline.type = 'button';
     decline.textContent = 'Decline';
     decline.style.marginLeft = '0.5rem';
-    decline.style.padding = '0.5rem 0.75rem';
+    decline.style.padding = '0.4rem 0.7rem';
     decline.style.border = '1px solid #555';
     decline.style.backgroundColor = 'transparent';
     decline.style.color = '#fff';
@@ -123,6 +125,11 @@ function initAnalyticsConsentBanner() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Respect reduced-motion: never autoplay the case-study videos
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('video[autoplay]').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
+    }
+
     // Initialize analytics consent/banner
     try { initAnalyticsConsentBanner(); } catch (e) { /* fail silently */ }
     

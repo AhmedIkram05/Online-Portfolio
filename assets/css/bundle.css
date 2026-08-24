@@ -31,6 +31,8 @@ html {
     --copper: #c2410c;
     --silver: #d6d3d1;
     --gold: #d97706;
+    --surface: #ffffff;      /* card/input backgrounds (was hardcoded #ffffff) */
+    --border-color: #e7e0d5; /* hairline borders (was hardcoded #e7e0d5) */
     
     /* Text Colors */
     --text-primary: #1c1917;
@@ -1361,6 +1363,57 @@ section[id] {
     }
 }
 
+/* ===== CASE STUDY EXTRAS (moved out of index.html inline styles) ===== */
+.stat-number {
+    font-size: 2.6rem;
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.case-video {
+    max-height: 400px;
+    width: 100%;
+    object-fit: contain;
+}
+
+.cert-img {
+    max-height: 250px;
+    object-fit: contain;
+    width: 100%;
+}
+
+.ragas-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--spacing-lg) 0;
+    font-size: 0.95rem;
+}
+.ragas-table th,
+.ragas-table td { padding: var(--spacing-sm); }
+.ragas-table thead tr { border-bottom: 2px solid var(--secondary-color); }
+.ragas-table tbody tr { border-bottom: 1px solid var(--border-color); }
+.ragas-table thead th { color: var(--text-muted); text-align: center; }
+.ragas-table thead th:first-child { color: var(--text-light); text-align: left; }
+.ragas-table thead th:last-child { color: var(--secondary-color); font-weight: 700; }
+.ragas-table td:not(:first-child) { text-align: center; }
+.ragas-table .highlight { font-weight: 700; color: var(--secondary-color); }
+
+.linkedin-embed-card {
+    max-width: 552px;
+    margin: 0 auto;
+    width: 100%;
+}
+.linkedin-embed-wrap { padding: var(--spacing-lg) 0; }
+.linkedin-embed {
+    width: 100%;
+    max-width: 504px;
+    border: 0;
+    display: block;
+    margin: 0 auto;
+}
+
+.cv-embed { width: 100%; height: 800px; }
+
 /* ===== projects.css ===== */
 /* Projects Page Specific Styles (projects.html) */
 
@@ -1840,12 +1893,13 @@ section[id] {
 }
 
 /* ===== FORM CONTROLS ===== */
+/* No Bootstrap here — plain class rules win; no !important arms race needed */
 .form-control {
     padding: var(--spacing-md);
     border-radius: var(--radius-small);
-    background-color: #ffffff !important;
-    border: 1px solid #e7e0d5 !important;
-    color: var(--text-light) !important;
+    background-color: var(--surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
     font-size: 1rem;
     transition: all var(--transition-medium);
     -webkit-appearance: none;
@@ -1856,33 +1910,14 @@ section[id] {
 }
 
 .form-control:focus {
-    background-color: #ffffff !important;
-    border-color: var(--accent-color) !important;
-    color: var(--text-light) !important;
+    border-color: var(--accent-color);
     box-shadow: 0 0 0 0.2rem rgba(194, 65, 12, 0.2);
     outline: none;
 }
 
 .form-control::placeholder {
-    color: rgba(28, 25, 23, 0.5) !important;
+    color: rgba(28, 25, 23, 0.5);
     opacity: 1;
-}
-
-/* Force light styling on all form inputs */
-input.form-control,
-textarea.form-control,
-select.form-control {
-    background-color: #ffffff !important;
-    color: var(--text-light) !important;
-    border: 1px solid #e7e0d5 !important;
-}
-
-input.form-control:focus,
-textarea.form-control:focus,
-select.form-control:focus {
-    background-color: #ffffff !important;
-    color: var(--text-light) !important;
-    border-color: var(--accent-color) !important;
 }
 
 /* ===== FORM VALIDATION ===== */
@@ -1898,12 +1933,12 @@ select.form-control:focus {
 }
 
 .was-validated .form-control:invalid {
-    border-color: var(--accent-color) !important;
+    border-color: var(--accent-color);
     box-shadow: 0 0 0 0.2rem rgba(194, 65, 12, 0.2);
 }
 
 .was-validated .form-control:valid {
-    border-color: var(--success-color) !important;
+    border-color: var(--success-color);
     box-shadow: 0 0 0 0.2rem rgba(21, 128, 61, 0.2);
 }
 
@@ -1913,8 +1948,8 @@ select.form-control:focus {
     padding: var(--spacing-md) var(--spacing-lg);
     border-radius: var(--radius-medium);
     transition: all var(--transition-medium);
-    background: #ffffff;
-    border: 1px solid #e7e0d5;
+    background: var(--surface);
+    border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
@@ -1922,7 +1957,7 @@ select.form-control:focus {
 }
 
 .contact-item:hover {
-    background: #ffffff;
+    background: var(--surface);
     transform: translateY(-4px);
     border-color: rgba(194, 65, 12, 0.35);
     box-shadow: var(--shadow-sm);
@@ -1965,7 +2000,7 @@ select.form-control:focus {
 }
 
 .contact-banner {
-    background: #ffffff;
+    background: var(--surface);
 }
 
 .banner-email { border-color: rgba(59, 130, 246, 0.6); }
@@ -2382,6 +2417,8 @@ select.form-control:focus {
     }
 }
 @media (prefers-reduced-motion: reduce) {
+    /* Skip scroll-reveal fade/slide entirely for users who opted out of motion */
+    [data-animate] { opacity: 1 !important; transform: none !important; transition: none !important; }
     .skills-chevron { transition: none; }
     .skills-disclosure[open] > .services { animation: none; }
 }
