@@ -68,8 +68,8 @@
                         <a href="#cv" class="btn btn-hero-primary">
                             <i class="fas fa-book"></i>View CV
                         </a>
-                        <button type="button" class="btn btn-hero-email" data-email="ahmedikram30@gmail.com" aria-label="Copy email address" onclick="navigator.clipboard.writeText('ahmedikram30@gmail.com').then(()=>{const b=this;const o=b.dataset.orig||b.innerHTML;b.dataset.orig=o;b.innerHTML='<i class=&quot;fas fa-check&quot;></i> Copied!';setTimeout(()=>b.innerHTML=o,1800)}).catch(()=>window.location.href='mailto:ahmedikram30@gmail.com')">
-                            <i class="fas fa-envelope"></i>Copy email
+                        <button type="button" id="hero-email-copy" class="btn btn-hero-email" data-email="ahmedikram30@gmail.com" aria-label="Copy email address ahmedikram30@gmail.com">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>Copy email
                         </button>
                     </div>
                 </div>
@@ -178,7 +178,7 @@
 
         <!-- About Section -->
         <section id="home" class="content-wrapper no-animate">
-            <div class="center" style="margin-bottom: var(--spacing-xl);" data-animate>
+            <div class="center mb-xl" data-animate>
                 <h2 class="display-4">About Me</h2>
                 <p class="lead">A little about me and my background, and my journey in software development.</p>
             </div>
@@ -229,7 +229,7 @@
         <div class="content-wrapper no-animate">
             
             <!-- Filter Controls -->
-            <div class="project-filters center" style="margin-bottom: 3rem;">
+            <div class="project-filters center mb-2xl">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="ai-ml">AI & ML</button>
                 <button class="filter-btn" data-filter="data">Data Engineering</button>
@@ -543,7 +543,7 @@
         <section data-animate class="content-wrapper section-anchor" id="case-study-architecture">
             <h3 class="section-title">Pipeline &amp; Architecture</h3>
             <div class="experience-item">
-                <p class="text-muted" style="font-style: normal;">Seven heterogeneous sources stream into a continuous Kafka producer (gzip, acks=all, retries 5), land on two KRaft topics with 7-day retention, and are consumed by a pipeline that deduplicates, parses, dual-writes to PostgreSQL and a ChromaDB vector store, and feeds a detection engine every 30 seconds, surfaced through a FastAPI backend and a React dashboard.</p>
+                <p class="text-muted">Seven heterogeneous sources stream into a continuous Kafka producer (gzip, acks=all, retries 5), land on two KRaft topics with 7-day retention, and are consumed by a pipeline that deduplicates, parses, dual-writes to PostgreSQL and a ChromaDB vector store, and feeds a detection engine every 30 seconds, surfaced through a FastAPI backend and a React dashboard.</p>
                 <ul>
                     <li><strong>Ingestion</strong>, Kafka KRaft, 2 topics &times; 3 partitions, ~65% gzip compression (250KB/s &rarr; 85KB/s on the wire), 3.5GB/day &rarr; 1.2GB/day on disk</li>
                     <li><strong>Reliability</strong>, dedup via Redis SET + 10K in-memory LRU, manual offset commits, failed messages land on a Redis Stream DLQ with exponential backoff (5s &rarr; 10s &rarr; 20s)</li>
@@ -620,8 +620,8 @@
         <section data-animate class="content-wrapper section-anchor" id="case-study-rag">
             <h3 class="section-title">Agentic Hybrid RAG</h3>
             <div class="experience-item">
-                <p class="text-muted" style="font-style: normal;">A LangGraph agent with 12 MCP tools answers operator questions over the anomaly corpus: ChromaDB retrieval with metadata filters and temporal decay, cross-encoder reranking, then a 4-stage reasoning loop, self-consistency sampling, verbalised confidence, reflexion and citation grounding, fused into a single score (0.30 retrieval + 0.25 self-consistency + 0.25 verbalised + 0.20 grounding) and Platt-calibrated on real feedback.</p>
-                <table class="ragas-table">
+                <p class="text-muted">A LangGraph agent with 12 MCP tools answers operator questions over the anomaly corpus: ChromaDB retrieval with metadata filters and temporal decay, cross-encoder reranking, then a 4-stage reasoning loop, self-consistency sampling, verbalised confidence, reflexion and citation grounding, fused into a single score (0.30 retrieval + 0.25 self-consistency + 0.25 verbalised + 0.20 grounding) and Platt-calibrated on real feedback.</p>
+                <div class="table-wrap"><table class="ragas-table">
                     <thead>
                         <tr>
                             <th>RAGAS Metric</th>
@@ -656,7 +656,7 @@
                             <td class="highlight">0.801</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
                 <p class="text-muted">Evaluated on a 50-query golden set (82% human-reviewed) with a committed baseline and a CI gate that fails any PR with faithfulness &lt; 0.5, context recall &lt; 0.3, or a drop &gt; 0.05 vs baseline.</p>
             </div>
             <aside class="case-note" aria-labelledby="ragas-note-title">
@@ -687,13 +687,13 @@
                     <li><strong>Observability</strong>, every RAG run persisted to a traces table; anomaly alerts via Redis Pub/Sub; CloudWatch + Grafana dashboards</li>
                 </ul>
             </div>
-            <div class="center case-cta" style="margin-top: var(--spacing-xl);">
+            <div class="center case-cta mt-xl">
                 <a href="https://github.com/AhmedIkram05/laad" target="_blank" class="btn btn-hero-primary">View the Repository</a>
                 <a href="https://github.com/AhmedIkram05/laad/blob/main/README.md" target="_blank" class="btn btn-hero-secondary">Read the Full Write-up</a>
             </div>
 
             <!-- LinkedIn Post -->
-            <div class="services" style="margin-top: var(--spacing-2xl);">
+            <div class="services mt-2xl">
                 <div class="card linkedin-embed-card">
                     <div class="linkedin-embed-wrap">
                         <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7495444108929527808?collapsed=1" height="554" allowfullscreen="" title="LAAD case study post on LinkedIn" loading="lazy" class="linkedin-embed"></iframe>
@@ -721,12 +721,12 @@
             
             <div class="experience-item">
                 <h4>Beauly Mini Market</h4>
-                <p class="text-muted" style="margin:0;">Retail Assistant • September 2023 — Present</p>
+                <p class="text-muted m-0">Retail Assistant • September 2023 — Present</p>
             </div>
 
             <div class="experience-item">
                 <h4>Zulus Peri Peri Grill Dundee</h4>
-                <p class="text-muted" style="margin:0;">Front of House • June 2021 — September 2023</p>
+                <p class="text-muted m-0">Front of House • June 2021 — September 2023</p>
             </div>
         </section>
 
@@ -736,12 +736,12 @@
             
             <div class="experience-item">
                 <h4>University of Dundee</h4>
-                <p class="text-muted" style="margin:0;">BSc (Hons) Computer Science (Data Science and AI) • September 2023 – June 2027 (Expected)</p>
+                <p class="text-muted m-0">BSc (Hons) Computer Science (Data Science and AI) • September 2023 – June 2027 (Expected)</p>
             </div>
 
             <div class="experience-item">
                 <h4>High School of Dundee</h4>
-                <p class="text-muted" style="margin:0;">Secondary Education • August 2018 – June 2023</p>
+                <p class="text-muted m-0">Secondary Education • August 2018 – June 2023</p>
                 <!-- ponytail: grades removed — First-Class story, no Cs on page -->
             </div>
         </section>
@@ -1064,23 +1064,24 @@
                     <button class="btn btn-hero-primary" data-cv-tab="swe" role="tab" id="cv-tab-swe" aria-controls="panel-cv-swe" aria-selected="false">Software Engineering</button>
                 </div>
                 <div class="card">
-                    <div class="card-body" style="padding:0;">
+                    <div class="card-body p-0">
                         <div class="cv-embed-wrapper">
                             <div class="cv-panel" role="tabpanel" id="panel-cv-ai" aria-labelledby="cv-tab-ai">
                                 <embed id="cv-ai" src="assets/docs/Ahmed-Ikram-CV-2026-AI.pdf" type="application/pdf" class="embed-responsive-item cv-embed">
+                                <div class="cv-embed-fallback"><p class="text-muted">Preview not supported on this device. <a href="assets/docs/Ahmed-Ikram-CV-2026-AI.pdf" target="_blank" rel="noopener">Open the PDF →</a></p></div>
                             </div>
                             <div class="cv-panel" role="tabpanel" id="panel-cv-de" aria-labelledby="cv-tab-de" hidden>
                                 <embed id="cv-de" data-src="assets/docs/Ahmed-Ikram-CV-2026-DE.pdf" type="application/pdf" class="embed-responsive-item cv-embed">
+                                <div class="cv-embed-fallback"><p class="text-muted">Preview not supported on this device. <a href="assets/docs/Ahmed-Ikram-CV-2026-DE.pdf" target="_blank" rel="noopener">Open the PDF →</a></p></div>
                             </div>
                             <div class="cv-panel" role="tabpanel" id="panel-cv-swe" aria-labelledby="cv-tab-swe" hidden>
                                 <embed id="cv-swe" data-src="assets/docs/Ahmed-Ikram-CV-2026-SWE.pdf" type="application/pdf" class="embed-responsive-item cv-embed">
+                                <div class="cv-embed-fallback"><p class="text-muted">Preview not supported on this device. <a href="assets/docs/Ahmed-Ikram-CV-2026-SWE.pdf" target="_blank" rel="noopener">Open the PDF →</a></p></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    
         </section>
 
         <!-- Floating download pin: viewport-fixed, appears only while the CV section is on screen -->
@@ -1096,7 +1097,7 @@
             <div class="content-wrapper center">
                 <h2 class="display-4">Get In Touch</h2>
                 <p class="lead">I'd love to hear from you! Whether you have a project in mind, want to collaborate, or just want to say hello, feel free to reach out through any of the channels below.</p>
-                <div class="center" style="margin-bottom: var(--spacing-lg);">
+                <div class="center mb-lg">
                     <span class="availability-banner" title="Availability">
                         <i class="fas fa-check-circle"></i>Available for Graduate Roles from June 2027
                     </span>
@@ -1141,7 +1142,7 @@
                 <div>
                     <div class="card">
                         <div class="card-body">
-                            <div class="center" style="margin-bottom: var(--spacing-lg);">
+                            <div class="center mb-lg">
                                 <i class="fas fa-paper-plane fa-3x text-primary"></i>
                             </div>
                             <h3 class="card-title center">Send Me a Message</h3>
