@@ -561,7 +561,7 @@ header.scrolled {
 }
 
 /* Mobile: badge hidden to free header (logo + burger only); contact .availability-banner remains */
-@media (max-width: 767px) {
+@media (max-width: 991.98px) {
     .navbar-badge { display: none; }
 }
 
@@ -932,7 +932,7 @@ section[id] {
 }
 
 /* ===== DESKTOP NAVIGATION (768px and above) ===== */
-@media (min-width: 768px) {
+@media (min-width: 992px) {
     .navbar {
         justify-content: center;
         width: 100%;
@@ -1031,12 +1031,6 @@ section[id] {
    </AI> mark still fits 1000-1075px - that band is pinned separately below.
    Tablet/desktop only - mobile keeps the logo as the "Ahmed Ikram" brand.
    Placed AFTER the min-width:768 block so it wins the cascade. */
-@media (min-width: 768px) and (max-width: 999.98px) {
-    .navbar-logo {
-        display: none;
-    }
-}
-
 /* ===== MOBILE NAVIGATION (burger menu + slide-down panel) ===== */
 @media (max-width: 767px) {
     .navbar {
