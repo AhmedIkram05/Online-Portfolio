@@ -366,10 +366,25 @@ section[data-animate] {
     padding: 0 var(--spacing-lg);
 }
 
-/* Nested wrappers (sections inside <main class="content-wrapper">) must not
-   add another inset - keeps every section's content edges aligned. */
-.content-wrapper .content-wrapper {
+/* Wrapper rhythm: lg (24px) at all breakpoints via tokens. Mobile overrides to md (16) only for tight phone gutters.
+   Tablet/desktop both lg for 768+ — unified horizontal rhythm, only width changes. */
+.content-wrapper .content-wrapper:not([data-animate]) {
     padding: 0;
+}
+   add another inset - keeps every section's content edges aligned. */
+.content-wrapper .content-wrapper:not([data-animate]) {
+    padding: 0;
+}
+
+/* Inner case-study subsections: tighter rhythm (48px pad, 0 margin) to avoid 176px stacks */
+#case-study section[data-animate].content-wrapper {
+    margin: 0;
+    padding: var(--spacing-2xl) 0;
+}
+@media (max-width: 991.98px) {
+    #case-study section[data-animate].content-wrapper {
+        padding: var(--spacing-2xl) 0;
+    }
 }
 
 .center {
@@ -2178,11 +2193,7 @@ a.contact-item--link {
         font-size: 1.1rem;
         margin-bottom: 0.75rem;
     }
-    .hero-card {
-        padding: var(--spacing-lg) var(--spacing-md);
-        max-width: 90%;
-        margin: 0 auto;
-    }
+    .hero-card { max-width: 90%; margin: 0 auto; }
     .hero-cta {
         gap: var(--spacing-md);
     }
@@ -2319,7 +2330,7 @@ a.contact-item--link {
 /* ===== MEDIUM SCREENS (TABLET & SMALL LAPTOP) - 768px to 1199px ===== */
 @media (min-width: 768px) and (max-width: 1199px) {
     /* Layout refinements — single truth 96px, no !important */
-    .content-wrapper { max-width: 1000px; padding: 0 var(--spacing-xl); }
+    .content-wrapper { max-width: 1100px; padding: 0 var(--spacing-lg); }
     main { padding-top: 96px; }
     main > section:first-child { padding-top: var(--spacing-lg); }
     section[data-animate] { padding: var(--spacing-3xl) 0; }
@@ -2339,7 +2350,7 @@ a.contact-item--link {
     
     /* Cards */
     .card { border-radius: var(--radius-medium); }
-    .card-body { padding: var(--spacing-xl); }
+    .card-body { padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-xl); }
     .card-title { font-size: 1.4rem; }
     .card-text { font-size: 1rem; }
 
@@ -2357,7 +2368,7 @@ a.contact-item--link {
 
     /* Contact page */
     .form-row-grid { grid-template-columns: 1fr; gap: var(--spacing-lg); }
-    .contact-item { padding: var(--spacing-xl); }
+    .contact-item { padding: var(--spacing-lg); }
 
     /* CV viewer */
     .cv-embed-wrapper { min-height: 760px; }
@@ -2371,7 +2382,7 @@ a.contact-item--link {
     /* Hero section (home) */
     .hero-name { font-size: 3rem; }
     .hero-title { font-size: 1.25rem; }
-    .hero-card { padding: var(--spacing-3xl) var(--spacing-2xl); }
+    .hero-card { /* base clamp handles all */ }
 
     /* LinkedIn embed — no !important, constrained */
     .card iframe { height: 350px; max-height: 60vh; }
