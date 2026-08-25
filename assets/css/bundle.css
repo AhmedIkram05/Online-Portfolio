@@ -1429,7 +1429,7 @@ section[id] {
     margin-bottom: var(--spacing-sm);
 }
 .case-note p {
-    color: var(--text-muted);
+    color: var(--text-secondary);
     line-height: 1.75;
     margin-bottom: var(--spacing-sm);
 }
