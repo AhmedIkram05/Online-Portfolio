@@ -303,9 +303,9 @@ section[data-animate] {
 /* ===== CARDS ===== */
 .card {
     background: var(--surface);
-    border: 1px solid var(--border-color);
+    border: 1px solid #d6cfc0; /* ponytail: middle-ground vs #faf8f3 — var(--border-color) too faint for card-on-cream */
     border-radius: var(--radius-large);
-    box-shadow: var(--shadow-xs);
+    box-shadow: var(--shadow-sm);
     color: var(--text-light);
     transition: all var(--transition-medium);
     overflow: hidden;
@@ -1742,6 +1742,11 @@ section[id] {
     font-weight: 600;
     margin-bottom: var(--spacing-sm);
     font-size: 1.4rem; /* matches former h5 sizing */
+}
+
+.experience-item h3:not(:first-child),
+.experience-item h4:not(:first-child) {
+    margin-top: var(--spacing-2xl);
 }
 
 .experience-item p {
