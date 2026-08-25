@@ -2063,6 +2063,12 @@ section[id] {
     overflow-wrap: anywhere;
 }
 
+/* ponytail: whole banner clickable */
+a.contact-item--link {
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .contact-item a:hover {
     color: var(--accent-color);
     text-decoration: none;
