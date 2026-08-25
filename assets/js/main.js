@@ -93,7 +93,7 @@ function initAnalyticsConsentBanner() {
     accept.style.marginLeft = '0.5rem';
     accept.style.padding = '0.4rem 0.7rem';
     accept.style.border = 'none';
-    accept.style.backgroundColor = '#0b84ff';
+    accept.style.backgroundColor = '#005fb8'; /* 6.3:1 on white text — #0b84ff was 3.64:1 */
     accept.style.color = '#fff';
     accept.style.cursor = 'pointer';
     accept.onclick = grantAnalyticsConsent;

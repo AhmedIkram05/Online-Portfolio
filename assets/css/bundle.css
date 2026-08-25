@@ -1414,6 +1414,28 @@ section[id] {
 
 .cv-embed { width: 100%; height: 800px; }
 
+/* Technical-note prose block inside the LAAD case study */
+.case-note {
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-medium);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+}
+.case-note h4 {
+    color: var(--secondary-color);
+    font-size: 1.05rem;
+    line-height: 1.4;
+    margin-bottom: var(--spacing-sm);
+}
+.case-note p {
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: var(--spacing-sm);
+}
+.case-note p:last-child { margin-bottom: 0; }
+.case-note strong { color: var(--text-light); }
+
 /* Shown instead of the PDF embed on devices with no built-in PDF viewer */
 .cv-embed-fallback {
     padding: var(--spacing-xl) var(--spacing-md);
