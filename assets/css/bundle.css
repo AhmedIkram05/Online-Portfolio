@@ -376,14 +376,28 @@ section[data-animate] {
     padding: 0;
 }
 
-/* Inner case-study subsections: tighter rhythm (48px pad, 0 margin) to avoid 176px stacks */
+/* Inner case-study subsections: tinted band + divider so 6 stacked blocks read as distinct sections
+   against the cream body bg (was flat with only whitespace before). */
 #case-study section[data-animate].content-wrapper {
     margin: 0;
     padding: var(--spacing-2xl) 0;
+    background: var(--surface);
+    border-top: 1px solid var(--border-color);
+    border-radius: 0;
+    box-shadow: 0 1px 0 rgba(28, 25, 23, 0.04);
+}
+#case-study section[data-animate].content-wrapper:first-of-type {
+    border-top-left-radius: var(--radius-large);
+    border-top-right-radius: var(--radius-large);
+}
+#case-study section[data-animate].content-wrapper:last-of-type {
+    border-bottom-left-radius: var(--radius-large);
+    border-bottom-right-radius: var(--radius-large);
+    border-bottom: 1px solid var(--border-color);
 }
 @media (max-width: 991.98px) {
     #case-study section[data-animate].content-wrapper {
-        padding: var(--spacing-2xl) 0;
+        padding: var(--spacing-2xl) var(--spacing-md);
     }
 }
 
