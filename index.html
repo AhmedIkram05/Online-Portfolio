@@ -35,9 +35,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
 
     <!-- Bundled Stylesheet -->
-<link rel="preload" href="assets/css/bundle.css?v=9.6" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="assets/css/bundle.css?v=9.7" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
-    <noscript><link rel="stylesheet" href="assets/css/bundle.css?v=9.6"></noscript>
+    <noscript><link rel="stylesheet" href="assets/css/bundle.css?v=9.7"></noscript>
     <!-- JavaScript Bundle Update -->
     <!-- Font Awesome Icons (subset, self-hosted) -->
     <link rel="stylesheet" href="assets/css/fa-subset.css?v=1.3">
@@ -551,6 +551,16 @@
                     <li><strong>API</strong>, FastAPI, 30 endpoints across 6 routers, JWT auth and 8 Redis patterns (rate limiting, caching, locks, Pub/Sub, DLQ) with graceful degradation</li>
                 </ul>
             </div>
+            <div class="case-note" aria-labelledby="kafka-note-title">
+                <h4 id="kafka-note-title">Note — what 2.5M events a day taught me about boring Kafka config</h4>
+                <p>I went in expecting throughput to be the hard part. It was not. At roughly 100 messages a second — 2.5M events every 24 hours across seven heterogeneous sources — Kafka itself never blinked. What actually mattered was the stack of unglamorous choices you make before the first byte hits the wire.</p>
+                <p>The cheapest win cost nothing. Turning on gzip cut about 65% off the payload at the producer: roughly 250KB/s down to 85KB/s on the wire, 3.5GB/day down to 1.2GB/day on disk. Zero extra infrastructure, just a flag and the CPU you were already paying for. If you are debating topic layout before you have flipped compression, you are optimising in the wrong order. That single toggle paid for a week of retention before we ever talked about disks.</p>
+                <p>The topology is deliberately boring: two KRaft topics, three partitions each, seven-day retention. No clever partition maths, just enough parallelism to keep consumer lag flat and enough history to replay a bad deploy without reaching for a backup. KRaft was a relief — one less quorum to babysit than ZooKeeper — and two topics kept the failure domain small enough to reason about while still separating ingest from processing.</p>
+                <p>Reliability lives in three dull settings I now refuse to make configurable: acks all, retries 5, manual offset commits. Auto-commit feels convenient until a consumer crashes mid-batch and you silently lose the tail. Manual commits are tedious — you commit only after PostgreSQL and ChromaDB have both acknowledged the write — but they are the reason we can claim zero loss at 2.5M a day without caveats. Retries without idempotence just double-writes your problems, so dedup sits right next to it.</p>
+                <p>Deduplication is two-tier because one tier always leaks. A Redis SET is the global truth; a 10K in-memory LRU catches the hot duplicates without a network round-trip. The LRU absorbs the immediate resends, Redis catches anything that survived a restart. Neither alone was sufficient. Together they made exactly-once handling a property of the consumer, not a prayer aimed at the broker.</p>
+                <p>Then the failure path. Anything the pipeline cannot process does not vanish into a log file — it lands on a Redis Stream DLQ with exponential back-off: 5s → 10s → 20s. Most messages recover on the second attempt; the ones that do not stay visible and replayable instead of silent. That queue taught me more about our parsers than any dashboard ever did. Back-pressure, poison messages, schema wobble — you see it all in the retry pattern before a user reports it.</p>
+                <p>None of this is clever. That is the point. At 100 msg/sec you do not need heroic scaling stories; you need boring decisions applied consistently so that loss is impossible and replay is easy. The numbers above are not performance art — they are the receipt for a pipeline that earns its seven days every day.</p>
+            </div>
             <div class="services">
                 <div class="card">
                     <video src="assets/images/laad/architecture-overview.mp4" autoplay muted loop playsinline preload="none" aria-label="LAAD architecture animation: 7 log sources through Kafka to the React dashboard" class="case-video"></video>
@@ -647,6 +657,15 @@
                     </tbody>
                 </table>
                 <p class="text-muted">Evaluated on a 50-query golden set (82% human-reviewed) with a committed baseline and a CI gate that fails any PR with faithfulness &lt; 0.5, context recall &lt; 0.3, or a drop &gt; 0.05 vs baseline.</p>
+            </div>
+            <div class="case-note" aria-labelledby="ragas-note-title">
+                <h4 id="ragas-note-title">Note — my agent lost to a fixed retriever, and that is why I trust the numbers</h4>
+                <p>My agentic RAG doubled recall. First, it halved it. The RAGAS table on this page still makes me wince: fixed retrieval 0.533 recall, my first hybrid agent 0.350. I had added tools, rewrites and a bigger window — and watched the number go backwards. Faithfulness told the same uncomfortable story: 0.982 for the fixed baseline, 0.908 for the hybrid. The dumber system was more faithful because it had less rope to hang itself with.</p>
+                <p>That was the moment I stopped trusting vibes and started trusting the 50-query golden set. Eighty-two percent human-reviewed, committed as a baseline, gated in CI — any PR fails if faithfulness drops below 0.5, recall below 0.3, or slides more than 0.05 off the baseline. You cannot negotiate with a gate that runs on every commit. It forces you to prove the clever idea before it ships, and it is the reason the hybrid never reached main.</p>
+                <p>The winning config — the agentic agent at 0.708 recall, 0.874 precision, 0.801 relevancy — did not come from a better prompt. It came from routing and verification. ChromaDB with metadata filters and temporal decay narrows the world before any language model sees it; cross-encoder reranking pushes the right chunk to the top. Then a four-stage loop does the unglamorous work: self-consistency sampling, verbalised confidence, reflexion, citation grounding — fused as 0.30 retrieval + 0.25 self-consistency + 0.25 verbalised + 0.20 grounding, Platt-calibrated on real operator feedback so the scores mean what they say.</p>
+                <p>Precision followed recall for once: 0.711 for fixed, 0.645 for the hybrid, 0.874 for the agentic. But faithfulness never fully recovered to the fixed peak — 0.982 versus 0.940. There is the trade-off in plain sight: agentic retrieval finds more truth and cites it more precisely, but every reasoning step is a chance to paraphrase past the source. The Ci gate exists because that slip is invisible without numbers; relevancy climbing to 0.801 alongside recall is how you know the extra context was actually used.</p>
+                <p>My heuristic now is boring. If recall is low, fix retrieval — filters, decay, reranking — before you touch the agent. If faithfulness wobbles, tighten grounding before you add a tool. Twelve MCP tools were not twelve wins; most of the lift came from fusing signals you already had and calibrating them honestly.</p>
+                <p>The doubled recall is not the headline. The headline is that I would have shipped the 0.350 had I not measured. Twice the recall came from a harness that was allowed to say no.</p>
             </div>
             <div class="services">
                 <div class="card">
