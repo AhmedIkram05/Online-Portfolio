@@ -38,6 +38,27 @@ function loadGoogleAnalytics() {
 function hideConsentBanner() {
     var b = document.getElementById('cookie-consent-banner');
     if (b && b.parentNode) b.parentNode.removeChild(b);
+    if (document.body) document.body.style.paddingBottom = '';
+}
+
+function initEmailCopy() {
+    var btn = document.getElementById('hero-email-copy');
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+        var email = btn.getAttribute('data-email') || '';
+        if (!email) return;
+        var done = function() {
+            var original = btn.innerHTML;
+            btn.innerHTML = '<i class=\"fas fa-check\" aria-hidden=\"true\"></i> Copied!';
+            btn.setAttribute('aria-label', 'Email copied to clipboard');
+            setTimeout(function() { btn.innerHTML = original; btn.setAttribute('aria-label', 'Copy email address ' + email); }, 1800);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(email).then(done).catch(function() { window.prompt('Copy email:', email); });
+        } else {
+            window.prompt('Copy email:', email);
+        }
+    });
 }
 
 function grantAnalyticsConsent() {
@@ -69,8 +90,8 @@ function initAnalyticsConsentBanner() {
     banner.style.left = '0';
     banner.style.right = '0';
     banner.style.bottom = '0';
-    banner.style.zIndex = '12000';
-    banner.style.backgroundColor = '#111';
+    banner.style.zIndex = '600';
+    banner.style.backgroundColor = '#1c1917';
     banner.style.color = '#fff';
     banner.style.padding = '0.75rem 0.9rem';
     banner.style.display = 'flex';
@@ -80,6 +101,7 @@ function initAnalyticsConsentBanner() {
     banner.style.gap = '0.5rem';
     banner.style.fontSize = '0.85rem';
     banner.style.lineHeight = '1.35';
+    banner.style.borderTop = '1px solid #e7e0d5';
 
     var text = document.createElement('div');
     text.textContent = 'This site uses Google Analytics for anonymous usage statistics. Analytics are disabled until you allow them.';
@@ -93,7 +115,7 @@ function initAnalyticsConsentBanner() {
     accept.style.marginLeft = '0.5rem';
     accept.style.padding = '0.4rem 0.7rem';
     accept.style.border = 'none';
-    accept.style.backgroundColor = '#005fb8'; /* 6.3:1 on white text — #0b84ff was 3.64:1 */
+    accept.style.backgroundColor = '#c2410c'; /* warm accent — 5.1:1 on white, ties to palette */
     accept.style.color = '#fff';
     accept.style.cursor = 'pointer';
     accept.onclick = grantAnalyticsConsent;
@@ -115,11 +137,23 @@ function initAnalyticsConsentBanner() {
     banner.appendChild(text);
     banner.appendChild(actions);
 
+    var setBannerOffset = function() {
+        if (banner.parentNode && document.body) {
+            document.body.style.paddingBottom = banner.offsetHeight + 'px';
+        }
+    };
     if (document.body) {
         document.body.appendChild(banner);
+        // next frame so offsetHeight is measured after layout
+        requestAnimationFrame(function() { requestAnimationFrame(setBannerOffset); });
+        window.addEventListener('resize', setBannerOffset);
     } else {
         document.addEventListener('readystatechange', function () {
-            if (document.readyState === 'complete') document.body.appendChild(banner);
+            if (document.readyState === 'complete') {
+                document.body.appendChild(banner);
+                requestAnimationFrame(function() { requestAnimationFrame(setBannerOffset); });
+                window.addEventListener('resize', setBannerOffset);
+            }
         });
     }
 }
@@ -132,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize analytics consent/banner
     try { initAnalyticsConsentBanner(); } catch (e) { /* fail silently */ }
+    try { initEmailCopy(); } catch (e) { /* fail silently */ }
     
     // Navigation & Layout
     initNavigation();
