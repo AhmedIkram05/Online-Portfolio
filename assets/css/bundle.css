@@ -1721,8 +1721,10 @@ section[id] {
 
 /* ===== EXPERIENCE ITEMS ===== */
 .experience-item {
-    background: var(--surface);
-    border: 1px solid var(--border-color);
+  /* ponytail: middle-ground card contrast on cream - #d6cfc0+shadow-sm between faint before & heavy before-before */
+  background: var(--surface);
+  border: 1px solid #d6cfc0;
+  box-shadow: var(--shadow-sm);
     border-radius: var(--radius-medium);
     padding: var(--spacing-2xl);
     margin-bottom: var(--spacing-xl);
