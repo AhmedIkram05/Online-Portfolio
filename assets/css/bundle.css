@@ -1032,7 +1032,7 @@ section[id] {
    Tablet/desktop only - mobile keeps the logo as the "Ahmed Ikram" brand.
    Placed AFTER the min-width:768 block so it wins the cascade. */
 /* ===== MOBILE NAVIGATION (burger menu + slide-down panel) ===== */
-@media (max-width: 767px) {
+@media (max-width: 991.98px) {
     .navbar {
         justify-content: flex-start;
         position: relative;
