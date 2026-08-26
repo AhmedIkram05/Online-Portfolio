@@ -416,8 +416,8 @@ section[data-animate] {
 }
 @media (max-width: 480px) {
     #case-study section[data-animate].content-wrapper {
-        padding: var(--spacing-lg) var(--spacing-md);
-        gap: var(--spacing-md);
+        padding: var(--spacing-xl) var(--spacing-md);
+        gap: var(--spacing-lg);
     }
 }
 
@@ -1520,7 +1520,13 @@ section[id] {
 @media (max-width: 480px) {
     .case-note { padding: var(--spacing-md); }
 }
-#case-study .case-note { margin: 0 auto; } /* flex gap handles vertical rhythm */
+#case-study .case-note { margin: 0; max-width: none; width: 100%; } /* ponytail: match experience-item width — 68ch too narrow vs full band */
+#case-study { gap: 0; }
+@media (max-width: 991.98px) {
+    #case-study { gap: var(--spacing-md); }
+    /* when bands have a gap, each needs its own rounded card */
+    #case-study section[data-animate].content-wrapper { border: 1px solid var(--border-color); border-radius: var(--radius-large); }
+}
 #case-study .experience-item {
     width: 100%;
     box-sizing: border-box;
