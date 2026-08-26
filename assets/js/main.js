@@ -226,8 +226,11 @@ function initNavigation() {
         const menuRect = submenu.getBoundingClientRect();
         const linkRect = link.getBoundingClientRect();
         
-        subIndicator.style.height = `${linkRect.height}px`;
-        subIndicator.style.transform = `translateY(${linkRect.top - menuRect.top}px)`;
+        // ponytail: cap at 28px centered — full 44px was way too big, hover is 28 so active 30 is just distinct
+        const h = 30;
+        const top = linkRect.top - menuRect.top + (linkRect.height - h) / 2;
+        subIndicator.style.height = `${h}px`;
+        subIndicator.style.transform = `translateY(${top}px)`;
         subIndicator.style.display = 'block';
     }
 
