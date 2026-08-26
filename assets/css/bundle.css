@@ -406,18 +406,18 @@ section[data-animate] {
 /* ponytail: kill stacked margins — flex gap is the single spacing truth inside each band */
 #case-study section[data-animate].content-wrapper > .section-title { margin-bottom: 0; }
 #case-study section[data-animate].content-wrapper > .experience-item { margin-bottom: 0; }
-#case-study section[data-animate].content-wrapper > .case-note { margin: 0 auto; width: 100%; }
+#case-study section[data-animate].content-wrapper > .case-note { margin: 0; width: 100%; max-width: none; box-sizing: border-box; }
 #case-study section[data-animate].content-wrapper > .services { margin-top: 0; }
 @media (max-width: 991.98px) {
     #case-study section[data-animate].content-wrapper {
-        padding: var(--spacing-xl) var(--spacing-md);
-        gap: var(--spacing-lg);
+        padding: var(--spacing-2xl) var(--spacing-md);
+        gap: var(--spacing-xl);
     }
 }
 @media (max-width: 480px) {
     #case-study section[data-animate].content-wrapper {
-        padding: var(--spacing-xl) var(--spacing-md);
-        gap: var(--spacing-lg);
+        padding: var(--spacing-2xl) var(--spacing-md);
+        gap: var(--spacing-xl);
     }
 }
 
@@ -1520,11 +1520,15 @@ section[id] {
 @media (max-width: 480px) {
     .case-note { padding: var(--spacing-md); }
 }
-#case-study .case-note { margin: 0; max-width: none; width: 100%; } /* ponytail: match experience-item width — 68ch too narrow vs full band */
+#case-study .case-note { margin: 0; max-width: none; width: 100%; box-sizing: border-box; align-self: stretch; padding: var(--spacing-2xl); border-color: #d6cfc0; box-shadow: var(--shadow-sm); } /* ponytail: match experience-item width + card feel — 68ch too narrow vs full band */
 @media (max-width: 991.98px) {
-    #case-study { gap: var(--spacing-md); }
+    #case-study { gap: var(--spacing-lg); }
     /* when bands have a gap, each needs its own rounded card */
     #case-study section[data-animate].content-wrapper { border: 1px solid var(--border-color); border-radius: var(--radius-large); }
+    #case-study .case-note { padding: var(--spacing-lg); }
+}
+@media (max-width: 480px) {
+    #case-study .case-note { padding: var(--spacing-md); }
 }
 #case-study .experience-item {
     width: 100%;
