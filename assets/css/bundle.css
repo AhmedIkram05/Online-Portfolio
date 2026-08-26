@@ -1522,12 +1522,13 @@ section[id] {
 }
 #case-study .case-note { margin: 0; max-width: none; width: 100%; box-sizing: border-box; align-self: stretch; padding: var(--spacing-2xl); border-color: #d6cfc0; box-shadow: var(--shadow-sm); } /* ponytail: match experience-item width + card feel — 68ch too narrow vs full band */
 @media (max-width: 991.98px) {
-    #case-study { gap: var(--spacing-lg); }
+    #case-study { gap: var(--spacing-xl); }
     /* when bands have a gap, each needs its own rounded card */
     #case-study section[data-animate].content-wrapper { border: 1px solid var(--border-color); border-radius: var(--radius-large); }
     #case-study .case-note { padding: var(--spacing-lg); }
 }
 @media (max-width: 480px) {
+    #case-study { gap: var(--spacing-2xl); }
     #case-study .case-note { padding: var(--spacing-md); }
 }
 #case-study .experience-item {
