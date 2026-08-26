@@ -409,12 +409,14 @@ section[data-animate] {
 #case-study section[data-animate].content-wrapper > .case-note { margin: 0; width: 100%; max-width: none; box-sizing: border-box; }
 #case-study section[data-animate].content-wrapper > .services { margin-top: 0; }
 @media (max-width: 991.98px) {
+    #case-study { gap: var(--spacing-2xl); }
     #case-study section[data-animate].content-wrapper {
         padding: var(--spacing-2xl) var(--spacing-md);
         gap: var(--spacing-xl);
     }
 }
 @media (max-width: 480px) {
+    #case-study { gap: var(--spacing-2xl); }
     #case-study section[data-animate].content-wrapper {
         padding: var(--spacing-2xl) var(--spacing-md);
         gap: var(--spacing-xl);
