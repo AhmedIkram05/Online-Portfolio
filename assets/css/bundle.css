@@ -858,14 +858,15 @@ header.scrolled {
     align-items: center;
 }
 
-/* Override generic nav-link hover indicator for sub-links — double class beats .nav-link::before */
+/* Override generic nav-link hover indicator for sub-links — double class beats .nav-link::before
+   // ponytail: 2×22 matches burger bar (22×2) for visual weight; active is 3×44 */
 .nav-link.nav-link-sub::before {
     content: '';
     position: absolute;
     left: -1.5rem;
     top: 50%;
     bottom: auto;
-    width: 1px;
+    width: 2px;
     height: 0;
     transform: translateY(-50%);
     border-radius: 999px;
@@ -873,13 +874,12 @@ header.scrolled {
     transition: height var(--transition-medium), background-color var(--transition-medium);
 }
 
-.nav-link.nav-link-sub:hover::before,
-.nav-link.nav-link-sub.active::before {
+.nav-link.nav-link-sub:hover::before {
     background: var(--accent-color);
     bottom: auto;
     left: -1.5rem;
-    width: 1px;
-    height: 18px;
+    width: 2px;
+    height: 22px;
     transform: translateY(-50%);
 }
 
