@@ -1521,7 +1521,6 @@ section[id] {
     .case-note { padding: var(--spacing-md); }
 }
 #case-study .case-note { margin: 0; max-width: none; width: 100%; } /* ponytail: match experience-item width — 68ch too narrow vs full band */
-#case-study { gap: 0; }
 @media (max-width: 991.98px) {
     #case-study { gap: var(--spacing-md); }
     /* when bands have a gap, each needs its own rounded card */
