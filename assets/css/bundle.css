@@ -371,20 +371,28 @@ section[data-animate] {
 .content-wrapper .content-wrapper:not([data-animate]) {
     padding: 0;
 }
-   add another inset - keeps every section's content edges aligned. */
-.content-wrapper .content-wrapper:not([data-animate]) {
-    padding: 0;
-}
+/* ponytail: prevents double inset — nested content-wrapper would add another gutter, keeping all section edges aligned */
 
 /* Inner case-study subsections: tinted band + divider so 6 stacked blocks read as distinct sections
    against the cream body bg (was flat with only whitespace before). */
+#case-study {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
 #case-study section[data-animate].content-wrapper {
-    margin: 0;
-    padding: var(--spacing-2xl) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    margin: 0 auto;
+    padding: var(--spacing-2xl) var(--spacing-lg);
     background: var(--surface);
     border-top: 1px solid var(--border-color);
     border-radius: 0;
     box-shadow: 0 1px 0 rgba(28, 25, 23, 0.04);
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
 }
 #case-study section[data-animate].content-wrapper:first-of-type {
     border-top-left-radius: var(--radius-large);
@@ -395,9 +403,21 @@ section[data-animate] {
     border-bottom-right-radius: var(--radius-large);
     border-bottom: 1px solid var(--border-color);
 }
+/* ponytail: kill stacked margins — flex gap is the single spacing truth inside each band */
+#case-study section[data-animate].content-wrapper > .section-title { margin-bottom: 0; }
+#case-study section[data-animate].content-wrapper > .experience-item { margin-bottom: 0; }
+#case-study section[data-animate].content-wrapper > .case-note { margin: 0 auto; width: 100%; }
+#case-study section[data-animate].content-wrapper > .services { margin-top: 0; }
 @media (max-width: 991.98px) {
     #case-study section[data-animate].content-wrapper {
-        padding: var(--spacing-2xl) var(--spacing-md);
+        padding: var(--spacing-xl) var(--spacing-md);
+        gap: var(--spacing-lg);
+    }
+}
+@media (max-width: 480px) {
+    #case-study section[data-animate].content-wrapper {
+        padding: var(--spacing-lg) var(--spacing-md);
+        gap: var(--spacing-md);
     }
 }
 
