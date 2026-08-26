@@ -1545,6 +1545,30 @@ section[id] {
 .case-note p:last-child { margin-bottom: 0; }
 .case-note strong { color: var(--text-light); }
 
+/* Case study grids: fluid columns that never overflow on 320px phones */
+#case-study .services {
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: var(--spacing-xl);
+    margin-top: 0;
+}
+#case-study #case-study-stats .services {
+    gap: var(--spacing-lg);
+}
+#case-study .card-body {
+    padding: var(--spacing-lg);
+}
+@media (max-width: 991.98px) {
+    #case-study .services { gap: var(--spacing-lg); }
+    #case-study #case-study-stats .services { gap: var(--spacing-md); }
+}
+@media (max-width: 767px) {
+    #case-study .services { grid-template-columns: 1fr; gap: var(--spacing-md); }
+}
+@media (max-width: 480px) {
+    #case-study .services { gap: var(--spacing-md); }
+    #case-study .card-body { padding: var(--spacing-md); }
+}
+
 /* Shown instead of the PDF embed on devices with no built-in PDF viewer */
 .cv-embed-fallback {
     padding: var(--spacing-xl) var(--spacing-md);
