@@ -865,7 +865,7 @@ header.scrolled {
     left: -1.5rem;
     top: 50%;
     bottom: auto;
-    width: 2px;
+    width: 1px;
     height: 0;
     transform: translateY(-50%);
     border-radius: 999px;
@@ -875,7 +875,7 @@ header.scrolled {
 
 .nav-link-sub:hover::before {
     background: var(--accent-color);
-    width: 2px;
+    width: 1px;
     height: 18px;
 }
 
