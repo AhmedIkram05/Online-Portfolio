@@ -582,8 +582,8 @@ header.scrolled {
     }
 }
 
-/* Mobile: badge hidden to free header (logo + burger only); contact .availability-banner remains */
-@media (max-width: 991.98px) {
+/* ponytail: badge hides as soon as it would overlap the centered nav (measured live: gap 6px at 1150, -36 at 1100); hide at 1180 for breathing room — raise if nav grows */
+@media (max-width: 1180px) {
     .navbar-badge { display: none; }
 }
 
