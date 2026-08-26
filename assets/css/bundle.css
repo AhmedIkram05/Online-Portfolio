@@ -858,8 +858,8 @@ header.scrolled {
     align-items: center;
 }
 
-/* Override generic nav-link hover indicator for sub-links — no !important (specificity wins) */
-.nav-link-sub::before {
+/* Override generic nav-link hover indicator for sub-links — double class beats .nav-link::before */
+.nav-link.nav-link-sub::before {
     content: '';
     position: absolute;
     left: -1.5rem;
@@ -873,10 +873,14 @@ header.scrolled {
     transition: height var(--transition-medium), background-color var(--transition-medium);
 }
 
-.nav-link-sub:hover::before {
+.nav-link.nav-link-sub:hover::before,
+.nav-link.nav-link-sub.active::before {
     background: var(--accent-color);
+    bottom: auto;
+    left: -1.5rem;
     width: 1px;
     height: 18px;
+    transform: translateY(-50%);
 }
 
 .nav-link-sub:hover {
