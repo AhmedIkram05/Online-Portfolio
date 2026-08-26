@@ -865,18 +865,18 @@ header.scrolled {
     left: -1.5rem;
     top: 50%;
     bottom: auto;
-    width: 3px;
+    width: 2px;
     height: 0;
     transform: translateY(-50%);
-    border-radius: 0 3px 3px 0;
+    border-radius: 999px;
     background: transparent;
     transition: height var(--transition-medium), background-color var(--transition-medium);
 }
 
 .nav-link-sub:hover::before {
     background: var(--accent-color);
-    width: 3px;
-    height: 100%;
+    width: 2px;
+    height: 18px;
 }
 
 .nav-link-sub:hover {
