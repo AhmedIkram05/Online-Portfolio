@@ -223,12 +223,26 @@ function initNavigation() {
         const subIndicator = submenu.querySelector('.sub-nav-indicator');
         if (!subIndicator) return;
 
+        // ponytail: submenu is display:none until hover — rect is 0 when hidden, so measure hidden
+        const hidden = getComputedStyle(submenu).display === 'none';
+        let restoreDisplay = '', restoreVisibility = '';
+        if (hidden) {
+            restoreDisplay = submenu.style.display;
+            restoreVisibility = submenu.style.visibility;
+            submenu.style.display = 'flex';
+            submenu.style.visibility = 'hidden';
+        }
         const menuRect = submenu.getBoundingClientRect();
         const linkRect = link.getBoundingClientRect();
-        
-        subIndicator.style.height = `${linkRect.height}px`;
-        subIndicator.style.transform = `translateY(${linkRect.top - menuRect.top}px)`;
+        const h = 30;
+        const top = linkRect.top - menuRect.top + (linkRect.height - h) / 2;
+        subIndicator.style.height = `${h}px`;
+        subIndicator.style.transform = `translateY(${top}px)`;
         subIndicator.style.display = 'block';
+        if (hidden) {
+            submenu.style.display = restoreDisplay;
+            submenu.style.visibility = restoreVisibility;
+        }
     }
 
     /* --- 2. Active State on Scroll (Spy) --- */
@@ -269,8 +283,9 @@ function initNavigation() {
         }
 
         // Update classes and indicator
-        // Reset all active states first is expensive, so we do it carefully
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        document.querySelectorAll('.sub-nav-indicator').forEach(el => el.style.display = 'none');
+        if (indicator) indicator.style.display = 'none';
 
         // Find the link corresponding to the current section
         let activeLink = document.querySelector(`.nav-link[href="#${currentSectionId}"]`);
@@ -371,11 +386,11 @@ function initNavigation() {
     
     window.addEventListener('resize', onScrollSpy, { passive: true });
 
-    // Initial check
-    setTimeout(() => {
-        onScrollSpy();
-        onScrollHeader();
-    }, 100);
+    // Initial check — ponytail: 100ms was too early for layout/fonts; also fire on load + rAF
+    const runInitial = () => { onScrollSpy(); onScrollHeader(); };
+    setTimeout(runInitial, 100);
+    window.addEventListener('load', runInitial, { once: true });
+    requestAnimationFrame(() => requestAnimationFrame(runInitial));
 
     // Mobile Toggler
     if (toggler) {

@@ -858,25 +858,29 @@ header.scrolled {
     align-items: center;
 }
 
-/* Override generic nav-link hover indicator for sub-links — no !important (specificity wins) */
-.nav-link-sub::before {
+/* Override generic nav-link hover indicator for sub-links — double class beats .nav-link::before
+   // ponytail: 2×28 hover vs 2×30 active — burger 22×2 as feel, both centered not full-height */
+.nav-link.nav-link-sub::before {
     content: '';
     position: absolute;
     left: -1.5rem;
     top: 50%;
     bottom: auto;
-    width: 3px;
+    width: 2px;
     height: 0;
     transform: translateY(-50%);
-    border-radius: 0 3px 3px 0;
+    border-radius: 999px;
     background: transparent;
     transition: height var(--transition-medium), background-color var(--transition-medium);
 }
 
-.nav-link-sub:hover::before {
+.nav-link.nav-link-sub:hover::before {
     background: var(--accent-color);
-    width: 3px;
-    height: 100%;
+    bottom: auto;
+    left: -1.5rem;
+    width: 2px;
+    height: 28px;
+    transform: translateY(-50%);
 }
 
 .nav-link-sub:hover {
@@ -1037,9 +1041,9 @@ section[id] {
     .sub-nav-indicator {
         position: absolute;
         left: 0;
-        width: 3px;
+        width: 2px;
         background-color: var(--secondary-color);
-        border-radius: 0 3px 3px 0;
+        border-radius: 0 2px 2px 0;
         transition: transform 0.3s ease, height 0.3s ease;
         z-index: 10;
         display: block;
