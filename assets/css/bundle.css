@@ -2727,12 +2727,18 @@ main > section:first-child,
 }
 /* kill double-count helpers that made About/Projects taller than Experience/CV/Contact */
 .center.mb-xl,
-.center.mb-2xl,
-.project-filters.mb-2xl {
+.center.mb-2xl {
     margin-bottom: 0 !important;
 }
 .project-filters {
-    margin-bottom: clamp(1rem, 2vw, 1.45rem) !important;
+    margin-top: clamp(1.9rem, 4vw, 2.65rem) !important;
+    margin-bottom: clamp(2rem, 3.5vw, 2.75rem) !important;
+}
+#projects .lead {
+    margin-bottom: 0 !important;
+}
+.project-group[data-group="featured"] > .section-title {
+    margin-bottom: clamp(1.4rem, 3vw, 2rem) !important;
 }
 .services {
     margin-top: 0 !important;
