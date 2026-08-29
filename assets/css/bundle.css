@@ -2408,6 +2408,17 @@ a.contact-item--link {
 .project-card .card-img-wrapper { border-top: 3px solid var(--accent-color); transition: border-top-width 0.2s ease, border-color 0.2s ease; }
 .project-card:hover .card-img-wrapper { border-top-width: 4px; }
 
+/* ponytail: one accent per banner's dominant fill (sampled from each image) */
+.accent-stocklens  .card-img-wrapper { border-top-color: #10b981; } /* emerald */
+.accent-w3c        .card-img-wrapper { border-top-color: #3b82f6; } /* blue */
+.accent-devsync    .card-img-wrapper { border-top-color: #f59e0b; } /* amber */
+.accent-laad       .card-img-wrapper { border-top-color: #8b5cf6; } /* violet */
+.accent-sweqwen    .card-img-wrapper { border-top-color: #059669; } /* emerald-dark */
+.accent-wikistream .card-img-wrapper { border-top-color: #06b6d4; } /* cyan */
+.accent-haggis     .card-img-wrapper { border-top-color: #14b8a6; } /* teal */
+.accent-unixvcs    .card-img-wrapper { border-top-color: #64748b; } /* slate */
+.accent-sales      .card-img-wrapper { border-top-color: #c89838; } /* gold (sampled from dashboard png) */
+
 
 /* ===== MEDIUM SCREENS (TABLET & SMALL LAPTOP) - 768px to 1199px ===== */
 @media (min-width: 768px) and (max-width: 1199px) {
