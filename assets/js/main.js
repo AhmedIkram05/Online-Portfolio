@@ -509,6 +509,16 @@ function initProjectFilters() {
              }
         });
     });
+
+    // Coursework nav link: reset to "All" so the earlier-work group is visible, then open the disclosure
+    document.querySelectorAll('.nav-link[href="#coursework"]').forEach(link => {
+        link.addEventListener('click', () => {
+            const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+            if (allBtn && !allBtn.classList.contains('active')) allBtn.click();
+            const details = document.getElementById('coursework');
+            if (details) details.open = true;
+        });
+    });
 }
 
 /**
