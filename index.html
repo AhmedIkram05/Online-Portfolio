@@ -199,7 +199,7 @@
                 <div class="card" data-animate>
                     <div class="card-body">
                         <p class="card-text">My strongest work ships end-to-end with real guardrails. LAAD began as a 7-person university team project — after the module I rebuilt it solo: LangGraph hybrid RAG (0.708 vs 0.350 recall), 3-layer anomaly detector (0.70 F1) on a live Kafka stream, plus a full Kafka pipeline and AWS/Terraform deploy.</p>
-                        <p class="card-text">Solo: SWE-Qwen (fine-tuned Qwen3-14B, 7× fix rate), StockLens (Rust + LSTM), DevSync (1,452 tests), WikiStream (58.9M+ events, zero loss) and an Azure ETL → Power BI platform. All gated for real users — CI blocks RAGAS regress &gt;0.05, promos need sig tests, streams hold at-least-once under chaos, zero long-lived creds.</p>
+                        <p class="card-text">Solo: SWE-Qwen (fine-tuned Qwen3-14B, 7× fix rate), StockLens (Rust + LSTM, stateless MCP), DevSync (1,452 tests), WikiStream (58.9M+ events, zero loss) and an Azure ETL → Power BI platform. All gated for real users — CI blocks RAGAS regress &gt;0.05, promos need sig tests, streams hold at-least-once under chaos, zero long-lived creds.</p>
                         <!-- ponytail: What I Bring merged here — proof beats claims -->
                     </div>
                 </div>
@@ -256,7 +256,7 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">StockLens</h4>
-                        <p class="card-text">Scan receipts, trade stocks with your spending, track portfolios with LSTM forecasts & an AI agent. FastAPI + PyTorch + LangGraph + Rust backend.</p>
+                        <p class="card-text">Scan receipts, trade stocks with your spending, track portfolios with LSTM forecasts & an AI agent — all 16 tools behind a self-built stateless MCP server (OAuth 2.1). FastAPI + PyTorch + LangGraph + Rust backend.</p>
                         <div class="tech-stack">
                             <span class="badge">React Native</span>
                             <span class="badge">FastAPI</span>
@@ -264,6 +264,7 @@
                             <span class="badge">LangGraph</span>
                             <span class="badge">Rust</span>
                             <span class="badge">Terraform</span>
+                            <span class="badge">MCP</span>
                         </div>
                     </div>
                 </div>
