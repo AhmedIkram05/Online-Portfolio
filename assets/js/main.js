@@ -438,6 +438,14 @@ function initNavigation() {
         });
     });
 
+    // Auto-open the Technical Skills disclosure when its nav link is clicked
+    document.querySelectorAll('.nav-link[href="#experience-skills"]').forEach(link => {
+        link.addEventListener('click', () => {
+            const details = document.querySelector('#experience-skills > .skills-disclosure');
+            if (details) details.open = true;
+        });
+    });
+
     // Close menu when clicking outside
     document.addEventListener('click', (event) => {
         if (navbarNav && toggler && 
@@ -507,6 +515,16 @@ function initProjectFilters() {
                  // Trigger the filter logic by simulating a click
                  targetBtn.click();
              }
+        });
+    });
+
+    // Coursework nav link: reset to "All" so the earlier-work group is visible, then open the disclosure
+    document.querySelectorAll('.nav-link[href="#coursework"]').forEach(link => {
+        link.addEventListener('click', () => {
+            const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+            if (allBtn && !allBtn.classList.contains('active')) allBtn.click();
+            const details = document.getElementById('coursework');
+            if (details) details.open = true;
         });
     });
 }

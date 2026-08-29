@@ -2408,6 +2408,17 @@ a.contact-item--link {
 .project-card .card-img-wrapper { border-top: 3px solid var(--accent-color); transition: border-top-width 0.2s ease, border-color 0.2s ease; }
 .project-card:hover .card-img-wrapper { border-top-width: 4px; }
 
+/* ponytail: one accent per banner's dominant fill (sampled from each image) */
+.accent-stocklens  .card-img-wrapper { border-top-color: #10b981; } /* emerald */
+.accent-w3c        .card-img-wrapper { border-top-color: #3b82f6; } /* blue */
+.accent-devsync    .card-img-wrapper { border-top-color: #f59e0b; } /* amber */
+.accent-laad       .card-img-wrapper { border-top-color: #8b5cf6; } /* violet */
+.accent-sweqwen    .card-img-wrapper { border-top-color: #059669; } /* emerald-dark */
+.accent-wikistream .card-img-wrapper { border-top-color: #06b6d4; } /* cyan */
+.accent-haggis     .card-img-wrapper { border-top-color: #14b8a6; } /* teal */
+.accent-unixvcs    .card-img-wrapper { border-top-color: #64748b; } /* slate */
+.accent-sales      .card-img-wrapper { border-top-color: #c89838; } /* gold (sampled from dashboard png) */
+
 
 /* ===== MEDIUM SCREENS (TABLET & SMALL LAPTOP) - 768px to 1199px ===== */
 @media (min-width: 768px) and (max-width: 1199px) {
@@ -2664,4 +2675,147 @@ a.contact-item--link {
 
 .footer-copy {
     margin: 0;
+}
+
+/* ===== SCREENSHOT FIXES (2026-08-29, mobile) — even band transitions =====
+   1) hero→About: 96px main offset + section padding = void. Kill the offset;
+      anchors already land clear of the fixed header via scroll-margin-top.
+   2) About→Projects and Projects→Experience: #home / #projects header div /
+      #projects content wrapper are no-animate, so they carried no section
+      padding → half-or-zero gaps vs every other band transition. Give the
+      same T so every band-to-band gap = T+T, same as section-to-section. */
+main, main#main-content {
+    padding-top: 0 !important;
+}
+#home {
+    padding-bottom: clamp(1.9rem, 4vw, 2.65rem) !important;
+}
+#projects > div[data-animate] {
+    padding-top: clamp(1.9rem, 4vw, 2.65rem) !important;
+}
+#projects > .content-wrapper {
+    padding-bottom: clamp(1.9rem, 4vw, 2.65rem) !important;
+}
+
+/* ===== UNIFIED HEADING RHYTHM — ponytail: every section, every device, one truth ===== */
+/* Replaces scattered 3xl/2xl paddings + stacked margins with a single fluid band.
+   Goal: same visual breathing room whether About, Projects, Case Study, Experience, CV, Contact;
+   not too loose on desktop, not too tight on phones. One clamp does all widths. */
+section[data-animate] {
+    padding: clamp(1.9rem, 4vw, 2.65rem) 0 !important;
+    margin: 0 !important;
+}
+main > section:first-child,
+#projects > section:first-child,
+#experience > section:first-child,
+#cv > section:first-child,
+#contact > section:first-child,
+#case-study > section:first-child {
+    padding-top: clamp(1.9rem, 4vw, 2.65rem) !important;
+}
+.hero-name {
+    font-size: clamp(2.2rem, 6vw, 3.5rem) !important;
+    margin-bottom: clamp(0.6rem, 1.5vw, 0.85rem) !important;
+    line-height: 1.1 !important;
+}
+.hero-title {
+    font-size: clamp(1.05rem, 2.5vw, 1.35rem) !important;
+    margin-bottom: clamp(1rem, 2.2vw, 1.45rem) !important;
+    line-height: 1.6 !important;
+}
+.display-4 {
+    margin-bottom: clamp(0.55rem, 1.4vw, 0.85rem) !important;
+    line-height: 1.15 !important;
+}
+.lead {
+    margin-bottom: clamp(1.05rem, 2.2vw, 1.45rem) !important;
+    line-height: 1.6 !important;
+}
+.section-title {
+    margin-bottom: clamp(1rem, 2vw, 1.45rem) !important;
+    margin-top: 0 !important;
+    line-height: 1.25 !important;
+}
+/* kill double-count helpers that made About/Projects taller than Experience/CV/Contact */
+.center.mb-xl,
+.center.mb-2xl {
+    margin-bottom: 0 !important;
+}
+.project-filters {
+    margin-top: clamp(1.9rem, 4vw, 2.65rem) !important;
+    margin-bottom: clamp(2rem, 3.5vw, 2.75rem) !important;
+}
+#projects .lead {
+    margin-bottom: 0 !important;
+}
+.project-group[data-group="featured"] > .section-title {
+    margin-bottom: clamp(1.4rem, 3vw, 2rem) !important;
+}
+.services {
+    margin-top: 0 !important;
+    gap: clamp(1.25rem, 2.8vw, 1.75rem) !important;
+}
+.about-grid {
+    gap: clamp(1.25rem, 2.8vw, 1.75rem) !important;
+}
+.contact-stack {
+    gap: clamp(1.25rem, 2.8vw, 1.75rem) !important;
+}
+.project-group[data-group="earlier"] {
+    margin-top: clamp(1.25rem, 2.8vw, 1.75rem) !important;
+}
+#case-study {
+    gap: 0 !important;
+}
+#case-study section[data-animate].content-wrapper {
+    gap: clamp(1rem, 2vw, 1.45rem) !important;
+    margin: 0 auto !important;
+}
+#case-study section[data-animate].content-wrapper > .section-title,
+#case-study section[data-animate].content-wrapper > .experience-item,
+#case-study section[data-animate].content-wrapper > .case-note,
+#case-study section[data-animate].content-wrapper > .services {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+#case-study .experience-item,
+#case-study .case-note {
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+}
+.experience-item h3:not(:first-child),
+.experience-item h4:not(:first-child) {
+    margin-top: clamp(1.25rem, 2.5vw, 1.75rem) !important;
+}
+.skills-summary-title {
+    font-size: clamp(1.35rem, 4vw, 1.9rem) !important;
+    line-height: 1.25 !important;
+}
+/* uniform stacked cards: same visual gap as Services grid */
+.experience-item {
+    margin-bottom: clamp(1.2rem, 2.4vw, 1.65rem) !important;
+}
+#experience-work .experience-item:last-child,
+#experience-education .experience-item:last-child {
+    margin-bottom: 0 !important;
+}
+.content-wrapper {
+    padding-left: clamp(1rem, 3vw, 1.5rem) !important;
+    padding-right: clamp(1rem, 3vw, 1.5rem) !important;
+}
+.content-wrapper .content-wrapper:not([data-animate]) {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+@media (max-width: 767px) {
+    .display-4 { font-size: clamp(1.7rem, 6vw, 2.15rem) !important; }
+    .section-title { font-size: clamp(1.32rem, 5vw, 1.68rem) !important; }
+    .skills-summary-title { font-size: clamp(1.28rem, 5vw, 1.55rem) !important; }
+    .lead { font-size: clamp(0.97rem, 2.8vw, 1.08rem) !important; text-align: center !important; }
+    .services { gap: clamp(1rem, 3vw, 1.5rem) !important; }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+    .display-4 { font-size: clamp(1.85rem, 4vw, 2.55rem) !important; }
+    .section-title { font-size: clamp(1.42rem, 3vw, 1.95rem) !important; }
 }
