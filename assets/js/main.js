@@ -438,6 +438,14 @@ function initNavigation() {
         });
     });
 
+    // Auto-open the Technical Skills disclosure when its nav link is clicked
+    document.querySelectorAll('.nav-link[href="#experience-skills"]').forEach(link => {
+        link.addEventListener('click', () => {
+            const details = document.querySelector('#experience-skills > .skills-disclosure');
+            if (details) details.open = true;
+        });
+    });
+
     // Close menu when clicking outside
     document.addEventListener('click', (event) => {
         if (navbarNav && toggler && 
