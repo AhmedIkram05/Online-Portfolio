@@ -199,7 +199,7 @@
                 <div class="card" data-animate>
                     <div class="card-body">
                         <p class="card-text">My strongest work ships end-to-end with real guardrails. LAAD began as a 7-person university team project — after the module I rebuilt it solo: LangGraph hybrid RAG (0.708 vs 0.350 recall), 3-layer anomaly detector (0.70 F1) on a live Kafka stream, plus a full Kafka pipeline and AWS/Terraform deploy.</p>
-                        <p class="card-text">Solo: SWE-Qwen (fine-tuned Qwen3-14B, 7× fix rate), StockLens (Rust + LSTM, stateless MCP), DevSync (1,452 tests), WikiStream (58.9M+ events, zero loss) and an Azure ETL → Power BI platform. All gated for real users — CI blocks RAGAS regress &gt;0.05, promos need sig tests, streams hold at-least-once under chaos, zero long-lived creds.</p>
+                        <p class="card-text">Solo: SWE-Qwen (fine-tuned Qwen3-14B, 7× fix rate), StockLens (Rust + LSTM, stateless MCP), DevSync (1,455 tests + k6 load gate), WikiStream (58.9M+ events, zero loss) and an Azure ETL → Power BI platform. All gated for real users — CI blocks RAGAS regress &gt;0.05, promos need sig tests, streams hold at-least-once under chaos, zero long-lived creds.</p>
                         <!-- ponytail: What I Bring merged here — proof beats claims -->
                     </div>
                 </div>
@@ -307,12 +307,13 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">DevSync</h4>
-                        <p class="card-text">Production full-stack project management platform with real-time collaboration, GitHub OAuth 2.0, and bidirectional Issue/PR sync, React 18 + Flask + PostgreSQL, deployed on AWS ECS Fargate with OIDC-authenticated CI/CD.</p>
+                        <p class="card-text">Production full-stack project management platform with real-time collaboration, GitHub OAuth 2.0, bidirectional Issue/PR sync and a k6 load-test gate (P95 ≤500ms, P99 ≤1s, &lt;1% errors at 10 VUs + baseline regression check). React 18 + Flask + PostgreSQL, deployed on AWS ECS Fargate with OIDC-authenticated CI/CD.</p>
                         <div class="tech-stack">
                             <span class="badge">React</span>
                             <span class="badge">Flask</span>
                             <span class="badge">PostgreSQL</span>
                             <span class="badge">Socket.io</span>
+                            <span class="badge">k6</span>
                             <span class="badge">AWS</span>
                             <span class="badge">Docker</span>
                         </div>
@@ -1012,6 +1013,7 @@
                             <span class="tech-badge"><i class="fab fa-pied-piper-hat"></i> Jest</span>
                             <span class="tech-badge"><i class="fas fa-check-circle"></i> Cypress</span>
                             <span class="tech-badge"><i class="fas fa-play"></i> Playwright</span>
+                            <span class="tech-badge"><i class="fas fa-tachometer-alt"></i> k6</span>
                             <span class="tech-badge"><i class="fab fa-react"></i> React Testing Library</span>
                             <span class="tech-badge"><i class="fas fa-cogs"></i> PyO3</span>
                             <span class="tech-badge"><i class="fas fa-cogs"></i> Maturin</span>
