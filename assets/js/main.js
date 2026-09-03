@@ -115,7 +115,7 @@ function initAnalyticsConsentBanner() {
     accept.style.marginLeft = '0.5rem';
     accept.style.padding = '0.4rem 0.7rem';
     accept.style.border = 'none';
-    accept.style.backgroundColor = '#c2410c'; /* warm accent — 5.1:1 on white, ties to palette */
+    accept.style.backgroundColor = '#c2410c'; /* warm accent - 5.1:1 on white, ties to palette */
     accept.style.color = '#fff';
     accept.style.cursor = 'pointer';
     accept.onclick = grantAnalyticsConsent;
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initLogoMorph();
     initBackToTop();
 
-    // Footer copyright year — never goes stale
+    // Footer copyright year - never goes stale
     const yearEl = document.getElementById('footer-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
@@ -223,7 +223,7 @@ function initNavigation() {
         const subIndicator = submenu.querySelector('.sub-nav-indicator');
         if (!subIndicator) return;
 
-        // ponytail: submenu is display:none until hover — rect is 0 when hidden, so measure hidden
+        // ponytail: submenu is display:none until hover - rect is 0 when hidden, so measure hidden
         const hidden = getComputedStyle(submenu).display === 'none';
         let restoreDisplay = '', restoreVisibility = '';
         if (hidden) {
@@ -386,7 +386,7 @@ function initNavigation() {
     
     window.addEventListener('resize', onScrollSpy, { passive: true });
 
-    // Initial check — ponytail: 100ms was too early for layout/fonts; also fire on load + rAF
+    // Initial check - ponytail: 100ms was too early for layout/fonts; also fire on load + rAF
     const runInitial = () => { onScrollSpy(); onScrollHeader(); };
     setTimeout(runInitial, 100);
     window.addEventListener('load', runInitial, { once: true });
@@ -402,7 +402,7 @@ function initNavigation() {
         if (e.key === 'Escape') closeMobileMenu();
     });
 
-    // Click on Links (Smooth Scroll + Close Menu + Move Indicator) — ponytail: native smooth (CSS scroll-behavior) like the logo had; 1.5s custom was the slow one — deleted
+    // Click on Links (Smooth Scroll + Close Menu + Move Indicator) - ponytail: native smooth (CSS scroll-behavior) like the logo had; 1.5s custom was the slow one - deleted
     allNavLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -411,7 +411,7 @@ function initNavigation() {
             const targetSection = targetId ? document.getElementById(targetId) : null;
 
             if (targetSection) {
-                // ponytail: native platform smooth — #top goes to exact 0, others use CSS scroll-margin-top (90px) via scrollIntoView
+                // ponytail: native platform smooth - #top goes to exact 0, others use CSS scroll-margin-top (90px) via scrollIntoView
                 if (targetId === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
                 else targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
@@ -662,7 +662,7 @@ function initFormValidation() {
                 })
                 .then(response => {
                     if (response.ok) {
-                        showFormStatus(form, 'Message sent — thank you! I\'ll get back to you soon.', true);
+                        showFormStatus(form, 'Message sent - thank you! I\'ll get back to you soon.', true);
                         form.reset();
                         form.classList.remove('was-validated');
                     } else {
@@ -778,7 +778,7 @@ function initCvViewer() {
  * PDF preview fallback for browsers with no built-in viewer (iOS Safari and
  * some Android browsers render <embed type="application/pdf"> as a blank box).
  * navigator.pdfViewerEnabled is the standard signal; `undefined` (very old
- * browsers) is treated as capable — ponytail: revisit if iOS < 16.4 matters.
+ * browsers) is treated as capable - ponytail: revisit if iOS < 16.4 matters.
  * Embeds are hidden but kept in the DOM so the tab logic and download pin
  * (which read embed.dataset.src) keep working untouched.
  */
@@ -887,7 +887,7 @@ function initBackToTop() {
 
     btn.addEventListener('click', (e) => {
         e.preventDefault();
-        // ponytail: native smooth like logo — platform default (~300-500ms), no custom 1.5s
+        // ponytail: native smooth like logo - platform default (~300-500ms), no custom 1.5s
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
