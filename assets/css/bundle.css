@@ -174,7 +174,7 @@ p {
 
 /* Removed section-title::after underline */
 
-/* Consistent spacing — single truth: fixed header + breathing room */
+/* Consistent spacing - single truth: fixed header + breathing room */
 main#main-content {
     padding-top: 96px;
 }
@@ -289,7 +289,7 @@ section[data-animate] {
     text-decoration: none;
 }
 
-/* Contact submit: distinct disabled — muted, clearly not interactive */
+/* Contact submit: distinct disabled - muted, clearly not interactive */
 .btn-success:disabled {
     background: #f1ece3;
     color: #9a8a7f;
@@ -303,7 +303,7 @@ section[data-animate] {
 /* ===== CARDS ===== */
 .card {
     background: var(--surface);
-    border: 1px solid #d6cfc0; /* ponytail: middle-ground vs #faf8f3 — var(--border-color) too faint for card-on-cream */
+    border: 1px solid #d6cfc0; /* ponytail: middle-ground vs #faf8f3 - var(--border-color) too faint for card-on-cream */
     border-radius: var(--radius-large);
     box-shadow: var(--shadow-sm);
     color: var(--text-light);
@@ -367,13 +367,13 @@ section[data-animate] {
 }
 
 /* Wrapper rhythm: lg (24px) at all breakpoints via tokens. Mobile overrides to md (16) only for tight phone gutters.
-   Tablet/desktop both lg for 768+ — unified horizontal rhythm, only width changes. */
+   Tablet/desktop both lg for 768+ - unified horizontal rhythm, only width changes. */
 .content-wrapper .content-wrapper:not([data-animate]) {
     padding: 0;
 }
-/* ponytail: prevents double inset — nested content-wrapper would add another gutter, keeping all section edges aligned */
+/* ponytail: prevents double inset - nested content-wrapper would add another gutter, keeping all section edges aligned */
 
-/* Case study — harmonized with #home / #experience / #projects / #cv: transparent bands on cream, cards do the contrast (no mass white block). */
+/* Case study - harmonized with #home / #experience / #projects / #cv: transparent bands on cream, cards do the contrast (no mass white block). */
 #case-study {
     display: flex;
     flex-direction: column;
@@ -388,7 +388,7 @@ section[data-animate] {
     width: 100%;
     box-sizing: border-box;
 }
-/* ponytail: kill stacked margins — flex gap is the single spacing truth inside each band (matches other sections' gap rhythm) */
+/* ponytail: kill stacked margins - flex gap is the single spacing truth inside each band (matches other sections' gap rhythm) */
 #case-study section[data-animate].content-wrapper > .section-title { margin-bottom: 0; }
 #case-study section[data-animate].content-wrapper > .experience-item { margin-bottom: 0; }
 #case-study section[data-animate].content-wrapper > .case-note { margin: 0; width: 100%; max-width: none; box-sizing: border-box; }
@@ -436,7 +436,7 @@ main {
     min-height: 100vh;
 }
 
-/* First section breathing room — no !important, inherits main padding */
+/* First section breathing room - no !important, inherits main padding */
 main > section:first-child,
 #projects > section:first-child,
 #experience > section:first-child,
@@ -582,7 +582,7 @@ header.scrolled {
     }
 }
 
-/* ponytail: badge hides as soon as it would overlap the centered nav (measured live: gap 6px at 1150, -36 at 1100); hide at 1180 for breathing room — raise if nav grows */
+/* ponytail: badge hides as soon as it would overlap the centered nav (measured live: gap 6px at 1150, -36 at 1100); hide at 1180 for breathing room - raise if nav grows */
 @media (max-width: 1180px) {
     .navbar-badge { display: none; }
 }
@@ -858,8 +858,8 @@ header.scrolled {
     align-items: center;
 }
 
-/* Override generic nav-link hover indicator for sub-links — double class beats .nav-link::before
-   // ponytail: 2×28 hover vs 2×30 active — burger 22×2 as feel, both centered not full-height */
+/* Override generic nav-link hover indicator for sub-links - double class beats .nav-link::before
+   // ponytail: 2×28 hover vs 2×30 active - burger 22×2 as feel, both centered not full-height */
 .nav-link.nav-link-sub::before {
     content: '';
     position: absolute;
@@ -1294,7 +1294,7 @@ section[id] {
 }
 
 /* ===== HERO CTA BUTTONS ===== */
-/* ponytail: 2×2 grid — square when space allows, never overflows */
+/* ponytail: 2×2 grid - square when space allows, never overflows */
 .hero-cta {
     display: flex;
     justify-content: center;
@@ -1497,7 +1497,7 @@ section[id] {
 @media (max-width: 480px) {
     .case-note { padding: var(--spacing-md); }
 }
-#case-study .case-note { margin: 0; max-width: none; width: 100%; box-sizing: border-box; align-self: stretch; padding: var(--spacing-2xl); border-color: #d6cfc0; box-shadow: var(--shadow-sm); } /* ponytail: match experience-item width + card feel — 68ch too narrow vs full band */
+#case-study .case-note { margin: 0; max-width: none; width: 100%; box-sizing: border-box; align-self: stretch; padding: var(--spacing-2xl); border-color: #d6cfc0; box-shadow: var(--shadow-sm); } /* ponytail: match experience-item width + card feel - 68ch too narrow vs full band */
 @media (max-width: 991.98px) {
     #case-study .case-note { padding: var(--spacing-lg); }
 }
@@ -1669,7 +1669,7 @@ section[id] {
     }
 }
 
-/* View Code pill — always visible, real tappable link */
+/* View Code pill - always visible, real tappable link */
 .view-code-pill {
     position: absolute;
     top: 10px;
@@ -2057,7 +2057,7 @@ section[id] {
 }
 
 /* ===== FORM CONTROLS ===== */
-/* No Bootstrap here — plain class rules win; no !important arms race needed */
+/* No Bootstrap here - plain class rules win; no !important arms race needed */
 .form-control {
     padding: var(--spacing-md);
     border-radius: var(--radius-small);
@@ -2084,7 +2084,7 @@ section[id] {
     opacity: 1;
 }
 
-/* ===== FORM VALIDATION — red distinct from brand copper ===== */
+/* ===== FORM VALIDATION - red distinct from brand copper ===== */
 .invalid-feedback {
     color: #b91c1c;
     display: none;
@@ -2226,7 +2226,7 @@ a.contact-item--link {
         margin: 0;
     }
 
-    /* Typography — clamp at base handles fluid scale; mobile just tightens line-height */
+    /* Typography - clamp at base handles fluid scale; mobile just tightens line-height */
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.8rem; }
     h3 { font-size: 1.5rem; }
@@ -2404,7 +2404,7 @@ a.contact-item--link {
 
 }
 
-/* ===== PROJECT CARD ACCENT BARS — single warm accent ===== */
+/* ===== PROJECT CARD ACCENT BARS - single warm accent ===== */
 .project-card .card-img-wrapper { border-top: 3px solid var(--accent-color); transition: border-top-width 0.2s ease, border-color 0.2s ease; }
 .project-card:hover .card-img-wrapper { border-top-width: 4px; }
 
@@ -2422,7 +2422,7 @@ a.contact-item--link {
 
 /* ===== MEDIUM SCREENS (TABLET & SMALL LAPTOP) - 768px to 1199px ===== */
 @media (min-width: 768px) and (max-width: 1199px) {
-    /* Layout refinements — single truth 96px, no !important */
+    /* Layout refinements - single truth 96px, no !important */
     .content-wrapper { max-width: 1100px; padding: 0 var(--spacing-lg); }
     main { padding-top: 96px; }
     main > section:first-child { padding-top: var(--spacing-lg); }
@@ -2477,12 +2477,12 @@ a.contact-item--link {
     .hero-title { font-size: 1.25rem; }
     .hero-card { /* base clamp handles all */ }
 
-    /* LinkedIn embed — no !important, constrained */
+    /* LinkedIn embed - no !important, constrained */
     .card iframe { height: 350px; max-height: 60vh; }
 }
 
 /* ===== SKILLS DISCLOSURE (collapsible Technical Skills) ===== */
-/* ponytail: native <details>/<summary> — zero JS, works on every device, keyboard + touch. */
+/* ponytail: native <details>/<summary> - zero JS, works on every device, keyboard + touch. */
 .skills-disclosure {
     background: var(--surface);
     border: 1px solid var(--border-color);
@@ -2587,7 +2587,7 @@ a.contact-item--link {
     .skills-disclosure[open] > .services { animation: none; }
 }
 
-/* ponytail: Earlier Work uses same disclosure — needs same section gap as Technical Skills (separate animated sections elsewhere have 3xl padding) */
+/* ponytail: Earlier Work uses same disclosure - needs same section gap as Technical Skills (separate animated sections elsewhere have 3xl padding) */
 .project-group[data-group="earlier"] { margin-top: var(--spacing-3xl); }
 @media (max-width: 767px) {
     .project-group[data-group="earlier"] { margin-top: var(--spacing-2xl); }
@@ -2677,7 +2677,7 @@ a.contact-item--link {
     margin: 0;
 }
 
-/* ===== SCREENSHOT FIXES (2026-08-29, mobile) — even band transitions =====
+/* ===== SCREENSHOT FIXES (2026-08-29, mobile) - even band transitions =====
    1) hero→About: 96px main offset + section padding = void. Kill the offset;
       anchors already land clear of the fixed header via scroll-margin-top.
    2) About→Projects and Projects→Experience: #home / #projects header div /
@@ -2697,7 +2697,7 @@ main, main#main-content {
     padding-bottom: clamp(1.9rem, 4vw, 2.65rem) !important;
 }
 
-/* ===== UNIFIED HEADING RHYTHM — ponytail: every section, every device, one truth ===== */
+/* ===== UNIFIED HEADING RHYTHM - ponytail: every section, every device, one truth ===== */
 /* Replaces scattered 3xl/2xl paddings + stacked margins with a single fluid band.
    Goal: same visual breathing room whether About, Projects, Case Study, Experience, CV, Contact;
    not too loose on desktop, not too tight on phones. One clamp does all widths. */
