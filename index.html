@@ -393,7 +393,7 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">WikiStream</h4>
-                        <p class="card-text">Real-time streaming analytics platform ingesting every public Wikipedia edit via SSE into self-hosted ClickHouse, live dashboards, hourly warehouse exports, 58.9M+ events with zero data loss at 5,655 events/sec.</p>
+                        <p class="card-text">Real-time streaming analytics platform ingesting every public Wikipedia edit via SSE into self-hosted ClickHouse, live dashboards, hourly warehouse exports, 58.9M+ events with zero drops in a 10× synthetic burst (5,655 events/sec).</p>
                         <div class="tech-stack">
                             <span class="badge">Python</span>
                             <span class="badge">asyncio</span>
@@ -567,7 +567,7 @@
                 <ul>
                     <li><strong>Ingestion</strong>, Kafka KRaft, 2 topics &times; 3 partitions, ~65% gzip compression (250KB/s &rarr; 85KB/s on the wire), 3.5GB/day &rarr; 1.2GB/day on disk</li>
                     <li><strong>Reliability</strong>, dedup via Redis SET + 10K in-memory LRU, manual offset commits, failed messages land on a Redis Stream DLQ with exponential backoff (5s &rarr; 10s &rarr; 20s)</li>
-                    <li><strong>Schema-on-read storage</strong>, PostgreSQL 16 with JSONB payloads: adding a new source means adding a parser, never a migration. 10 tables, 3 views, 14 indexes, hourly retention cleanup</li>
+                    <li><strong>Schema-on-read storage</strong>, PostgreSQL 16 with JSONB payloads: adding a new source means adding a parser, never a migration. 10 tables, 3 views, 15 indexes, hourly retention cleanup</li>
                     <li><strong>Vector store</strong>, ChromaDB with semantic chunking and local 768-dim embeddings for the RAG assistant</li>
                     <li><strong>API</strong>, FastAPI, 30 endpoints across 6 routers, JWT auth and 8 Redis patterns (rate limiting, caching, locks, Pub/Sub, DLQ) with graceful degradation</li>
                 </ul>
@@ -640,7 +640,7 @@
         <section data-animate class="content-wrapper section-anchor" id="case-study-rag">
             <h3 class="section-title">Agentic Hybrid RAG</h3>
             <div class="experience-item">
-                <p class="text-muted">A LangGraph agent with 12 MCP tools answers operator questions over the anomaly corpus: ChromaDB retrieval with metadata filters and temporal decay, cross-encoder reranking, then a 4-stage reasoning loop, self-consistency sampling, verbalised confidence, reflexion and citation grounding, fused into a single score (0.30 retrieval + 0.25 self-consistency + 0.25 verbalised + 0.20 grounding) and Platt-calibrated on real feedback.</p>
+                <p class="text-muted">A LangGraph agent with 12 MCP tools answers operator questions over the anomaly corpus: ChromaDB retrieval with metadata filters and temporal decay, cross-encoder reranking, then a 4-stage reasoning loop, self-consistency sampling, verbalised confidence, reflexion and citation grounding, fused into a single score (0.30 retrieval + 0.25 self-consistency + 0.25 verbalised + 0.20 grounding) via uncertainty-weighted averaging with static calibrated weights.</p>
                 <div class="table-wrap"><table class="ragas-table">
                     <thead>
                         <tr>
@@ -683,7 +683,7 @@
                 <h4 id="ragas-note-title">My agent lost to a fixed retriever and why I keep the scoreboard</h4>
                 <p>My agent doubled recall after it first cut it in half. The table on this page still stings. Fixed retrieval gave 0.533 recall. My first hybrid agent fell to 0.350. I had added tools and a larger window and watched the metric move the wrong way. Faithfulness showed the same gap. Fixed at 0.982. Hybrid at 0.908. A simpler setup stayed closer to the source because it did less to drift from it.</p>
                 <p>I put feel aside and let the 50 query golden set decide. Eighty two percent human reviewed. Checked in as a baseline. Enforced in CI. Any pull request fails when faithfulness goes under 0.5, recall under 0.3, or the result slips more than 0.05 from the baseline. A gate that runs on every commit leaves no room for a story about why a drop is okay. It also kept that hybrid out of main.</p>
-                <p>The config that won reached 0.708 recall, 0.874 precision and 0.801 relevancy. The gain came from retrieval and checking. Chroma with metadata filters and temporal decay trims the candidate set before the model sees it. Cross encoder reranking puts the best chunk at the top. Then a four stage loop runs: self consistency sampling, verbalised confidence, reflexion, citation grounding. Those signals fuse at 0.30 retrieval, 0.25 self consistency, 0.25 verbalised and 0.20 grounding, then Platt calibration on operator feedback turns the sum into a score that behaves like a probability. The full harness is in <a href="https://github.com/AhmedIkram05/laad" target="_blank" rel="noopener">the repo</a>.</p>
+                <p>The config that won reached 0.708 recall, 0.874 precision and 0.801 relevancy. The gain came from retrieval and checking. Chroma with metadata filters and temporal decay trims the candidate set before the model sees it. Cross encoder reranking puts the best chunk at the top. Then a four stage loop runs: self consistency sampling, verbalised confidence, reflexion, citation grounding. Those signals fuse at 0.30 retrieval, 0.25 self consistency, 0.25 verbalised and 0.20 grounding, then the uncertainty-weighted fusion turns the sum into a score that behaves like a probability. The full harness is in <a href="https://github.com/AhmedIkram05/laad" target="_blank" rel="noopener">the repo</a>.</p>
                 <p>Precision moved with recall this time. Fixed 0.711, hybrid 0.645, agentic 0.874. Faithfulness did not return to the fixed peak. Fixed 0.982 against agentic 0.940. That gap is the cost of extra reasoning. Each step can drift a phrase away from the source. Relevancy at 0.801 alongside recall at 0.708 told me the extra context was used and not just retrieved.</p>
                 <p>I work from a short rule now. When recall is low I fix retrieval first. Filters, decay, reranking. When faithfulness wobbles I tighten grounding before I add another tool. Twelve MCP tools were available. Most of the gain came from weighting and calibrating signals we already had. That order keeps the system honest and keeps review focused on the retrieval that feeds the model.</p>
                 <p>I almost shipped that 0.350. The harness earned its keep by saying no and by holding the line on the golden set every commit.</p>
