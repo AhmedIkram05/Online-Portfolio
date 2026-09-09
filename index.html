@@ -199,7 +199,7 @@
                 <div class="card" data-animate>
                     <div class="card-body">
                         <p class="card-text">My strongest work ships end-to-end with real guardrails. LAAD began as a 7-person university team project - after the module I rebuilt it solo: LangGraph hybrid RAG (0.708 vs 0.350 recall), 3-layer anomaly detector (0.70 F1) on a live Kafka stream, plus a full Kafka pipeline and AWS/Terraform deploy.</p>
-                        <p class="card-text">Solo: SWE-Qwen (fine-tuned Qwen3-14B, 7× fix rate), StockLens (Rust + LSTM, self-built MCP), DevSync (1,462 tests + k6 load gate), WikiStream (58.9M+ events, zero loss) and an Azure ETL → Power BI platform. All gated for real users - CI blocks RAGAS regress &gt;0.05, promos need sig tests, streams hold at-least-once under chaos, zero long-lived creds.</p>
+                        <p class="card-text">Solo: SWE-Qwen (model-agnostic LLMOps, fine-tuned Qwen3-14B, 7× fix rate), StockLens (Rust + LSTM, self-built MCP), DevSync (1,462 tests + k6 load gate), WikiStream (58.9M+ events, zero loss) and an Azure ETL → Power BI platform. All gated for real users - CI blocks RAGAS regress &gt;0.05, promos need sig tests, streams hold at-least-once under chaos, zero long-lived creds.</p>
                         <!-- ponytail: What I Bring merged here - proof beats claims -->
                     </div>
                 </div>
@@ -365,7 +365,7 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">SWE-Qwen</h4>
-                        <p class="card-text">LLMOps platform turning 20,477 SWE-bench issues into a 17,456-example training corpus, 3 QLoRA variants of Qwen3-14B fine-tuned on Modal A100s, execution-based evaluation (17.20% fail-to-pass vs 2.46% base, 7.0×) with statistical champion/challenger gating, served via an OpenAI-compatible inference API.</p>
+                        <p class="card-text">LLMOps platform turning 20,477 SWE-bench issues into a 17,456-example training corpus, 3 QLoRA variants of Qwen3-14B fine-tuned on Modal A100s, execution-based evaluation (17.20% fail-to-pass vs 2.46% base, 7.0×) with statistical champion/challenger gating, served via an OpenAI-compatible inference API — plus a CLI model registry that onboards any open-weight Hugging Face model with per-model quantization, context, and GPU config.</p>
                         <div class="tech-stack">
                             <span class="badge">Python</span>
                             <span class="badge">PyTorch</span>
