@@ -199,7 +199,7 @@
                 <div class="card" data-animate>
                     <div class="card-body">
                         <p class="card-text">My strongest work ships end-to-end with real guardrails. LAAD began as a 7-person university team project - after the module I rebuilt it solo: LangGraph hybrid RAG (0.708 vs 0.350 recall), 3-layer anomaly detector (0.70 F1) on a live Kafka stream, plus a full Kafka pipeline and AWS/Terraform deploy, with OpenTelemetry/Jaeger distributed tracing across services.</p>
-                        <p class="card-text">Solo: SWE-Qwen (model-agnostic LLMOps, fine-tuned Qwen3-14B, 7× fix rate), StockLens (Rust + LSTM, self-built MCP), DevSync (1,505 tests, k6 gate, live on GKE), WikiStream (58.9M+ events, zero loss) and an Azure ETL → Power BI platform. All gated for real users - CI blocks RAGAS regress &gt;0.05, promos need sig tests, streams hold at-least-once under chaos, zero long-lived creds.</p>
+                        <p class="card-text">Solo: SWE-Qwen (model-agnostic LLMOps, fine-tuned Qwen3-14B, 7× fix rate), StockLens (Rust + LSTM, self-built MCP), DevSync (1,520 tests, k6 gate, live on GKE), WikiStream (58.9M+ events, zero loss) and an Azure ETL → Power BI platform. All gated for real users - CI blocks RAGAS regress &gt;0.05, promos need sig tests, streams hold at-least-once under chaos, zero long-lived creds. Six projects hold 8,250 automated tests in total.</p>
                         <!-- ponytail: What I Bring merged here - proof beats claims -->
                     </div>
                 </div>
@@ -256,7 +256,7 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">StockLens</h4>
-                        <p class="card-text">Scan a receipt, then buy or sell real stocks at live market prices with the extracted cash; track portfolios with LSTM forecasts and an AI agent - all 16 tools behind a self-built MCP server (OAuth 2.1 PKCE). FastAPI + PyTorch + LangGraph + Rust backend.</p>
+                        <p class="card-text">Scan a receipt, then buy or sell real stocks at live market prices with the extracted cash; track portfolios with LSTM forecasts and an AI agent - all 16 tools behind a self-built MCP server (OAuth 2.1 PKCE). FastAPI + PyTorch + LangGraph + Rust backend, with 2,417 automated tests.</p>
                         <div class="tech-stack">
                             <span class="badge">Python</span>
                             <span class="badge">FastAPI</span>
@@ -284,7 +284,7 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">W3C Web Logs ETL Pipeline</h4>
-                        <p class="card-text">Serverless Databricks DLT pipeline ingesting 93 W3C IIS log files through a Bronze→Silver medallion architecture into Azure SQL via pymssql export, transformed via dbt into a star schema with Power BI-ready exports, orchestrated by Airflow, provisioned with Terraform.</p>
+                        <p class="card-text">Serverless Databricks DLT pipeline ingesting 93 W3C IIS log files through a Bronze→Silver medallion architecture into Azure SQL via pymssql export, transformed via dbt into a star schema with Power BI-ready exports, orchestrated by Airflow, provisioned with Terraform, with 750 automated tests.</p>
                         <div class="tech-stack">
                             <span class="badge">Azure</span>
                             <span class="badge">Databricks</span>
@@ -311,7 +311,7 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">DevSync</h4>
-                        <p class="card-text">Real-time project tracker where performance regressions can't ship - project-scoped Socket.IO rooms fanned out cluster-wide via Redis, GitHub OAuth 2.0 with bidirectional Issue/PR sync, and a k6 load gate measuring P95 against a committed baseline (P95 ≤500ms, P99 ≤1s, &lt;1% errors at 10 VUs). Flask + PostgreSQL + React live on GKE at gcp.devsyncapp.me - per-PR preview environments, External Secrets over GCP Secret Manager, Cloud SQL, a Trivy/cosign/SBOM supply chain, and Terraform-owned infra with OIDC-only CI/CD.</p>
+                        <p class="card-text">Real-time project tracker where performance regressions can't ship - project-scoped Socket.IO rooms fanned out cluster-wide via Redis, GitHub OAuth 2.0 with bidirectional Issue/PR sync, and a k6 load gate measuring P95 against a committed baseline (P95 ≤500ms, P99 ≤1s, &lt;1% errors at 10 VUs). Flask + PostgreSQL + React live on GKE at gcp.devsyncapp.me - per-PR preview environments, External Secrets over GCP Secret Manager, Cloud SQL, a Trivy/cosign/SBOM supply chain, and Terraform-owned infra with OIDC-only CI/CD — backed by 1,520 automated tests.</p>
                         <div class="tech-stack">
                             <span class="badge">React</span>
                             <span class="badge">Flask</span>
@@ -339,7 +339,7 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">ATM Log Aggregation, Anomaly Detection & Diagnostics Platform</h4>
-                        <p class="card-text">Started as a university team project, rebuilt and extended solo over the summer. Kafka ingestion through 3-layer ML/statistical/heuristic detection, a LangGraph agentic RAG assistant, full AWS/Terraform deployment, OpenTelemetry/Jaeger distributed tracing across services, and 1,438 automated tests.</p>
+                        <p class="card-text">Started as a university team project, rebuilt and extended solo over the summer. Kafka ingestion through 3-layer ML/statistical/heuristic detection, a LangGraph agentic RAG assistant, full AWS/Terraform deployment, OpenTelemetry/Jaeger distributed tracing across services, and 1,846 automated tests.</p>
                         <div class="tech-stack">
                             <span class="badge">Python</span>
                             <span class="badge">FastAPI</span>
@@ -369,7 +369,7 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">SWE-Qwen</h4>
-                        <p class="card-text">LLMOps platform turning 20,477 SWE-bench issues into a 17,456-example training corpus, 3 QLoRA variants of Qwen3-14B fine-tuned on Modal A100s, execution-based evaluation (17.20% fail-to-pass vs 2.46% base, 7.0×) with statistical champion/challenger gating, served via an OpenAI-compatible inference API — plus a CLI model registry that onboards any open-weight Hugging Face model with per-model quantization, context, and GPU config.</p>
+                        <p class="card-text">LLMOps platform turning 20,477 SWE-bench issues into a 17,456-example training corpus, 3 QLoRA variants of Qwen3-14B fine-tuned on Modal A100s, execution-based evaluation (17.20% fail-to-pass vs 2.46% base, 7.0×) with statistical champion/challenger gating, served via an OpenAI-compatible inference API — plus a CLI model registry that onboards any open-weight Hugging Face model with per-model quantization, context, and GPU config, gated by 1,541 automated tests.</p>
                         <div class="tech-stack">
                             <span class="badge">Python</span>
                             <span class="badge">PyTorch</span>
@@ -397,7 +397,7 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">WikiStream</h4>
-                        <p class="card-text">Real-time streaming analytics platform ingesting every public Wikipedia edit via SSE into self-hosted ClickHouse, live dashboards, hourly warehouse exports, 58.9M+ events with zero drops in a 10× synthetic burst (5,655 events/sec).</p>
+                        <p class="card-text">Real-time streaming analytics platform ingesting every public Wikipedia edit via SSE into self-hosted ClickHouse, live dashboards, hourly warehouse exports, 58.9M+ events with zero drops in a 10× synthetic burst (5,655 events/sec), verified by 176 automated tests.</p>
                         <div class="tech-stack">
                             <span class="badge">Python</span>
                             <span class="badge">asyncio</span>
@@ -538,8 +538,8 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title stat-number">1,438</h3>
-                        <p class="card-text">Automated tests: 959 pytest, 394 vitest, 10 Playwright E2E, 75 Terraform assertions</p>
+                        <h3 class="card-title stat-number">1,846</h3>
+                        <p class="card-text">Automated tests: 1,311 pytest, 495 vitest, 10 Playwright E2E, 30 Terraform assertions</p>
                     </div>
                 </div>
                 <div class="card">
@@ -705,7 +705,7 @@
             <h3 class="section-title">Delivery &amp; Observability</h3>
             <div class="experience-item">
                 <ul>
-                    <li><strong>1,438 automated tests</strong>, 959 pytest (10 tiers), 394 vitest (41 suites), 10 Playwright E2E, 75 Terraform assertions, with Codecov and a checkov-hardened IaC pipeline</li>
+                    <li><strong>1,846 automated tests</strong>, 1,311 pytest (10 tiers), 495 vitest (41 suites), 10 Playwright E2E, 30 Terraform assertions, with Codecov and a checkov-hardened IaC pipeline</li>
                     <li><strong>Zero-trust deployment</strong>, 6 least-privilege IAM roles (OIDC-based CI/CD, ECS, SageMaker, CloudWatch, MLflow), 8 secrets injected from Secrets Manager, no long-lived credentials</li>
                     <li><strong>MLOps</strong>, MLflow on RDS with S3 artifact storage, champion alias promotion, auto-retrain on corruption, every run tagged with its git SHA</li>
                     <li><strong>Observability</strong>, vendor-neutral OpenTelemetry tracing across 4 services via OTel Collector → Jaeger (dev) on 2 golden paths with W3C context through Kafka headers; AgentTrace table, Redis Pub/Sub alerts, CloudWatch + Grafana dashboards</li>
