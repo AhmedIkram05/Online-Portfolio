@@ -515,7 +515,7 @@
                 <p class="text-muted">LAAD began as part of a 7-person university team project. After the module ended, I continued developing it independently throughout the summer and substantially rebuilt the system. The original submission had basic rule-based detection and a simple database-writing generator, the majority of the current architecture was designed, implemented and deployed by me alone.</p>
                 <ul>
                     <li><strong>2.5M events</strong> every 24 hours at ~100 messages/second with zero loss</li>
-                    <li><strong>99.3%</strong> cross-validated accuracy with 0.72 held-out macro-F1 on the XGBoost detection ensemble</li>
+                    <li><strong>0.92 held-out macro-F1</strong> on the XGBoost detection ensemble &mdash; 0.94 on a temporal holdout, 0.93 on a held-out second generator configuration</li>
                     <li><strong>0.708 context recall</strong> from the agentic RAG assistant, 2&times; the deterministic baseline</li>
                 </ul>
             </div>
@@ -526,8 +526,8 @@
             <div class="services">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title stat-number">99.3%</h3>
-                        <p class="card-text">XGBoost cross-validated accuracy across 8 anomaly classes, 0.72 held-out macro-F1</p>
+                        <h3 class="card-title stat-number">0.92</h3>
+                        <p class="card-text">XGBoost held-out macro-F1 across 8 anomaly classes &mdash; 0.94 on a temporal holdout, 0.93 on a second generator configuration</p>
                     </div>
                 </div>
                 <div class="card">
@@ -556,8 +556,8 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title stat-number">0.69</h3>
-                        <p class="card-text">F1 on live Kafka traffic, Isolation Forest, 96.8% precision, AUC-ROC 0.84</p>
+                        <h3 class="card-title stat-number">94%</h3>
+                        <p class="card-text">Isolation Forest precision on live Kafka traffic, F1 0.61, AUC-ROC 0.78</p>
                     </div>
                 </div>
             </div>
@@ -603,8 +603,8 @@
                         <i class="fas fa-brain fa-3x text-primary"></i>
                         <h3 class="card-title">Layer 1, ML Ensemble</h3>
                         <ul>
-                            <li>XGBoost: 48 engineered features in 7 groups, 8 anomaly classes, <strong>99.3%</strong> stratified CV accuracy, 0.72 held-out macro-F1</li>
-                            <li>Isolation Forest on the 43 highest-importance features: <strong>AUC-ROC 0.84</strong>, 96.8% precision, F1-maximising threshold from a 200-point sweep</li>
+                            <li>XGBoost: 48 engineered features in 7 groups, 8 anomaly classes, <strong>99.0%</strong> cross-validated accuracy, 0.92 held-out macro-F1</li>
+                            <li>Isolation Forest on the 46 highest-importance features: <strong>AUC-ROC 0.78</strong>, 94% precision, F1-maximising threshold from a 200-point sweep</li>
                             <li>Known faults at confidence &ge; 0.70; novel patterns flagged as UNKNOWN</li>
                         </ul>
                     </div>
