@@ -199,7 +199,7 @@
                 <div class="card" data-animate>
                     <div class="card-body">
                         <p class="card-text">My strongest work ships end-to-end with real guardrails. LAAD began as a 7-person university team project - after the module I rebuilt it solo: LangGraph hybrid RAG (0.708 vs 0.350 recall), 3-layer anomaly detector (0.70 F1) on a live Kafka stream, plus a full Kafka pipeline and AWS/Terraform deploy, with OpenTelemetry/Jaeger distributed tracing across services.</p>
-                        <p class="card-text">Solo: SWE-Qwen (model-agnostic LLMOps, fine-tuned Qwen3-14B, 7× fix rate), StockLens (Rust + LSTM, self-built MCP), DevSync (1,520 tests, k6 gate, live on GKE), WikiStream (58.9M+ events, zero loss) and an Azure ETL → Power BI platform. All gated for real users - CI blocks RAGAS regress &gt;0.05, promos need sig tests, streams hold at-least-once under chaos, zero long-lived creds. Six projects hold 8,250 automated tests in total.</p>
+                        <p class="card-text">Solo: SWE-Qwen (model-agnostic LLMOps, fine-tuned Qwen3-14B, 7× fix rate), StockLens (Rust + LSTM with automated weekly retraining, self-built MCP), DevSync (1,520 tests, k6 gate, live on GKE), WikiStream (58.9M+ events, zero loss) and an Azure ETL → Power BI platform. All gated for real users - CI blocks RAGAS regress &gt;0.05, promos need sig tests, streams hold at-least-once under chaos, zero long-lived creds. Six projects hold 8,250 automated tests in total.</p>
                         <!-- ponytail: What I Bring merged here - proof beats claims -->
                     </div>
                 </div>
@@ -256,13 +256,15 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">StockLens</h4>
-                        <p class="card-text">Scan a receipt, then buy or sell real stocks at live market prices with the extracted cash; track portfolios with LSTM forecasts and an AI agent - all 16 tools behind a self-built MCP server (OAuth 2.1 PKCE). FastAPI + PyTorch + LangGraph + Rust backend, with 2,417 automated tests.</p>
+                        <p class="card-text">Scan a receipt, then buy or sell real stocks at live market prices with the extracted cash; track portfolios with Global LSTM 5-day forecasts and an AI agent - all 16 tools behind a self-built MCP server (OAuth 2.1 PKCE). A weekly Airflow pipeline retrains the Global LSTM (5-seed probability ensemble) with McNemar-gated champion/challenger promotion and Evidently drift detection. FastAPI + PyTorch + LangGraph + Rust backend, with 2,417 automated tests.</p>
                         <div class="tech-stack">
                             <span class="badge">Python</span>
                             <span class="badge">FastAPI</span>
                             <span class="badge">React Native</span>
                             <span class="badge">PyTorch</span>
                             <span class="badge">LangGraph</span>
+                            <span class="badge">Airflow</span>
+                            <span class="badge">MLflow</span>
                             <span class="badge">Rust</span>
                             <span class="badge">MCP</span>
                             <span class="badge">PostgreSQL</span>
