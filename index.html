@@ -199,7 +199,7 @@
                 <div class="card" data-animate>
                     <div class="card-body">
                         <p class="card-text">My strongest work ships end-to-end with real guardrails. LAAD began as a 7-person university team project - after the module I rebuilt it solo: LangGraph hybrid RAG (0.708 vs 0.350 recall), 3-layer anomaly detector (0.70 F1) on a live Kafka stream, plus a full Kafka pipeline and AWS/Terraform deploy, with OpenTelemetry/Jaeger distributed tracing across services.</p>
-                        <p class="card-text">Solo: SWE-Qwen (model-agnostic LLMOps, fine-tuned Qwen3-14B, 7× fix rate), StockLens (Rust + LSTM with automated weekly retraining, self-built MCP), DevSync (1,520 tests, k6 gate, live on GKE), WikiStream (58.9M+ events, zero loss) and an Azure ETL → Power BI platform. All gated for real users - CI blocks RAGAS regress &gt;0.05, promos need sig tests, streams hold at-least-once under chaos, zero long-lived creds. Six projects hold 8,250 automated tests in total.</p>
+                        <p class="card-text">Solo: SWE-Qwen (model-agnostic LLMOps, fine-tuned Qwen3-14B, 7× fix rate), StockLens (Rust + LSTM with automated weekly retraining, self-built MCP), DevSync (1,520 tests, k6 gate, live on GKE), WikiStream (58.9M+ events, zero loss) and an Azure ETL → Power BI platform. All gated for real users - CI blocks RAGAS regress &gt;0.05, promos need sig tests, streams hold at-least-once under chaos, zero long-lived creds. Six projects hold 8,378 automated tests in total.</p>
                         <!-- ponytail: What I Bring merged here - proof beats claims -->
                     </div>
                 </div>
@@ -341,7 +341,7 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">ATM Log Aggregation, Anomaly Detection & Diagnostics Platform</h4>
-                        <p class="card-text">Started as a university team project, rebuilt and extended solo over the summer. Kafka ingestion through 3-layer ML/statistical/heuristic detection, a LangGraph agentic RAG assistant, full AWS/Terraform deployment, OpenTelemetry/Jaeger distributed tracing across services, and 1,846 automated tests.</p>
+                        <p class="card-text">Started as a university team project, rebuilt and extended solo over the summer. Kafka ingestion through 3-layer ML/statistical/heuristic detection, a LangGraph agentic RAG assistant with a System One (TypeSafe Jev) typed-decision layer, full AWS/Terraform deployment, OpenTelemetry/Jaeger distributed tracing across services, and 1,974 automated tests.</p>
                         <div class="tech-stack">
                             <span class="badge">Python</span>
                             <span class="badge">FastAPI</span>
@@ -519,6 +519,7 @@
                     <li><strong>2.5M events</strong> every 24 hours at ~100 messages/second with zero loss</li>
                     <li><strong>0.92 held-out macro-F1</strong> on the XGBoost detection ensemble &mdash; 0.94 on a temporal holdout, 0.93 on a held-out second generator configuration</li>
                     <li><strong>0.708 context recall</strong> from the agentic RAG assistant, 2&times; the deterministic baseline</li>
+                    <li><strong>Typed decisions at ~$16 per 1M</strong> via a System One layer (TypeSafe Jev) — judgments 18× cheaper, 83% agreement with human verdicts</li>
                 </ul>
             </div>
         </section>
@@ -540,8 +541,8 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title stat-number">1,846</h3>
-                        <p class="card-text">Automated tests: 1,311 pytest, 495 vitest, 10 Playwright E2E, 30 Terraform assertions</p>
+                        <h3 class="card-title stat-number">1,974</h3>
+                        <p class="card-text">Automated tests: 1,439 pytest, 495 vitest, 10 Playwright E2E, 30 Terraform assertions</p>
                     </div>
                 </div>
                 <div class="card">
@@ -683,16 +684,22 @@
                         </tr>
                     </tbody>
                 </table></div>
-                <p class="text-muted">Evaluated on a 50-query golden set (82% human-reviewed) with a committed baseline and a CI gate that fails any PR with faithfulness &lt; 0.5, context recall &lt; 0.3, or a drop &gt; 0.05 vs baseline.</p>
+                <p class="text-muted">Evaluated on a 50-query golden set (82% human-reviewed) with a committed baseline and a CI gate that fails any PR with faithfulness &lt; 0.9, context recall &lt; 0.3, or a drop &gt; 0.05 vs baseline.</p>
             </div>
             <aside class="case-note" aria-labelledby="ragas-note-title">
                 <h4 id="ragas-note-title">My agent lost to a fixed retriever and why I keep the scoreboard</h4>
                 <p>My agent doubled recall after it first cut it in half. The table on this page still stings. Fixed retrieval gave 0.533 recall. My first hybrid agent fell to 0.350. I had added tools and a larger window and watched the metric move the wrong way. Faithfulness showed the same gap. Fixed at 0.982. Hybrid at 0.908. A simpler setup stayed closer to the source because it did less to drift from it.</p>
-                <p>I put feel aside and let the 50 query golden set decide. Eighty two percent human reviewed. Checked in as a baseline. Enforced in CI. Any pull request fails when faithfulness goes under 0.5, recall under 0.3, or the result slips more than 0.05 from the baseline. A gate that runs on every commit leaves no room for a story about why a drop is okay. It also kept that hybrid out of main.</p>
+                <p>I put feel aside and let the 50 query golden set decide. Eighty two percent human reviewed. Checked in as a baseline. Enforced in CI. Any pull request fails when faithfulness goes under 0.9, recall under 0.3, or the result slips more than 0.05 from the baseline. A gate that runs on every commit leaves no room for a story about why a drop is okay. It also kept that hybrid out of main.</p>
                 <p>The config that won reached 0.708 recall, 0.874 precision and 0.801 relevancy. The gain came from retrieval and checking. Chroma with metadata filters and temporal decay trims the candidate set before the model sees it. Cross encoder reranking puts the best chunk at the top. Then a four stage loop runs: self consistency sampling, verbalised confidence, reflexion, citation grounding. Those signals fuse at 0.30 retrieval, 0.25 self consistency, 0.25 verbalised and 0.20 grounding, then the uncertainty-weighted fusion turns the sum into a score that behaves like a probability. The full harness is in <a href="https://github.com/AhmedIkram05/laad" target="_blank" rel="noopener">the repo</a>.</p>
                 <p>Precision moved with recall this time. Fixed 0.711, hybrid 0.645, agentic 0.874. Faithfulness did not return to the fixed peak. Fixed 0.982 against agentic 0.940. That gap is the cost of extra reasoning. Each step can drift a phrase away from the source. Relevancy at 0.801 alongside recall at 0.708 told me the extra context was used and not just retrieved.</p>
                 <p>I work from a short rule now. When recall is low I fix retrieval first. Filters, decay, reranking. When faithfulness wobbles I tighten grounding before I add another tool. Twelve MCP tools were available. Most of the gain came from weighting and calibrating signals we already had. That order keeps the system honest and keeps review focused on the retrieval that feeds the model.</p>
                 <p>I almost shipped that 0.350. The harness earned its keep by saying no and by holding the line on the golden set every commit.</p>
+            </aside>
+            <aside class="case-note" aria-labelledby="jev-note-title">
+                <h4 id="jev-note-title">Typed decisions, not parsed prose</h4>
+                <p>Every judgment call the assistant makes — how confident is this answer, is it sound enough to skip critique, what kind of question is this — used to be a full LLM call whose free text got regex-parsed. Expensive per call, and a number extracted from prose is not a measurement.</p>
+                <p>Now TypeSafe's System One model (Jev) answers those questions as typed, priced decisions — roughly $16 per 1M decisions, 18× cheaper than the text judging it replaced, agreeing with human-verified golden labels on 83% of judgments. Below the tuned confidence threshold it hands the call back to the LLM, so the quality floor never drops.</p>
+                <p>Calibration was measured offline against human verdicts before shipping, and an environment kill switch reverts to the original path on any decision failure. The decision log and benchmark are in <a href="https://github.com/AhmedIkram05/laad" target="_blank" rel="noopener">the repo</a>.</p>
             </aside>
             <div class="services">
                 <div class="card">
@@ -707,7 +714,7 @@
             <h3 class="section-title">Delivery &amp; Observability</h3>
             <div class="experience-item">
                 <ul>
-                    <li><strong>1,846 automated tests</strong>, 1,311 pytest (10 tiers), 495 vitest (41 suites), 10 Playwright E2E, 30 Terraform assertions, with Codecov and a checkov-hardened IaC pipeline</li>
+                    <li><strong>1,974 automated tests</strong>, 1,439 pytest (10 tiers), 495 vitest (41 suites), 10 Playwright E2E, 30 Terraform assertions, with Codecov and a checkov-hardened IaC pipeline</li>
                     <li><strong>Zero-trust deployment</strong>, 6 least-privilege IAM roles (OIDC-based CI/CD, ECS, SageMaker, CloudWatch, MLflow), 8 secrets injected from Secrets Manager, no long-lived credentials</li>
                     <li><strong>MLOps</strong>, MLflow on RDS with S3 artifact storage, champion alias promotion, auto-retrain on corruption, every run tagged with its git SHA</li>
                     <li><strong>Observability</strong>, vendor-neutral OpenTelemetry tracing across 4 services via OTel Collector → Jaeger (dev) on 2 golden paths with W3C context through Kafka headers; AgentTrace table, Redis Pub/Sub alerts, CloudWatch + Grafana dashboards</li>
@@ -837,6 +844,7 @@
                             <span class="tech-badge"><i class="fas fa-project-diagram"></i> Agentic RAG (LangGraph)</span>
                             <span class="tech-badge"><i class="fas fa-plug"></i> MCP tool-use (Bedrock)</span>
                             <span class="tech-badge"><i class="fas fa-clipboard-check"></i> RAG evaluation (RAGAS)</span>
+                            <span class="tech-badge"><i class="fas fa-bolt"></i> System One (Jev) decisions</span>
                             <span class="tech-badge"><i class="fas fa-tasks"></i> ML lifecycle (MLflow)</span>
                             <span class="tech-badge"><i class="fas fa-cloud"></i> Model deployment (SageMaker)</span>
                             <span class="tech-badge"><i class="fas fa-eye"></i> Experiment tracking (W&B, Langfuse)</span>
